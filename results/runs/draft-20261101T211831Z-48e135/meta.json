@@ -1,0 +1,96 @@
+{
+  "run_id": "draft-20261101T211831Z-48e135",
+  "started_utc": "2026-11-01T21:18:31+00:00",
+  "models": [
+    "google/gemini-4-argon",
+    "anthropic/claude-fable-5.1",
+    "openai/gpt-6-astra",
+    "anthropic/claude-haiku-5.5"
+  ],
+  "tickets": [
+    "S1",
+    "S2",
+    "R2"
+  ],
+  "trials": 1,
+  "temperature": 0.0,
+  "max_tokens": 16000,
+  "max_cost": 2.5,
+  "timeout_s": 150,
+  "draft": true,
+  "ticket_meta": {
+    "S1": {
+      "seed": 50245001,
+      "status": "DRAFT",
+      "generator_version": "0.2.0",
+      "prompt_sha256": "aca8ab372d91e11a69b776d083d977bb3e54b3389d11e5704e3102482cae0275"
+    },
+    "S2": {
+      "seed": 50245002,
+      "status": "DRAFT",
+      "generator_version": "0.2.0",
+      "prompt_sha256": "cf56ca623662af3586bd53050cdcb314115949f7d800d19f228c1a6a97418161"
+    },
+    "R2": {
+      "seed": 50243002,
+      "status": "DRAFT",
+      "generator_version": "0.2.0",
+      "prompt_sha256": "a32e8045b2f7db565b1fe18b754152fde1bdd72b467b3e0ddc46f4db8ad17e58"
+    }
+  },
+  "catalogue_pricing": {
+    "google/gemini-4-argon": {
+      "prompt": "0.000002",
+      "completion": "0.00001",
+      "image": "0.000002",
+      "audio": "0.000002",
+      "input_audio_cache": "0.0000001",
+      "web_search": "0.014",
+      "internal_reasoning": "0.00001",
+      "input_cache_read": "0.0000001",
+      "input_cache_write": "0.0000001875"
+    },
+    "anthropic/claude-fable-5.1": {
+      "prompt": "0.00001",
+      "completion": "0.00005",
+      "web_search": "0.01",
+      "input_cache_read": "0.00000025",
+      "input_cache_write": "0.0000125",
+      "input_cache_write_1h": "0.00002"
+    },
+    "openai/gpt-6-astra": {
+      "prompt": "0.00001",
+      "completion": "0.00005",
+      "web_search": "0.01",
+      "input_cache_read": "0.000001",
+      "input_cache_write": "0.0000125",
+      "overrides": [
+        {
+          "min_prompt_tokens": 272000,
+          "prompt": "0.00002",
+          "completion": "0.000075",
+          "input_cache_read": "0.000002",
+          "input_cache_write": "0.000025"
+        }
+      ]
+    },
+    "anthropic/claude-haiku-5.5": {
+      "prompt": "0.0000001",
+      "completion": "0.0000005",
+      "web_search": "0.01",
+      "input_cache_read": "0.00000001",
+      "input_cache_write": "0.000000125",
+      "input_cache_write_1h": "0.0000002",
+      "overrides": [
+        {
+          "min_prompt_tokens": 100000,
+          "prompt": "0.0000005",
+          "completion": "0.0000025",
+          "input_cache_read": "0.00000005",
+          "input_cache_write": "0.000000625",
+          "input_cache_write_1h": "0.000001"
+        }
+      ]
+    }
+  }
+}

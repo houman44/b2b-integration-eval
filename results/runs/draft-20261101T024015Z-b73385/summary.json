@@ -1,0 +1,110 @@
+{
+  "meta": {
+    "run_id": "draft-20261101T024015Z-b73385",
+    "started_utc": "2026-11-01T02:40:15+00:00",
+    "models": [
+      "google/gemini-4-argon"
+    ],
+    "tickets": [
+      "E1",
+      "R1",
+      "T1"
+    ],
+    "trials": 3,
+    "temperature": 0.0,
+    "max_tokens": 16000,
+    "max_cost": 1.0,
+    "draft": true,
+    "ticket_meta": {
+      "E1": {
+        "seed": 50242001,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "eead26a17fb53cdb0b837e851e113824b82cca42927fcbd94436f200e39aa9ee"
+      },
+      "R1": {
+        "seed": 50243001,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "8681c43a011a21564e40e4d5a711f432633b0e5d27ec73b5be11283cd50f783a"
+      },
+      "T1": {
+        "seed": 50241001,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "27ff4c3f70e380da95a730f015ad930186342a42171e95d1546de1060c54a963"
+      }
+    },
+    "catalogue_pricing": {
+      "google/gemini-4-argon": {
+        "prompt": "0.000002",
+        "completion": "0.00001",
+        "image": "0.000002",
+        "audio": "0.000002",
+        "input_audio_cache": "0.0000001",
+        "web_search": "0.014",
+        "internal_reasoning": "0.00001",
+        "input_cache_read": "0.0000001",
+        "input_cache_write": "0.0000001875"
+      }
+    },
+    "finished_utc": "2026-11-01T02:40:40+00:00",
+    "skipped": 0
+  },
+  "summary": {
+    "google/gemini-4-argon": {
+      "trials": 9,
+      "api_errors": 0,
+      "trials_per_task": 3,
+      "pass_rate": 0.4444,
+      "mean_score": 0.4444,
+      "pass_at_k": 0.6667,
+      "pass_hat_k": 0.3333,
+      "field_accuracy": {
+        "cause": 0.4444,
+        "layer": 0.4444,
+        "owner": 0.4444,
+        "location": 0.4444
+      },
+      "cost_usd": 0.251536,
+      "per_ticket": {
+        "E1": {
+          "trials": 3,
+          "passes": 1,
+          "mean_score": 0.3333,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 1
+          },
+          "parse_errors": 2
+        },
+        "R1": {
+          "trials": 3,
+          "passes": 0,
+          "mean_score": 0.0,
+          "fields": {
+            "cause": 0,
+            "layer": 0,
+            "owner": 0,
+            "location": 0
+          },
+          "parse_errors": 3
+        },
+        "T1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3
+          },
+          "parse_errors": 0
+        }
+      }
+    }
+  }
+}

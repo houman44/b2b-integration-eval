@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "run_id": "draft-20261101T013925Z-f840cd",
+    "started_utc": "2026-11-01T01:39:25+00:00",
+    "models": [
+      "anthropic/claude-haiku-5.5"
+    ],
+    "tickets": [
+      "E1",
+      "R1",
+      "T1"
+    ],
+    "trials": 3,
+    "temperature": 0.0,
+    "max_tokens": 16000,
+    "max_cost": 0.25,
+    "draft": true,
+    "ticket_meta": {
+      "E1": {
+        "seed": 50242001,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "d82ca75a74fec3c66bf195afeeb13866fac80a11920c0b41b30019fe75103a51"
+      },
+      "R1": {
+        "seed": 50243001,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "2063a85bb24a2e816c4ac9672df733ad4f93f8ed3f9e4b9a1691960672e74006"
+      },
+      "T1": {
+        "seed": 50241001,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "90032ad9f6b9d96dba8674d07438b22ed10a756ed0d26ea079295cf8f36de3c6"
+      }
+    },
+    "catalogue_pricing": {
+      "anthropic/claude-haiku-5.5": {
+        "prompt": "0.0000001",
+        "completion": "0.0000005",
+        "web_search": "0.01",
+        "input_cache_read": "0.00000001",
+        "input_cache_write": "0.000000125",
+        "input_cache_write_1h": "0.0000002",
+        "overrides": [
+          {
+            "min_prompt_tokens": 100000,
+            "prompt": "0.0000005",
+            "completion": "0.0000025",
+            "input_cache_read": "0.00000005",
+            "input_cache_write": "0.000000625",
+            "input_cache_write_1h": "0.000001"
+          }
+        ]
+      }
+    },
+    "finished_utc": "2026-11-01T01:40:32+00:00",
+    "skipped": 0
+  },
+  "summary": {
+    "anthropic/claude-haiku-5.5": {
+      "trials": 9,
+      "api_errors": 0,
+      "trials_per_task": 3,
+      "pass_rate": 0.7778,
+      "mean_score": 0.8889,
+      "pass_at_k": 1.0,
+      "pass_hat_k": 0.6667,
+      "field_accuracy": {
+        "cause": 0.7778,
+        "layer": 0.8889,
+        "owner": 1.0,
+        "location": 0.8889
+      },
+      "cost_usd": 0.030135,
+      "per_ticket": {
+        "E1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3
+          },
+          "parse_errors": 0
+        },
+        "R1": {
+          "trials": 3,
+          "passes": 1,
+          "mean_score": 0.6667,
+          "fields": {
+            "cause": 1,
+            "layer": 2,
+            "owner": 3,
+            "location": 2
+          },
+          "parse_errors": 0
+        },
+        "T1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3
+          },
+          "parse_errors": 0
+        }
+      }
+    }
+  }
+}

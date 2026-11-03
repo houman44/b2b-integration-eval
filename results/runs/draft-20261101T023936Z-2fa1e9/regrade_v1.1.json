@@ -1,0 +1,92 @@
+{
+  "grader_version": "1.1",
+  "run_id": "draft-20261101T023936Z-2fa1e9",
+  "changes": [],
+  "skipped_tickets_changed_since_run": [],
+  "summary": {
+    "google/gemini-4-argon": {
+      "trials": 1,
+      "api_errors": 0,
+      "trials_per_task": 1,
+      "pass_rate": 1.0,
+      "mean_score": 1.0,
+      "pass_at_k": 1.0,
+      "pass_hat_k": 1.0,
+      "field_accuracy": {
+        "cause": 1.0,
+        "layer": 1.0,
+        "owner": 1.0,
+        "location": 1.0
+      },
+      "cost_usd": 0.026535,
+      "per_ticket": {
+        "E1": {
+          "trials": 1,
+          "passes": 1,
+          "mean_score": 1.0,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 1
+          },
+          "parse_errors": 0
+        }
+      }
+    }
+  },
+  "grades": [
+    {
+      "model": "google/gemini-4-argon",
+      "ticket": "E1",
+      "trial": 1,
+      "grade": {
+        "ticket": "E1",
+        "grader_version": "1.1",
+        "parse_error": null,
+        "fields": {
+          "cause": {
+            "given": "interchange_control_reference_mismatch",
+            "normalised": "interchange_control_reference_mismatch",
+            "expected": "interchange_control_reference_mismatch",
+            "correct": true,
+            "error": null
+          },
+          "layer": {
+            "given": "envelope",
+            "normalised": "envelope",
+            "expected": "envelope",
+            "correct": true,
+            "error": null
+          },
+          "owner": {
+            "given": "sender",
+            "normalised": "sender",
+            "expected": "sender",
+            "correct": true,
+            "error": null
+          },
+          "location": {
+            "given": [
+              "UNB.0020",
+              "UNZ.0020"
+            ],
+            "normalised": [
+              "UNB.0020",
+              "UNZ.0020"
+            ],
+            "expected": [
+              "UNB.0020",
+              "UNZ.0020"
+            ],
+            "correct": true,
+            "error": null
+          }
+        },
+        "score": 1.0,
+        "pass": true
+      },
+      "cost": 0.0265353
+    }
+  ]
+}

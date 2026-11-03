@@ -1,0 +1,229 @@
+{
+  "meta": {
+    "run_id": "draft-20261101T194719Z-253149",
+    "started_utc": "2026-11-01T19:47:19+00:00",
+    "models": [
+      "google/gemini-4-argon",
+      "anthropic/claude-fable-5.1",
+      "openai/gpt-6-astra"
+    ],
+    "tickets": [
+      "U3",
+      "U4"
+    ],
+    "trials": 1,
+    "temperature": 0.0,
+    "max_tokens": 16000,
+    "max_cost": 2.0,
+    "timeout_s": 165,
+    "draft": true,
+    "ticket_meta": {
+      "U3": {
+        "seed": 50249003,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "38e29fdd41071d91ecc6d079110cfe57938ae3ed0278e5a740eebff7256c6c68"
+      },
+      "U4": {
+        "seed": 50249004,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "6d6b1f31244f18bfd68224ee1e01b3c6365d29c469e48d582f376da41f36d3bd"
+      }
+    },
+    "catalogue_pricing": {
+      "google/gemini-4-argon": {
+        "prompt": "0.000002",
+        "completion": "0.00001",
+        "image": "0.000002",
+        "audio": "0.000002",
+        "input_audio_cache": "0.0000001",
+        "web_search": "0.014",
+        "internal_reasoning": "0.00001",
+        "input_cache_read": "0.0000001",
+        "input_cache_write": "0.0000001875"
+      },
+      "anthropic/claude-fable-5.1": {
+        "prompt": "0.00001",
+        "completion": "0.00005",
+        "web_search": "0.01",
+        "input_cache_read": "0.00000025",
+        "input_cache_write": "0.0000125",
+        "input_cache_write_1h": "0.00002"
+      },
+      "openai/gpt-6-astra": {
+        "prompt": "0.00001",
+        "completion": "0.00005",
+        "web_search": "0.01",
+        "input_cache_read": "0.000001",
+        "input_cache_write": "0.0000125",
+        "overrides": [
+          {
+            "min_prompt_tokens": 272000,
+            "prompt": "0.00002",
+            "completion": "0.000075",
+            "input_cache_read": "0.000002",
+            "input_cache_write": "0.000025"
+          }
+        ]
+      }
+    },
+    "finished_utc": "2026-11-01T19:48:01+00:00",
+    "skipped": 0
+  },
+  "summary": {
+    "google/gemini-4-argon": {
+      "trials": 2,
+      "api_errors": 0,
+      "trials_per_task": 1,
+      "pass_rate": 1.0,
+      "mean_score": 1.0,
+      "pass_at_k": 1.0,
+      "pass_hat_k": 1.0,
+      "diagnosis_pass_rate": 1.0,
+      "field_accuracy": {
+        "cause": 1.0,
+        "layer": 1.0,
+        "owner": 1.0,
+        "location": 1.0,
+        "next_check": 1.0,
+        "value": 1.0
+      },
+      "cost_usd": 0.089642,
+      "per_ticket": {
+        "U3": {
+          "trials": 1,
+          "passes": 1,
+          "mean_score": 1.0,
+          "diagnosis_passes": 1,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 1,
+            "next_check": 1,
+            "value": 1
+          },
+          "parse_errors": 0
+        },
+        "U4": {
+          "trials": 1,
+          "passes": 1,
+          "mean_score": 1.0,
+          "diagnosis_passes": 1,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 1,
+            "next_check": 1,
+            "value": 1
+          },
+          "parse_errors": 0
+        }
+      }
+    },
+    "anthropic/claude-fable-5.1": {
+      "trials": 2,
+      "api_errors": 0,
+      "trials_per_task": 1,
+      "pass_rate": 0.5,
+      "mean_score": 0.5833,
+      "pass_at_k": 0.5,
+      "pass_hat_k": 0.5,
+      "diagnosis_pass_rate": 0.5,
+      "field_accuracy": {
+        "cause": 0.5,
+        "layer": 0.5,
+        "owner": 0.5,
+        "location": 0.5,
+        "next_check": 0.5,
+        "value": 1.0
+      },
+      "cost_usd": 0.59749,
+      "per_ticket": {
+        "U3": {
+          "trials": 1,
+          "passes": 1,
+          "mean_score": 1.0,
+          "diagnosis_passes": 1,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 1,
+            "next_check": 1,
+            "value": 1
+          },
+          "parse_errors": 0
+        },
+        "U4": {
+          "trials": 1,
+          "passes": 0,
+          "mean_score": 0.1667,
+          "diagnosis_passes": 0,
+          "fields": {
+            "cause": 0,
+            "layer": 0,
+            "owner": 0,
+            "location": 0,
+            "next_check": 0,
+            "value": 1
+          },
+          "parse_errors": 0
+        }
+      }
+    },
+    "openai/gpt-6-astra": {
+      "trials": 2,
+      "api_errors": 0,
+      "trials_per_task": 1,
+      "pass_rate": 1.0,
+      "mean_score": 1.0,
+      "pass_at_k": 1.0,
+      "pass_hat_k": 1.0,
+      "diagnosis_pass_rate": 1.0,
+      "field_accuracy": {
+        "cause": 1.0,
+        "layer": 1.0,
+        "owner": 1.0,
+        "location": 1.0,
+        "next_check": 1.0,
+        "value": 1.0
+      },
+      "cost_usd": 0.31411,
+      "per_ticket": {
+        "U3": {
+          "trials": 1,
+          "passes": 1,
+          "mean_score": 1.0,
+          "diagnosis_passes": 1,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 1,
+            "next_check": 1,
+            "value": 1
+          },
+          "parse_errors": 0
+        },
+        "U4": {
+          "trials": 1,
+          "passes": 1,
+          "mean_score": 1.0,
+          "diagnosis_passes": 1,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 1,
+            "next_check": 1,
+            "value": 1
+          },
+          "parse_errors": 0
+        }
+      }
+    }
+  }
+}

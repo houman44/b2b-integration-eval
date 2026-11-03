@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "run_id": "draft-20261101T194508Z-d9ecf0",
+    "started_utc": "2026-11-01T19:45:08+00:00",
+    "models": [
+      "google/gemini-4-argon"
+    ],
+    "tickets": [
+      "U2"
+    ],
+    "trials": 3,
+    "temperature": 0.0,
+    "max_tokens": 16000,
+    "max_cost": 0.5,
+    "timeout_s": 165,
+    "draft": true,
+    "ticket_meta": {
+      "U2": {
+        "seed": 50249002,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "0bce6287fc4f8ecd4fdf7fdfca2090a80d664bcd50d45e0422bd9f9f66fe77f0"
+      }
+    },
+    "catalogue_pricing": {
+      "google/gemini-4-argon": {
+        "prompt": "0.000002",
+        "completion": "0.00001",
+        "image": "0.000002",
+        "audio": "0.000002",
+        "input_audio_cache": "0.0000001",
+        "web_search": "0.014",
+        "internal_reasoning": "0.00001",
+        "input_cache_read": "0.0000001",
+        "input_cache_write": "0.0000001875"
+      }
+    },
+    "finished_utc": "2026-11-01T19:45:58+00:00",
+    "skipped": 0
+  },
+  "summary": {
+    "google/gemini-4-argon": {
+      "trials": 3,
+      "api_errors": 0,
+      "trials_per_task": 3,
+      "pass_rate": 1.0,
+      "mean_score": 1.0,
+      "pass_at_k": 1.0,
+      "pass_hat_k": 1.0,
+      "diagnosis_pass_rate": 1.0,
+      "field_accuracy": {
+        "cause": 1.0,
+        "layer": 1.0,
+        "owner": 1.0,
+        "location": 1.0,
+        "next_check": 1.0,
+        "value": 1.0
+      },
+      "cost_usd": 0.120554,
+      "per_ticket": {
+        "U2": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        }
+      }
+    }
+  }
+}

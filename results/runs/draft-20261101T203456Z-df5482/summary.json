@@ -1,0 +1,242 @@
+{
+  "meta": {
+    "run_id": "draft-20261101T203456Z-df5482",
+    "started_utc": "2026-11-01T20:34:56+00:00",
+    "models": [
+      "deepseek/deepseek-v4.1-flash-1017"
+    ],
+    "tickets": [
+      "E1",
+      "E3",
+      "R1",
+      "R2",
+      "U4"
+    ],
+    "trials": 3,
+    "temperature": 0.0,
+    "max_tokens": 16000,
+    "max_cost": 0.5,
+    "timeout_s": 150,
+    "draft": true,
+    "ticket_meta": {
+      "E1": {
+        "seed": 50242001,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "e59c6217d9c2886cca88437ed5e4d81bdb5f8f1afd89c53a4a51999fae3c99c7"
+      },
+      "E3": {
+        "seed": 50242003,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "6016c053f0f06be9e8ba16717131a38ff6967cba103ab2fb6074fadea6ab037b"
+      },
+      "R1": {
+        "seed": 50243001,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "b0cec5f4467950e08f881d2438ad7876f1a2599f0b44c22481306f260efa8c15"
+      },
+      "R2": {
+        "seed": 50243002,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "f10eeac19255e8ca7f241fd9012497dd35db310894ed08e96c1246cb5a60e540"
+      },
+      "U4": {
+        "seed": 50249004,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "ce60580b8c72db50ddc88d647ff5ca3014c3bd260c2f2a9735dfb5b78f29169c"
+      }
+    },
+    "catalogue_pricing": {
+      "deepseek/deepseek-v4.1-flash-1017": {
+        "prompt": "0.00000015",
+        "completion": "0.0000006",
+        "input_cache_read": "0.000000003",
+        "overrides": [
+          {
+            "utc_days": [
+              "saturday",
+              "sunday"
+            ],
+            "prompt": "0.00000015",
+            "completion": "0.0000006",
+            "input_cache_read": "0.000000003"
+          },
+          {
+            "utc_days": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday"
+            ],
+            "utc_start": 0,
+            "utc_end": 100,
+            "prompt": "0.00000015",
+            "completion": "0.0000006",
+            "input_cache_read": "0.000000003"
+          },
+          {
+            "utc_days": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday"
+            ],
+            "utc_start": 100,
+            "utc_end": 400,
+            "prompt": "0.0000003",
+            "completion": "0.0000012",
+            "input_cache_read": "0.000000006"
+          },
+          {
+            "utc_days": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday"
+            ],
+            "utc_start": 400,
+            "utc_end": 600,
+            "prompt": "0.00000015",
+            "completion": "0.0000006",
+            "input_cache_read": "0.000000003"
+          },
+          {
+            "utc_days": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday"
+            ],
+            "utc_start": 600,
+            "utc_end": 1000,
+            "prompt": "0.0000003",
+            "completion": "0.0000012",
+            "input_cache_read": "0.000000006"
+          },
+          {
+            "utc_days": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday"
+            ],
+            "utc_start": 1000,
+            "utc_end": 0,
+            "prompt": "0.00000015",
+            "completion": "0.0000006",
+            "input_cache_read": "0.000000003"
+          }
+        ]
+      }
+    },
+    "finished_utc": "2026-11-01T20:36:05+00:00",
+    "skipped": 0
+  },
+  "summary": {
+    "deepseek/deepseek-v4.1-flash-1017": {
+      "trials": 15,
+      "api_errors": 0,
+      "trials_per_task": 3,
+      "pass_rate": 0.3333,
+      "mean_score": 0.6667,
+      "pass_at_k": 0.6,
+      "pass_hat_k": 0.2,
+      "diagnosis_pass_rate": 0.6,
+      "field_accuracy": {
+        "cause": 0.6,
+        "layer": 0.7333,
+        "owner": 0.7333,
+        "location": 0.6,
+        "next_check": 0.7333,
+        "value": 0.6
+      },
+      "cost_usd": 0.08273,
+      "per_ticket": {
+        "E1": {
+          "trials": 3,
+          "passes": 1,
+          "mean_score": 0.7778,
+          "diagnosis_passes": 1,
+          "fields": {
+            "cause": 1,
+            "layer": 3,
+            "owner": 3,
+            "location": 1,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "E3": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "R1": {
+          "trials": 3,
+          "passes": 1,
+          "mean_score": 0.6111,
+          "diagnosis_passes": 2,
+          "fields": {
+            "cause": 2,
+            "layer": 2,
+            "owner": 2,
+            "location": 2,
+            "next_check": 2,
+            "value": 1
+          },
+          "parse_errors": 1
+        },
+        "R2": {
+          "trials": 3,
+          "passes": 0,
+          "mean_score": 0.8333,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 0
+          },
+          "parse_errors": 0
+        },
+        "U4": {
+          "trials": 3,
+          "passes": 0,
+          "mean_score": 0.1111,
+          "diagnosis_passes": 0,
+          "fields": {
+            "cause": 0,
+            "layer": 0,
+            "owner": 0,
+            "location": 0,
+            "next_check": 0,
+            "value": 2
+          },
+          "parse_errors": 1
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "run_id": "draft-20261101T194829Z-182b46",
+    "started_utc": "2026-11-01T19:48:29+00:00",
+    "models": [
+      "anthropic/claude-fable-5.1"
+    ],
+    "tickets": [
+      "U4"
+    ],
+    "trials": 1,
+    "temperature": 0.0,
+    "max_tokens": 16000,
+    "max_cost": 0.5,
+    "timeout_s": 165,
+    "draft": true,
+    "ticket_meta": {
+      "U4": {
+        "seed": 50249004,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "6d6b1f31244f18bfd68224ee1e01b3c6365d29c469e48d582f376da41f36d3bd"
+      }
+    },
+    "catalogue_pricing": {
+      "anthropic/claude-fable-5.1": {
+        "prompt": "0.00001",
+        "completion": "0.00005",
+        "web_search": "0.01",
+        "input_cache_read": "0.00000025",
+        "input_cache_write": "0.0000125",
+        "input_cache_write_1h": "0.00002"
+      }
+    },
+    "finished_utc": "2026-11-01T19:49:22+00:00",
+    "skipped": 0
+  },
+  "summary": {
+    "anthropic/claude-fable-5.1": {
+      "trials": 1,
+      "api_errors": 0,
+      "trials_per_task": 1,
+      "pass_rate": 0.0,
+      "mean_score": 0.1667,
+      "pass_at_k": 0.0,
+      "pass_hat_k": 0.0,
+      "diagnosis_pass_rate": 0.0,
+      "field_accuracy": {
+        "cause": 0.0,
+        "layer": 0.0,
+        "owner": 0.0,
+        "location": 0.0,
+        "next_check": 0.0,
+        "value": 1.0
+      },
+      "cost_usd": 0.27422,
+      "per_ticket": {
+        "U4": {
+          "trials": 1,
+          "passes": 0,
+          "mean_score": 0.1667,
+          "diagnosis_passes": 0,
+          "fields": {
+            "cause": 0,
+            "layer": 0,
+            "owner": 0,
+            "location": 0,
+            "next_check": 0,
+            "value": 1
+          },
+          "parse_errors": 0
+        }
+      }
+    }
+  }
+}

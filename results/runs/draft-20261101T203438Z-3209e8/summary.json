@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "run_id": "draft-20261101T203438Z-3209e8",
+    "started_utc": "2026-11-01T20:34:38+00:00",
+    "models": [
+      "deepseek/deepseek-v4.1-flash-1017"
+    ],
+    "tickets": [
+      "E1"
+    ],
+    "trials": 1,
+    "temperature": 0.0,
+    "max_tokens": 16000,
+    "max_cost": 0.2,
+    "timeout_s": 160,
+    "draft": true,
+    "ticket_meta": {
+      "E1": {
+        "seed": 50242001,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "e59c6217d9c2886cca88437ed5e4d81bdb5f8f1afd89c53a4a51999fae3c99c7"
+      }
+    },
+    "catalogue_pricing": {
+      "deepseek/deepseek-v4.1-flash-1017": {
+        "prompt": "0.00000015",
+        "completion": "0.0000006",
+        "input_cache_read": "0.000000003",
+        "overrides": [
+          {
+            "utc_days": [
+              "saturday",
+              "sunday"
+            ],
+            "prompt": "0.00000015",
+            "completion": "0.0000006",
+            "input_cache_read": "0.000000003"
+          },
+          {
+            "utc_days": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday"
+            ],
+            "utc_start": 0,
+            "utc_end": 100,
+            "prompt": "0.00000015",
+            "completion": "0.0000006",
+            "input_cache_read": "0.000000003"
+          },
+          {
+            "utc_days": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday"
+            ],
+            "utc_start": 100,
+            "utc_end": 400,
+            "prompt": "0.0000003",
+            "completion": "0.0000012",
+            "input_cache_read": "0.000000006"
+          },
+          {
+            "utc_days": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday"
+            ],
+            "utc_start": 400,
+            "utc_end": 600,
+            "prompt": "0.00000015",
+            "completion": "0.0000006",
+            "input_cache_read": "0.000000003"
+          },
+          {
+            "utc_days": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday"
+            ],
+            "utc_start": 600,
+            "utc_end": 1000,
+            "prompt": "0.0000003",
+            "completion": "0.0000012",
+            "input_cache_read": "0.000000006"
+          },
+          {
+            "utc_days": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday"
+            ],
+            "utc_start": 1000,
+            "utc_end": 0,
+            "prompt": "0.00000015",
+            "completion": "0.0000006",
+            "input_cache_read": "0.000000003"
+          }
+        ]
+      }
+    },
+    "finished_utc": "2026-11-01T20:34:49+00:00",
+    "skipped": 0
+  },
+  "summary": {
+    "deepseek/deepseek-v4.1-flash-1017": {
+      "trials": 1,
+      "api_errors": 0,
+      "trials_per_task": 1,
+      "pass_rate": 0.0,
+      "mean_score": 0.3333,
+      "pass_at_k": 0.0,
+      "pass_hat_k": 0.0,
+      "diagnosis_pass_rate": 0.0,
+      "field_accuracy": {
+        "cause": 0.0,
+        "layer": 0.0,
+        "owner": 0.0,
+        "location": 0.0,
+        "next_check": 1.0,
+        "value": 1.0
+      },
+      "cost_usd": 0.001452,
+      "per_ticket": {
+        "E1": {
+          "trials": 1,
+          "passes": 0,
+          "mean_score": 0.3333,
+          "diagnosis_passes": 0,
+          "fields": {
+            "cause": 0,
+            "layer": 0,
+            "owner": 0,
+            "location": 0,
+            "next_check": 1,
+            "value": 1
+          },
+          "parse_errors": 0
+        }
+      }
+    }
+  }
+}

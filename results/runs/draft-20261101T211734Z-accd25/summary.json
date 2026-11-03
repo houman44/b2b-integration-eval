@@ -1,0 +1,299 @@
+{
+  "meta": {
+    "run_id": "draft-20261101T211734Z-accd25",
+    "started_utc": "2026-11-01T21:17:34+00:00",
+    "models": [
+      "google/gemini-4-argon",
+      "anthropic/claude-fable-5.1",
+      "openai/gpt-6-astra",
+      "anthropic/claude-haiku-5.5"
+    ],
+    "tickets": [
+      "S1",
+      "S2"
+    ],
+    "trials": 1,
+    "temperature": 0.0,
+    "max_tokens": 16000,
+    "max_cost": 2.0,
+    "timeout_s": 150,
+    "draft": true,
+    "ticket_meta": {
+      "S1": {
+        "seed": 50245001,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "75c90d129c462f63d6cbe4b417990f670e1a7957296d4643ef740bda54c27d43"
+      },
+      "S2": {
+        "seed": 50245002,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "22f1122bfd235bd738746eab3605d27ad8002080ce5396174af484ad8911bff6"
+      }
+    },
+    "catalogue_pricing": {
+      "google/gemini-4-argon": {
+        "prompt": "0.000002",
+        "completion": "0.00001",
+        "image": "0.000002",
+        "audio": "0.000002",
+        "input_audio_cache": "0.0000001",
+        "web_search": "0.014",
+        "internal_reasoning": "0.00001",
+        "input_cache_read": "0.0000001",
+        "input_cache_write": "0.0000001875"
+      },
+      "anthropic/claude-fable-5.1": {
+        "prompt": "0.00001",
+        "completion": "0.00005",
+        "web_search": "0.01",
+        "input_cache_read": "0.00000025",
+        "input_cache_write": "0.0000125",
+        "input_cache_write_1h": "0.00002"
+      },
+      "openai/gpt-6-astra": {
+        "prompt": "0.00001",
+        "completion": "0.00005",
+        "web_search": "0.01",
+        "input_cache_read": "0.000001",
+        "input_cache_write": "0.0000125",
+        "overrides": [
+          {
+            "min_prompt_tokens": 272000,
+            "prompt": "0.00002",
+            "completion": "0.000075",
+            "input_cache_read": "0.000002",
+            "input_cache_write": "0.000025"
+          }
+        ]
+      },
+      "anthropic/claude-haiku-5.5": {
+        "prompt": "0.0000001",
+        "completion": "0.0000005",
+        "web_search": "0.01",
+        "input_cache_read": "0.00000001",
+        "input_cache_write": "0.000000125",
+        "input_cache_write_1h": "0.0000002",
+        "overrides": [
+          {
+            "min_prompt_tokens": 100000,
+            "prompt": "0.0000005",
+            "completion": "0.0000025",
+            "input_cache_read": "0.00000005",
+            "input_cache_write": "0.000000625",
+            "input_cache_write_1h": "0.000001"
+          }
+        ]
+      }
+    },
+    "finished_utc": "2026-11-01T21:18:00+00:00",
+    "skipped": 0
+  },
+  "summary": {
+    "anthropic/claude-fable-5.1": {
+      "trials": 2,
+      "api_errors": 0,
+      "trials_per_task": 1,
+      "pass_rate": 1.0,
+      "mean_score": 1.0,
+      "pass_at_k": 1.0,
+      "pass_hat_k": 1.0,
+      "diagnosis_pass_rate": 1.0,
+      "field_accuracy": {
+        "cause": 1.0,
+        "layer": 1.0,
+        "owner": 1.0,
+        "location": 1.0,
+        "next_check": 1.0,
+        "value": 1.0
+      },
+      "cost_usd": 0.34495,
+      "per_ticket": {
+        "S1": {
+          "trials": 1,
+          "passes": 1,
+          "mean_score": 1.0,
+          "diagnosis_passes": 1,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 1,
+            "next_check": 1,
+            "value": 1
+          },
+          "parse_errors": 0
+        },
+        "S2": {
+          "trials": 1,
+          "passes": 1,
+          "mean_score": 1.0,
+          "diagnosis_passes": 1,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 1,
+            "next_check": 1,
+            "value": 1
+          },
+          "parse_errors": 0
+        }
+      }
+    },
+    "anthropic/claude-haiku-5.5": {
+      "trials": 2,
+      "api_errors": 0,
+      "trials_per_task": 1,
+      "pass_rate": 1.0,
+      "mean_score": 1.0,
+      "pass_at_k": 1.0,
+      "pass_hat_k": 1.0,
+      "diagnosis_pass_rate": 1.0,
+      "field_accuracy": {
+        "cause": 1.0,
+        "layer": 1.0,
+        "owner": 1.0,
+        "location": 1.0,
+        "next_check": 1.0,
+        "value": 1.0
+      },
+      "cost_usd": 0.004343,
+      "per_ticket": {
+        "S1": {
+          "trials": 1,
+          "passes": 1,
+          "mean_score": 1.0,
+          "diagnosis_passes": 1,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 1,
+            "next_check": 1,
+            "value": 1
+          },
+          "parse_errors": 0
+        },
+        "S2": {
+          "trials": 1,
+          "passes": 1,
+          "mean_score": 1.0,
+          "diagnosis_passes": 1,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 1,
+            "next_check": 1,
+            "value": 1
+          },
+          "parse_errors": 0
+        }
+      }
+    },
+    "google/gemini-4-argon": {
+      "trials": 2,
+      "api_errors": 0,
+      "trials_per_task": 1,
+      "pass_rate": 0.0,
+      "mean_score": 0.8333,
+      "pass_at_k": 0.0,
+      "pass_hat_k": 0.0,
+      "diagnosis_pass_rate": 0.0,
+      "field_accuracy": {
+        "cause": 1.0,
+        "layer": 1.0,
+        "owner": 1.0,
+        "location": 0.0,
+        "next_check": 1.0,
+        "value": 1.0
+      },
+      "cost_usd": 0.083276,
+      "per_ticket": {
+        "S1": {
+          "trials": 1,
+          "passes": 0,
+          "mean_score": 0.8333,
+          "diagnosis_passes": 0,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 0,
+            "next_check": 1,
+            "value": 1
+          },
+          "parse_errors": 0
+        },
+        "S2": {
+          "trials": 1,
+          "passes": 0,
+          "mean_score": 0.8333,
+          "diagnosis_passes": 0,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 0,
+            "next_check": 1,
+            "value": 1
+          },
+          "parse_errors": 0
+        }
+      }
+    },
+    "openai/gpt-6-astra": {
+      "trials": 2,
+      "api_errors": 0,
+      "trials_per_task": 1,
+      "pass_rate": 1.0,
+      "mean_score": 1.0,
+      "pass_at_k": 1.0,
+      "pass_hat_k": 1.0,
+      "diagnosis_pass_rate": 1.0,
+      "field_accuracy": {
+        "cause": 1.0,
+        "layer": 1.0,
+        "owner": 1.0,
+        "location": 1.0,
+        "next_check": 1.0,
+        "value": 1.0
+      },
+      "cost_usd": 0.25461,
+      "per_ticket": {
+        "S1": {
+          "trials": 1,
+          "passes": 1,
+          "mean_score": 1.0,
+          "diagnosis_passes": 1,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 1,
+            "next_check": 1,
+            "value": 1
+          },
+          "parse_errors": 0
+        },
+        "S2": {
+          "trials": 1,
+          "passes": 1,
+          "mean_score": 1.0,
+          "diagnosis_passes": 1,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 1,
+            "next_check": 1,
+            "value": 1
+          },
+          "parse_errors": 0
+        }
+      }
+    }
+  }
+}

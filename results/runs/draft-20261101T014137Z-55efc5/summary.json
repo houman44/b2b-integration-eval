@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "run_id": "draft-20261101T014137Z-55efc5",
+    "started_utc": "2026-11-01T01:41:37+00:00",
+    "models": [
+      "anthropic/claude-haiku-5.5"
+    ],
+    "tickets": [
+      "R1"
+    ],
+    "trials": 5,
+    "temperature": 0.0,
+    "max_tokens": 16000,
+    "max_cost": 0.15,
+    "draft": true,
+    "ticket_meta": {
+      "R1": {
+        "seed": 50243001,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "8681c43a011a21564e40e4d5a711f432633b0e5d27ec73b5be11283cd50f783a"
+      }
+    },
+    "catalogue_pricing": {
+      "anthropic/claude-haiku-5.5": {
+        "prompt": "0.0000001",
+        "completion": "0.0000005",
+        "web_search": "0.01",
+        "input_cache_read": "0.00000001",
+        "input_cache_write": "0.000000125",
+        "input_cache_write_1h": "0.0000002",
+        "overrides": [
+          {
+            "min_prompt_tokens": 100000,
+            "prompt": "0.0000005",
+            "completion": "0.0000025",
+            "input_cache_read": "0.00000005",
+            "input_cache_write": "0.000000625",
+            "input_cache_write_1h": "0.000001"
+          }
+        ]
+      }
+    },
+    "finished_utc": "2026-11-01T01:42:02+00:00",
+    "skipped": 0
+  },
+  "summary": {
+    "anthropic/claude-haiku-5.5": {
+      "trials": 5,
+      "api_errors": 0,
+      "trials_per_task": 5,
+      "pass_rate": 1.0,
+      "mean_score": 1.0,
+      "pass_at_k": 1.0,
+      "pass_hat_k": 1.0,
+      "field_accuracy": {
+        "cause": 1.0,
+        "layer": 1.0,
+        "owner": 1.0,
+        "location": 1.0
+      },
+      "cost_usd": 0.013892,
+      "per_ticket": {
+        "R1": {
+          "trials": 5,
+          "passes": 5,
+          "mean_score": 1.0,
+          "fields": {
+            "cause": 5,
+            "layer": 5,
+            "owner": 5,
+            "location": 5
+          },
+          "parse_errors": 0
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "meta": {
+    "run_id": "draft-20261101T193911Z-d3b43b",
+    "started_utc": "2026-11-01T19:39:11+00:00",
+    "models": [
+      "google/gemini-4-argon"
+    ],
+    "tickets": [
+      "U1",
+      "U2"
+    ],
+    "trials": 3,
+    "temperature": 0.0,
+    "max_tokens": 16000,
+    "max_cost": 0.8,
+    "timeout_s": 165,
+    "draft": true,
+    "ticket_meta": {
+      "U1": {
+        "seed": 50249001,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "c0b8ca409b728826e25673c05ef45b405f1d75dfc11b4eb037198cd8c8039524"
+      },
+      "U2": {
+        "seed": 50249002,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "0bce6287fc4f8ecd4fdf7fdfca2090a80d664bcd50d45e0422bd9f9f66fe77f0"
+      }
+    },
+    "catalogue_pricing": {
+      "google/gemini-4-argon": {
+        "prompt": "0.000002",
+        "completion": "0.00001",
+        "image": "0.000002",
+        "audio": "0.000002",
+        "input_audio_cache": "0.0000001",
+        "web_search": "0.014",
+        "internal_reasoning": "0.00001",
+        "input_cache_read": "0.0000001",
+        "input_cache_write": "0.0000001875"
+      }
+    },
+    "finished_utc": "2026-11-01T19:40:09+00:00",
+    "skipped": 0
+  },
+  "summary": {
+    "google/gemini-4-argon": {
+      "trials": 6,
+      "api_errors": 0,
+      "trials_per_task": 3,
+      "pass_rate": 0.8333,
+      "mean_score": 0.8611,
+      "pass_at_k": 1.0,
+      "pass_hat_k": 0.5,
+      "diagnosis_pass_rate": 0.8333,
+      "field_accuracy": {
+        "cause": 0.8333,
+        "layer": 0.8333,
+        "owner": 0.8333,
+        "location": 0.8333,
+        "next_check": 0.8333,
+        "value": 1.0
+      },
+      "cost_usd": 0.445578,
+      "per_ticket": {
+        "U1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "U2": {
+          "trials": 3,
+          "passes": 2,
+          "mean_score": 0.7222,
+          "diagnosis_passes": 2,
+          "fields": {
+            "cause": 2,
+            "layer": 2,
+            "owner": 2,
+            "location": 2,
+            "next_check": 2,
+            "value": 3
+          },
+          "parse_errors": 0
+        }
+      }
+    }
+  }
+}

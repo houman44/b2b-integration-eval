@@ -1,0 +1,34 @@
+{
+  "model": "anthropic/claude-fable-5.1",
+  "task": "X2",
+  "trial": 1,
+  "http_status": 200,
+  "usage": {
+    "prompt_tokens": 1425,
+    "completion_tokens": 32,
+    "total_tokens": 1457,
+    "cost": 0.01585,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.01585,
+      "upstream_inference_prompt_cost": 0.01425,
+      "upstream_inference_completions_cost": 0.0016
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 32,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost_usd": 0.01585,
+  "finish_reason": "content_filter",
+  "prompt": "# Translation task X2\n\nTranslate the sender's in-house invoice file below into the EDIFACT interchange that the mapping specification defines. Reply with your working if you like, but end your reply with the complete interchange in one fenced ```edifact block. Only the last ```edifact block is graded, segment by segment, against the exact expected interchange; line breaks between segments are ignored.\n\n## In-house invoice file (fixed width)\n\n```text\nHIV643240  20261026EURMüller & Söhne Fahrzeugtechnik GmbH\nL001BRKT 45:A      000013500PCE000001250000\nL002SEAL?RING-7    000008000PCE000000001250\nL003KL+20/4        000001250KGM000000045000\nL004BRKT 45:A      000005000PCE000000033335\nL005HUB-9031       000003500MTR000000010050\nT0005\n```\n\n## Mapping specification\n\n```text\nMAPPING SPECIFICATION: in-house invoice flat file to EDIFACT INVOIC D.96A\n(written for this evaluation; it is the only authority for this task)\n\nInput: fixed-width records, positions counted in characters from 1.\n  H record: pos 1 'H'; 2-11 invoice number (left-justified, space padded);\n            12-19 invoice date CCYYMMDD; 20-22 currency; 23-57 buyer name (UTF-8).\n  L record: pos 1 'L'; 2-4 line number; 5-19 part number (left-justified, space\n            padded); 20-28 quantity, 9 digits, 3 implied decimals; 29-31 unit of\n            measure; 32-43 unit price, 12 digits, 4 implied decimals.\n  T record: pos 1 'T'; 2-5 number of L records.\n\nOutput: one interchange, syntax UNOA version 3, default service characters\n(UNA not sent), release character ? before any of ? + : ' inside a value.\nSegments, in this order:\n  UNB+UNOA:3+QUILLMERE07:ZZ+MARROWGATE13:ZZ+261102:0926+009910'\n  UNH+1+INVOIC:D:96A:UN'\n  BGM+380+<invoice number, trailing spaces removed>+9'\n  DTM+137:<invoice date>:102'\n  NAD+BY+++<buyer name, see below>'\n  CUX+2:<currency>:4'\n  per L record, in file order:\n    LIN+<line number without leading zeros>++<part number, trailing spaces removed>:IN'\n    QTY+47:<quantity>:<unit of measure>'\n    MOA+203:<line amount>'\n    PRI+AAA:<unit price>'\n  UNS+S'\n  MOA+77:<invoice total>'\n  TAX+7+VAT+++:::20+S'\n  MOA+124:<VAT amount>'\n  UNT+<number of segments from UNH to UNT, both included>+1'\n  UNZ+1+009910'\n\nValues:\n  quantity, unit price: decimal mark '.', no leading zeros, no trailing zeros\n    after the decimal mark, no decimal mark for whole numbers (12.500 -> 12.5,\n    7.000 -> 7, 0.250 -> 0.25).\n  line amount = quantity x unit price, rounded half up to 2 decimals, always\n    written with exactly 2 decimals (156.25, 40.00).\n  VAT amount = 20 % of the sum of the line amounts, rounded half up to 2\n    decimals, exactly 2 decimals. invoice total = sum of line amounts + VAT\n    amount, exactly 2 decimals.\n  buyer name: (1) replace A-umlaut by AE, O-umlaut by OE, U-umlaut by UE (either\n    case), sharp s by SS, e-acute and e-grave by E, a-ring by A, o-slash by O;\n    (2) convert to upper case; (3) replace every character not in\n    A-Z 0-9 space . , - ( ) / = ' + : ? by a space; (4) replace runs of spaces by\n    one space and remove leading and trailing spaces; (5) cut to the first 35\n    characters, then remove trailing spaces; (6) add release characters.\n    Release characters do not count towards the 35.\n```\n",
+  "response_text": null,
+  "grade": null
+}

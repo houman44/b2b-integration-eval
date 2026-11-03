@@ -1,0 +1,285 @@
+{
+  "grader_version": "1.1",
+  "run_id": "draft-20261101T014137Z-55efc5",
+  "changes": [],
+  "skipped_tickets_changed_since_run": [],
+  "summary": {
+    "anthropic/claude-haiku-5.5": {
+      "trials": 5,
+      "api_errors": 0,
+      "trials_per_task": 5,
+      "pass_rate": 1.0,
+      "mean_score": 1.0,
+      "pass_at_k": 1.0,
+      "pass_hat_k": 1.0,
+      "field_accuracy": {
+        "cause": 1.0,
+        "layer": 1.0,
+        "owner": 1.0,
+        "location": 1.0
+      },
+      "cost_usd": 0.013892,
+      "per_ticket": {
+        "R1": {
+          "trials": 5,
+          "passes": 5,
+          "mean_score": 1.0,
+          "fields": {
+            "cause": 5,
+            "layer": 5,
+            "owner": 5,
+            "location": 5
+          },
+          "parse_errors": 0
+        }
+      }
+    }
+  },
+  "grades": [
+    {
+      "model": "anthropic/claude-haiku-5.5",
+      "ticket": "R1",
+      "trial": 1,
+      "grade": {
+        "ticket": "R1",
+        "grader_version": "1.1",
+        "parse_error": null,
+        "fields": {
+          "cause": {
+            "given": "test_indicator_mismatch",
+            "normalised": "test_indicator_mismatch",
+            "expected": "test_indicator_mismatch",
+            "correct": true,
+            "error": null
+          },
+          "layer": {
+            "given": "envelope",
+            "normalised": "envelope",
+            "expected": "envelope",
+            "correct": true,
+            "error": null
+          },
+          "owner": {
+            "given": "sender",
+            "normalised": "sender",
+            "expected": "sender",
+            "correct": true,
+            "error": null
+          },
+          "location": {
+            "given": [
+              "UNB.0035"
+            ],
+            "normalised": [
+              "UNB.0035"
+            ],
+            "expected": [
+              "UNB.0035"
+            ],
+            "correct": true,
+            "error": null
+          }
+        },
+        "score": 1.0,
+        "pass": true
+      },
+      "cost": 0.002571
+    },
+    {
+      "model": "anthropic/claude-haiku-5.5",
+      "ticket": "R1",
+      "trial": 2,
+      "grade": {
+        "ticket": "R1",
+        "grader_version": "1.1",
+        "parse_error": null,
+        "fields": {
+          "cause": {
+            "given": "test_indicator_mismatch",
+            "normalised": "test_indicator_mismatch",
+            "expected": "test_indicator_mismatch",
+            "correct": true,
+            "error": null
+          },
+          "layer": {
+            "given": "envelope",
+            "normalised": "envelope",
+            "expected": "envelope",
+            "correct": true,
+            "error": null
+          },
+          "owner": {
+            "given": "sender",
+            "normalised": "sender",
+            "expected": "sender",
+            "correct": true,
+            "error": null
+          },
+          "location": {
+            "given": [
+              "UNB.0035"
+            ],
+            "normalised": [
+              "UNB.0035"
+            ],
+            "expected": [
+              "UNB.0035"
+            ],
+            "correct": true,
+            "error": null
+          }
+        },
+        "score": 1.0,
+        "pass": true
+      },
+      "cost": 0.003762
+    },
+    {
+      "model": "anthropic/claude-haiku-5.5",
+      "ticket": "R1",
+      "trial": 3,
+      "grade": {
+        "ticket": "R1",
+        "grader_version": "1.1",
+        "parse_error": null,
+        "fields": {
+          "cause": {
+            "given": "test_indicator_mismatch",
+            "normalised": "test_indicator_mismatch",
+            "expected": "test_indicator_mismatch",
+            "correct": true,
+            "error": null
+          },
+          "layer": {
+            "given": "envelope",
+            "normalised": "envelope",
+            "expected": "envelope",
+            "correct": true,
+            "error": null
+          },
+          "owner": {
+            "given": "sender",
+            "normalised": "sender",
+            "expected": "sender",
+            "correct": true,
+            "error": null
+          },
+          "location": {
+            "given": [
+              "UNB.0035"
+            ],
+            "normalised": [
+              "UNB.0035"
+            ],
+            "expected": [
+              "UNB.0035"
+            ],
+            "correct": true,
+            "error": null
+          }
+        },
+        "score": 1.0,
+        "pass": true
+      },
+      "cost": 0.00239
+    },
+    {
+      "model": "anthropic/claude-haiku-5.5",
+      "ticket": "R1",
+      "trial": 4,
+      "grade": {
+        "ticket": "R1",
+        "grader_version": "1.1",
+        "parse_error": null,
+        "fields": {
+          "cause": {
+            "given": "test_indicator_mismatch",
+            "normalised": "test_indicator_mismatch",
+            "expected": "test_indicator_mismatch",
+            "correct": true,
+            "error": null
+          },
+          "layer": {
+            "given": "envelope",
+            "normalised": "envelope",
+            "expected": "envelope",
+            "correct": true,
+            "error": null
+          },
+          "owner": {
+            "given": "sender",
+            "normalised": "sender",
+            "expected": "sender",
+            "correct": true,
+            "error": null
+          },
+          "location": {
+            "given": [
+              "UNB.0035"
+            ],
+            "normalised": [
+              "UNB.0035"
+            ],
+            "expected": [
+              "UNB.0035"
+            ],
+            "correct": true,
+            "error": null
+          }
+        },
+        "score": 1.0,
+        "pass": true
+      },
+      "cost": 0.0026705
+    },
+    {
+      "model": "anthropic/claude-haiku-5.5",
+      "ticket": "R1",
+      "trial": 5,
+      "grade": {
+        "ticket": "R1",
+        "grader_version": "1.1",
+        "parse_error": null,
+        "fields": {
+          "cause": {
+            "given": "test_indicator_mismatch",
+            "normalised": "test_indicator_mismatch",
+            "expected": "test_indicator_mismatch",
+            "correct": true,
+            "error": null
+          },
+          "layer": {
+            "given": "envelope",
+            "normalised": "envelope",
+            "expected": "envelope",
+            "correct": true,
+            "error": null
+          },
+          "owner": {
+            "given": "sender",
+            "normalised": "sender",
+            "expected": "sender",
+            "correct": true,
+            "error": null
+          },
+          "location": {
+            "given": [
+              "UNB.0035"
+            ],
+            "normalised": [
+              "UNB.0035"
+            ],
+            "expected": [
+              "UNB.0035"
+            ],
+            "correct": true,
+            "error": null
+          }
+        },
+        "score": 1.0,
+        "pass": true
+      },
+      "cost": 0.002498
+    }
+  ]
+}

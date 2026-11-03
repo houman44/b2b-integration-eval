@@ -1,0 +1,124 @@
+{
+  "meta": {
+    "run_id": "draft-20261101T202720Z-6e7f03",
+    "started_utc": "2026-11-01T20:27:20+00:00",
+    "models": [
+      "anthropic/claude-fable-5.1",
+      "google/gemini-4-argon"
+    ],
+    "tickets": [
+      "U2"
+    ],
+    "trials": 2,
+    "temperature": 0.0,
+    "max_tokens": 16000,
+    "max_cost": 1.6,
+    "timeout_s": 165,
+    "draft": true,
+    "ticket_meta": {
+      "U2": {
+        "seed": 50249002,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "1c87ac4eb09dfa742f2c0f809c4dcd603193e93a77af134130c2c2f4a33749cc"
+      }
+    },
+    "catalogue_pricing": {
+      "anthropic/claude-fable-5.1": {
+        "prompt": "0.00001",
+        "completion": "0.00005",
+        "web_search": "0.01",
+        "input_cache_read": "0.00000025",
+        "input_cache_write": "0.0000125",
+        "input_cache_write_1h": "0.00002"
+      },
+      "google/gemini-4-argon": {
+        "prompt": "0.000002",
+        "completion": "0.00001",
+        "image": "0.000002",
+        "audio": "0.000002",
+        "input_audio_cache": "0.0000001",
+        "web_search": "0.014",
+        "internal_reasoning": "0.00001",
+        "input_cache_read": "0.0000001",
+        "input_cache_write": "0.0000001875"
+      }
+    },
+    "finished_utc": "2026-11-01T20:28:08+00:00",
+    "skipped": 0
+  },
+  "summary": {
+    "anthropic/claude-fable-5.1": {
+      "trials": 2,
+      "api_errors": 0,
+      "trials_per_task": 2,
+      "pass_rate": 1.0,
+      "mean_score": 1.0,
+      "pass_at_k": 1.0,
+      "pass_hat_k": 1.0,
+      "diagnosis_pass_rate": 1.0,
+      "field_accuracy": {
+        "cause": 1.0,
+        "layer": 1.0,
+        "owner": 1.0,
+        "location": 1.0,
+        "next_check": 1.0,
+        "value": 1.0
+      },
+      "cost_usd": 0.72805,
+      "per_ticket": {
+        "U2": {
+          "trials": 2,
+          "passes": 2,
+          "mean_score": 1.0,
+          "diagnosis_passes": 2,
+          "fields": {
+            "cause": 2,
+            "layer": 2,
+            "owner": 2,
+            "location": 2,
+            "next_check": 2,
+            "value": 2
+          },
+          "parse_errors": 0
+        }
+      }
+    },
+    "google/gemini-4-argon": {
+      "trials": 2,
+      "api_errors": 0,
+      "trials_per_task": 2,
+      "pass_rate": 1.0,
+      "mean_score": 1.0,
+      "pass_at_k": 1.0,
+      "pass_hat_k": 1.0,
+      "diagnosis_pass_rate": 1.0,
+      "field_accuracy": {
+        "cause": 1.0,
+        "layer": 1.0,
+        "owner": 1.0,
+        "location": 1.0,
+        "next_check": 1.0,
+        "value": 1.0
+      },
+      "cost_usd": 0.161772,
+      "per_ticket": {
+        "U2": {
+          "trials": 2,
+          "passes": 2,
+          "mean_score": 1.0,
+          "diagnosis_passes": 2,
+          "fields": {
+            "cause": 2,
+            "layer": 2,
+            "owner": 2,
+            "location": 2,
+            "next_check": 2,
+            "value": 2
+          },
+          "parse_errors": 0
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "run_id": "draft-20261101T193217Z-d8082f",
+  "model": "openai/gpt-6-astra",
+  "ticket": "E1",
+  "trial": 1,
+  "started_utc": "2026-11-01T19:32:17+00:00",
+  "http_status": 200,
+  "attempts": [
+    {
+      "status": 200,
+      "latency_s": 6.332
+    }
+  ],
+  "generation_id": "gen-1793561537-dMgroGGcHjkmAP96qK8z",
+  "served_model": "openai/gpt-6-astra",
+  "provider": "OpenAI",
+  "usage": {
+    "prompt_tokens": 5840,
+    "completion_tokens": 261,
+    "total_tokens": 6101,
+    "cost": 0.0860425,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 5837,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0860425,
+      "upstream_inference_prompt_cost": 0.0729925,
+      "upstream_inference_completions_cost": 0.01305
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost_usd": 0.0860425,
+  "finish_reason": "stop",
+  "request": {
+    "model": "openai/gpt-6-astra",
+    "messages": [
+      {
+        "role": "user",
+        "content_sha256": "8bab3826a85d3c97c56d7f0944846515481eff7dc07780341599ccc3120331e8",
+        "content": "# Ticket E1\n\nYou work on the EDI support desk that serves the sender of the file described\nbelow. A customer has raised the ticket that follows. The partner agreement,\nthe sender's OFTP2 gateway trace (and, where available, its file status report),\nthe EDIFACT interchange in question, the partner's response and extracts from the\nspecifications are attached. Everything you need\nis in these documents. All companies, identifiers and documents are synthetic.\n\n## The ticket\n\n```text\nFrom: Kim Hale, EDI desk, Larkspan Body Panels\nSubject: Corrandale Truck Plant rejects our invoices since their upgrade\n\nSince 26 October Corrandale Truck Plant rejects every invoice interchange we send. For months before that the same files were accepted, and nothing has changed on our side. Corrandale Truck Plant upgraded their translator on 26 October and even say themselves it may be their problem. Our gateway shows this morning's batch delivered with an EERP. Please find the root cause and tell us who has to fix it.\n```\n\n## Document 1: Partner agreement (partner_agreement.txt)\n\n```text\nPARTNER AGREEMENT: ELECTRONIC DATA INTERCHANGE\nBetween Larkspan Body Panels (the Supplier) and Corrandale Truck Plant (the Customer)\nEffective 1 March 2026. Synthetic document written for this evaluation.\n\n1. Transport: OFTP2 (RFC 5024) over TCP/IP with TLS\n   Supplier ODETTE ID (SFIDORIG): O0013LARKSPAN6472\n   Customer ODETTE ID (SFIDDEST): O0013CORRANDALE6357\n   Supplier gateway: oftp.larkspan.example (198.51.100.35)\n   Customer gateway: oftp.corrandale.example (203.0.113.75)\n   Protocol release level: 5 (OFTP 2.0)\n   Data exchange buffer size (SSIDSDEB): 4096\n   Credit (SSIDCRED): 64\n   Buffer compression: no. Restart: yes. Secure authentication: no.\n   File security and file compression: none (SFIDSEC 00, SFIDCOMP 0).\n   Signed EERP: not required (SFIDSIGN N).\n   The Customer returns an EERP for every virtual file it accepts.\n\n2. Virtual files\n   Invoices: one interchange per virtual file, dataset name (SFIDDSN) LARKSPAN.INVOIC.\n   File format U. SFIDDATE and SFIDTIME are set by the Supplier's gateway to\n   the date and time the virtual file is made available for transmission.\n\n3. EDIFACT\n   Syntax identifier and version (UNB S001): UNOA, version 3.\n   Supplier interchange sender ID (UNB S002 0004 / 0007): LARKSPAN73 / ZZ\n   Customer interchange recipient ID (UNB S003 0010 / 0007): CORRANDALE92 / ZZ\n   Messages: INVOIC D.96A, up to 50 messages per interchange.\n   Messages are sent in one functional group (UNG/UNE) per interchange.\n   Interchanges are sent without line feeds between segments.\n   The Customer's translator returns a CONTRL message for every rejected\n   interchange, as a separate virtual file over the same OFTP2 link.\n\n4. Support contacts\n   Supplier EDI desk: Kim Hale\n   Customer EDI operations: Jordan Brandt\n```\n\n## Document 2: OFTP2 gateway debug trace (sender side) (oftp2_session.log)\n\n```text\n# OFTP2 gateway debug trace, Larkspan Body Panels (O0013LARKSPAN6472)\n# '>>' = command exchange buffer sent by this gateway, '<<' = received from the\n# remote OFTP2 location. Each buffer is shown as transmitted, between [ and ]\n# (Stream Transmission Header omitted, non-printable octets as \\xNN).\n# '..' = gateway event, '!!' = gateway warning. Passwords are masked.\n# DRAFT: '??' in a reason code field marks a code not yet verified for this evaluation.\n\n2026-10-30 07:26:03.000 S7351 .. session S7351: TCP connect to oftp.corrandale.example (203.0.113.75), TLS 1.3 established\n2026-10-30 07:26:03.109 S7351 << [IODETTE FTP READY \\x0D]\n2026-10-30 07:26:03.151 S7351 >> [X5O0013LARKSPAN6472        ********04096BNYN064N            \\x0D]\n2026-10-30 07:26:03.251 S7351 << [X5O0013CORRANDALE6357      ********04096BNYN064N            \\x0D]\n2026-10-30 07:26:03.325 S7351 .. queued INVOICES_20261030_BATCH1.edi\n2026-10-30 07:26:03.345 S7351 >> [HLARKSPAN.INVOIC              202610300725100001        O0013CORRANDALE6357      O0013LARKSPAN6472        U000000000000000003000000000000300000000000000000000000N000]\n2026-10-30 07:26:03.373 S7351 << [200000000000000000]\n2026-10-30 07:26:03.416 S7351 .. DATA: 1 exchange buffer(s), 2688 octets\n2026-10-30 07:26:03.512 S7351 >> [T0000000000000000000000000000002688]\n2026-10-30 07:26:03.645 S7351 << [4N]\n2026-10-30 07:26:03.817 S7351 .. file transferred, awaiting EERP\n2026-10-30 07:26:03.919 S7351 >> [R]\n2026-10-30 07:26:03.927 S7351 << [F??000\\x0D]\n2026-10-30 07:26:03.937 S7351 .. session closed\n\n2026-10-30 07:56:35.000 S7352 .. session S7352: inbound TCP connection from 203.0.113.75, TLS 1.3 established\n2026-10-30 07:56:35.104 S7352 >> [IODETTE FTP READY \\x0D]\n2026-10-30 07:56:35.238 S7352 << [X5O0013CORRANDALE6357      ********04096BNYN064N            \\x0D]\n2026-10-30 07:56:35.352 S7352 >> [X5O0013LARKSPAN6472        ********04096BNYN064N            \\x0D]\n2026-10-30 07:56:35.456 S7352 << [ELARKSPAN.INVOIC              202610300725100001        O0013LARKSPAN6472        O0013CORRANDALE6357      \\x00\\x00\\x00\\x00]\n2026-10-30 07:56:35.549 S7352 >> [P]\n2026-10-30 07:56:35.725 S7352 << [HCORRANDALE.CONTRL            202610300753470001        O0013LARKSPAN6472        O0013CORRANDALE6357      U000000000000000001000000000000100000000000000000000000N000]\n2026-10-30 07:56:35.792 S7352 >> [200000000000000000]\n2026-10-30 07:56:35.850 S7352 .. DATA: 1 exchange buffer(s), 184 octets\n2026-10-30 07:56:35.986 S7352 << [T0000000000000000000000000000000184]\n2026-10-30 07:56:36.099 S7352 >> [4N]\n2026-10-30 07:56:36.155 S7352 .. stored as inbound/CORRANDALE.CONTRL_202610300753470001.edi\n2026-10-30 07:56:36.332 S7352 << [R]\n2026-10-30 07:56:36.374 S7352 >> [ECORRANDALE.CONTRL            202610300753470001        O0013CORRANDALE6357      O0013LARKSPAN6472        \\x00\\x00\\x00\\x00]\n2026-10-30 07:56:36.503 S7352 << [P]\n2026-10-30 07:56:36.595 S7352 >> [R]\n2026-10-30 07:56:36.634 S7352 << [F??000\\x0D]\n2026-10-30 07:56:36.734 S7352 .. session closed\n```\n\n## Document 3: EDIFACT interchange the ticket is about (as transmitted) (interchange.edi)\n\n```text\nUNB+UNOA:3+LARKSPAN73:ZZ+CORRANDALE92:ZZ+261030:0725+00000122'UNG+INVOIC+LARKSPAN73:ZZ+CORRANDALE92:ZZ+261030:0725+8984+UN+D:96A'UNH+1+INVOIC:D:96A:UN'BGM+380+INV76944+9'DTM+137:20261030:102'NAD+SE+++LARKSPAN BODY PANELS'NAD+BY+++CORRANDALE TRUCK PLANT'CUX+2:EUR:4'LIN+1++P-17631:IN'QTY+47:268'MOA+203:8007.84'PRI+AAA:29.88'LIN+2++P-70828:IN'QTY+47:31'MOA+203:261.95'PRI+AAA:8.45'LIN+3++P-40416:IN'QTY+47:91'MOA+203:1668.03'PRI+AAA:18.33'UNS+S'MOA+77:11925.38'TAX+7+VAT+++:::20+S'MOA+124:1987.56'UNT+23+1'UNH+2+INVOIC:D:96A:UN'BGM+380+INV76945+9'DTM+137:20261030:102'NAD+SE+++LARKSPAN BODY PANELS'NAD+BY+++CORRANDALE TRUCK PLANT'CUX+2:EUR:4'LIN+1++P-94902:IN'QTY+47:345'MOA+203:11353.95'PRI+AAA:32.91'LIN+2++P-58891:IN'QTY+47:222'MOA+203:8027.52'PRI+AAA:36.16'LIN+3++P-81844:IN'QTY+47:202'MOA+203:4886.38'PRI+AAA:24.19'UNS+S'MOA+77:29121.42'TAX+7+VAT+++:::20+S'MOA+124:4853.57'UNT+23+2'UNH+3+INVOIC:D:96A:UN'BGM+380+INV76946+9'DTM+137:20261030:102'NAD+SE+++LARKSPAN BODY PANELS'NAD+BY+++CORRANDALE TRUCK PLANT'CUX+2:EUR:4'LIN+1++P-09289:IN'QTY+47:235'MOA+203:4949.10'PRI+AAA:21.06'LIN+2++P-48418:IN'QTY+47:43'MOA+203:1570.79'PRI+AAA:36.53'LIN+3++P-90697:IN'QTY+47:285'MOA+203:7581.00'PRI+AAA:26.60'UNS+S'MOA+77:16921.06'TAX+7+VAT+++:::20+S'MOA+124:2820.17'UNT+23+3'UNH+4+INVOIC:D:96A:UN'BGM+380+INV76947+9'DTM+137:20261030:102'NAD+SE+++LARKSPAN BODY PANELS'NAD+BY+++CORRANDALE TRUCK PLANT'CUX+2:EUR:4'LIN+1++P-78769:IN'QTY+47:42'MOA+203:1832.04'PRI+AAA:43.62'LIN+2++P-19554:IN'QTY+47:279'MOA+203:9078.66'PRI+AAA:32.54'UNS+S'MOA+77:13092.84'TAX+7+VAT+++:::20+S'MOA+124:2182.14'UNT+19+4'UNH+5+INVOIC:D:96A:UN'BGM+380+INV76948+9'DTM+137:20261030:102'NAD+SE+++LARKSPAN BODY PANELS'NAD+BY+++CORRANDALE TRUCK PLANT'CUX+2:EUR:4'LIN+1++P-85386:IN'QTY+47:214'MOA+203:8352.42'PRI+AAA:39.03'LIN+2++P-30351:IN'QTY+47:110'MOA+203:2932.60'PRI+AAA:26.66'LIN+3++P-09224:IN'QTY+47:341'MOA+203:7423.57'PRI+AAA:21.77'UNS+S'MOA+77:22450.30'TAX+7+VAT+++:::20+S'MOA+124:3741.71'UNT+23+5'UNH+6+INVOIC:D:96A:UN'BGM+380+INV76949+9'DTM+137:20261030:102'NAD+SE+++LARKSPAN BODY PANELS'NAD+BY+++CORRANDALE TRUCK PLANT'CUX+2:EUR:4'LIN+1++P-35732:IN'QTY+47:355'MOA+203:13095.95'PRI+AAA:36.89'LIN+2++P-22768:IN'QTY+47:54'MOA+203:901.80'PRI+AAA:16.70'LIN+3++P-87640:IN'QTY+47:338'MOA+203:15646.02'PRI+AAA:46.29'UNS+S'MOA+77:35572.52'TAX+7+VAT+++:::20+S'MOA+124:5928.75'UNT+23+6'UNH+7+INVOIC:D:96A:UN'BGM+380+INV76950+9'DTM+137:20261030:102'NAD+SE+++LARKSPAN BODY PANELS'NAD+BY+++CORRANDALE TRUCK PLANT'CUX+2:EUR:4'LIN+1++P-49380:IN'QTY+47:202'MOA+203:8029.50'PRI+AAA:39.75'LIN+2++P-83492:IN'QTY+47:378'MOA+203:17055.36'PRI+AAA:45.12'UNS+S'MOA+77:30101.83'TAX+7+VAT+++:::20+S'MOA+124:5016.97'UNT+19+7'UNE+7+8984'UNZ+1+122'\n```\n\n## Document 4: Partner response (partner_response.txt)\n\n```text\nFrom: Jordan Brandt, EDI operations, Corrandale Truck Plant\nTo: Kim Hale, Larkspan Body Panels\nSubject: Rejected interchange this morning\n\nHello,\n\nOur translator rejected your interchange of this morning; the CONTRL we returned over OFTP2 is copied below. As far as we can tell it is about your UNZ: you sent us 7 invoices but your UNZ control count says 1. This started after we upgraded our translator on 26 October, so it may be on our side, but please check your files too.\n\nRegards,\nJordan Brandt\n\n--- CONTRL as received by Larkspan Body Panels (inbound/CORRANDALE.CONTRL_202610300753470001.edi) ---\nUNB+UNOA:3+CORRANDALE92:ZZ+LARKSPAN73:ZZ+261030:0753+C55401'UNH+1+CONTRL:D:3:UN'UCI+00000122+LARKSPAN73:ZZ+CORRANDALE92:ZZ+<<UNVERIFIED-PF>>+<<UNVERIFIED-PG>>+UNZ'UNT+3+1'UNZ+1+C55401'\n```\n\n## Document 5: Specification extracts (spec_extracts.txt)\n\n```text\nRFC 5024 (ODETTE File Transfer Protocol 2), section 4.3.6. Verbatim extract.\n\n4.3.6.  End to End Response (EERP)\n\n   The End to End Response (EERP) command notifies the originator of a\n   Virtual File that the Virtual File has been successfully delivered to\n   its final destination.  This allows the originator to perform house\n   keeping tasks such as deleting copies of the delivered data.\n\n   If the originator of the Virtual File requested a signed EERP in the\n   SFID, the EERP must be signed.  Signing allows the originator of the\n   file to prove that the EERP was generated by the final destination.\n   If the final destination is unable to sign the EERP, it may send back\n   an unsigned EERP.  It is an implementation issue to allow the\n   acceptance of an unsigned EERP if a signed EERP is requested.\n\n   A Response Command must be sent from the location performing the\n   final processing or distribution of the data to the originator.  The\n   Response is mandatory and may be sent in the same or in any\n   subsequent session.\n\n   When an intermediate location broadcasts or distributes a Virtual\n   File, it must receive a Response command from all the locations to\n   which it forwarded the data before sending its own Response.  This\n   ensures that the Response received by the Virtual File's originator\n   accounts for all the destination locations.  An intermediate location\n   therefore needs to track the status of files it processes over time.\n\n   The requesting of a signed EERP is incompatible with the use of\n   broadcast facilities because an EERP can be signed by only one\n   destination.  If this scenario occurs, the intermediate broadcast\n   location may continue and ignore the request for a signed EERP or\n   send back a NERP.\n\n   Example: Point to Point\n\n      Location A sends file Ba to location B, which will send an EERP to\n      location A after it successfully receives the file.\n\n         o----------o                          o-----------o\n         | Loc. A   |----------- S1 ---------->| Loc. B    |\n         |          |                          |           |\n         | [Ba]     |<---------- R2 -----------| [Ba]      |\n         +----------o                          o-----------o\n\n                     Key:   S - File Transfer\n                            R - Response EERP\n                         [Ba] - File for B from A\n\n   Example: Data distribution\n\n      Location A sends a Virtual File containing data for distribution\n      to locations B and C via clearing centres E1 and E2.  Clearing\n      centre E1 must wait for a response from E2 (for file Ba) and\n      location C before it sends its response, R8, to location A.\n      Clearing centre E2 can only send response R7 to E1 when location B\n      acknowledges file Ba with response R6.\n\n   o---------o        o---------o        o---------o        o---------o\n   | Loc. A  |-- S1 ->| Loc. E1 |-- S2 ->| Loc. E2 |-- S5 ->| Loc. B  |\n   |         |        |         |        |         |        |         |\n   | [Ba,Ca] |<- R8 --| [Ba,Ca] |<- R7 --| [Ba]    |<- R6 --| [Ba]    |\n   o---------o        o---------o        o---------o        o---------o\n                         A   |\n                         |   |           o---------o\n                         |   +----- S3 ->| Loc. C  |\n                         |               |         |\n                         +--------- R4 --| [Ca]    |\n                                         o---------o\n\n   Example: Data collection\n\n      Locations A and B send files Ca and Cb to clearing centre E1,\n      which forwards both files to location C in a single Virtual File.\n      When it receives response R4 from C, clearing centre E1 sends\n      response R5 to location A and R6 to location B.\n\n         o---------o        o---------o        o---------o\n         | Loc. A  |-- S1 ->| Loc. E1 |-- S3 ->| Loc. C  |\n         |         |        |         |        |         |\n         | [Ca]    |<- R5 --| [Ca,Cb] |<- R4 --| [Ca,Cb] |\n         o---------o        o---------o        o---------o\n                               A   |\n         o---------o           |   |\n         | Loc. B  |-- S2 -----+   |\n         |         |               |\n         | [Cb]    |<- R6 ---------+\n         o---------o\n\n<<PENDING:UNEDIFACT_EXTRACTS>>\nUN/EDIFACT extracts to be added from UNECE before release: syntax service\ndirectory entries for segments UNB and UNZ, the CONTRL message segment UCI and\ncomposite S011, and the code lists for data elements 0083 and 0085.\n```\n\n## What to return\n\nDiagnose the single root cause of this ticket. Reply in any form you like,\nbut end your reply with exactly one fenced ```json block holding an object\nwith these five keys. Only the last ```json block in your reply is graded.\nGive one value per key: a key that holds several options, or a list of\nalternatives, scores zero for that key.\n\ncause: exactly one of\n  authentication_failure: The OFTP2 session could not be established because a password, identification code or secure authentication check failed.\n  certificate_problem: A TLS or file-security certificate is expired, untrusted or not the one in the agreement.\n  character_set_violation: The interchange contains characters outside the agreed syntax identifier's character repertoire.\n  compression_not_agreed: A file was sent compressed (or uncompressed) contrary to what the receiver accepts.\n  duplicate_interchange: An interchange was rejected because its interchange control reference was already received from this sender.\n  duplicate_virtual_file: A virtual file was refused because a virtual file with the same identification was already delivered.\n  end_to_end_response_not_returned: The file was delivered but the final recipient never returned the end-to-end response.\n  envelope_element_format_invalid: A UNB or UNZ data element has a value whose format or length the syntax version declared in UNB S001 does not allow.\n  file_too_large: The file exceeds a size limit of the receiver.\n  interchange_control_count_mismatch: The interchange control count in UNZ does not match the number of messages in the interchange.\n  interchange_control_reference_mismatch: The interchange control reference in UNB and in UNZ are not identical.\n  intermediary_fault: A clearing centre or other intermediate location lost, altered or misrouted the file.\n  invalid_destination: The OFTP2 destination of the virtual file is not known to the receiver.\n  no_sender_side_fault: Nothing the sender transmitted is wrong; the fault lies with the receiver.\n  recipient_identification_mismatch: The interchange recipient identification or its qualifier in UNB is not the one in the partner agreement.\n  restart_position_invalid: A restarted transfer used a restart position that is wrong, or resumed from a position other than the one the receiver confirmed.\n  sender_identification_mismatch: The interchange sender identification or its qualifier in UNB is not the one in the partner agreement.\n  session_parameters_not_negotiated: The sender used an OFTP2 session parameter (credit, buffer size or similar) outside what was negotiated.\n  syntax_identifier_not_agreed: UNB S001 declares a syntax identifier or syntax version other than the agreed one.\n  test_indicator_mismatch: The interchange is flagged as test (or production) contrary to the agreement.\n\nlayer: exactly one of\n  transport: The OFTP2 session or file transfer, including any intermediate location.\n  envelope: The EDIFACT interchange envelope (UNB to UNZ), wherever the receiver checks it (gateway or translator).\n  none: There is no fault on the sender side.\n\nowner: exactly one of (who must act to fix the root cause)\n  sender: The party that sent the file and raised the ticket must fix it.\n  receiver: The trading partner the file is addressed to must fix it.\n  intermediary: A clearing centre or other intermediate location between the parties must fix it.\n  agreement: The partner agreement itself is wrong or inconsistent and must be amended before either side can fix the fault.\n\nlocation: a JSON array of strings.\nList the OFTP2 fields or EDIFACT data elements whose values must be changed to\nfix the root cause, and no others. If the fault is a conflict between two values\nthat must agree, list both. Write each one as:\n  OFTP2 field:                 COMMAND.FIELD, e.g. \"SSID.SSIDCODE\"\n  EDIFACT simple data element: SEGMENT.ELEMENT, e.g. \"UNH.0062\"\n  EDIFACT component element:   SEGMENT.COMPOSITE.COMPONENT, e.g. \"UNB.S003.0010\"\n  No fault on the sender side: \"NONE\" on its own.\n\nvalue: a JSON string holding the number of INVOIC messages in the interchange, as a plain integer.\n\nExample of the format only (not a hint):\n```json\n{\"cause\": \"file_too_large\", \"layer\": \"transport\", \"owner\": \"receiver\", \"location\": [\"SFID.SFIDFSIZ\"], \"value\": \"12345\"}\n```\n"
+      }
+    ],
+    "temperature": 0.0,
+    "max_tokens": 16000,
+    "provider": {
+      "data_collection": "deny"
+    },
+    "seed": 1
+  },
+  "response_text": "The root cause is a **sender-side interchange control reference mismatch**:\n\n- UNB element 0020 is `00000122`.\n- UNZ element 0020 is `122`.\n\nThese are control references, not numbers to normalize; they must match exactly. Larkspan must fix its envelope generation so UNZ preserves the UNB reference, producing `UNZ+1+00000122'`.\n\nCorrandale’s count explanation is incorrect: this interchange contains **seven INVOIC messages in one functional group**. With functional grouping, the UNZ control count counts groups, so `1` is correct; `UNE+7+8984'` counts the seven messages.\n\nThe returned EERP confirms successful virtual-file delivery, not EDIFACT acceptance. The upgrade may have exposed a previously tolerated error, but it does not make the transmitted envelope valid. The CONTRL’s unverified placeholders prevent decoding its precise error codes; the reference mismatch is directly visible in the interchange.\n\n```json\n{\n  \"cause\": \"interchange_control_reference_mismatch\",\n  \"layer\": \"envelope\",\n  \"owner\": \"sender\",\n  \"location\": [\"UNB.0020\", \"UNZ.0020\"],\n  \"value\": \"7\"\n}\n```",
+  "reasoning": null,
+  "error": null,
+  "reference": {
+    "cause": "interchange_control_reference_mismatch",
+    "layer": "envelope",
+    "owner": "sender",
+    "location": [
+      "UNB.0020",
+      "UNZ.0020"
+    ],
+    "value": "7"
+  },
+  "grade": {
+    "ticket": "E1",
+    "grader_version": "2.0",
+    "parse_error": null,
+    "fields": {
+      "cause": {
+        "given": "interchange_control_reference_mismatch",
+        "normalised": "interchange_control_reference_mismatch",
+        "expected": "interchange_control_reference_mismatch",
+        "correct": true,
+        "error": null
+      },
+      "layer": {
+        "given": "envelope",
+        "normalised": "envelope",
+        "expected": "envelope",
+        "correct": true,
+        "error": null
+      },
+      "owner": {
+        "given": "sender",
+        "normalised": "sender",
+        "expected": "sender",
+        "correct": true,
+        "error": null
+      },
+      "location": {
+        "given": [
+          "UNB.0020",
+          "UNZ.0020"
+        ],
+        "normalised": [
+          "UNB.0020",
+          "UNZ.0020"
+        ],
+        "expected": [
+          "UNB.0020",
+          "UNZ.0020"
+        ],
+        "correct": true,
+        "error": null
+      },
+      "value": {
+        "given": "7",
+        "normalised": "7",
+        "expected": "7",
+        "correct": true,
+        "error": null
+      }
+    },
+    "score": 1.0,
+    "pass": true,
+    "diagnosis_pass": true
+  }
+}

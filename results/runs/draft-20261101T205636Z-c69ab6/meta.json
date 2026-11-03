@@ -1,0 +1,62 @@
+{
+  "run_id": "draft-20261101T205636Z-c69ab6",
+  "started_utc": "2026-11-01T20:56:36+00:00",
+  "models": [
+    "anthropic/claude-sonnet-5.5"
+  ],
+  "tickets": [
+    "E1",
+    "E3",
+    "R1",
+    "R2",
+    "U4"
+  ],
+  "trials": 3,
+  "temperature": 0.0,
+  "max_tokens": 16000,
+  "max_cost": 1.5,
+  "timeout_s": 150,
+  "draft": true,
+  "ticket_meta": {
+    "E1": {
+      "seed": 50242001,
+      "status": "DRAFT",
+      "generator_version": "0.2.0",
+      "prompt_sha256": "e59c6217d9c2886cca88437ed5e4d81bdb5f8f1afd89c53a4a51999fae3c99c7"
+    },
+    "E3": {
+      "seed": 50242003,
+      "status": "DRAFT",
+      "generator_version": "0.2.0",
+      "prompt_sha256": "6016c053f0f06be9e8ba16717131a38ff6967cba103ab2fb6074fadea6ab037b"
+    },
+    "R1": {
+      "seed": 50243001,
+      "status": "DRAFT",
+      "generator_version": "0.2.0",
+      "prompt_sha256": "b0cec5f4467950e08f881d2438ad7876f1a2599f0b44c22481306f260efa8c15"
+    },
+    "R2": {
+      "seed": 50243002,
+      "status": "DRAFT",
+      "generator_version": "0.2.0",
+      "prompt_sha256": "f10eeac19255e8ca7f241fd9012497dd35db310894ed08e96c1246cb5a60e540"
+    },
+    "U4": {
+      "seed": 50249004,
+      "status": "DRAFT",
+      "generator_version": "0.2.0",
+      "prompt_sha256": "ce60580b8c72db50ddc88d647ff5ca3014c3bd260c2f2a9735dfb5b78f29169c"
+    }
+  },
+  "catalogue_pricing": {
+    "anthropic/claude-sonnet-5.5": {
+      "prompt": "0.000002",
+      "completion": "0.00001",
+      "web_search": "0.01",
+      "input_cache_read": "0.0000001",
+      "input_cache_write": "0.0000025",
+      "input_cache_write_1h": "0.000004"
+    }
+  }
+}

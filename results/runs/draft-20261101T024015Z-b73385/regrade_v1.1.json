@@ -1,0 +1,549 @@
+{
+  "grader_version": "1.1",
+  "run_id": "draft-20261101T024015Z-b73385",
+  "changes": [
+    {
+      "file": "E1__google__gemini-4-argon__t1.json",
+      "old_score": 0.0,
+      "new_score": 1.0
+    },
+    {
+      "file": "E1__google__gemini-4-argon__t3.json",
+      "old_score": 0.0,
+      "new_score": 1.0
+    },
+    {
+      "file": "R1__google__gemini-4-argon__t1.json",
+      "old_score": 0.0,
+      "new_score": 1.0
+    },
+    {
+      "file": "R1__google__gemini-4-argon__t2.json",
+      "old_score": 0.0,
+      "new_score": 1.0
+    },
+    {
+      "file": "R1__google__gemini-4-argon__t3.json",
+      "old_score": 0.0,
+      "new_score": 1.0
+    }
+  ],
+  "skipped_tickets_changed_since_run": [],
+  "summary": {
+    "google/gemini-4-argon": {
+      "trials": 9,
+      "api_errors": 0,
+      "trials_per_task": 3,
+      "pass_rate": 1.0,
+      "mean_score": 1.0,
+      "pass_at_k": 1.0,
+      "pass_hat_k": 1.0,
+      "field_accuracy": {
+        "cause": 1.0,
+        "layer": 1.0,
+        "owner": 1.0,
+        "location": 1.0
+      },
+      "cost_usd": 0.251536,
+      "per_ticket": {
+        "E1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3
+          },
+          "parse_errors": 0
+        },
+        "R1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3
+          },
+          "parse_errors": 0
+        },
+        "T1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3
+          },
+          "parse_errors": 0
+        }
+      }
+    }
+  },
+  "grades": [
+    {
+      "model": "google/gemini-4-argon",
+      "ticket": "E1",
+      "trial": 1,
+      "grade": {
+        "ticket": "E1",
+        "grader_version": "1.1",
+        "parse_error": null,
+        "fields": {
+          "cause": {
+            "given": "interchange_control_reference_mismatch",
+            "normalised": "interchange_control_reference_mismatch",
+            "expected": "interchange_control_reference_mismatch",
+            "correct": true,
+            "error": null
+          },
+          "layer": {
+            "given": "envelope",
+            "normalised": "envelope",
+            "expected": "envelope",
+            "correct": true,
+            "error": null
+          },
+          "owner": {
+            "given": "sender",
+            "normalised": "sender",
+            "expected": "sender",
+            "correct": true,
+            "error": null
+          },
+          "location": {
+            "given": [
+              "UNB.0020",
+              "UNZ.0020"
+            ],
+            "normalised": [
+              "UNB.0020",
+              "UNZ.0020"
+            ],
+            "expected": [
+              "UNB.0020",
+              "UNZ.0020"
+            ],
+            "correct": true,
+            "error": null
+          }
+        },
+        "score": 1.0,
+        "pass": true
+      },
+      "cost": 0.0187058
+    },
+    {
+      "model": "google/gemini-4-argon",
+      "ticket": "E1",
+      "trial": 2,
+      "grade": {
+        "ticket": "E1",
+        "grader_version": "1.1",
+        "parse_error": null,
+        "fields": {
+          "cause": {
+            "given": "interchange_control_reference_mismatch",
+            "normalised": "interchange_control_reference_mismatch",
+            "expected": "interchange_control_reference_mismatch",
+            "correct": true,
+            "error": null
+          },
+          "layer": {
+            "given": "envelope",
+            "normalised": "envelope",
+            "expected": "envelope",
+            "correct": true,
+            "error": null
+          },
+          "owner": {
+            "given": "sender",
+            "normalised": "sender",
+            "expected": "sender",
+            "correct": true,
+            "error": null
+          },
+          "location": {
+            "given": [
+              "UNB.0020",
+              "UNZ.0020"
+            ],
+            "normalised": [
+              "UNB.0020",
+              "UNZ.0020"
+            ],
+            "expected": [
+              "UNB.0020",
+              "UNZ.0020"
+            ],
+            "correct": true,
+            "error": null
+          }
+        },
+        "score": 1.0,
+        "pass": true
+      },
+      "cost": 0.0111458
+    },
+    {
+      "model": "google/gemini-4-argon",
+      "ticket": "E1",
+      "trial": 3,
+      "grade": {
+        "ticket": "E1",
+        "grader_version": "1.1",
+        "parse_error": null,
+        "fields": {
+          "cause": {
+            "given": "interchange_control_reference_mismatch",
+            "normalised": "interchange_control_reference_mismatch",
+            "expected": "interchange_control_reference_mismatch",
+            "correct": true,
+            "error": null
+          },
+          "layer": {
+            "given": "envelope",
+            "normalised": "envelope",
+            "expected": "envelope",
+            "correct": true,
+            "error": null
+          },
+          "owner": {
+            "given": "sender",
+            "normalised": "sender",
+            "expected": "sender",
+            "correct": true,
+            "error": null
+          },
+          "location": {
+            "given": [
+              "UNB.0020",
+              "UNZ.0020"
+            ],
+            "normalised": [
+              "UNB.0020",
+              "UNZ.0020"
+            ],
+            "expected": [
+              "UNB.0020",
+              "UNZ.0020"
+            ],
+            "correct": true,
+            "error": null
+          }
+        },
+        "score": 1.0,
+        "pass": true
+      },
+      "cost": 0.0194158
+    },
+    {
+      "model": "google/gemini-4-argon",
+      "ticket": "R1",
+      "trial": 1,
+      "grade": {
+        "ticket": "R1",
+        "grader_version": "1.1",
+        "parse_error": null,
+        "fields": {
+          "cause": {
+            "given": "test_indicator_mismatch",
+            "normalised": "test_indicator_mismatch",
+            "expected": "test_indicator_mismatch",
+            "correct": true,
+            "error": null
+          },
+          "layer": {
+            "given": "envelope",
+            "normalised": "envelope",
+            "expected": "envelope",
+            "correct": true,
+            "error": null
+          },
+          "owner": {
+            "given": "sender",
+            "normalised": "sender",
+            "expected": "sender",
+            "correct": true,
+            "error": null
+          },
+          "location": {
+            "given": [
+              "UNB.0035"
+            ],
+            "normalised": [
+              "UNB.0035"
+            ],
+            "expected": [
+              "UNB.0035"
+            ],
+            "correct": true,
+            "error": null
+          }
+        },
+        "score": 1.0,
+        "pass": true
+      },
+      "cost": 0.0157542
+    },
+    {
+      "model": "google/gemini-4-argon",
+      "ticket": "R1",
+      "trial": 2,
+      "grade": {
+        "ticket": "R1",
+        "grader_version": "1.1",
+        "parse_error": null,
+        "fields": {
+          "cause": {
+            "given": "test_indicator_mismatch",
+            "normalised": "test_indicator_mismatch",
+            "expected": "test_indicator_mismatch",
+            "correct": true,
+            "error": null
+          },
+          "layer": {
+            "given": "envelope",
+            "normalised": "envelope",
+            "expected": "envelope",
+            "correct": true,
+            "error": null
+          },
+          "owner": {
+            "given": "sender",
+            "normalised": "sender",
+            "expected": "sender",
+            "correct": true,
+            "error": null
+          },
+          "location": {
+            "given": [
+              "UNB.0035"
+            ],
+            "normalised": [
+              "UNB.0035"
+            ],
+            "expected": [
+              "UNB.0035"
+            ],
+            "correct": true,
+            "error": null
+          }
+        },
+        "score": 1.0,
+        "pass": true
+      },
+      "cost": 0.0141242
+    },
+    {
+      "model": "google/gemini-4-argon",
+      "ticket": "R1",
+      "trial": 3,
+      "grade": {
+        "ticket": "R1",
+        "grader_version": "1.1",
+        "parse_error": null,
+        "fields": {
+          "cause": {
+            "given": "test_indicator_mismatch",
+            "normalised": "test_indicator_mismatch",
+            "expected": "test_indicator_mismatch",
+            "correct": true,
+            "error": null
+          },
+          "layer": {
+            "given": "envelope",
+            "normalised": "envelope",
+            "expected": "envelope",
+            "correct": true,
+            "error": null
+          },
+          "owner": {
+            "given": "sender",
+            "normalised": "sender",
+            "expected": "sender",
+            "correct": true,
+            "error": null
+          },
+          "location": {
+            "given": [
+              "UNB.0035"
+            ],
+            "normalised": [
+              "UNB.0035"
+            ],
+            "expected": [
+              "UNB.0035"
+            ],
+            "correct": true,
+            "error": null
+          }
+        },
+        "score": 1.0,
+        "pass": true
+      },
+      "cost": 0.0166942
+    },
+    {
+      "model": "google/gemini-4-argon",
+      "ticket": "T1",
+      "trial": 1,
+      "grade": {
+        "ticket": "T1",
+        "grader_version": "1.1",
+        "parse_error": null,
+        "fields": {
+          "cause": {
+            "given": "duplicate_virtual_file",
+            "normalised": "duplicate_virtual_file",
+            "expected": "duplicate_virtual_file",
+            "correct": true,
+            "error": null
+          },
+          "layer": {
+            "given": "transport",
+            "normalised": "transport",
+            "expected": "transport",
+            "correct": true,
+            "error": null
+          },
+          "owner": {
+            "given": "sender",
+            "normalised": "sender",
+            "expected": "sender",
+            "correct": true,
+            "error": null
+          },
+          "location": {
+            "given": [
+              "SFID.SFIDDATE",
+              "SFID.SFIDTIME"
+            ],
+            "normalised": [
+              "SFID.SFIDDATE",
+              "SFID.SFIDTIME"
+            ],
+            "expected": [
+              "SFID.SFIDDATE",
+              "SFID.SFIDTIME"
+            ],
+            "correct": true,
+            "error": null
+          }
+        },
+        "score": 1.0,
+        "pass": true
+      },
+      "cost": 0.054582
+    },
+    {
+      "model": "google/gemini-4-argon",
+      "ticket": "T1",
+      "trial": 2,
+      "grade": {
+        "ticket": "T1",
+        "grader_version": "1.1",
+        "parse_error": null,
+        "fields": {
+          "cause": {
+            "given": "duplicate_virtual_file",
+            "normalised": "duplicate_virtual_file",
+            "expected": "duplicate_virtual_file",
+            "correct": true,
+            "error": null
+          },
+          "layer": {
+            "given": "transport",
+            "normalised": "transport",
+            "expected": "transport",
+            "correct": true,
+            "error": null
+          },
+          "owner": {
+            "given": "sender",
+            "normalised": "sender",
+            "expected": "sender",
+            "correct": true,
+            "error": null
+          },
+          "location": {
+            "given": [
+              "SFID.SFIDDATE",
+              "SFID.SFIDTIME"
+            ],
+            "normalised": [
+              "SFID.SFIDDATE",
+              "SFID.SFIDTIME"
+            ],
+            "expected": [
+              "SFID.SFIDDATE",
+              "SFID.SFIDTIME"
+            ],
+            "correct": true,
+            "error": null
+          }
+        },
+        "score": 1.0,
+        "pass": true
+      },
+      "cost": 0.050392
+    },
+    {
+      "model": "google/gemini-4-argon",
+      "ticket": "T1",
+      "trial": 3,
+      "grade": {
+        "ticket": "T1",
+        "grader_version": "1.1",
+        "parse_error": null,
+        "fields": {
+          "cause": {
+            "given": "duplicate_virtual_file",
+            "normalised": "duplicate_virtual_file",
+            "expected": "duplicate_virtual_file",
+            "correct": true,
+            "error": null
+          },
+          "layer": {
+            "given": "transport",
+            "normalised": "transport",
+            "expected": "transport",
+            "correct": true,
+            "error": null
+          },
+          "owner": {
+            "given": "sender",
+            "normalised": "sender",
+            "expected": "sender",
+            "correct": true,
+            "error": null
+          },
+          "location": {
+            "given": [
+              "SFID.SFIDDATE",
+              "SFID.SFIDTIME"
+            ],
+            "normalised": [
+              "SFID.SFIDDATE",
+              "SFID.SFIDTIME"
+            ],
+            "expected": [
+              "SFID.SFIDDATE",
+              "SFID.SFIDTIME"
+            ],
+            "correct": true,
+            "error": null
+          }
+        },
+        "score": 1.0,
+        "pass": true
+      },
+      "cost": 0.050722
+    }
+  ]
+}

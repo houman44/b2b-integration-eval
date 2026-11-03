@@ -1,0 +1,186 @@
+{
+  "meta": {
+    "run_id": "draft-20261101T205708Z-2fe6bb",
+    "started_utc": "2026-11-01T20:57:08+00:00",
+    "models": [
+      "anthropic/claude-sonnet-5.5"
+    ],
+    "tickets": [
+      "T1",
+      "T2",
+      "U1",
+      "U2",
+      "U3",
+      "U5"
+    ],
+    "trials": 3,
+    "temperature": 0.0,
+    "max_tokens": 16000,
+    "max_cost": 2.5,
+    "timeout_s": 150,
+    "draft": true,
+    "ticket_meta": {
+      "T1": {
+        "seed": 50241001,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "1588a9bb1e4a4608e5fe0da161e23e361ebe291479d9807017125cacc6fec68c"
+      },
+      "T2": {
+        "seed": 50241002,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "910d4f530386ace2a1b1fec3bb6293604d750bf4eec1ad571e4dc14142287341"
+      },
+      "U1": {
+        "seed": 50249001,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "94f5848aa36bf2b630de4cc114aa3e140632f100e6e5caf7564252ae9420924f"
+      },
+      "U2": {
+        "seed": 50249002,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "1c87ac4eb09dfa742f2c0f809c4dcd603193e93a77af134130c2c2f4a33749cc"
+      },
+      "U3": {
+        "seed": 50249003,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "a96b63c0c70ed12f9ce192a219fce45f6d94f5a3cd70cff91a12360c965684dc"
+      },
+      "U5": {
+        "seed": 50249005,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "ef3f166b3eecf8ee3f1c2d536468e542fae610edfaff07f566a5f2765fa58e7f"
+      }
+    },
+    "catalogue_pricing": {
+      "anthropic/claude-sonnet-5.5": {
+        "prompt": "0.000002",
+        "completion": "0.00001",
+        "web_search": "0.01",
+        "input_cache_read": "0.0000001",
+        "input_cache_write": "0.0000025",
+        "input_cache_write_1h": "0.000004"
+      }
+    },
+    "finished_utc": "2026-11-01T20:58:10+00:00",
+    "skipped": 0
+  },
+  "summary": {
+    "anthropic/claude-sonnet-5.5": {
+      "trials": 18,
+      "api_errors": 0,
+      "trials_per_task": 3,
+      "pass_rate": 1.0,
+      "mean_score": 1.0,
+      "pass_at_k": 1.0,
+      "pass_hat_k": 1.0,
+      "diagnosis_pass_rate": 1.0,
+      "field_accuracy": {
+        "cause": 1.0,
+        "layer": 1.0,
+        "owner": 1.0,
+        "location": 1.0,
+        "next_check": 1.0,
+        "value": 1.0
+      },
+      "cost_usd": 1.48234,
+      "per_ticket": {
+        "T1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "T2": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "U1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "U2": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "U3": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "U5": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        }
+      }
+    }
+  }
+}

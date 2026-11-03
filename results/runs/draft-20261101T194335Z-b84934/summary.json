@@ -1,0 +1,166 @@
+{
+  "meta": {
+    "run_id": "draft-20261101T194335Z-b84934",
+    "started_utc": "2026-11-01T19:43:35+00:00",
+    "models": [
+      "anthropic/claude-fable-5.1",
+      "openai/gpt-6-astra"
+    ],
+    "tickets": [
+      "U1",
+      "U2"
+    ],
+    "trials": 2,
+    "temperature": 0.0,
+    "max_tokens": 16000,
+    "max_cost": 3.5,
+    "timeout_s": 165,
+    "draft": true,
+    "ticket_meta": {
+      "U1": {
+        "seed": 50249001,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "c0b8ca409b728826e25673c05ef45b405f1d75dfc11b4eb037198cd8c8039524"
+      },
+      "U2": {
+        "seed": 50249002,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "0bce6287fc4f8ecd4fdf7fdfca2090a80d664bcd50d45e0422bd9f9f66fe77f0"
+      }
+    },
+    "catalogue_pricing": {
+      "anthropic/claude-fable-5.1": {
+        "prompt": "0.00001",
+        "completion": "0.00005",
+        "web_search": "0.01",
+        "input_cache_read": "0.00000025",
+        "input_cache_write": "0.0000125",
+        "input_cache_write_1h": "0.00002"
+      },
+      "openai/gpt-6-astra": {
+        "prompt": "0.00001",
+        "completion": "0.00005",
+        "web_search": "0.01",
+        "input_cache_read": "0.000001",
+        "input_cache_write": "0.0000125",
+        "overrides": [
+          {
+            "min_prompt_tokens": 272000,
+            "prompt": "0.00002",
+            "completion": "0.000075",
+            "input_cache_read": "0.000002",
+            "input_cache_write": "0.000025"
+          }
+        ]
+      }
+    },
+    "finished_utc": "2026-11-01T19:44:59+00:00",
+    "skipped": 0
+  },
+  "summary": {
+    "anthropic/claude-fable-5.1": {
+      "trials": 4,
+      "api_errors": 0,
+      "trials_per_task": 2,
+      "pass_rate": 0.5,
+      "mean_score": 0.5833,
+      "pass_at_k": 0.5,
+      "pass_hat_k": 0.5,
+      "diagnosis_pass_rate": 0.5,
+      "field_accuracy": {
+        "cause": 0.5,
+        "layer": 0.5,
+        "owner": 0.5,
+        "location": 0.5,
+        "next_check": 0.5,
+        "value": 1.0
+      },
+      "cost_usd": 1.77049,
+      "per_ticket": {
+        "U1": {
+          "trials": 2,
+          "passes": 2,
+          "mean_score": 1.0,
+          "diagnosis_passes": 2,
+          "fields": {
+            "cause": 2,
+            "layer": 2,
+            "owner": 2,
+            "location": 2,
+            "next_check": 2,
+            "value": 2
+          },
+          "parse_errors": 0
+        },
+        "U2": {
+          "trials": 2,
+          "passes": 0,
+          "mean_score": 0.1667,
+          "diagnosis_passes": 0,
+          "fields": {
+            "cause": 0,
+            "layer": 0,
+            "owner": 0,
+            "location": 0,
+            "next_check": 0,
+            "value": 2
+          },
+          "parse_errors": 0
+        }
+      }
+    },
+    "openai/gpt-6-astra": {
+      "trials": 4,
+      "api_errors": 0,
+      "trials_per_task": 2,
+      "pass_rate": 1.0,
+      "mean_score": 1.0,
+      "pass_at_k": 1.0,
+      "pass_hat_k": 1.0,
+      "diagnosis_pass_rate": 1.0,
+      "field_accuracy": {
+        "cause": 1.0,
+        "layer": 1.0,
+        "owner": 1.0,
+        "location": 1.0,
+        "next_check": 1.0,
+        "value": 1.0
+      },
+      "cost_usd": 0.380464,
+      "per_ticket": {
+        "U1": {
+          "trials": 2,
+          "passes": 2,
+          "mean_score": 1.0,
+          "diagnosis_passes": 2,
+          "fields": {
+            "cause": 2,
+            "layer": 2,
+            "owner": 2,
+            "location": 2,
+            "next_check": 2,
+            "value": 2
+          },
+          "parse_errors": 0
+        },
+        "U2": {
+          "trials": 2,
+          "passes": 2,
+          "mean_score": 1.0,
+          "diagnosis_passes": 2,
+          "fields": {
+            "cause": 2,
+            "layer": 2,
+            "owner": 2,
+            "location": 2,
+            "next_check": 2,
+            "value": 2
+          },
+          "parse_errors": 0
+        }
+      }
+    }
+  }
+}

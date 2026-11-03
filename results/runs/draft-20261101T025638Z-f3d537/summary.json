@@ -1,0 +1,167 @@
+{
+  "meta": {
+    "run_id": "draft-20261101T025638Z-f3d537",
+    "started_utc": "2026-11-01T02:56:38+00:00",
+    "models": [
+      "anthropic/claude-haiku-5.5"
+    ],
+    "tickets": [
+      "E1",
+      "E3",
+      "R1",
+      "T1",
+      "T2"
+    ],
+    "trials": 3,
+    "temperature": 0.0,
+    "max_tokens": 16000,
+    "max_cost": 0.15,
+    "draft": true,
+    "ticket_meta": {
+      "E1": {
+        "seed": 50242001,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "adf96447358b04fdea9862e9e4224d72c6e0b6f31de4ccd80f45d2193556d83c"
+      },
+      "E3": {
+        "seed": 50242003,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "23934335e6d93be4702b648489592e219595b8f6e99a0db8bedb3530e0caca66"
+      },
+      "R1": {
+        "seed": 50243001,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "094ba0015ee2e5d4b885e83fcc487a4ba196c979b0fd995c6b9cc4d23cc2baad"
+      },
+      "T1": {
+        "seed": 50241001,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "1c5f697ef99935169005071460f269ca42ed02e169addb7a0b07f6058bd4d372"
+      },
+      "T2": {
+        "seed": 50241002,
+        "status": "DRAFT",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "81a7182ae37dac98017e839e0d89d70e240de741f6e3a44391b39153e4f012cd"
+      }
+    },
+    "catalogue_pricing": {
+      "anthropic/claude-haiku-5.5": {
+        "prompt": "0.0000001",
+        "completion": "0.0000005",
+        "web_search": "0.01",
+        "input_cache_read": "0.00000001",
+        "input_cache_write": "0.000000125",
+        "input_cache_write_1h": "0.0000002",
+        "overrides": [
+          {
+            "min_prompt_tokens": 100000,
+            "prompt": "0.0000005",
+            "completion": "0.0000025",
+            "input_cache_read": "0.00000005",
+            "input_cache_write": "0.000000625",
+            "input_cache_write_1h": "0.000001"
+          }
+        ]
+      }
+    },
+    "finished_utc": "2026-11-01T02:56:56+00:00",
+    "skipped": 0
+  },
+  "summary": {
+    "anthropic/claude-haiku-5.5": {
+      "trials": 15,
+      "api_errors": 0,
+      "trials_per_task": 3,
+      "pass_rate": 0.6,
+      "mean_score": 0.92,
+      "pass_at_k": 0.8,
+      "pass_hat_k": 0.4,
+      "diagnosis_pass_rate": 0.8,
+      "field_accuracy": {
+        "cause": 1.0,
+        "layer": 1.0,
+        "owner": 1.0,
+        "location": 0.8,
+        "value": 0.8
+      },
+      "cost_usd": 0.034282,
+      "per_ticket": {
+        "E1": {
+          "trials": 3,
+          "passes": 1,
+          "mean_score": 0.8667,
+          "diagnosis_passes": 1,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 1,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "E3": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "R1": {
+          "trials": 3,
+          "passes": 0,
+          "mean_score": 0.8,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "value": 0
+          },
+          "parse_errors": 0
+        },
+        "T1": {
+          "trials": 3,
+          "passes": 2,
+          "mean_score": 0.9333,
+          "diagnosis_passes": 2,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 2,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "T2": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        }
+      }
+    }
+  }
+}
