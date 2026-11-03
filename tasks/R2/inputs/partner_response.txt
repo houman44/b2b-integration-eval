@@ -1,0 +1,13 @@
+From: Robin Brandt, EDI operations, Marrowgate Motor Works
+To: Robin Hale, Osterbrook Axle Systems
+Subject: RE: unknown sender
+
+Hello,
+
+Our translator rejects your interchanges as coming from an unknown sender; the CONTRL is below. We moved our translator's partner table to a new server on 27 October, and everything was migrated as it was. Please check your sender ID.
+
+Regards,
+Robin Brandt
+
+--- CONTRL as received by Osterbrook Axle Systems (inbound/MARROWGATE.CONTRL_202610300907030001.edi) ---
+UNB+UNOA:3+MARROWGATE58:ZZ+OSTERBROOK82:ZZ+261030:0907+C00770'UNH+1+CONTRL:D:3:UN'UCI+678494+OSTERBROOK82:ZZ+MARROWGATE58:ZZ+<<UNVERIFIED-PF>>+<<UNVERIFIED-PH>>+UNB+2:1'UNT+3+1'UNZ+1+C00770'

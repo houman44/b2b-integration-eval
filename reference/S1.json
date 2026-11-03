@@ -1,0 +1,28 @@
+{
+  "id": "S1",
+  "answer": {
+    "cause": "idoc_awaiting_processing",
+    "layer": "application",
+    "owner": "receiver",
+    "location": [
+      "APP.BACKGROUND_JOB"
+    ],
+    "next_check": "none",
+    "value": "2"
+  },
+  "value_kind": "int",
+  "rationale": "Every file was delivered (EERP) and converted: SAP created an inbound IDoc for each. Those before the upgrade are in status 53 (posted); every IDoc since is in status 64, which is not an error: the IDoc is ready to be passed to the application and waits for processing. The Customer's job EDI_IN_INVOIC (RBDAPP01), which passes status-64 IDocs to the application, last ran on the evening of 28 Oct, just before the upgrade. The invoice data was never checked by the application, so it cannot be the cause; the Customer must reschedule the job. Nothing on the sender side changes.",
+  "status": "DRAFT",
+  "depends_on_unverified": [
+    "EDIFACT.0007.MUTUALLY_DEFINED",
+    "EDIFACT.INVOIC.D96A.BODY",
+    "EDIFACT.LAYOUT.UNB",
+    "EDIFACT.LAYOUT.UNZ",
+    "EDIFACT.UNB.S004_FORMAT_SYNTAX3",
+    "OFTP2.ESIDREAS.NORMAL",
+    "SAP.IDOC.STATUS_53",
+    "SAP.IDOC.STATUS_64",
+    "SAP.PARTNER_TYPE.LI",
+    "SAP.PROGRAM.RBDAPP01"
+  ]
+}

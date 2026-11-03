@@ -1,0 +1,31 @@
+{
+  "id": "E1",
+  "answer": {
+    "cause": "interchange_control_reference_mismatch",
+    "layer": "envelope",
+    "owner": "sender",
+    "location": [
+      "UNB.0020",
+      "UNZ.0020"
+    ],
+    "next_check": "none",
+    "value": "7"
+  },
+  "value_kind": "int",
+  "rationale": "UNB 0020 is '00000122' and UNZ 0020 is '122'. 0020 is an alphanumeric reference and the two must be identical; they differ in leading zeros, so they do not match. The control count is right: with a functional group, UNZ 0036 counts groups, not messages (1 group, UNE 0060 = 7 messages), so the partner's reading of its own CONTRL is wrong; the CONTRL error code (references do not match) and UCI 0020 '00000122' point at the references. The receiver's upgrade only made its translator compare the references strictly: the sender's envelope was always non-compliant, so the sender must fix its translator. EERP only shows delivery to the final recipient's OFTP2 location.",
+  "status": "DRAFT",
+  "depends_on_unverified": [
+    "EDIFACT.0007.MUTUALLY_DEFINED",
+    "EDIFACT.0083.REJECTED",
+    "EDIFACT.0085.REFERENCES_DO_NOT_MATCH",
+    "EDIFACT.CONTRL.MESSAGE_ID_SYNTAX3",
+    "EDIFACT.INVOIC.D96A.BODY",
+    "EDIFACT.LAYOUT.UCI",
+    "EDIFACT.LAYOUT.UNB",
+    "EDIFACT.LAYOUT.UNG_UNE",
+    "EDIFACT.LAYOUT.UNZ",
+    "EDIFACT.UNB.S004_FORMAT_SYNTAX3",
+    "EDIFACT.UNZ.0036_COUNTS_GROUPS",
+    "OFTP2.ESIDREAS.NORMAL"
+  ]
+}

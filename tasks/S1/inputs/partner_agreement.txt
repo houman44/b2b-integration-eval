@@ -1,0 +1,34 @@
+PARTNER AGREEMENT: ELECTRONIC DATA INTERCHANGE
+Between Larkspan Body Panels (the Supplier) and Velbrook Vehicle Assembly (the Customer)
+Effective 1 March 2026. Synthetic document written for this evaluation.
+
+1. Transport: OFTP2 (RFC 5024) over TCP/IP with TLS
+   Supplier ODETTE ID (SFIDORIG): O0013LARKSPAN2139
+   Customer ODETTE ID (SFIDDEST): O0013VELBROOK8454
+   Supplier gateway: oftp.larkspan.example (198.51.100.76)
+   Customer gateway: oftp.velbrook.example (203.0.113.172)
+   Protocol release level: 5 (OFTP 2.0)
+   Data exchange buffer size (SSIDSDEB): 4096
+   Credit (SSIDCRED): 64
+   Buffer compression: no. Restart: yes. Secure authentication: no.
+   File security and file compression: none (SFIDSEC 00, SFIDCOMP 0).
+   Signed EERP: not required (SFIDSIGN N).
+   The Customer returns an EERP for every virtual file it accepts.
+
+2. Virtual files
+   Invoices: one interchange per virtual file, dataset name (SFIDDSN) LARKSPAN.INVOIC.
+   File format U. SFIDDATE and SFIDTIME are set by the Supplier's gateway to
+   the date and time the virtual file is made available for transmission.
+
+3. EDIFACT
+   Syntax identifier and version (UNB S001): UNOA, version 3.
+   Supplier interchange sender ID (UNB S002 0004 / 0007): LARKSPAN78 / ZZ
+   Customer interchange recipient ID (UNB S003 0010 / 0007): VELBROOK39 / ZZ
+   Messages: INVOIC D.96A, one message per interchange.
+   Interchanges are sent without line feeds between segments.
+   The Customer's translator returns a CONTRL message for every rejected
+   interchange, as a separate virtual file over the same OFTP2 link.
+
+4. Support contacts
+   Supplier EDI desk: Robin Moreau
+   Customer EDI operations: Chris Hale

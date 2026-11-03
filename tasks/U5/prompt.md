@@ -1,0 +1,652 @@
+# Ticket U5
+
+You work on the EDI support desk that serves the sender of the file described
+below. A customer has raised the ticket that follows. The partner agreement,
+the sender's OFTP2 gateway trace (and, where available, its file status report),
+the EDIFACT interchange in question, the partner's response and extracts from the
+specifications are attached. Everything you need
+is in these documents. All companies, identifiers and documents are synthetic.
+
+## The ticket
+
+```text
+From: Chris Price, EDI desk, Fenwray Castings Ltd
+Subject: Velbrook Vehicle Assembly rejects a perfect invoice
+
+Velbrook Vehicle Assembly's translator rejected yesterday afternoon's invoice INV32338 (CONTRL attached in their reply). The original file is no longer in our outbox, so IT regenerated the interchange from our translator this morning; I attach it. It is perfect: every UNB value matches the agreement and the counts are right. IT also tidied up our INVOIC map yesterday evening, so we are fully up to date. Velbrook Vehicle Assembly's translator must be at fault. Please find the root cause and tell us who has to fix it.
+```
+
+## Document 1: Partner agreement (partner_agreement.txt)
+
+```text
+PARTNER AGREEMENT: ELECTRONIC DATA INTERCHANGE
+Between Fenwray Castings Ltd (the Supplier) and Velbrook Vehicle Assembly (the Customer)
+Effective 1 March 2026. Synthetic document written for this evaluation.
+
+1. Transport: OFTP2 (RFC 5024) over TCP/IP with TLS
+   Supplier ODETTE ID (SFIDORIG): O0013FENWRAY2924
+   Customer ODETTE ID (SFIDDEST): O0013VELBROOK6806
+   Supplier gateway: oftp.fenwray.example (198.51.100.184)
+   Customer gateway: oftp.velbrook.example (203.0.113.31)
+   Protocol release level: 5 (OFTP 2.0)
+   Data exchange buffer size (SSIDSDEB): 4096
+   Credit (SSIDCRED): 64
+   Buffer compression: no. Restart: yes. Secure authentication: no.
+   File security and file compression: none (SFIDSEC 00, SFIDCOMP 0).
+   Signed EERP: not required (SFIDSIGN N).
+   The Customer returns an EERP for every virtual file it accepts.
+
+2. Virtual files
+   Invoices: one interchange per virtual file, dataset name (SFIDDSN) FENWRAY.INVOIC.
+   File format U. SFIDDATE and SFIDTIME are set by the Supplier's gateway to
+   the date and time the virtual file is made available for transmission.
+
+3. EDIFACT
+   Syntax identifier and version (UNB S001): UNOA, version 3.
+   Supplier interchange sender ID (UNB S002 0004 / 0007): FENWRAY44 / ZZ
+   Customer interchange recipient ID (UNB S003 0010 / 0007): VELBROOK32 / ZZ
+   Messages: INVOIC D.96A, one message per interchange.
+   Interchanges are sent without line feeds between segments.
+   The Customer's translator returns a CONTRL message for every rejected
+   interchange, as a separate virtual file over the same OFTP2 link.
+
+4. Support contacts
+   Supplier EDI desk: Chris Price
+   Customer EDI operations: Dana Tanaka
+```
+
+## Document 2: OFTP2 gateway debug trace (sender side) (oftp2_session.log)
+
+```text
+# OFTP2 gateway debug trace, Fenwray Castings Ltd (O0013FENWRAY2924)
+# '>>' = command exchange buffer sent by this gateway, '<<' = received from the
+# remote OFTP2 location. Each buffer is shown as transmitted, between [ and ]
+# (Stream Transmission Header omitted, non-printable octets as \xNN).
+# '..' = gateway event, '!!' = gateway warning. Passwords are masked.
+# DRAFT: '??' in a reason code field marks a code not yet verified for this evaluation.
+2026-10-29 13:39:16.000 S4465 .. session S4465: TCP connect to oftp.calderbank.example (203.0.113.131), TLS 1.3 established
+2026-10-29 13:39:16.075 S4465 << [IODETTE FTP READY \x0D]
+2026-10-29 13:39:16.169 S4465 >> [X5O0013FENWRAY2924         ********04096BNYN064N            \x0D]
+2026-10-29 13:39:16.245 S4465 << [X5O0013CALDERBANK0025      ********04096BNYN064N            \x0D]
+2026-10-29 13:39:16.254 S4465 .. queued DESADV_CALDERBANK_133833.edi
+2026-10-29 13:39:16.281 S4465 >> [HFENWRAY.DESADV               202610291338330001        O0013CALDERBANK0025      O0013FENWRAY2924         U000000000000000024000000000002400000000000000000000000N000]
+2026-10-29 13:39:16.380 S4465 << [200000000000000000]
+2026-10-29 13:39:16.516 S4465 .. DATA: 6 exchange buffer(s), 24163 octets
+2026-10-29 13:39:16.571 S4465 >> [T0000000000000000000000000000024163]
+2026-10-29 13:39:16.613 S4465 << [4N]
+2026-10-29 13:39:16.667 S4465 .. file transferred, awaiting EERP
+2026-10-29 13:39:16.820 S4465 >> [R]
+2026-10-29 13:39:16.870 S4465 << [F??000\x0D]
+2026-10-29 13:39:16.956 S4465 .. session closed
+2026-10-29 13:40:13.000 S4473 .. session S4473: TCP connect to oftp.ostley.example (203.0.113.214), TLS 1.3 established
+2026-10-29 13:40:13.093 S4473 << [IODETTE FTP READY \x0D]
+2026-10-29 13:40:13.129 S4473 >> [X5O0013FENWRAY2924         ********04096BNYN064N            \x0D]
+2026-10-29 13:40:13.225 S4473 << [X5O0013OSTLEY5923          ********04096BNYN064N            \x0D]
+2026-10-29 13:40:13.376 S4473 .. queued DESADV_OSTLEY_133847.edi
+2026-10-29 13:40:13.434 S4473 >> [HFENWRAY.DESADV               202610291338470001        O0013OSTLEY5923          O0013FENWRAY2924         U000000000000000050000000000005000000000000000000000000N000]
+2026-10-29 13:40:13.467 S4473 << [200000000000000000]
+2026-10-29 13:40:13.522 S4473 .. DATA: 13 exchange buffer(s), 51190 octets
+2026-10-29 13:40:13.585 S4473 >> [T0000000000000000000000000000051190]
+2026-10-29 13:40:13.704 S4473 << [4N]
+2026-10-29 13:40:13.803 S4473 .. file transferred, awaiting EERP
+2026-10-29 13:40:13.919 S4473 >> [R]
+2026-10-29 13:40:14.004 S4473 << [F??000\x0D]
+2026-10-29 13:40:14.167 S4473 .. session closed
+2026-10-29 14:16:04.956 S4466 .. session S4466: inbound TCP connection from 203.0.113.131, TLS 1.3 established
+2026-10-29 14:16:05.048 S4466 >> [IODETTE FTP READY \x0D]
+2026-10-29 14:16:05.145 S4466 << [X5O0013CALDERBANK0025      ********04096BNYN064N            \x0D]
+2026-10-29 14:16:05.244 S4466 >> [X5O0013FENWRAY2924         ********04096BNYN064N            \x0D]
+2026-10-29 14:16:05.324 S4466 << [EFENWRAY.DESADV               202610291338330001        O0013FENWRAY2924         O0013CALDERBANK0025      \x00\x00\x00\x00]
+2026-10-29 14:16:05.339 S4466 >> [P]
+2026-10-29 14:16:05.379 S4466 .. EERP matched to DESADV_CALDERBANK_133833.edi (sent 29 Oct 13:39): delivered
+2026-10-29 14:16:05.452 S4466 << [R]
+2026-10-29 14:16:05.551 S4466 >> [F??000\x0D]
+2026-10-29 14:16:05.709 S4466 .. session closed
+2026-10-29 14:33:58.000 S4469 .. session S4469: TCP connect to oftp.thornvale.example (203.0.113.153), TLS 1.3 established
+2026-10-29 14:33:58.072 S4469 << [IODETTE FTP READY \x0D]
+2026-10-29 14:33:58.187 S4469 >> [X5O0013FENWRAY2924         ********04096BNYN064N            \x0D]
+2026-10-29 14:33:58.337 S4469 << [X5O0013THORNVALE8612       ********04096BNYN064N            \x0D]
+2026-10-29 14:33:58.430 S4469 .. queued DESADV_THORNVALE_143310.edi
+2026-10-29 14:33:58.443 S4469 >> [HFENWRAY.DESADV               202610291433100001        O0013THORNVALE8612       O0013FENWRAY2924         U000000000000000028000000000002800000000000000000000000N000]
+2026-10-29 14:33:58.584 S4469 << [200000000000000000]
+2026-10-29 14:33:58.691 S4469 .. DATA: 7 exchange buffer(s), 28559 octets
+2026-10-29 14:33:58.708 S4469 >> [T0000000000000000000000000000028559]
+2026-10-29 14:33:58.732 S4469 << [4N]
+2026-10-29 14:33:58.892 S4469 .. file transferred, awaiting EERP
+2026-10-29 14:33:59.001 S4469 >> [R]
+2026-10-29 14:33:59.078 S4469 << [F??000\x0D]
+2026-10-29 14:33:59.148 S4469 .. session closed
+2026-10-29 14:34:21.167 S4474 .. session S4474: inbound TCP connection from 203.0.113.214, TLS 1.3 established
+2026-10-29 14:34:21.274 S4474 >> [IODETTE FTP READY \x0D]
+2026-10-29 14:34:21.383 S4474 << [X5O0013OSTLEY5923          ********04096BNYN064N            \x0D]
+2026-10-29 14:34:21.429 S4474 >> [X5O0013FENWRAY2924         ********04096BNYN064N            \x0D]
+2026-10-29 14:34:21.546 S4474 << [EFENWRAY.DESADV               202610291338470001        O0013FENWRAY2924         O0013OSTLEY5923          \x00\x00\x00\x00]
+2026-10-29 14:34:21.722 S4474 >> [P]
+2026-10-29 14:34:21.765 S4474 .. EERP matched to DESADV_OSTLEY_133847.edi (sent 29 Oct 13:40): delivered
+2026-10-29 14:34:21.939 S4474 << [HOSTLEY.DELFOR                202610291434210001        O0013FENWRAY2924         O0013OSTLEY5923          U000000000000000033000000000003300000000000000000000000N000]
+2026-10-29 14:34:21.977 S4474 >> [200000000000000000]
+2026-10-29 14:34:22.008 S4474 .. DATA: 9 exchange buffer(s), 33705 octets
+2026-10-29 14:34:22.078 S4474 << [T0000000000000000000000000000033705]
+2026-10-29 14:34:22.215 S4474 >> [4N]
+2026-10-29 14:34:22.246 S4474 .. stored as inbound/DELFOR_OSTLEY_143421.edi
+2026-10-29 14:34:22.272 S4474 << [R]
+2026-10-29 14:34:22.377 S4474 >> [EOSTLEY.DELFOR                202610291434210001        O0013OSTLEY5923          O0013FENWRAY2924         \x00\x00\x00\x00]
+2026-10-29 14:34:22.428 S4474 << [P]
+2026-10-29 14:34:22.457 S4474 >> [R]
+2026-10-29 14:34:22.505 S4474 << [F??000\x0D]
+2026-10-29 14:34:22.625 S4474 .. session closed
+2026-10-29 15:12:56.000 S4461 .. session S4461: TCP connect to oftp.pemberline.example (203.0.113.31), TLS 1.3 established
+2026-10-29 15:12:56.165 S4461 << [IODETTE FTP READY \x0D]
+2026-10-29 15:12:56.235 S4461 >> [X5O0013FENWRAY2924         ********04096BNYN064N            \x0D]
+2026-10-29 15:12:56.395 S4461 << [X5O0013PEMBERLINE1301      ********04096BNYN064N            \x0D]
+2026-10-29 15:12:56.455 S4461 .. queued INVOIC_PEMBERLINE_151210.edi
+2026-10-29 15:12:56.573 S4461 >> [HFENWRAY.INVOIC               202610291512100001        O0013PEMBERLINE1301      O0013FENWRAY2924         U000000000000000023000000000002300000000000000000000000N000]
+2026-10-29 15:12:56.699 S4461 << [200000000000000000]
+2026-10-29 15:12:56.825 S4461 .. DATA: 6 exchange buffer(s), 22838 octets
+2026-10-29 15:12:56.905 S4461 >> [T0000000000000000000000000000022838]
+2026-10-29 15:12:56.916 S4461 << [4N]
+2026-10-29 15:12:56.996 S4461 .. file transferred, awaiting EERP
+2026-10-29 15:12:57.175 S4461 >> [R]
+2026-10-29 15:12:57.246 S4461 << [F??000\x0D]
+2026-10-29 15:12:57.305 S4461 .. session closed
+2026-10-29 15:20:05.148 S4470 .. session S4470: inbound TCP connection from 203.0.113.153, TLS 1.3 established
+2026-10-29 15:20:05.163 S4470 >> [IODETTE FTP READY \x0D]
+2026-10-29 15:20:05.219 S4470 << [X5O0013THORNVALE8612       ********04096BNYN064N            \x0D]
+2026-10-29 15:20:05.275 S4470 >> [X5O0013FENWRAY2924         ********04096BNYN064N            \x0D]
+2026-10-29 15:20:05.403 S4470 << [EFENWRAY.DESADV               202610291433100001        O0013FENWRAY2924         O0013THORNVALE8612       \x00\x00\x00\x00]
+2026-10-29 15:20:05.513 S4470 >> [P]
+2026-10-29 15:20:05.628 S4470 .. EERP matched to DESADV_THORNVALE_143310.edi (sent 29 Oct 14:33): delivered
+2026-10-29 15:20:05.715 S4470 << [HTHORNVALE.DELJIT             202610291520050001        O0013FENWRAY2924         O0013THORNVALE8612       U000000000000000030000000000003000000000000000000000000N000]
+2026-10-29 15:20:05.813 S4470 >> [200000000000000000]
+2026-10-29 15:20:05.953 S4470 .. DATA: 8 exchange buffer(s), 30633 octets
+2026-10-29 15:20:06.034 S4470 << [T0000000000000000000000000000030633]
+2026-10-29 15:20:06.113 S4470 >> [4N]
+2026-10-29 15:20:06.156 S4470 .. stored as inbound/DELJIT_THORNVALE_152005.edi
+2026-10-29 15:20:06.217 S4470 << [R]
+2026-10-29 15:20:06.296 S4470 >> [ETHORNVALE.DELJIT             202610291520050001        O0013THORNVALE8612       O0013FENWRAY2924         \x00\x00\x00\x00]
+2026-10-29 15:20:06.430 S4470 << [P]
+2026-10-29 15:20:06.452 S4470 >> [R]
+2026-10-29 15:20:06.469 S4470 << [F??000\x0D]
+2026-10-29 15:20:06.635 S4470 .. session closed
+2026-10-29 15:25:08.305 S4462 .. session S4462: inbound TCP connection from 203.0.113.31, TLS 1.3 established
+2026-10-29 15:25:08.368 S4462 >> [IODETTE FTP READY \x0D]
+2026-10-29 15:25:08.409 S4462 << [X5O0013PEMBERLINE1301      ********04096BNYN064N            \x0D]
+2026-10-29 15:25:08.446 S4462 >> [X5O0013FENWRAY2924         ********04096BNYN064N            \x0D]
+2026-10-29 15:25:08.618 S4462 << [EFENWRAY.INVOIC               202610291512100001        O0013FENWRAY2924         O0013PEMBERLINE1301      \x00\x00\x00\x00]
+2026-10-29 15:25:08.759 S4462 >> [P]
+2026-10-29 15:25:08.904 S4462 .. EERP matched to INVOIC_PEMBERLINE_151210.edi (sent 29 Oct 15:12): delivered
+2026-10-29 15:25:08.919 S4462 << [HPEMBERLINE.DELJIT            202610291525080001        O0013FENWRAY2924         O0013PEMBERLINE1301      U000000000000000014000000000001400000000000000000000000N000]
+2026-10-29 15:25:08.965 S4462 >> [200000000000000000]
+2026-10-29 15:25:09.035 S4462 .. DATA: 4 exchange buffer(s), 13668 octets
+2026-10-29 15:25:09.191 S4462 << [T0000000000000000000000000000013668]
+2026-10-29 15:25:09.294 S4462 >> [4N]
+2026-10-29 15:25:09.429 S4462 .. stored as inbound/DELJIT_PEMBERLINE_152508.edi
+2026-10-29 15:25:09.464 S4462 << [R]
+2026-10-29 15:25:09.579 S4462 >> [EPEMBERLINE.DELJIT            202610291525080001        O0013PEMBERLINE1301      O0013FENWRAY2924         \x00\x00\x00\x00]
+2026-10-29 15:25:09.721 S4462 << [P]
+2026-10-29 15:25:09.775 S4462 >> [R]
+2026-10-29 15:25:09.933 S4462 << [F??000\x0D]
+2026-10-29 15:25:09.978 S4462 .. session closed
+2026-10-29 15:35:26.000 S4360 .. session S4360: TCP connect to oftp.velbrook.example (203.0.113.31), TLS 1.3 established
+2026-10-29 15:35:26.069 S4360 << [IODETTE FTP READY \x0D]
+2026-10-29 15:35:26.160 S4360 >> [X5O0013FENWRAY2924         ********04096BNYN064N            \x0D]
+2026-10-29 15:35:26.332 S4360 << [X5O0013VELBROOK6806        ********04096BNYN064N            \x0D]
+2026-10-29 15:35:26.480 S4360 .. queued INV32338.edi
+2026-10-29 15:35:26.556 S4360 >> [HFENWRAY.INVOIC               202610291534320001        O0013VELBROOK6806        O0013FENWRAY2924         U000000000000000001000000000000100000000000000000000000N000]
+2026-10-29 15:35:26.723 S4360 << [200000000000000000]
+2026-10-29 15:35:27.048 S4360 .. DATA: 1 exchange buffer(s), 336 octets
+2026-10-29 15:35:27.087 S4360 >> [T0000000000000000000000000000000336]
+2026-10-29 15:35:27.157 S4360 << [4N]
+2026-10-29 15:35:27.278 S4360 .. file transferred, awaiting EERP
+2026-10-29 15:35:27.444 S4360 >> [R]
+2026-10-29 15:35:27.453 S4360 << [F??000\x0D]
+2026-10-29 15:35:27.617 S4360 .. session closed
+2026-10-29 15:46:53.000 S4463 .. session S4463: TCP connect to oftp.calderbank.example (203.0.113.131), TLS 1.3 established
+2026-10-29 15:46:53.174 S4463 << [IODETTE FTP READY \x0D]
+2026-10-29 15:46:53.323 S4463 >> [X5O0013FENWRAY2924         ********04096BNYN064N            \x0D]
+2026-10-29 15:46:53.433 S4463 << [X5O0013CALDERBANK0025      ********04096BNYN064N            \x0D]
+2026-10-29 15:46:53.519 S4463 .. queued DESADV_CALDERBANK_154551.edi
+2026-10-29 15:46:53.590 S4463 >> [HFENWRAY.DESADV               202610291545510001        O0013CALDERBANK0025      O0013FENWRAY2924         U000000000000000048000000000004800000000000000000000000N000]
+2026-10-29 15:46:53.688 S4463 << [200000000000000000]
+2026-10-29 15:46:53.806 S4463 .. DATA: 12 exchange buffer(s), 48704 octets
+2026-10-29 15:46:53.831 S4463 >> [T0000000000000000000000000000048704]
+2026-10-29 15:46:53.866 S4463 << [4N]
+2026-10-29 15:46:53.923 S4463 .. file transferred, awaiting EERP
+2026-10-29 15:46:54.035 S4463 >> [R]
+2026-10-29 15:46:54.190 S4463 << [F??000\x0D]
+2026-10-29 15:46:54.316 S4463 .. session closed
+2026-10-29 16:02:38.000 S4361 .. session S4361: inbound TCP connection from 203.0.113.31, TLS 1.3 established
+2026-10-29 16:02:38.160 S4361 >> [IODETTE FTP READY \x0D]
+2026-10-29 16:02:38.266 S4361 << [X5O0013VELBROOK6806        ********04096BNYN064N            \x0D]
+2026-10-29 16:02:38.446 S4361 >> [X5O0013FENWRAY2924         ********04096BNYN064N            \x0D]
+2026-10-29 16:02:38.600 S4361 << [EFENWRAY.INVOIC               202610291534320001        O0013FENWRAY2924         O0013VELBROOK6806        \x00\x00\x00\x00]
+2026-10-29 16:02:38.749 S4361 >> [P]
+2026-10-29 16:02:38.802 S4361 .. EERP matched to INV32338.edi: delivered
+2026-10-29 16:02:38.968 S4361 << [HVELBROOK.CONTRL              202610291559010001        O0013FENWRAY2924         O0013VELBROOK6806        U000000000000000001000000000000100000000000000000000000N000]
+2026-10-29 16:02:39.062 S4361 >> [200000000000000000]
+2026-10-29 16:02:39.138 S4361 .. DATA: 1 exchange buffer(s), 172 octets
+2026-10-29 16:02:39.241 S4361 << [T0000000000000000000000000000000172]
+2026-10-29 16:02:39.384 S4361 >> [4N]
+2026-10-29 16:02:39.502 S4361 .. stored as inbound/VELBROOK.CONTRL_202610291559010001.edi
+2026-10-29 16:02:39.547 S4361 << [R]
+2026-10-29 16:02:39.727 S4361 >> [EVELBROOK.CONTRL              202610291559010001        O0013VELBROOK6806        O0013FENWRAY2924         \x00\x00\x00\x00]
+2026-10-29 16:02:39.738 S4361 << [P]
+2026-10-29 16:02:39.785 S4361 >> [R]
+2026-10-29 16:02:39.878 S4361 << [F??000\x0D]
+2026-10-29 16:02:39.956 S4361 .. session closed
+2026-10-29 16:28:25.000 ----- .. outbound TCP connect to oftp.calderbank.example (203.0.113.131) timed out after 30 s, retry in 120 s
+2026-10-29 16:31:09.000 S4467 .. session S4467: TCP connect to oftp.calderbank.example (203.0.113.131), TLS 1.3 established
+2026-10-29 16:31:09.018 S4467 << [IODETTE FTP READY \x0D]
+2026-10-29 16:31:09.194 S4467 >> [X5O0013FENWRAY2924         ********04096BNYN064N            \x0D]
+2026-10-29 16:31:09.321 S4467 << [X5O0013CALDERBANK0025      ********04096BNYN064N            \x0D]
+2026-10-29 16:31:09.440 S4467 .. queued INVOIC_CALDERBANK_162707.edi
+2026-10-29 16:31:09.476 S4467 >> [HFENWRAY.INVOIC               202610291627070001        O0013CALDERBANK0025      O0013FENWRAY2924         U000000000000000033000000000003300000000000000000000000N000]
+2026-10-29 16:31:09.544 S4467 << [200000000000000000]
+2026-10-29 16:31:09.586 S4467 .. DATA: 9 exchange buffer(s), 33475 octets
+2026-10-29 16:31:09.606 S4467 >> [T0000000000000000000000000000033475]
+2026-10-29 16:31:09.715 S4467 << [4N]
+2026-10-29 16:31:09.838 S4467 .. file transferred, awaiting EERP
+2026-10-29 16:31:09.848 S4467 >> [R]
+2026-10-29 16:31:09.905 S4467 << [F??000\x0D]
+2026-10-29 16:31:10.083 S4467 .. session closed
+2026-10-29 16:43:57.316 S4464 .. session S4464: inbound TCP connection from 203.0.113.131, TLS 1.3 established
+2026-10-29 16:43:57.468 S4464 >> [IODETTE FTP READY \x0D]
+2026-10-29 16:43:57.621 S4464 << [X5O0013CALDERBANK0025      ********04096BNYN064N            \x0D]
+2026-10-29 16:43:57.778 S4464 >> [X5O0013FENWRAY2924         ********04096BNYN064N            \x0D]
+2026-10-29 16:43:57.873 S4464 << [EFENWRAY.DESADV               202610291545510001        O0013FENWRAY2924         O0013CALDERBANK0025      \x00\x00\x00\x00]
+2026-10-29 16:43:57.979 S4464 >> [P]
+2026-10-29 16:43:58.103 S4464 .. EERP matched to DESADV_CALDERBANK_154551.edi (sent 29 Oct 15:46): delivered
+2026-10-29 16:43:58.202 S4464 << [HCALDERBANK.DELJIT            202610291643580001        O0013FENWRAY2924         O0013CALDERBANK0025      U000000000000000004000000000000400000000000000000000000N000]
+2026-10-29 16:43:58.368 S4464 >> [200000000000000000]
+2026-10-29 16:43:58.446 S4464 .. DATA: 1 exchange buffer(s), 3696 octets
+2026-10-29 16:43:58.592 S4464 << [T0000000000000000000000000000003696]
+2026-10-29 16:43:58.603 S4464 >> [4N]
+2026-10-29 16:43:58.722 S4464 .. stored as inbound/DELJIT_CALDERBANK_164358.edi
+2026-10-29 16:43:58.772 S4464 << [R]
+2026-10-29 16:43:58.839 S4464 >> [ECALDERBANK.DELJIT            202610291643580001        O0013CALDERBANK0025      O0013FENWRAY2924         \x00\x00\x00\x00]
+2026-10-29 16:43:58.919 S4464 << [P]
+2026-10-29 16:43:58.999 S4464 >> [R]
+2026-10-29 16:43:59.016 S4464 << [F??000\x0D]
+2026-10-29 16:43:59.162 S4464 .. session closed
+2026-10-29 17:08:55.083 S4468 .. session S4468: inbound TCP connection from 203.0.113.131, TLS 1.3 established
+2026-10-29 17:08:55.237 S4468 >> [IODETTE FTP READY \x0D]
+2026-10-29 17:08:55.346 S4468 << [X5O0013CALDERBANK0025      ********04096BNYN064N            \x0D]
+2026-10-29 17:08:55.357 S4468 >> [X5O0013FENWRAY2924         ********04096BNYN064N            \x0D]
+2026-10-29 17:08:55.441 S4468 << [EFENWRAY.INVOIC               202610291627070001        O0013FENWRAY2924         O0013CALDERBANK0025      \x00\x00\x00\x00]
+2026-10-29 17:08:55.450 S4468 >> [P]
+2026-10-29 17:08:55.562 S4468 .. EERP matched to INVOIC_CALDERBANK_162707.edi (sent 29 Oct 16:31): delivered
+2026-10-29 17:08:55.593 S4468 << [HCALDERBANK.DELJIT            202610291708550001        O0013FENWRAY2924         O0013CALDERBANK0025      U000000000000000011000000000001100000000000000000000000N000]
+2026-10-29 17:08:55.695 S4468 >> [200000000000000000]
+2026-10-29 17:08:55.843 S4468 .. DATA: 3 exchange buffer(s), 11203 octets
+2026-10-29 17:08:55.924 S4468 << [T0000000000000000000000000000011203]
+2026-10-29 17:08:55.999 S4468 >> [4N]
+2026-10-29 17:08:56.041 S4468 .. stored as inbound/DELJIT_CALDERBANK_170855.edi
+2026-10-29 17:08:56.135 S4468 << [R]
+2026-10-29 17:08:56.297 S4468 >> [ECALDERBANK.DELJIT            202610291708550001        O0013CALDERBANK0025      O0013FENWRAY2924         \x00\x00\x00\x00]
+2026-10-29 17:08:56.379 S4468 << [P]
+2026-10-29 17:08:56.518 S4468 >> [R]
+2026-10-29 17:08:56.656 S4468 << [F??000\x0D]
+2026-10-29 17:08:56.775 S4468 .. session closed
+2026-10-29 17:33:21.000 S4471 .. session S4471: TCP connect to oftp.thornvale.example (203.0.113.153), TLS 1.3 established
+2026-10-29 17:33:21.089 S4471 << [IODETTE FTP READY \x0D]
+2026-10-29 17:33:21.102 S4471 >> [X5O0013FENWRAY2924         ********04096BNYN064N            \x0D]
+2026-10-29 17:33:21.259 S4471 << [X5O0013THORNVALE8612       ********04096BNYN064N            \x0D]
+2026-10-29 17:33:21.397 S4471 .. queued DESADV_THORNVALE_173204.edi
+2026-10-29 17:33:21.442 S4471 >> [HFENWRAY.DESADV               202610291732040001        O0013THORNVALE8612       O0013FENWRAY2924         U000000000000000051000000000005100000000000000000000000N000]
+2026-10-29 17:33:21.526 S4471 << [200000000000000000]
+2026-10-29 17:33:21.723 S4471 .. DATA: 13 exchange buffer(s), 51205 octets
+2026-10-29 17:33:21.841 S4471 >> [T0000000000000000000000000000051205]
+2026-10-29 17:33:21.959 S4471 << [4N]
+2026-10-29 17:33:21.989 S4471 .. file transferred, awaiting EERP
+2026-10-29 17:33:22.073 S4471 >> [R]
+2026-10-29 17:33:22.137 S4471 << [F??000\x0D]
+2026-10-29 17:33:22.292 S4471 .. session closed
+2026-10-29 18:37:57.292 S4472 .. session S4472: inbound TCP connection from 203.0.113.153, TLS 1.3 established
+2026-10-29 18:37:57.314 S4472 >> [IODETTE FTP READY \x0D]
+2026-10-29 18:37:57.474 S4472 << [X5O0013THORNVALE8612       ********04096BNYN064N            \x0D]
+2026-10-29 18:37:57.650 S4472 >> [X5O0013FENWRAY2924         ********04096BNYN064N            \x0D]
+2026-10-29 18:37:57.663 S4472 << [EFENWRAY.DESADV               202610291732040001        O0013FENWRAY2924         O0013THORNVALE8612       \x00\x00\x00\x00]
+2026-10-29 18:37:57.776 S4472 >> [P]
+2026-10-29 18:37:57.932 S4472 .. EERP matched to DESADV_THORNVALE_173204.edi (sent 29 Oct 17:33): delivered
+2026-10-29 18:37:57.955 S4472 << [R]
+2026-10-29 18:37:58.058 S4472 >> [F??000\x0D]
+2026-10-29 18:37:58.160 S4472 .. session closed
+```
+
+## Document 3: EDIFACT interchange regenerated by the sender's IT this morning (interchange.edi)
+
+```text
+UNB+UNOA:3+FENWRAY44:ZZ+VELBROOK32:ZZ+261030:0812+185877'UNH+1+INVOIC:D:96A:UN'BGM+380+INV32338+9'DTM+137:20261029:102'NAD+SE+++FENWRAY CASTINGS LTD'NAD+BY+++VELBROOK VEHICLE ASSEMBLY'CUX+2:EUR:4'LIN+1++P-40059:IN'QTY+47:158'MOA+203:2411.08'PRI+AAA:15.26'UNS+S'MOA+77:2893.29'TAX+7+VAT+++:::20+S'MOA+124:482.21'UNT+15+1'UNZ+1+185877'
+```
+
+## Document 4: Partner response (partner_response.txt)
+
+```text
+From: Dana Tanaka, EDI operations, Velbrook Vehicle Assembly
+To: Chris Price, Fenwray Castings Ltd
+Subject: Rejected interchange INV32338
+
+Hello,
+
+Our translator rejected your interchange of yesterday afternoon; the CONTRL is below. Please correct and resend.
+
+Regards,
+Dana Tanaka
+
+--- CONTRL as received by Fenwray Castings Ltd ---
+UNB+UNOA:3+VELBROOK32:ZZ+FENWRAY44:ZZ+261029:1559+C92575'UNH+1+CONTRL:D:3:UN'UCI+185867+FENWRAY44:ZZ+VELBROOK32:ZZ+<<UNVERIFIED-PF>>+<<UNVERIFIED-PK>>'UNT+3+1'UNZ+1+C92575'
+```
+
+## Document 5: Specification extracts (spec_extracts.txt)
+
+```text
+RFC 5024 (ODETTE File Transfer Protocol 2), section 4.3.6. Verbatim extract.
+
+4.3.6.  End to End Response (EERP)
+
+   The End to End Response (EERP) command notifies the originator of a
+   Virtual File that the Virtual File has been successfully delivered to
+   its final destination.  This allows the originator to perform house
+   keeping tasks such as deleting copies of the delivered data.
+
+   If the originator of the Virtual File requested a signed EERP in the
+   SFID, the EERP must be signed.  Signing allows the originator of the
+   file to prove that the EERP was generated by the final destination.
+   If the final destination is unable to sign the EERP, it may send back
+   an unsigned EERP.  It is an implementation issue to allow the
+   acceptance of an unsigned EERP if a signed EERP is requested.
+
+   A Response Command must be sent from the location performing the
+   final processing or distribution of the data to the originator.  The
+   Response is mandatory and may be sent in the same or in any
+   subsequent session.
+
+   When an intermediate location broadcasts or distributes a Virtual
+   File, it must receive a Response command from all the locations to
+   which it forwarded the data before sending its own Response.  This
+   ensures that the Response received by the Virtual File's originator
+   accounts for all the destination locations.  An intermediate location
+   therefore needs to track the status of files it processes over time.
+
+   The requesting of a signed EERP is incompatible with the use of
+   broadcast facilities because an EERP can be signed by only one
+   destination.  If this scenario occurs, the intermediate broadcast
+   location may continue and ignore the request for a signed EERP or
+   send back a NERP.
+
+   Example: Point to Point
+
+      Location A sends file Ba to location B, which will send an EERP to
+      location A after it successfully receives the file.
+
+         o----------o                          o-----------o
+         | Loc. A   |----------- S1 ---------->| Loc. B    |
+         |          |                          |           |
+         | [Ba]     |<---------- R2 -----------| [Ba]      |
+         +----------o                          o-----------o
+
+                     Key:   S - File Transfer
+                            R - Response EERP
+                         [Ba] - File for B from A
+
+   Example: Data distribution
+
+      Location A sends a Virtual File containing data for distribution
+      to locations B and C via clearing centres E1 and E2.  Clearing
+      centre E1 must wait for a response from E2 (for file Ba) and
+      location C before it sends its response, R8, to location A.
+      Clearing centre E2 can only send response R7 to E1 when location B
+      acknowledges file Ba with response R6.
+
+   o---------o        o---------o        o---------o        o---------o
+   | Loc. A  |-- S1 ->| Loc. E1 |-- S2 ->| Loc. E2 |-- S5 ->| Loc. B  |
+   |         |        |         |        |         |        |         |
+   | [Ba,Ca] |<- R8 --| [Ba,Ca] |<- R7 --| [Ba]    |<- R6 --| [Ba]    |
+   o---------o        o---------o        o---------o        o---------o
+                         A   |
+                         |   |           o---------o
+                         |   +----- S3 ->| Loc. C  |
+                         |               |         |
+                         +--------- R4 --| [Ca]    |
+                                         o---------o
+
+   Example: Data collection
+
+      Locations A and B send files Ca and Cb to clearing centre E1,
+      which forwards both files to location C in a single Virtual File.
+      When it receives response R4 from C, clearing centre E1 sends
+      response R5 to location A and R6 to location B.
+
+         o---------o        o---------o        o---------o
+         | Loc. A  |-- S1 ->| Loc. E1 |-- S3 ->| Loc. C  |
+         |         |        |         |        |         |
+         | [Ca]    |<- R5 --| [Ca,Cb] |<- R4 --| [Ca,Cb] |
+         o---------o        o---------o        o---------o
+                               A   |
+         o---------o           |   |
+         | Loc. B  |-- S2 -----+   |
+         |         |               |
+         | [Cb]    |<- R6 ---------+
+         o---------o
+
+UN/EDIFACT syntax version 3: service segment and code list extracts.
+Prepared for this eval from the sources listed at the end. Segment layouts are
+restated in a compact form; code values and their names are quoted exactly.
+
+1. Interchange header UNB (syntax version 3)
+
+   Data elements in order (status M = mandatory, C = conditional):
+     1  S001 SYNTAX IDENTIFIER                      M
+          0001 Syntax identifier          a4   M  (e.g. UNOA, UNOB, UNOC)
+          0002 Syntax version number      n1   M  (3 for syntax version 3)
+     2  S002 INTERCHANGE SENDER                     M
+          0004 Sender identification      an..35 M
+          0007 Partner identification code qualifier  an..4 C
+          0008 Address for reverse routing an..14 C
+     3  S003 INTERCHANGE RECIPIENT                  M
+          0010 Recipient identification   an..35 M
+          0007 Partner identification code qualifier  an..4 C
+          0014 Routing address            an..14 C
+     4  S004 DATE/TIME OF PREPARATION               M
+          0017 Date                       n6   M  (YYMMDD)
+          0019 Time                       n4   M  (HHMM)
+     5  0020 INTERCHANGE CONTROL REFERENCE  an..14 M  (unique reference assigned by sender)
+     6  S005 RECIPIENT'S REFERENCE/PASSWORD          C
+          0022 Recipient's reference/password an..14 M
+          0025 Recipient's reference/password qualifier an2 C
+     7  0026 APPLICATION REFERENCE          an..14 C
+     8  0029 PROCESSING PRIORITY CODE       a1     C
+     9  0031 ACKNOWLEDGEMENT REQUEST        n1     C  (1 = acknowledgement requested)
+    10  0032 COMMUNICATIONS AGREEMENT ID    an..35 C
+    11  0035 TEST INDICATOR                 n1     C  (1 = the interchange is a test)
+
+2. Interchange trailer UNZ
+
+     1  0036 INTERCHANGE CONTROL COUNT      n..6   M
+          The number of messages in the interchange or, if functional groups
+          are used, the number of functional groups.
+     2  0020 INTERCHANGE CONTROL REFERENCE  an..14 M
+          Shall be identical to 0020 in UNB.
+
+3. Functional group header UNG and trailer UNE
+
+   UNG: 1 0038 Functional group identification; 2 S006 Application sender's
+        identification (0040, 0007); 3 S007 Application recipient's
+        identification (0044, 0007); 4 S004 Date/time of preparation;
+        5 0048 Functional group reference number; 6 0051 Controlling agency;
+        7 S008 Message version (0052, 0054, 0057); 8 0058 Application password.
+   UNE: 1 0060 Number of messages in the group; 2 0048 Functional group
+        reference number, identical to 0048 in UNG.
+
+4. Omission and truncation of data elements
+
+   If a conditional data element is omitted and is followed by another data
+   element, its position is indicated by retaining its data element separator.
+   If one or more conditional data elements at the end of a segment are
+   omitted, the segment may be truncated by the segment terminator; trailing
+   data element separators are then not transmitted.
+
+5. CONTRL message (UNH message identifier CONTRL:D:3:UN), segment UCI
+   INTERCHANGE RESPONSE
+
+   Pos  Tag   Name                                         St  Format
+   010  0020  INTERCHANGE CONTROL REFERENCE                M   an..14
+   020  S002  INTERCHANGE SENDER                           M
+              0004 Sender identification                   M   an..35
+              0007 Identification code qualifier           C   an..4
+              0008 Address for reverse routing             C   an..14
+   030  S003  INTERCHANGE RECIPIENT                        M
+              0010 Recipient identification                M   an..35
+              0007 Identification code qualifier           C   an..4
+              0014 Routing address                         C   an..14
+   040  0083  ACTION, CODED                                M   an..3
+   050  0085  SYNTAX ERROR, CODED                          C   an..3
+   060  0013  SERVICE SEGMENT TAG, CODED                   C   a3
+   070  S011  DATA ELEMENT IDENTIFICATION                  C
+              0098 Erroneous data element position in segment   M  n..3
+              0104 Erroneous component data element position    C  n..3
+
+   S011 identifies the position of an erroneous data element.
+
+6. Code list 0083 Action, coded
+
+   4   This level and all lower levels rejected
+   7   This level acknowledged, next lower level acknowledged if not
+       explicitly rejected
+   8   Interchange received
+
+7. Code list 0085 Syntax error, coded
+
+   2   Syntax version or level not supported
+   7   Interchange recipient not actual recipient
+   12  Invalid value
+   13  Missing
+   14  Value not supported in this position
+   15  Not supported in this position
+   16  Too many constituents
+   17  No agreement
+   18  Unspecified error
+   19  Invalid decimal notation
+   20  Character invalid as service character
+   21  Invalid character(s)
+   22  Invalid service character(s)
+   23  Unknown Interchange sender
+   24  Too old
+   25  Test indicator not supported
+   26  Duplicate detected
+   27  Security function not supported
+   28  References do not match
+   29  Control count does not match number of instances received
+   30  Functional groups and messages mixed
+   31  More than one message type in group
+   32  Lower level empty
+   33  Invalid occurrence outside message or functional group
+   34  Nesting indicator not allowed
+   35  Too many segment repetitions
+   36  Too many segment group repetitions
+   37  Invalid type of character(s)
+   38  Missing digit in front of decimal sign
+   39  Data element too long
+   40  Data element too short
+   41  Permanent communication network error
+   42  Temporary communication network error
+   43  Unknown interchange recipient
+
+8. Code list 0035 Test indicator
+
+   1   Interchange is a test
+
+Sources
+- UN/EDIFACT syntax rules and Annex B segment specifications (UNB, UNZ, UNG,
+  UNE; clauses 7.2 and 7.3 on omission and truncation), UNECE:
+  https://unece.org/fileadmin/DAM/trade/edifact/untdid/d422_s.htm
+- UN/EDIFACT syntax implementation guidelines, UNECE (syntax version number 3
+  for the 1992 syntax rules; UNZ count of functional groups):
+  https://unece.org/fileadmin/DAM/trade/untdid/texts/d423.htm
+- CONTRL, Syntax and service report message, version D release 3 (UCI, S011,
+  code lists 0083 and 0085), ISO/TC 154/JWG 1:
+  https://service.gefeg.com/jwg1/Files/v3-Contrl.pdf
+- Service code list 0035, ISO/TC 154/JWG 1:
+  https://service.gefeg.com/jwg1/Archive-Sx/D22B/cl/cl7.htm
+```
+
+## What to return
+
+Diagnose the single root cause of this ticket. Reply in any form you like,
+but end your reply with exactly one fenced ```json block holding an object
+with these six keys. Only the last ```json block in your reply is graded.
+Give one value per key: a key that holds several options, or a list of
+alternatives, scores zero for that key.
+
+cause: exactly one of
+  authentication_failure: The OFTP2 session could not be established because a password, identification code or secure authentication check failed.
+  certificate_problem: A TLS or file-security certificate is expired, untrusted or not the one in the agreement.
+  character_set_violation: The interchange contains characters outside the agreed syntax identifier's character repertoire.
+  compression_not_agreed: A file was sent compressed (or uncompressed) contrary to what the receiver accepts.
+  duplicate_interchange: An interchange was rejected because its interchange control reference was already received from this sender.
+  duplicate_virtual_file: A virtual file was refused because a virtual file with the same identification was already delivered.
+  end_to_end_response_not_returned: The file was delivered but the final recipient never returned the end-to-end response.
+  envelope_element_format_invalid: A UNB or UNZ data element has a value whose format or length the syntax version declared in UNB S001 does not allow.
+  file_too_large: The file exceeds a size limit of the receiver.
+  idoc_awaiting_processing: Inbound IDocs were created in the receiver's SAP system but were not passed to the application, because the scheduled processing that should pick them up did not run.
+  idoc_mapping_error: The receiver's EDI converter mapped a correct interchange to an incorrect IDoc.
+  interchange_control_count_mismatch: The interchange control count in UNZ does not match the number of messages in the interchange.
+  interchange_control_reference_mismatch: The interchange control reference in UNB and in UNZ are not identical.
+  intermediary_fault: A clearing centre or other intermediate location lost, altered or misrouted the file.
+  invalid_destination: The OFTP2 destination of the virtual file is not known to the receiver.
+  no_sender_side_fault: Nothing the sender transmitted or configured is wrong, the fault lies with the receiver, and no more specific cause in this list applies.
+  not_yet_determinable: The documents fit more than one root cause equally well, so the root cause cannot be named until a further check is made.
+  receiver_partner_setup_missing: The receiver has not set up the sender as agreed (EDI converter partner mapping or SAP partner profile).
+  recipient_identification_mismatch: The interchange recipient identification or its qualifier in UNB is not the one in the partner agreement.
+  restart_position_invalid: A restarted transfer used a restart position that is wrong, or resumed from a position other than the one the receiver confirmed.
+  sap_master_data_error: Posting in the receiver's SAP system failed because of its master data (material, vendor, purchase order).
+  sender_identification_mismatch: The interchange sender identification or its qualifier in UNB is not the one in the partner agreement.
+  session_parameters_not_negotiated: The sender used an OFTP2 session parameter (credit, buffer size or similar) outside what was negotiated.
+  syntax_identifier_not_agreed: UNB S001 declares a syntax identifier or syntax version other than the agreed one.
+  test_indicator_mismatch: The interchange is flagged as test (or production) contrary to the agreement.
+
+layer: exactly one of
+  transport: The OFTP2 session or file transfer, including any intermediate location.
+  envelope: The EDIFACT interchange envelope (UNB to UNZ), wherever the receiver checks it (gateway or translator).
+  application: The business application side, on either party: an EDI converter or SAP IDoc processing.
+  none: Only with cause no_sender_side_fault: the fault is on the receiver's side, outside the layers above.
+  undetermined: Only with cause not_yet_determinable.
+
+owner: exactly one of (who must act to fix the root cause)
+  sender: The party that sent the file and raised the ticket must fix it.
+  receiver: The trading partner the file is addressed to must fix it.
+  intermediary: A clearing centre or other intermediate location between the parties must fix it.
+  agreement: The partner agreement itself is wrong or inconsistent and must be amended before either side can fix the fault.
+  undetermined: Only with cause not_yet_determinable.
+
+location: a JSON array of strings.
+List the OFTP2 fields, EDIFACT data elements or application objects, on whichever
+side, whose values or settings must be changed to fix the root cause, and no
+others. If the fault is a conflict between two values that must agree, list both.
+Write each one as:
+  OFTP2 field:                 COMMAND.FIELD, e.g. "SSID.SSIDCODE"
+  EDIFACT simple data element: SEGMENT.ELEMENT, e.g. "UNH.0062"
+  EDIFACT component element:   SEGMENT.COMPOSITE.COMPONENT, e.g. "UNB.S003.0010"
+  Application-side object:     APP.<OBJECT>, one of CONVERTER_PARTNER_TABLE, CONVERTER_MAPPING, PARTNER_PROFILE, PROCESS_CODE, BACKGROUND_JOB, MASTER_DATA, PORT
+  None of the above must change: "NONE" on its own.
+  Root cause not yet determinable: "UNDETERMINED" on its own.
+
+next_check: exactly one of (the single check that would decide the root cause if the documents do not; "none" if they do)
+  none: The documents already determine the root cause.
+  request_receiver_gateway_log: Ask the receiver for its OFTP2 gateway log covering the file in question.
+  request_receiver_translator_log: Ask the receiver for its translator's validation log for the interchange.
+  request_transmitted_copy: Obtain the file exactly as the sender's gateway transmitted it, not the archived copy.
+  request_other_gateway_node_trace: Obtain the trace from the sender's other gateway node or nodes.
+  request_agreement_in_force: Obtain the signed version of the partner agreement currently in force.
+  request_clearing_centre_trace: Ask the clearing centre for its trace of the file.
+  check_sender_clock: Check the sender gateway's system clock.
+  check_certificates: Check the TLS and file-security certificates on both sides.
+  resend_unchanged: Send the same file again unchanged.
+  resend_with_new_identity: Send the file again as a new virtual file.
+
+value: a JSON string holding the interchange control reference of the interchange that the CONTRL rejects.
+
+Example of the format only (not a hint):
+```json
+{"cause": "file_too_large", "layer": "transport", "owner": "receiver", "location": ["SFID.SFIDFSIZ"], "next_check": "none", "value": "12345"}
+```

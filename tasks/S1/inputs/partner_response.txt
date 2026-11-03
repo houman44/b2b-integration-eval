@@ -1,0 +1,39 @@
+From: Chris Hale, EDI operations, Velbrook Vehicle Assembly
+To: Robin Moreau, Larkspan Body Panels
+Date: 30 Oct 2026
+Subject: Your invoices are not posted
+
+Hello,
+
+None of your invoices since 29 October has been posted in our SAP system; our accounts payable team is chasing them. We upgraded our SAP system on the night of 28 October and nothing else has changed on our side, so please check your invoice data. Our IDoc list and the job overview of our inbound job are below.
+
+Regards,
+Chris Hale
+
+--- IDoc list ---
+IDoc list exported from SAP (inbound, message type INVOIC, basic type INVOIC02)
+
+IDoc number        Created           SNDPRT SNDPRN         Status
+1393136012481795   2026-10-26 08:49  LI     0000369806     53    
+1393136012481880   2026-10-27 07:57  LI     0000369806     53    
+1393136012482233   2026-10-28 09:12  LI     0000369806     53    
+1393136012482335   2026-10-29 08:20  LI     0000369806     64    
+1393136012482656   2026-10-30 07:31  LI     0000369806     64    
+
+--- Job overview ---
+Job overview exported from SAP (job name EDI_IN_INVOIC, program RBDAPP01)
+
+Job              Status     Start             Duration
+EDI_IN_INVOIC    finished   2026-10-28 18:49     24 s
+EDI_IN_INVOIC    finished   2026-10-28 19:04     28 s
+EDI_IN_INVOIC    finished   2026-10-28 19:19     32 s
+EDI_IN_INVOIC    finished   2026-10-28 19:34     20 s
+EDI_IN_INVOIC    finished   2026-10-28 19:49     32 s
+EDI_IN_INVOIC    finished   2026-10-28 20:04     13 s
+EDI_IN_INVOIC    finished   2026-10-28 20:19     17 s
+EDI_IN_INVOIC    finished   2026-10-28 20:34     26 s
+EDI_IN_INVOIC    finished   2026-10-28 20:49     12 s
+EDI_IN_INVOIC    finished   2026-10-28 21:04     29 s
+EDI_IN_INVOIC    finished   2026-10-28 21:19     21 s
+EDI_IN_INVOIC    finished   2026-10-28 21:34     16 s
+(earlier entries omitted)

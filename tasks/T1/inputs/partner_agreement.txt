@@ -1,0 +1,39 @@
+PARTNER AGREEMENT: ELECTRONIC DATA INTERCHANGE
+Between Larkspan Body Panels (the Supplier) and Corrandale Truck Plant (the Customer)
+Effective 1 March 2026. Synthetic document written for this evaluation.
+
+1. Transport: OFTP2 (RFC 5024) over TCP/IP with TLS
+   Supplier ODETTE ID (SFIDORIG): O0013LARKSPAN7489
+   Customer ODETTE ID (SFIDDEST): O0013CORRANDALE5314
+   Both parties connect to the Quorlane Exchange OFTP2 clearing centre and never
+   directly to each other.
+   Clearing centre ODETTE ID (SSIDCODE in the Supplier's sessions): O0013QUORLANE8604
+   Clearing centre gateway: oftp.quorlane.example (192.0.2.234)
+   The clearing centre forwards virtual files to SFIDDEST unchanged, relays
+   EERPs and NERPs back to the originator, and does not read file content.
+   Supplier gateway: oftp.larkspan.example (198.51.100.110)
+   Protocol release level: 5 (OFTP 2.0)
+   Data exchange buffer size (SSIDSDEB): 4096
+   Credit (SSIDCRED): 64
+   Buffer compression: no. Restart: yes. Secure authentication: no.
+   File security and file compression: none (SFIDSEC 00, SFIDCOMP 0).
+   Signed EERP: not required (SFIDSIGN N).
+   The Customer returns an EERP for every virtual file it accepts.
+
+2. Virtual files
+   Invoices: one interchange per virtual file, dataset name (SFIDDSN) LARKSPAN.INVOIC.
+   File format U. SFIDDATE and SFIDTIME are set by the Supplier's gateway to
+   the date and time the virtual file is made available for transmission.
+
+3. EDIFACT
+   Syntax identifier and version (UNB S001): UNOA, version 3.
+   Supplier interchange sender ID (UNB S002 0004 / 0007): LARKSPAN10 / ZZ
+   Customer interchange recipient ID (UNB S003 0010 / 0007): CORRANDALE96 / ZZ
+   Messages: INVOIC D.96A, one message per interchange.
+   Interchanges are sent without line feeds between segments.
+   The Customer's translator returns a CONTRL message for every rejected
+   interchange, as a separate virtual file over the same OFTP2 link.
+
+4. Support contacts
+   Supplier EDI desk: Morgan Brandt
+   Customer EDI operations: Morgan Novak

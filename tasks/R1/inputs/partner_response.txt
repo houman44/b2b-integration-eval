@@ -1,0 +1,10 @@
+From: Morgan Lindqvist, EDI operations, Corrandale Truck Plant
+To: Chris Brandt, Tidewell Seating Components
+Subject: RE: TRANSMISSION ERROR
+
+Hello,
+
+Our gateway has refused your files with a transmission error since 15 October. Your sessions also no longer offer the buffer size and credit in our agreement. Please check your OFTP2 set-up and the TLS certificate on your side; our monitoring shows it expires on 4 November. Files from our other suppliers arrive normally.
+
+Regards,
+Morgan Lindqvist

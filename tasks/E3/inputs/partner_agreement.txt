@@ -1,0 +1,40 @@
+PARTNER AGREEMENT: ELECTRONIC DATA INTERCHANGE
+Between Larkspan Body Panels (the Supplier) and Corrandale Truck Plant (the Customer)
+Effective 1 March 2026. Synthetic document written for this evaluation.
+
+1. Transport: OFTP2 (RFC 5024) over TCP/IP with TLS
+   Supplier ODETTE ID (SFIDORIG): O0013LARKSPAN8561
+   Customer ODETTE ID (SFIDDEST): O0013CORRANDALE9109
+   Supplier gateway: oftp.larkspan.example (198.51.100.174)
+   Customer gateway: oftp.corrandale.example (203.0.113.76)
+   Protocol release level: 5 (OFTP 2.0)
+   Data exchange buffer size (SSIDSDEB): 4096
+   Credit (SSIDCRED): 64
+   Buffer compression: no. Restart: yes. Secure authentication: no.
+   File security and file compression: none (SFIDSEC 00, SFIDCOMP 0).
+   Signed EERP: not required (SFIDSIGN N).
+   The Customer returns an EERP for every virtual file it accepts.
+
+2. Virtual files
+   Invoices: one interchange per virtual file, dataset name (SFIDDSN) LARKSPAN.INVOIC.
+   File format U. SFIDDATE and SFIDTIME are set by the Supplier's gateway to
+   the date and time the virtual file is made available for transmission.
+
+3. EDIFACT
+   Syntax identifier and version (UNB S001): UNOA, version 3.
+   Supplier interchange sender ID (UNB S002 0004 / 0007): LARKSPAN58 / ZZ
+   Customer interchange recipient ID (UNB S003 0010 / 0007): CORRANDALE61 / ZZ
+   Messages: INVOIC D.96A, one message per interchange.
+   Interchanges are sent without line feeds between segments.
+   The Customer's translator returns a CONTRL message for every rejected
+   interchange, as a separate virtual file over the same OFTP2 link.
+
+4. Support contacts
+   Supplier EDI desk: Alex Price
+   Customer EDI operations: Dana Lindqvist
+
+5. Amendment 3 (signed by both parties on 20 October 2026)
+   With effect from 1 November 2026 the syntax identifier in UNB S001 changes
+   from UNOA to UNOC, syntax version 3 unchanged, so that plant names and
+   addresses with accented characters can be exchanged. All other terms of
+   section 3 are unchanged.

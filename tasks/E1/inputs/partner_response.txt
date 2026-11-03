@@ -1,0 +1,13 @@
+From: Jordan Brandt, EDI operations, Corrandale Truck Plant
+To: Kim Hale, Larkspan Body Panels
+Subject: Rejected interchange this morning
+
+Hello,
+
+Our translator rejected your interchange of this morning; the CONTRL we returned over OFTP2 is copied below. As far as we can tell it is about your UNZ: you sent us 7 invoices but your UNZ control count says 1. This started after we upgraded our translator on 26 October, so it may be on our side, but please check your files too.
+
+Regards,
+Jordan Brandt
+
+--- CONTRL as received by Larkspan Body Panels (inbound/CORRANDALE.CONTRL_202610300753470001.edi) ---
+UNB+UNOA:3+CORRANDALE92:ZZ+LARKSPAN73:ZZ+261030:0753+C55401'UNH+1+CONTRL:D:3:UN'UCI+00000122+LARKSPAN73:ZZ+CORRANDALE92:ZZ+<<UNVERIFIED-PF>>+<<UNVERIFIED-PG>>+UNZ'UNT+3+1'UNZ+1+C55401'

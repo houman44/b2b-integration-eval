@@ -1,0 +1,10 @@
+From: Kim Price, EDI operations, Marrowgate Motor Works
+To: Jordan Tanaka, Fenwray Castings Ltd
+Subject: RE: restarted transfers
+
+Hello,
+
+We see the byte count errors on your restarted transfers. Restarted transfers from our other suppliers complete normally, and your 06:00 resend arrived fine. Please check your gateway.
+
+Regards,
+Kim Price

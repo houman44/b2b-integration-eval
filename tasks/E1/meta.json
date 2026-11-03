@@ -1,0 +1,46 @@
+{
+  "id": "E1",
+  "seed": 50242001,
+  "generator_version": "0.2.0",
+  "status": "DRAFT",
+  "uses": [
+    "EDIFACT.0007.MUTUALLY_DEFINED",
+    "EDIFACT.0083.REJECTED",
+    "EDIFACT.0085.REFERENCES_DO_NOT_MATCH",
+    "EDIFACT.CONTRL.MESSAGE_ID_SYNTAX3",
+    "EDIFACT.INVOIC.D96A.BODY",
+    "EDIFACT.LAYOUT.UCI",
+    "EDIFACT.LAYOUT.UNB",
+    "EDIFACT.LAYOUT.UNG_UNE",
+    "EDIFACT.LAYOUT.UNZ",
+    "EDIFACT.UNB.S004_FORMAT_SYNTAX3",
+    "EDIFACT.UNZ.0036_COUNTS_GROUPS",
+    "OFTP2.ESIDREAS.NORMAL"
+  ],
+  "unverified": [
+    "EDIFACT.0007.MUTUALLY_DEFINED",
+    "EDIFACT.0083.REJECTED",
+    "EDIFACT.0085.REFERENCES_DO_NOT_MATCH",
+    "EDIFACT.CONTRL.MESSAGE_ID_SYNTAX3",
+    "EDIFACT.INVOIC.D96A.BODY",
+    "EDIFACT.LAYOUT.UCI",
+    "EDIFACT.LAYOUT.UNB",
+    "EDIFACT.LAYOUT.UNG_UNE",
+    "EDIFACT.LAYOUT.UNZ",
+    "EDIFACT.UNB.S004_FORMAT_SYNTAX3",
+    "EDIFACT.UNZ.0036_COUNTS_GROUPS",
+    "OFTP2.ESIDREAS.NORMAL"
+  ],
+  "placeholders": [
+    "<<UNVERIFIED-PF>>",
+    "<<UNVERIFIED-PG>>"
+  ],
+  "files": {
+    "inputs/interchange.edi": "7050d3892e234f3b13e40ab42c637258d0570f9cb2180309f1d7d777aa30dfa1",
+    "inputs/oftp2_session.log": "156bf9f29c4b5e29f0fbb4f3acbd8eb2cd2703bc5e3279f71750b478b2fcf2fa",
+    "inputs/partner_agreement.txt": "5dc1aa6d0f85c12069228f127c6efe7266159ca6636655a1972b36377db49588",
+    "inputs/partner_response.txt": "fd7c6878962e4514d95d41f27675b4adb1ef6fa2fcf547c46d4c41a96df0bc3d",
+    "inputs/spec_extracts.txt": "b04b7e58217bffd7008f414f2eb45e51c4de75d3c7b66e8322631683a79508ee",
+    "prompt.md": "0431d26ba4b7903a7223dd086bc0d41fce5b4ea8cd938a1615a8595e8ebedb4c"
+  }
+}

@@ -1,0 +1,13 @@
+From: Dana Tanaka, EDI operations, Velbrook Vehicle Assembly
+To: Chris Price, Fenwray Castings Ltd
+Subject: Rejected interchange INV32338
+
+Hello,
+
+Our translator rejected your interchange of yesterday afternoon; the CONTRL is below. Please correct and resend.
+
+Regards,
+Dana Tanaka
+
+--- CONTRL as received by Fenwray Castings Ltd ---
+UNB+UNOA:3+VELBROOK32:ZZ+FENWRAY44:ZZ+261029:1559+C92575'UNH+1+CONTRL:D:3:UN'UCI+185867+FENWRAY44:ZZ+VELBROOK32:ZZ+<<UNVERIFIED-PF>>+<<UNVERIFIED-PK>>'UNT+3+1'UNZ+1+C92575'

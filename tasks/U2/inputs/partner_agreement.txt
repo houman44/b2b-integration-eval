@@ -1,0 +1,41 @@
+PARTNER AGREEMENT: ELECTRONIC DATA INTERCHANGE
+Between Larkspan Body Panels (the Supplier) and Corrandale Truck Plant (the Customer)
+Effective 1 March 2026. Synthetic document written for this evaluation.
+
+1. Transport: OFTP2 (RFC 5024) over TCP/IP with TLS
+   Supplier ODETTE ID (SFIDORIG): O0013LARKSPAN8175
+   Customer ODETTE ID (SFIDDEST): O0013CORRANDALE1900
+   Supplier gateway: oftp.larkspan.example (198.51.100.235)
+   Customer gateway: oftp.corrandale.example (203.0.113.145)
+   Protocol release level: 5 (OFTP 2.0)
+   Data exchange buffer size (SSIDSDEB): 4096
+   Credit (SSIDCRED): 64
+   Buffer compression: no. Restart: yes. Secure authentication: no.
+   File security and file compression: none (SFIDSEC 00, SFIDCOMP 0).
+   Signed EERP: not required (SFIDSIGN N).
+   The Customer returns an EERP for every virtual file it accepts.
+
+2. Virtual files
+   Invoices: one interchange per virtual file, dataset name (SFIDDSN) LARKSPAN.INVOIC.
+   File format U. SFIDDATE and SFIDTIME are set by the Supplier's gateway to
+   the date and time the virtual file is made available for transmission.
+
+3. EDIFACT
+   Syntax identifier and version (UNB S001): UNOA, version 3.
+   Supplier interchange sender ID (UNB S002 0004 / 0007): LARKSPAN17 / ZZ
+   Customer interchange recipient ID (UNB S003 0010 / 0007): CORRANDALE19 / ZZ
+   Messages: INVOIC D.96A, one message per interchange.
+   Interchanges are sent without line feeds between segments.
+   The Customer's gateway routes each interchange on receipt to the receiving
+   plant's translator by the UNB recipient ID.
+   The Customer does not return CONTRL messages.
+
+4. Support contacts
+   Supplier EDI desk: Robin Okafor
+   Customer EDI operations: Morgan Lindqvist
+
+5. Supplier transmission rules
+   The Supplier's EDI suite applies the partner profile's transmission rules to each
+   file at the moment of transmission (for example UNB routing values). The
+   Supplier's archive keeps each interchange as the translator produced it, before
+   those rules are applied.

@@ -1,0 +1,26 @@
+{
+  "id": "R1",
+  "answer": {
+    "cause": "test_indicator_mismatch",
+    "layer": "envelope",
+    "owner": "sender",
+    "location": [
+      "UNB.0035"
+    ],
+    "next_check": "none",
+    "value": "UNB+UNOA:3+TIDEWELL16:ZZ+CORRANDALE49:ZZ+261030:0733+674946'"
+  },
+  "value_kind": "segment",
+  "rationale": "The transfers themselves are complete: SFPA, all data, EFID with the exact unit count, then EFNA with an unspecified reason, so the receiver refused the content at end of file. TLS is established in every session and the certificate is valid until 2026-11-04T23:59:59Z. The sender offers SSIDSDEB 16384 and SSIDCRED 128, but the Responder answers 4096 and 064 and RFC 5024 5.3.2 makes the smaller values apply, so the session parameters are as agreed. The production gateway inspects the UNB on receipt. The UNB ends '+674946++++++1': after 0020 come S005, 0026, 0029, 0031 and 0032 (all empty) and then 0035, so the '1' is the test indicator, not an acknowledgement request (0031). Section 5: test interchanges go to the test gateway and the production gateway accepts production interchanges only. All other UNB values match the agreement. The refusals start the day after the sender's upgrade. The sender must clear 0035 in its production UNB.",
+  "status": "DRAFT",
+  "depends_on_unverified": [
+    "EDIFACT.0007.MUTUALLY_DEFINED",
+    "EDIFACT.INVOIC.D96A.BODY",
+    "EDIFACT.LAYOUT.UNB",
+    "EDIFACT.LAYOUT.UNB_TAIL",
+    "EDIFACT.LAYOUT.UNZ",
+    "EDIFACT.UNB.S004_FORMAT_SYNTAX3",
+    "OFTP2.EFNAREAS.UNSPECIFIED",
+    "OFTP2.ESIDREAS.NORMAL"
+  ]
+}

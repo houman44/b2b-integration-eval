@@ -1,0 +1,16 @@
+Fenwray Castings Ltd: OFTP2 gateway file status
+Generated 2026-10-30 09:00. Outbound files, all partners.
+
+Sent             Partner                        File                                         Octets  Status
+2026-10-30 02:10 Marrowgate Motor Works         INVOICES_20261030_NIGHT.edi                50331648  REFUSED at end of file after restart (EFNA)
+2026-10-30 02:12 Ostley Fasteners               DESADV_OSTLEY_20261030_NIGHT.edi           27435227  delivered after restart, EERP 30 Oct 03:02
+2026-10-30 05:04 Pemberline Plastics            DESADV_PEMBERLINE_050335.edi                  42774  delivered, EERP 30 Oct 05:49
+2026-10-30 05:58 Calderbank Wiring              DESADV_CALDERBANK_055802.edi                  54709  delivered, EERP 30 Oct 06:24
+2026-10-30 06:08 Marrowgate Motor Works         INVOICES_20261030_NIGHT.edi (manual rese   50331648  delivered, EERP
+2026-10-30 06:17 Harrowfield Glass              DESADV_HARROWFLD_061602.edi                   38688  delivered, EERP 30 Oct 07:15
+2026-10-30 07:00 Thornvale Logistics            DESADV_THORNVALE_065930.edi                   46077  delivered, EERP 30 Oct 07:46
+2026-10-30 07:19 Pemberline Plastics            DESADV_PEMBERLINE_071554.edi                   9915  delivered, EERP 30 Oct 07:29
+2026-10-30 07:22 Thornvale Logistics            INVOIC_THORNVALE_072146.edi                   48701  delivered, EERP 30 Oct 07:49
+2026-10-30 07:29 Pemberline Plastics            DESADV_PEMBERLINE_072818.edi                  47539  delivered, EERP 30 Oct 08:00
+2026-10-30 08:07 Calderbank Wiring              INVOIC_CALDERBANK_080645.edi                  31642  delivered, EERP 30 Oct 08:53
+2026-10-30 08:48 Harrowfield Glass              DESADV_HARROWFLD_084528.edi                   31214  delivered, EERP 30 Oct 09:04

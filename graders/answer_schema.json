@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ticket answer",
+  "type": "object",
+  "required": [
+    "cause",
+    "layer",
+    "owner",
+    "location",
+    "next_check",
+    "value"
+  ],
+  "properties": {
+    "cause": {
+      "type": "string",
+      "enum": [
+        "authentication_failure",
+        "certificate_problem",
+        "character_set_violation",
+        "compression_not_agreed",
+        "duplicate_interchange",
+        "duplicate_virtual_file",
+        "end_to_end_response_not_returned",
+        "envelope_element_format_invalid",
+        "file_too_large",
+        "idoc_awaiting_processing",
+        "idoc_mapping_error",
+        "interchange_control_count_mismatch",
+        "interchange_control_reference_mismatch",
+        "intermediary_fault",
+        "invalid_destination",
+        "no_sender_side_fault",
+        "not_yet_determinable",
+        "receiver_partner_setup_missing",
+        "recipient_identification_mismatch",
+        "restart_position_invalid",
+        "sap_master_data_error",
+        "sender_identification_mismatch",
+        "session_parameters_not_negotiated",
+        "syntax_identifier_not_agreed",
+        "test_indicator_mismatch"
+      ]
+    },
+    "layer": {
+      "type": "string",
+      "enum": [
+        "transport",
+        "envelope",
+        "application",
+        "none",
+        "undetermined"
+      ]
+    },
+    "owner": {
+      "type": "string",
+      "enum": [
+        "sender",
+        "receiver",
+        "intermediary",
+        "agreement",
+        "undetermined"
+      ]
+    },
+    "location": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "maxItems": 6
+    },
+    "next_check": {
+      "type": "string",
+      "enum": [
+        "none",
+        "request_receiver_gateway_log",
+        "request_receiver_translator_log",
+        "request_transmitted_copy",
+        "request_other_gateway_node_trace",
+        "request_agreement_in_force",
+        "request_clearing_centre_trace",
+        "check_sender_clock",
+        "check_certificates",
+        "resend_unchanged",
+        "resend_with_new_identity"
+      ]
+    },
+    "value": {
+      "type": "string",
+      "description": "ticket-specific exact value"
+    }
+  }
+}
