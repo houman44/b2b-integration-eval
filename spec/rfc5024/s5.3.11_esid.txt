@@ -1,0 +1,100 @@
+RFC 5024 (ODETTE File Transfer Protocol 2), section 5.3.11. Verbatim extract.
+
+5.3.11.  ESID - End Session
+
+   o-------------------------------------------------------------------o
+   |       ESID        End Session                                     |
+   |                                                                   |
+   |       End Session Phase          Speaker ----> Listener           |
+   |-------------------------------------------------------------------|
+   | Pos | Field     | Description                           | Format  |
+   |-----+-----------+---------------------------------------+---------|
+   |   0 | ESIDCMD   | ESID Command, 'F'                     | F X(1)  |
+   |   1 | ESIDREAS  | Reason Code                           | F 9(2)  |
+   |   3 | ESIDREASL | Reason Text Length                    | V 9(3)  |
+   |   6 | ESIDREAST | Reason Text                           | V T(n)  |
+   |     | ESIDCR    | Carriage Return                       | F X(1)  |
+   o-------------------------------------------------------------------o
+
+   ESIDCMD   Command Code                                      Character
+
+      Value: 'F'  ESID Command identifier.
+
+   ESIDREAS  Reason Code                                      Numeric(2)
+
+      Value: '00'  Normal session termination
+
+             '01'  Command not recognised
+
+                   An Exchange Buffer contains an invalid command code
+                   (1st octet of the buffer).
+
+             '02'  Protocol violation
+
+                   An Exchange Buffer contains an invalid command for
+                   the current state of the receiver.
+
+             '03'  User code not known
+
+                   A Start Session (SSID) command contains an unknown or
+                   invalid Identification Code.
+
+             '04'  Invalid password
+
+                   A Start Session (SSID) command contained an invalid
+                   password.
+
+             '05'  Local site emergency close down
+
+                   The local site has entered an emergency close down
+                   mode.  Communications are being forcibly terminated.
+
+             '06'  Command contained invalid data
+
+                   A field within a Command Exchange Buffer contains
+                   invalid data.
+
+             '07'  Exchange Buffer size error
+
+                   The length of the Exchange Buffer as determined by
+                   the Stream Transmission Header differs from the
+                   length implied by the Command Code.
+
+             '08'  Resources not available
+
+                   The request for connection has been denied due to a
+                   resource shortage.  The connection attempt should be
+                   retried later.
+
+             '09'  Time out
+
+             '10'  Mode or capabilities incompatible
+
+             '11'  Invalid challenge response
+
+             '12'  Secure authentication requirements incompatible
+
+             '99'  Unspecified Abort code
+
+                   An error was detected for which no specific code is
+                   defined.
+
+   ESIDREASL Reason Text Length                               Numeric(3)
+
+             Length in octets of the field ESIDREAST.
+
+             0 indicates that no ESIDREAST field is present.
+
+   ESIDREAST Reason Text                                      [UTF-8](n)
+
+             Reason why session ended in plain text.
+
+             It is encoded using [UTF-8].
+
+             Maximum length of the encoded reason is 999 octets.
+
+             No general structure is defined for this attribute.
+
+   ESIDCR    Carriage Return                                   Character
+
+      Value: Character with hex value '0D' or '8D'.

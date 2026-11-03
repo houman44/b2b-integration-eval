@@ -1,0 +1,26 @@
+RFC 5024 (ODETTE File Transfer Protocol 2), section 5.3.9. Verbatim extract.
+
+5.3.9.  EFPA - End File Positive Answer
+
+   o-------------------------------------------------------------------o
+   |       EFPA        End File Positive Answer                        |
+   |                                                                   |
+   |       End File Phase             Speaker <---- Listener           |
+   |-------------------------------------------------------------------|
+   | Pos | Field     | Description                           | Format  |
+   |-----+-----------+---------------------------------------+---------|
+   |   0 | EFPACMD   | EFPA Command, '4'                     | F X(1)  |
+   |   1 | EFPACD    | Change Direction Indicator, (Y/N)     | F X(1)  |
+   o-------------------------------------------------------------------o
+
+   EFPACMD   Command Code                                      Character
+
+      Value: '4'  EFPA Command identifier.
+
+   EFPACD    Change Direction Indicator                        Character
+
+      Value: 'N'  Change direction not requested.
+             'Y'  Change direction requested.
+
+             This parameter allows the Listener to request a Change
+             Direction (CD) command from the Speaker.

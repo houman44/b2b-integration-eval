@@ -1,0 +1,8 @@
+RFC 5024 (ODETTE File Transfer Protocol 2), section 4.3.3. Verbatim extract.
+
+4.3.3.  Restart Facilities
+
+   The Start File command includes a count allowing the restart of an
+   interrupted transmission to be negotiated.  If restart facilities are
+   not available, the restart count must be set to zero.  The sender
+   will start with the lowest record count + 1.

@@ -1,0 +1,12 @@
+RFC 5024 (ODETTE File Transfer Protocol 2), section 4.6.1. Verbatim extract.
+
+4.6.1.  Protocol Sequence
+
+   The Speaker terminates the session by sending an End Session (ESID)
+   command.  The Speaker may only do this if the Listener has just
+   relinquished its role as speaker.
+
+   1. Speaker  -- EFID ------------> Listener   End File
+               <------------ EFPA --            Answer YES
+               -- CD -------------->            Change Direction
+      Listener <------------ ESID -- Speaker    End Session

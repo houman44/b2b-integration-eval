@@ -1,0 +1,11 @@
+RFC 5024 (ODETTE File Transfer Protocol 2), section 1.5.4. Verbatim extract.
+
+1.5.4.  Restart
+
+   ODETTE-FTP can negotiate the restart of an interrupted Virtual File
+   transmission.  Fixed and Variable format files are restarted on
+   record boundaries.  For Unstructured and Text files, the restart
+   position is expressed as a file offset in 1K (1024 octet) blocks.
+
+   The restart position is always calculated relative to the start of
+   the Virtual File.

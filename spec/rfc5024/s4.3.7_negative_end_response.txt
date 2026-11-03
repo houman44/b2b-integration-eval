@@ -1,0 +1,40 @@
+RFC 5024 (ODETTE File Transfer Protocol 2), section 4.3.7. Verbatim extract.
+
+4.3.7.  Negative End Response (NERP)
+
+   In addition to the EERP, which allows control over successful
+   transmission of a file, a Negative End Response signals that a file
+   could not be delivered to the final destination or that the final
+   destination could not process the received file.
+
+   It may be created by an intermediate node that could not transmit the
+   file any further because the next node refuses to accept the file.
+   The cause of the refusal has to be non-temporary, otherwise the
+   intermediate node has to try the transmission again.
+
+   It may also be created by the final node that is unable to process
+   the file because of non-recoverable syntax or semantic errors in the
+   file, or because of the failure of any other processing performed on
+   the file.
+
+   The NERP will be sent back to the originator of the file.
+
+   The parameters are equal to the ones of the EERP, but with additional
+   information about the creator of the NERP and the abort reason.
+   Where the NERP is created due to a failure to transmit, the abort
+   reason is taken from the refusal reason that was sent by the node
+   refusing the file.  Because of the NERP, it is possible for the
+   intermediate node to stop trying to send the non-deliverable file and
+   to delete the file.
+
+   The NERP allows the originator of the file to react to the
+   unsuccessful transmission or processing, depending on the reason code
+   and the creator of the NERP.
+
+   If the originator of the Virtual File requested a signed EERP in the
+   SFID, the NERP must be signed.  Signing allows the originator of the
+   file to prove by whom the NERP was generated.  If the location
+
+   generating the NERP is unable to sign the NERP, it may send back an
+   unsigned NERP.  It is an implementation issue to allow the acceptance
+   of an unsigned EERP if a signed NERP is requested.

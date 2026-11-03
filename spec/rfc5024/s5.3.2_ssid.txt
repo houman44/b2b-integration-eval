@@ -1,0 +1,179 @@
+RFC 5024 (ODETTE File Transfer Protocol 2), section 5.3.2. Verbatim extract.
+
+5.3.2.  SSID - Start Session
+
+   o-------------------------------------------------------------------o
+   |       SSID        Start Session                                   |
+   |                                                                   |
+   |       Start Session Phase     Initiator <---> Responder           |
+   |-------------------------------------------------------------------|
+   | Pos | Field     | Description                           | Format  |
+   |-----+-----------+---------------------------------------+---------|
+   |   0 | SSIDCMD   | SSID Command 'X'                      | F X(1)  |
+   |   1 | SSIDLEV   | Protocol Release Level                | F 9(1)  |
+   |   2 | SSIDCODE  | Initiator's Identification Code       | V X(25) |
+   |  27 | SSIDPSWD  | Initiator's Password                  | V X(8)  |
+   |  35 | SSIDSDEB  | Data Exchange Buffer Size             | V 9(5)  |
+   |  40 | SSIDSR    | Send / Receive Capabilities (S/R/B)   | F X(1)  |
+   |  41 | SSIDCMPR  | Buffer Compression Indicator (Y/N)    | F X(1)  |
+   |  42 | SSIDREST  | Restart Indicator (Y/N)               | F X(1)  |
+   |  43 | SSIDSPEC  | Special Logic Indicator (Y/N)         | F X(1)  |
+   |  44 | SSIDCRED  | Credit                                | V 9(3)  |
+   |  47 | SSIDAUTH  | Secure Authentication (Y/N)           | F X(1)  |
+   |  48 | SSIDRSV1  | Reserved                              | F X(4)  |
+   |  52 | SSIDUSER  | User Data                             | V X(8)  |
+   |  60 | SSIDCR    | Carriage Return                       | F X(1)  |
+   o-------------------------------------------------------------------o
+
+      SSIDCMD   Command Code
+      Character
+
+      Value: 'X'  SSID Command identifier.
+
+   SSIDLEV   Protocol Release Level                           Numeric(1)
+
+             Used to specify the level of the ODETTE-FTP protocol
+
+      Value: '1' for Revision 1.2
+             '2' for Revision 1.3
+             '4' for Revision 1.4
+             '5' for Revision 2.0
+
+             Future release levels will have higher numbers.  The
+             protocol release level is negotiable, with the lowest level
+             being selected.
+
+             Note: ODETTE File Transfer Protocol 1.3 (RFC 2204)
+                   specifies '1' for the release level, despite adhering
+                   to revision 1.3.
+
+   SSIDCODE  Initiator's Identification Code                  String(25)
+
+    Format:  See Identification Code (Section 5.4)
+
+             Uniquely identifies the Initiator (sender) participating in
+             the ODETTE-FTP session.
+
+             It is an application implementation issue to link the
+             expected [X.509] certificate to the SSIDCODE provided.
+
+   SSIDPSWD  Initiator's Password                              String(8)
+
+             Key to authenticate the sender.  Assigned by bilateral
+             agreement.
+
+   SSIDSDEB  Data Exchange Buffer Size                        Numeric(5)
+
+    Minimum: 128
+    Maximum: 99999
+
+             The length, in octets, of the largest Data Exchange Buffer
+             that can be accepted by the location.  The length includes
+             the command octet but does not include the Stream
+             Transmission Header.
+
+             After negotiation, the smallest size will be selected.
+
+   SSIDSR    Send / Receive Capabilities                       Character
+
+      Value: 'S'  Location can only send files.
+             'R'  Location can only receive files.
+             'B'  Location can both send and receive files.
+
+             Sending and receiving will be serialised during the
+             session, so parallel transmissions will not take place in
+             the same session.
+
+             An error occurs if adjacent locations both specify the send
+             or receive capability.
+
+   SSIDCMPR  Buffer Compression Indicator                      Character
+
+      Value: 'Y'  The location can handle OFTP data buffer compression
+             'N'  The location cannot handle OFTP buffer compression
+
+             Compression is only used if supported by both locations.
+
+             The compression mechanism referred to here applies to each
+             individual OFTP data buffer.  This is different from the
+             file compression mechanism in OFTP, which involves the
+             compression of whole files.
+
+   SSIDREST  Restart Indicator                                 Character
+
+      Value: 'Y'  The location can handle the restart of a partially
+                  transmitted file.
+             'N'  The location cannot restart a file.
+
+   SSIDSPEC  Special Logic Indicator                           Character
+
+      Value: 'Y'  Location can handle Special Logic
+             'N'  Location cannot handle Special Logic
+
+             Special Logic is only used if supported by both locations.
+
+             The Special Logic extensions are only useful to access an
+             X.25 network via an asynchronous entry and are not
+             supported for TCP/IP connections.
+
+   SSIDCRED  Credit                                           Numeric(3)
+
+    Maximum: 999
+
+             The number of consecutive Data Exchange Buffers sent by the
+             Speaker before it must wait for a Credit (CDT) command from
+             the Listener.
+
+             The credit value is only applied to Data flow in the Data
+             Transfer phase.
+
+             The Speaker's available credit is initialised to SSIDCRED
+             when it receives a Start File Positive Answer (SFPA)
+             command from the Listener.  It is zeroed by the End File
+             (EFID) command.
+
+             After negotiation, the smallest size must be selected in
+             the answer of the Responder, otherwise a protocol error
+             will abort the session.
+
+             Negotiation of the "credit-window-size" parameter.
+
+             Window Size m  -- SSID ------------>
+                            <------------ SSID --  Window Size n
+                                                  (n less than or
+                                                   equal to m)
+             Note: negotiated value will be "n".
+
+   SSIDAUTH  Secure Authentication                             Character
+
+      Value: 'Y'  The location requires secure authentication.  'N'  The
+             location does not require secure authentication.
+
+             Secure authentication is only used if agreed by both
+             locations.
+
+             If the answer of the Responder does not match with the
+             authentication requirements of the Initiator, then the
+             Initiator must abort the session.
+
+             No negotiation of authentication is allowed.
+
+             authentication p  -- SSID ------------>
+                               <------------ SSID --  authentication q
+
+             p == q -> continue.
+             p != q -> abort.
+
+   SSIDRSV1  Reserved                                          String(4)
+
+             This field is reserved for future use.
+
+   SSIDUSER  User Data                                         String(8)
+
+             May be used by ODETTE-FTP in any way.  If unused, it should
+             be initialised to spaces.  It is expected that a bilateral
+             agreement exists as to the meaning of the data.
+
+   SSIDCR    Carriage Return                                   Character
+
+      Value: Character with hex value '0D' or '8D'.

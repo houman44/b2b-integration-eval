@@ -1,0 +1,20 @@
+RFC 5024 (ODETTE File Transfer Protocol 2), section 4.3.2. Verbatim extract.
+
+4.3.2.  Protocol Sequence
+
+   1. Speaker  -- SFID ------------> Listener   Start File
+               <------------ SFPA --            Answer YES
+
+   2. Speaker  -- SFID ------------> Listener   Start File
+               <------------ SFNA --            Answer NO
+                     Go To 1
+
+      Note: The User Monitor should take steps to prevent a loop
+            situation occurring.
+
+   2. Speaker  -- CD --------------> Listener   Change Direction
+      Listener <------------ EERP -- Speaker    End to End Response
+               -- RTR ------------->            Ready to Receive
+               <------------ NERP --            Negative End Response
+               -- RTR ------------->            Ready to Receive
+               <------------ SFID --            Start File

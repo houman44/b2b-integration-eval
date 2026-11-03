@@ -1,0 +1,28 @@
+RFC 5024 (ODETTE File Transfer Protocol 2), section 1.5.2. Verbatim extract.
+
+1.5.2.  Identification
+
+   Dataset Name
+
+      Dataset name of the Virtual File being transferred, assigned by
+      bilateral agreement.
+
+   Time stamp (HHMMSScccc)
+
+      A file qualifier indicating the time the Virtual File was made
+      available for transmission.  The counter (cccc=0001-9999) gives
+      higher resolution.
+
+   Date stamp (CCYYMMDD)
+
+      A file qualifier indicating the date the Virtual File was made
+      available for transmission.
+
+   The Dataset Name, Date, and Time attributes are assigned by the
+   Virtual File's originator and are used to uniquely identify a file.
+   They are all mandatory and must not be changed by intermediate
+   locations.
+
+   The User Monitor may use the Virtual File Date and Time attributes in
+   local processes involving date comparisons and calculations.  Any
+   such use falls outside the scope of this protocol.
