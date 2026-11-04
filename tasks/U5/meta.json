@@ -22,7 +22,6 @@
     "EDIFACT.CONTRL.MESSAGE_ID_SYNTAX3",
     "EDIFACT.INVOIC.D96A.BODY",
     "EDIFACT.LAYOUT.UCI",
-    "EDIFACT.LAYOUT.UNZ",
     "OFTP2.ESIDREAS.NORMAL"
   ],
   "placeholders": [
@@ -34,7 +33,7 @@
     "inputs/oftp2_session.log": "b1a05d65d3c5c76f511ef3765af6e86918566315036f9f882dd8da834eac8779",
     "inputs/partner_agreement.txt": "15caaebe3781a72af8f066c3f742738fa1f8d02786f406bba655a0ca39598790",
     "inputs/partner_response.txt": "41913d9d473326dd0d86d234b32055ae1d600c96f6b4ba6b5be3764afe251cdb",
-    "inputs/spec_extracts.txt": "d0a8bbb7250c6361388bc10b4cb982555cde14e43e735898d13fce92b642567f",
-    "prompt.md": "60a94f7122bdaae504997dc81c93ceac42808a1e04464ca5f8c8d0e7ca25010f"
+    "inputs/spec_extracts.txt": "ac3d794498934a8f10d93e9c9652d8128e007a1797d5acd7cfb672c5ee03ba54",
+    "prompt.md": "021ad895b18e63268e3e918db2594b918e58785e1b59f28142625711a6523bb2"
   }
 }

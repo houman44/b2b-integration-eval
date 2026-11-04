@@ -15,7 +15,6 @@
   "unverified": [
     "EDIFACT.0007.MUTUALLY_DEFINED",
     "EDIFACT.INVOIC.D96A.BODY",
-    "EDIFACT.LAYOUT.UNZ",
     "OFTP2.EFNAREAS.UNSPECIFIED",
     "OFTP2.ESIDREAS.NORMAL"
   ],
@@ -25,7 +24,7 @@
     "inputs/oftp2_session.log": "9367e41bc8b84bc66dd039851488f856d394057bb55797751e05da361e354372",
     "inputs/partner_agreement.txt": "3d86f900cc382a0dc102a9d5e595b3b66dba87db6e15757ac31a814e6551ca5e",
     "inputs/partner_response.txt": "e1cf1c43a11fc3ce79aad1e21fb8494a0714930b829601f56f3bc587c7ece082",
-    "inputs/spec_extracts.txt": "e29136ba0aa6eed116aa4c0c23fde3950c1d2d8df0dd167671c13bf194fcdd71",
-    "prompt.md": "d9cc9ef1a4fa8ab8ce8d7d15dd5d0ee3a1b11f1dcac012ef8af9768d307823c1"
+    "inputs/spec_extracts.txt": "f2a9c26472a72b5162d4ad5654fa9af5bc6e78ead63b84fd50ac2fab25337433",
+    "prompt.md": "bbc61415591cbc038996375deee430a21c2a1a676c2b8bc8e481dfc0b7863f47"
   }
 }

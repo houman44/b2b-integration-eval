@@ -72,17 +72,14 @@ _ENTRIES = [
     Entry("EDIFACT.LAYOUT.UNB", "convention",
           "UNB+S001(0001:0002)+S002(0004:0007:0008)+S003(0010:0007:0014)+S004(0017:0019)+0020",
           "Interchange header layout, syntax version 3",
-          "UNECE syntax rules Annex B (d422_s.htm, syntax version 2 text). Syntax version 3: "
-          "sender and recipient composites, date/time and control reference confirmed by "
-          "Houman on 3 Nov 2026 against the syntax version 3 UNB definition",
+          "UNECE syntax rules Annex B (prepared from d422_s.htm, syntax version 2 text); "
+          "confirmed by Houman on 3 Nov 2026 against the UNECE syntax version 3 (1992) material, Annex B",
           quoted=True, verified=True),
     Entry("EDIFACT.LAYOUT.UNZ", "convention", "UNZ+0036+0020",
           "Interchange trailer layout",
-          "Layout: UNECE syntax rules Annex B (d422_s.htm, syntax version 2 text). "
-          "Syntax version 3: UNECE implementation guidelines (d423.htm, 1992 rules, "
-          "syntax version 3) on the first UNZ element. No syntax version 3 layout text "
-          "in hand; not yet confirmed as unchanged",
-          quoted=True),
+          "UNECE syntax rules Annex B (prepared from d422_s.htm, syntax version 2 text); "
+          "confirmed by Houman on 3 Nov 2026 against the UNECE syntax version 3 (1992) material, Annex B: 0036 then 0020, 0020 matching UNB 0020",
+          quoted=True, verified=True),
     Entry("EDIFACT.LAYOUT.UCI", "convention",
           "UCI+0020+S002+S003+0083+0085+0013+S011(0098:0104)",
           "CONTRL interchange response segment layout",
@@ -100,20 +97,20 @@ _ENTRIES = [
     Entry("EDIFACT.LAYOUT.UNB_TAIL", "convention",
           "after 0020: S005 (6), 0026 (7), 0029 (8), 0031 (9), 0032 (10), 0035 (11)",
           "Order and positions of the optional UNB elements after 0020; 0035 = 1 means test",
-          "UNECE syntax rules Annex B (d422_s.htm, syntax version 2 text); optional "
-          "trailing fields confirmed by Houman on 3 Nov 2026 against the syntax version 3 "
-          "UNB definition; 0035 code 1 from the JWG 1-hosted service code list 0035",
+          "UNECE syntax rules Annex B (prepared from d422_s.htm, syntax version 2 text); "
+          "conditional elements in the specified order confirmed by Houman on 3 Nov 2026 against the UNECE syntax version 3 (1992) material, Annex B; "
+          "0035 code 1 from the JWG 1-hosted service code list 0035",
           quoted=True, verified=True),
     Entry("EDIFACT.LAYOUT.UNG_UNE", "convention",
-          "UNG+0038+S006+S007+S004+0048+0051+S008; UNE+0060+0048",
+          "UNG+0038+S006+S007+S004+0048+0051+S008+0058(C); UNE+0060+0048",
           "Functional group header and trailer layout, syntax version 3",
-          "UNECE syntax rules Annex B (d422_s.htm, syntax version 2 text). No syntax "
-          "version 3 layout text in hand; not yet confirmed as unchanged", quoted=True),
+          "UNECE syntax rules Annex B (prepared from d422_s.htm, syntax version 2 text); "
+          "confirmed by Houman on 3 Nov 2026 against the UNECE syntax version 3 (1992) material, Annex B: UNE 0048 matching UNG 0048", quoted=True, verified=True),
     Entry("EDIFACT.UNZ.0036_COUNTS_GROUPS", "convention",
           "UNZ 0036 counts functional groups when UNG is used, otherwise messages",
           "Interchange control count when functional groups are present (E1 depends on this)",
           "UNECE syntax implementation guidelines (d423.htm, 1992 rules, syntax version 3), "
-          "first UNZ element", quoted=True),
+          "first UNZ element; confirmed by Houman on 3 Nov 2026 against the UNECE syntax version 3 (1992) material, Annex B", quoted=True, verified=True),
     # ---- SAP facts (Amendment 1), closed book. Rule 3 confirmed by Houman on 3 Nov 2026:
     #      public SAP behaviour and his general experience, not OpenText or GXS material.
     #      These are standard SAP conventions, NOT directly verified against an SAP source.
@@ -137,8 +134,8 @@ _ENTRIES = [
     Entry("EDIFACT.UNB.S004_FORMAT_SYNTAX3", "convention", "YYMMDD:HHMM",
           "Date and time of preparation format in syntax version 3: 0017 is n6 (YYMMDD), "
           "0019 is n4 (HHMM); CCYYMMDD in 0017 is a syntax version 4 format",
-          "UNECE syntax rules Annex B (d422_s.htm, syntax version 2 text); date/time "
-          "confirmed by Houman on 3 Nov 2026 against the syntax version 3 UNB definition",
+          "UNECE syntax rules Annex B (prepared from d422_s.htm, syntax version 2 text); "
+          "confirmed by Houman on 3 Nov 2026 against the UNECE syntax version 3 (1992) material, Annex B",
           quoted=True, verified=True),
     Entry("EDIFACT.0007.MUTUALLY_DEFINED", "convention", "ZZZ",
           "Mutually defined (identification code qualifier, mutually defined between "

@@ -27,18 +27,24 @@ Used for UNB, UNZ, UNG, UNE, composite S004 and the omission and truncation rule
   **This is the syntax version 3 source**: the 1992 rules use syntax version number 3,
   and the first UNZ element is the number of functional groups if that facility is used.
 
+Houman checked every element below against the UNECE syntax version 3 (1992) material
+on 3 Nov 2026. The segment specifications are in Annex B; the general omission and
+truncation rules are in clauses 7.2 and 7.3.
+
 What is established for syntax version 3, element by element:
 
 | Claim | Version 2 text (d422) | Version 3 basis |
 |---|---|---|
-| UNB S001, S002, S003, S004, 0020 | yes | Confirmed by Houman on 3 Nov 2026 against the syntax version 3 UNB definition |
-| UNB optional trailing fields S005 to 0035, in that order | yes | Confirmed by Houman on 3 Nov 2026 against the syntax version 3 UNB definition |
-| S004 0017 n6 YYMMDD, 0019 n4 HHMM | yes | Confirmed by Houman on 3 Nov 2026 (date/time) |
+| UNB S001, S002, S003, S004, 0020: mandatory, in that order | yes | Annex B, confirmed by Houman on 3 Nov 2026 |
+| UNB conditional elements S005 to 0035, in the specified order | yes | Annex B, confirmed by Houman on 3 Nov 2026 |
+| S004 0017 n6 YYMMDD, 0019 n4 HHMM | yes | Annex B, confirmed by Houman on 3 Nov 2026 |
 | UNB 0002 = 3 | no (v2 sets 2) | UNECE d423 |
-| UNZ 0036, 0020 layout | yes | Not yet confirmed: no syntax version 3 layout text in hand |
-| UNZ 0036 counts functional groups when used | no | UNECE d423 |
-| UNG, UNE layout | yes | Not yet confirmed: no syntax version 3 layout text in hand |
-| Omission and truncation (clauses 7.2, 7.3) | yes | Not yet confirmed for syntax version 3 |
+| UNZ 0036 then 0020; 0020 matches UNB 0020 | yes | Annex B, confirmed by Houman on 3 Nov 2026 |
+| UNZ 0036 counts messages, or functional groups if used | no | UNECE d423; Annex B, confirmed by Houman on 3 Nov 2026 |
+| UNG 0038, S006, S007, S004, 0048, 0051, S008, conditional 0058 | yes | Annex B, confirmed by Houman on 3 Nov 2026 |
+| UNE 0060 then 0048; 0048 matches UNG 0048 | yes | Annex B, confirmed by Houman on 3 Nov 2026 |
+| Omission: an omitted conditional element followed by a present one keeps its separator | yes | Clause 7.2, confirmed by Houman on 3 Nov 2026 |
+| Truncation: trailing conditional elements may be omitted by ending the segment; trailing separators not required | yes | Clause 7.3, confirmed by Houman on 3 Nov 2026 |
 
 ### CONTRL: the CONTRL D.3 document hosted by ISO/TC 154/JWG 1
 
@@ -73,5 +79,7 @@ lists 0083 and 0085, and the message identifier CONTRL:D:3:UN.
 ## Verification status
 
 Entries in `generator/codes.py` stay unverified until Houman checks them, and a release
-build refuses to run until then. Verified on 3 Nov 2026: EDIFACT.LAYOUT.UNB,
-EDIFACT.LAYOUT.UNB_TAIL, EDIFACT.UNB.S004_FORMAT_SYNTAX3.
+build refuses to run until then. Verified by Houman on 3 Nov 2026: EDIFACT.LAYOUT.UNB,
+EDIFACT.LAYOUT.UNB_TAIL, EDIFACT.UNB.S004_FORMAT_SYNTAX3, EDIFACT.LAYOUT.UNZ,
+EDIFACT.LAYOUT.UNG_UNE, EDIFACT.UNZ.0036_COUNTS_GROUPS, and the omission and truncation
+rules (clauses 7.2 and 7.3).

@@ -151,8 +151,9 @@ placeholder README and a .gitignore.
   and the CONTRL D.3 document hosted by ISO/TC 154/JWG 1, the joint ISO and UNECE syntax
   group, for the CONTRL-specific layouts and code lists (UCI, S011, 0083, 0085). Service code
   lists 0007 and 0035 are also from JWG 1. Prepared extract in `spec/unedifact/` (layouts
-  restated, code values and names quoted); `spec/SOURCES.md` records the source of each part
-  and which points rest on syntax version 2 text and which on a syntax version 3 source.
+  restated, code values and names quoted); `spec/SOURCES.md` records the source of each part.
+  The syntax rule extracts were prepared from the UNECE 1990 text and checked element by
+  element against the UNECE syntax version 3 (1992) material.
 - SAP: facts only (IDoc status values, report RBDAPP01, partner type LI), no SAP documentation
   text. They are public SAP behaviour from my general experience and are recorded as standard
   SAP conventions, not as facts verified against an SAP source. SAP is a trademark of SAP SE.

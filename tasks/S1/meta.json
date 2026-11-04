@@ -18,7 +18,6 @@
   "unverified": [
     "EDIFACT.0007.MUTUALLY_DEFINED",
     "EDIFACT.INVOIC.D96A.BODY",
-    "EDIFACT.LAYOUT.UNZ",
     "OFTP2.ESIDREAS.NORMAL",
     "SAP.IDOC.STATUS_53",
     "SAP.IDOC.STATUS_64",
@@ -31,7 +30,7 @@
     "inputs/oftp2_session.log": "3a8d4de6ab5cf278b6da6f427a5424ab5df56a794b6bfa1606860697cfd55875",
     "inputs/partner_agreement.txt": "9c989055f27fb2232a2352140665b856959e856190f769a5e0c2200748951540",
     "inputs/partner_response.txt": "31f1fbbc3b95e8d3178486a5936b732949c4b2a5bac42506f59b1aae21cc13c7",
-    "inputs/spec_extracts.txt": "d0a8bbb7250c6361388bc10b4cb982555cde14e43e735898d13fce92b642567f",
-    "prompt.md": "664c02d8052420cb07c0e87c63c26c22e4e69e392d72b086edadbde5d4599902"
+    "inputs/spec_extracts.txt": "ac3d794498934a8f10d93e9c9652d8128e007a1797d5acd7cfb672c5ee03ba54",
+    "prompt.md": "1e410ea1a13ce871048025d133d100b23e3ff17b55949f5e1c5e73eb9bd04f1f"
   }
 }

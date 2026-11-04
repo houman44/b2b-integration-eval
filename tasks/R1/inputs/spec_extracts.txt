@@ -287,15 +287,17 @@ restated in a compact form; code values and their names are quoted exactly.
 
 Provenance by part:
   Parts 1 to 4 (syntax rules: UNB, UNZ, UNG, UNE, omission and truncation)
-    UNECE. The UNECE segment text used is the 1990 reprint of the syntax rules,
-    which is syntax version 2. The syntax version 3 (1992 rules) points are taken
-    from the UNECE implementation guidelines and are marked "(v3)" below.
+    UNECE. The segment specifications are in Annex B of the syntax rules; the
+    general omission and truncation rules are in clauses 7.2 and 7.3. The text
+    was prepared from the UNECE 1990 reprint (syntax version 2) and checked
+    element by element against the UNECE syntax version 3 (1992) material on
+    3 Nov 2026. Points that differ in version 3 are marked "(v3)".
   Parts 5 to 7 (CONTRL: UCI, S011, code lists 0083 and 0085)
     The CONTRL D.3 document hosted by ISO/TC 154/JWG 1.
   Parts 8 and 9 (service code lists 0035 and 0007)
     The service code lists hosted by ISO/TC 154/JWG 1.
 
-1. Interchange header UNB (UNECE; syntax version 2 text, version 3 noted)
+1. Interchange header UNB (UNECE, Annex B)
 
    Data elements in order (status M = mandatory, C = conditional):
      1  S001 SYNTAX IDENTIFIER                      M
@@ -322,25 +324,26 @@ Provenance by part:
     10  0032 COMMUNICATIONS AGREEMENT ID    an..35 C
     11  0035 TEST INDICATOR                 n1     C  (1 = the interchange is a test)
 
-2. Interchange trailer UNZ (UNECE; syntax version 2 text, version 3 noted)
+2. Interchange trailer UNZ (UNECE, Annex B)
 
      1  0036 INTERCHANGE CONTROL COUNT      n..6   M
-          (v3) The number of messages in the interchange or, if functional
+          The number of messages in the interchange or, if functional
           groups are used, the number of functional groups.
      2  0020 INTERCHANGE CONTROL REFERENCE  an..14 M
           Shall be identical to 0020 in UNB.
 
-3. Functional group header UNG and trailer UNE (UNECE; syntax version 2 text)
+3. Functional group header UNG and trailer UNE (UNECE, Annex B)
 
    UNG: 1 0038 Functional group identification; 2 S006 Application sender's
         identification (0040, 0007); 3 S007 Application recipient's
         identification (0044, 0007); 4 S004 Date/time of preparation;
         5 0048 Functional group reference number; 6 0051 Controlling agency;
-        7 S008 Message version (0052, 0054, 0057); 8 0058 Application password.
+        7 S008 Message version (0052, 0054, 0057); 8 0058 Application password
+        (conditional).
    UNE: 1 0060 Number of messages in the group; 2 0048 Functional group
         reference number, identical to 0048 in UNG.
 
-4. Omission and truncation of data elements (UNECE; syntax version 2 text)
+4. Omission and truncation of data elements (UNECE, clauses 7.2 and 7.3)
 
    If a conditional data element is omitted and is followed by another data
    element, its position is indicated by retaining its data element separator.
