@@ -31,7 +31,7 @@ Input: fixed-width records, positions counted in characters from 1.
 Output: one interchange, syntax UNOA version 3, default service characters
 (UNA not sent), release character ? before any of ? + : ' inside a value.
 Segments, in this order:
-  UNB+UNOA:3+QUILLMERE07:ZZ+MARROWGATE13:ZZ+261102:0926+009910'
+  UNB+UNOA:3+QUILLMERE07:ZZZ+MARROWGATE13:ZZZ+261102:0926+009910'
   UNH+1+INVOIC:D:96A:UN'
   BGM+380+<invoice number, trailing spaces removed>+9'
   DTM+137:<invoice date>:102'

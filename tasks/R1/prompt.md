@@ -43,8 +43,8 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 
 3. EDIFACT
    Syntax identifier and version (UNB S001): UNOA, version 3.
-   Supplier interchange sender ID (UNB S002 0004 / 0007): TIDEWELL16 / ZZ
-   Customer interchange recipient ID (UNB S003 0010 / 0007): CORRANDALE49 / ZZ
+   Supplier interchange sender ID (UNB S002 0004 / 0007): TIDEWELL16 / ZZZ
+   Customer interchange recipient ID (UNB S003 0010 / 0007): CORRANDALE49 / ZZZ
    Messages: INVOIC D.96A, one message per interchange.
    Interchanges are sent without line feeds between segments.
    The Customer's gateway routes each interchange on receipt to the receiving
@@ -80,8 +80,8 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 06:24:05.528 S5858 .. queued INV49387.edi
 2026-10-30 06:24:05.697 S5858 >> [HTIDEWELL.INVOIC              202610300623480001        O0013CORRANDALE6539      O0013TIDEWELL3275        U000000000000000001000000000000100000000000000000000000N000]
 2026-10-30 06:24:05.776 S5858 << [200000000000000000]
-2026-10-30 06:24:05.866 S5858 .. DATA: 1 exchange buffer(s), 408 octets
-2026-10-30 06:24:05.912 S5858 >> [T0000000000000000000000000000000408]
+2026-10-30 06:24:05.866 S5858 .. DATA: 1 exchange buffer(s), 410 octets
+2026-10-30 06:24:05.912 S5858 >> [T0000000000000000000000000000000410]
 2026-10-30 06:24:06.041 S5858 << [5??038TRANSMISSION ERROR - PLEASE RETRANSMIT]
 2026-10-30 06:24:06.216 S5858 .. file refused by partner at end of file
 2026-10-30 06:24:06.241 S5858 >> [R]
@@ -98,8 +98,8 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 06:56:42.636 S5860 .. queued INV49387.edi (retransmission 1)
 2026-10-30 06:56:42.815 S5860 >> [HTIDEWELL.INVOIC              202610300653380002        O0013CORRANDALE6539      O0013TIDEWELL3275        U000000000000000001000000000000100000000000000000000000N000]
 2026-10-30 06:56:42.947 S5860 << [200000000000000000]
-2026-10-30 06:56:43.093 S5860 .. DATA: 1 exchange buffer(s), 408 octets
-2026-10-30 06:56:43.111 S5860 >> [T0000000000000000000000000000000408]
+2026-10-30 06:56:43.093 S5860 .. DATA: 1 exchange buffer(s), 410 octets
+2026-10-30 06:56:43.111 S5860 >> [T0000000000000000000000000000000410]
 2026-10-30 06:56:43.198 S5860 << [5??038TRANSMISSION ERROR - PLEASE RETRANSMIT]
 2026-10-30 06:56:43.210 S5860 .. file refused by partner at end of file
 2026-10-30 06:56:43.333 S5860 >> [R]
@@ -114,8 +114,8 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 07:33:54.337 S5861 .. queued INV49387.edi (retransmission 2)
 2026-10-30 07:33:54.383 S5861 >> [HTIDEWELL.INVOIC              202610300733410003        O0013CORRANDALE6539      O0013TIDEWELL3275        U000000000000000001000000000000100000000000000000000000N000]
 2026-10-30 07:33:54.481 S5861 << [200000000000000000]
-2026-10-30 07:33:54.574 S5861 .. DATA: 1 exchange buffer(s), 408 octets
-2026-10-30 07:33:54.676 S5861 >> [T0000000000000000000000000000000408]
+2026-10-30 07:33:54.574 S5861 .. DATA: 1 exchange buffer(s), 410 octets
+2026-10-30 07:33:54.676 S5861 >> [T0000000000000000000000000000000410]
 2026-10-30 07:33:54.852 S5861 << [5??038TRANSMISSION ERROR - PLEASE RETRANSMIT]
 2026-10-30 07:33:54.884 S5861 .. file refused by partner at end of file
 2026-10-30 07:33:54.921 S5861 >> [R]
@@ -126,7 +126,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 ## Document 3: EDIFACT interchange the ticket is about (as transmitted) (interchange.edi)
 
 ```text
-UNB+UNOA:3+TIDEWELL16:ZZ+CORRANDALE49:ZZ+261030:0733+674946++++++1'UNH+1+INVOIC:D:96A:UN'BGM+380+INV49387+9'DTM+137:20261030:102'NAD+SE+++TIDEWELL SEATING COMPONENTS'NAD+BY+++CORRANDALE TRUCK PLANT'CUX+2:EUR:4'LIN+1++P-98587:IN'QTY+47:189'MOA+203:9054.99'PRI+AAA:47.91'LIN+2++P-69389:IN'QTY+47:368'MOA+203:6377.44'PRI+AAA:17.33'UNS+S'MOA+77:18518.91'TAX+7+VAT+++:::20+S'MOA+124:3086.48'UNT+19+1'UNZ+1+674946'
+UNB+UNOA:3+TIDEWELL16:ZZZ+CORRANDALE49:ZZZ+261030:0733+674946++++++1'UNH+1+INVOIC:D:96A:UN'BGM+380+INV49387+9'DTM+137:20261030:102'NAD+SE+++TIDEWELL SEATING COMPONENTS'NAD+BY+++CORRANDALE TRUCK PLANT'CUX+2:EUR:4'LIN+1++P-98587:IN'QTY+47:189'MOA+203:9054.99'PRI+AAA:47.91'LIN+2++P-69389:IN'QTY+47:368'MOA+203:6377.44'PRI+AAA:17.33'UNS+S'MOA+77:18518.91'TAX+7+VAT+++:::20+S'MOA+124:3086.48'UNT+19+1'UNZ+1+674946'
 ```
 
 ## Document 4: Partner response (partner_response.txt)
@@ -434,12 +434,22 @@ UN/EDIFACT syntax version 3: service segment and code list extracts.
 Prepared for this eval from the sources listed at the end. Segment layouts are
 restated in a compact form; code values and their names are quoted exactly.
 
-1. Interchange header UNB (syntax version 3)
+Provenance by part:
+  Parts 1 to 4 (syntax rules: UNB, UNZ, UNG, UNE, omission and truncation)
+    UNECE. The UNECE segment text used is the 1990 reprint of the syntax rules,
+    which is syntax version 2. The syntax version 3 (1992 rules) points are taken
+    from the UNECE implementation guidelines and are marked "(v3)" below.
+  Parts 5 to 7 (CONTRL: UCI, S011, code lists 0083 and 0085)
+    The CONTRL D.3 document hosted by ISO/TC 154/JWG 1.
+  Parts 8 and 9 (service code lists 0035 and 0007)
+    The service code lists hosted by ISO/TC 154/JWG 1.
+
+1. Interchange header UNB (UNECE; syntax version 2 text, version 3 noted)
 
    Data elements in order (status M = mandatory, C = conditional):
      1  S001 SYNTAX IDENTIFIER                      M
           0001 Syntax identifier          a4   M  (e.g. UNOA, UNOB, UNOC)
-          0002 Syntax version number      n1   M  (3 for syntax version 3)
+          0002 Syntax version number      n1   M  (v3: 3 for the 1992 rules)
      2  S002 INTERCHANGE SENDER                     M
           0004 Sender identification      an..35 M
           0007 Partner identification code qualifier  an..4 C
@@ -461,15 +471,15 @@ restated in a compact form; code values and their names are quoted exactly.
     10  0032 COMMUNICATIONS AGREEMENT ID    an..35 C
     11  0035 TEST INDICATOR                 n1     C  (1 = the interchange is a test)
 
-2. Interchange trailer UNZ
+2. Interchange trailer UNZ (UNECE; syntax version 2 text, version 3 noted)
 
      1  0036 INTERCHANGE CONTROL COUNT      n..6   M
-          The number of messages in the interchange or, if functional groups
-          are used, the number of functional groups.
+          (v3) The number of messages in the interchange or, if functional
+          groups are used, the number of functional groups.
      2  0020 INTERCHANGE CONTROL REFERENCE  an..14 M
           Shall be identical to 0020 in UNB.
 
-3. Functional group header UNG and trailer UNE
+3. Functional group header UNG and trailer UNE (UNECE; syntax version 2 text)
 
    UNG: 1 0038 Functional group identification; 2 S006 Application sender's
         identification (0040, 0007); 3 S007 Application recipient's
@@ -479,7 +489,7 @@ restated in a compact form; code values and their names are quoted exactly.
    UNE: 1 0060 Number of messages in the group; 2 0048 Functional group
         reference number, identical to 0048 in UNG.
 
-4. Omission and truncation of data elements
+4. Omission and truncation of data elements (UNECE; syntax version 2 text)
 
    If a conditional data element is omitted and is followed by another data
    element, its position is indicated by retaining its data element separator.
@@ -487,8 +497,8 @@ restated in a compact form; code values and their names are quoted exactly.
    omitted, the segment may be truncated by the segment terminator; trailing
    data element separators are then not transmitted.
 
-5. CONTRL message (UNH message identifier CONTRL:D:3:UN), segment UCI
-   INTERCHANGE RESPONSE
+5. CONTRL message version D release 3 (UNH message identifier
+   CONTRL:D:3:UN), segment UCI INTERCHANGE RESPONSE (JWG 1-hosted CONTRL D.3)
 
    Pos  Tag   Name                                         St  Format
    010  0020  INTERCHANGE CONTROL REFERENCE                M   an..14
@@ -509,14 +519,14 @@ restated in a compact form; code values and their names are quoted exactly.
 
    S011 identifies the position of an erroneous data element.
 
-6. Code list 0083 Action, coded
+6. Code list 0083 Action, coded (JWG 1-hosted CONTRL D.3)
 
    4   This level and all lower levels rejected
    7   This level acknowledged, next lower level acknowledged if not
        explicitly rejected
    8   Interchange received
 
-7. Code list 0085 Syntax error, coded
+7. Code list 0085 Syntax error, coded (JWG 1-hosted CONTRL D.3)
 
    2   Syntax version or level not supported
    7   Interchange recipient not actual recipient
@@ -553,22 +563,30 @@ restated in a compact form; code values and their names are quoted exactly.
    42  Temporary communication network error
    43  Unknown interchange recipient
 
-8. Code list 0035 Test indicator
+8. Code list 0035 Test indicator (JWG 1-hosted service code list)
 
    1   Interchange is a test
 
+9. Code list 0007 Identification code qualifier (JWG 1-hosted service code
+   list; the one value used here)
+
+   ZZZ Mutually defined
+
 Sources
-- UN/EDIFACT syntax rules and Annex B segment specifications (UNB, UNZ, UNG,
-  UNE; clauses 7.2 and 7.3 on omission and truncation), UNECE:
+- UNECE, UN/EDIFACT syntax rules, 1990 amended reprint (syntax version 2), with
+  Annex B segment specifications (UNB, UNZ, UNG, UNE; clauses 7.2 and 7.3 on
+  omission and truncation):
   https://unece.org/fileadmin/DAM/trade/edifact/untdid/d422_s.htm
-- UN/EDIFACT syntax implementation guidelines, UNECE (syntax version number 3
-  for the 1992 syntax rules; UNZ count of functional groups):
+- UNECE, UN/EDIFACT syntax implementation guidelines, issue 94.2 (syntax
+  version 3: version number 3 for the 1992 rules; UNZ count of functional
+  groups):
   https://unece.org/fileadmin/DAM/trade/untdid/texts/d423.htm
-- CONTRL, Syntax and service report message, version D release 3 (UCI, S011,
-  code lists 0083 and 0085), ISO/TC 154/JWG 1:
+- CONTRL, Syntax and service report message, version D release 3, revision 1,
+  97-03-17 (UCI, S011, code lists 0083 and 0085), hosted by ISO/TC 154/JWG 1:
   https://service.gefeg.com/jwg1/Files/v3-Contrl.pdf
-- Service code list 0035, ISO/TC 154/JWG 1:
+- Service code lists 0035 and 0007 (D.22B archive), hosted by ISO/TC 154/JWG 1:
   https://service.gefeg.com/jwg1/Archive-Sx/D22B/cl/cl7.htm
+  https://service.gefeg.com/jwg1/Archive-Sx/D22B/cl/cl3.htm
 ```
 
 ## What to return

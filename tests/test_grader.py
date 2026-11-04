@@ -258,7 +258,7 @@ class FenceParsing(unittest.TestCase):
     def test_other_fenced_blocks_before_json(self):
         r = ref("E1")
         a = r["answer"]
-        text = ("Analysis.\n\n```edifact\nUNB+UNOA:3+X:ZZ+Y:ZZ+261030:0725+00000122'\n```\n\n"
+        text = ("Analysis.\n\n```edifact\nUNB+UNOA:3+X:ZZZ+Y:ZZZ+261030:0725+00000122'\n```\n\n"
                 "and the trailer:\n   ```text\n   UNZ+1+122'\n   ```\n\nFix it.\n\n"
                 "```json\n" + json.dumps(a) + "\n```")
         self.assertTrue(grade(text, r)["pass"])

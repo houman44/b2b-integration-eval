@@ -11,11 +11,11 @@ Sent             Partner                        File                            
 2026-10-29 12:17 Wrenmoor Electronics           DESADV_WRENMOOR_121608.edi                    50992  delivered, EERP 29 Oct 12:45
 2026-10-29 12:40 Thornvale Logistics            INVOIC_THORNVALE_123925.edi                   54465  delivered, EERP 29 Oct 13:40
 2026-10-29 12:42 Harrowfield Glass              DESADV_HARROWFLD_123902.edi                   15939  delivered, EERP 29 Oct 13:07
-2026-10-29 12:43 Corrandale Truck Plant         INV22951.edi                                    390  delivered, EERP
+2026-10-29 12:43 Corrandale Truck Plant         INV22951.edi                                    392  delivered, EERP
 2026-10-29 12:43 Wrenmoor Electronics           DESADV_WRENMOOR_124231.edi                    29880  delivered, EERP 29 Oct 13:51
-2026-10-29 14:22 Corrandale Truck Plant         INV22952.edi                                    333  NOT DELIVERED (NERP)
+2026-10-29 14:22 Corrandale Truck Plant         INV22952.edi                                    335  NOT DELIVERED (NERP)
 2026-10-29 15:01 Harrowfield Glass              INVOIC_HARROWFLD_150049.edi                   59857  delivered, EERP 29 Oct 15:10
-2026-10-29 15:56 Corrandale Truck Plant         INV22953.edi                                    454  delivered, EERP
+2026-10-29 15:56 Corrandale Truck Plant         INV22953.edi                                    456  delivered, EERP
 2026-10-29 16:01 Thornvale Logistics            DESADV_THORNVALE_160037.edi                   36410  delivered, EERP 29 Oct 16:18
 2026-10-29 16:27 Wrenmoor Electronics           INVOIC_WRENMOOR_162641.edi                    41413  delivered, EERP 29 Oct 16:42
 2026-10-30 06:01 Harrowfield Glass              INVOIC_HARROWFLD_060052.edi                    3010  delivered, EERP 30 Oct 06:14
@@ -26,9 +26,9 @@ Sent             Partner                        File                            
 2026-10-30 07:26 Wrenmoor Electronics           INVOIC_WRENMOOR_072554.edi                    53222  delivered, EERP 30 Oct 07:51
 2026-10-30 07:32 Harrowfield Glass              INVOIC_HARROWFLD_073136.edi                   25294  delivered, EERP 30 Oct 08:30
 2026-10-30 07:50 Harrowfield Glass              INVOIC_HARROWFLD_074942.edi                   28839  delivered, EERP 30 Oct 08:07
-2026-10-30 07:51 Corrandale Truck Plant         INV22954.edi                                    391  delivered, EERP
+2026-10-30 07:51 Corrandale Truck Plant         INV22954.edi                                    393  delivered, EERP
 2026-10-30 07:53 Thornvale Logistics            INVOIC_THORNVALE_075158.edi                   33605  delivered, EERP 30 Oct 08:12
-2026-10-30 08:33 Corrandale Truck Plant         INV22952_corrected.edi                          333  awaiting EERP
+2026-10-30 08:33 Corrandale Truck Plant         INV22952_corrected.edi                          335  awaiting EERP
 2026-10-30 09:07 Wrenmoor Electronics           DESADV_WRENMOOR_090640.edi                    17736  delivered, EERP 30 Oct 09:37
-2026-10-30 09:15 Corrandale Truck Plant         INV22952_corrected.edi                          333  awaiting EERP
+2026-10-30 09:15 Corrandale Truck Plant         INV22952_corrected.edi                          335  awaiting EERP
 2026-10-30 09:43 Ostley Fasteners               DESADV_OSTLEY_094202.edi                      35736  delivered, EERP 30 Oct 09:58

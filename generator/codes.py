@@ -62,60 +62,89 @@ _ENTRIES = [
           "Unknown Interchange sender",
           "CONTRL D.3 (ISO/TC 154/JWG 1 v3-Contrl.pdf), code list 0085", quoted=True, tag="PH"),
 
-    # ---- EDIFACT conventions, from the sources in spec/SOURCES.md unless marked ----
+    # ---- EDIFACT conventions. Provenance, kept per syntax version (see spec/SOURCES.md):
+    #   SYNTAX RULES (UNB, UNZ, UNG, UNE, S004, truncation) come from UNECE. The only
+    #     UNECE segment text in hand is the 1990 reprint (d422_s.htm), which is syntax
+    #     version 2; UNECE d423.htm is the syntax version 3 (1992 rules) source.
+    #   CONTRL-specific layouts and code lists (UCI, S011, 0083, 0085, CONTRL D.3 id)
+    #     come from the CONTRL D.3 document hosted by ISO/TC 154/JWG 1.
+    #   Service code lists 0007 and 0035 come from the JWG 1-hosted service code lists.
     Entry("EDIFACT.LAYOUT.UNB", "convention",
           "UNB+S001(0001:0002)+S002(0004:0007:0008)+S003(0010:0007:0014)+S004(0017:0019)+0020",
           "Interchange header layout, syntax version 3",
-          "UNECE syntax rules Annex B (d422_s.htm), segment UNB", quoted=True),
+          "UNECE syntax rules Annex B (d422_s.htm, syntax version 2 text). Syntax version 3: "
+          "sender and recipient composites, date/time and control reference confirmed by "
+          "Houman on 3 Nov 2026 against the syntax version 3 UNB definition",
+          quoted=True, verified=True),
     Entry("EDIFACT.LAYOUT.UNZ", "convention", "UNZ+0036+0020",
-          "Interchange trailer layout", "UNECE syntax rules Annex B (d422_s.htm), segment UNZ",
+          "Interchange trailer layout",
+          "Layout: UNECE syntax rules Annex B (d422_s.htm, syntax version 2 text). "
+          "Syntax version 3: UNECE implementation guidelines (d423.htm, 1992 rules, "
+          "syntax version 3) on the first UNZ element. No syntax version 3 layout text "
+          "in hand; not yet confirmed as unchanged",
           quoted=True),
     Entry("EDIFACT.LAYOUT.UCI", "convention",
           "UCI+0020+S002+S003+0083+0085+0013+S011(0098:0104)",
           "CONTRL interchange response segment layout",
-          "CONTRL D.3 (ISO/TC 154/JWG 1 v3-Contrl.pdf), segment UCI", quoted=True),
+          "CONTRL D.3 document hosted by ISO/TC 154/JWG 1 (v3-Contrl.pdf), segment UCI",
+          quoted=True),
     Entry("EDIFACT.S011.POSITION_COUNTING", "convention",
           "0098 counts data elements after the tag from 1; 0104 counts components from 1",
           "How the erroneous position in UCI S011 is counted",
-          "general knowledge: CONTRL D.3 defines S011 but not the counting rule"),
+          "general knowledge: the JWG 1-hosted CONTRL D.3 document defines S011 but not "
+          "the counting rule"),
     Entry("EDIFACT.CONTRL.MESSAGE_ID_SYNTAX3", "convention", "CONTRL:D:3:UN",
           "UNH S009 for a CONTRL answering a syntax version 3 interchange",
-          "CONTRL D.3 (ISO/TC 154/JWG 1 v3-Contrl.pdf): version D, release 3, agency UN",
-          quoted=True),
+          "CONTRL D.3 document hosted by ISO/TC 154/JWG 1 (v3-Contrl.pdf): version D, "
+          "release 3, agency UN", quoted=True),
     Entry("EDIFACT.LAYOUT.UNB_TAIL", "convention",
           "after 0020: S005 (6), 0026 (7), 0029 (8), 0031 (9), 0032 (10), 0035 (11)",
           "Order and positions of the optional UNB elements after 0020; 0035 = 1 means test",
-          "UNECE syntax rules Annex B (d422_s.htm), segment UNB; JWG 1 code list 0035",
-          quoted=True),
+          "UNECE syntax rules Annex B (d422_s.htm, syntax version 2 text); optional "
+          "trailing fields confirmed by Houman on 3 Nov 2026 against the syntax version 3 "
+          "UNB definition; 0035 code 1 from the JWG 1-hosted service code list 0035",
+          quoted=True, verified=True),
     Entry("EDIFACT.LAYOUT.UNG_UNE", "convention",
           "UNG+0038+S006+S007+S004+0048+0051+S008; UNE+0060+0048",
           "Functional group header and trailer layout, syntax version 3",
-          "UNECE syntax rules Annex B (d422_s.htm), segments UNG and UNE", quoted=True),
+          "UNECE syntax rules Annex B (d422_s.htm, syntax version 2 text). No syntax "
+          "version 3 layout text in hand; not yet confirmed as unchanged", quoted=True),
     Entry("EDIFACT.UNZ.0036_COUNTS_GROUPS", "convention",
           "UNZ 0036 counts functional groups when UNG is used, otherwise messages",
           "Interchange control count when functional groups are present (E1 depends on this)",
-          "UNECE syntax implementation guidelines (d423.htm), UNZ first element", quoted=True),
-    # ---- SAP facts (Amendment 1), general knowledge, NOT quoted, closed book ----
+          "UNECE syntax implementation guidelines (d423.htm, 1992 rules, syntax version 3), "
+          "first UNZ element", quoted=True),
+    # ---- SAP facts (Amendment 1), closed book. Rule 3 confirmed by Houman on 3 Nov 2026:
+    #      public SAP behaviour and his general experience, not OpenText or GXS material.
+    #      These are standard SAP conventions, NOT directly verified against an SAP source.
     Entry("SAP.IDOC.STATUS_53", "convention", "53",
-          "Inbound IDoc: application document posted", "SAP standard IDoc status values"),
+          "Inbound IDoc: application document posted",
+          "standard SAP convention (IDoc status values); not verified against an SAP source"),
     Entry("SAP.IDOC.STATUS_64", "convention", "64",
           "Inbound IDoc: ready to be transferred to the application (waiting to be processed)",
-          "SAP standard IDoc status values"),
+          "standard SAP convention (IDoc status values); not verified against an SAP source"),
     Entry("SAP.IDOC.STATUS_56", "convention", "56",
           "Inbound IDoc added with errors, typically no inbound partner profile for the "
-          "sender partner and message type", "SAP standard IDoc status values"),
+          "sender partner and message type",
+          "standard SAP convention (IDoc status values); not verified against an SAP source"),
     Entry("SAP.PROGRAM.RBDAPP01", "convention", "RBDAPP01",
           "Report that passes inbound IDocs in status 64 to the application when the partner "
-          "profile is set to processing by background program", "SAP standard ALE/EDI reports"),
+          "profile is set to processing by background program",
+          "standard SAP convention (ALE/EDI reports); not verified against an SAP source"),
     Entry("SAP.PARTNER_TYPE.LI", "convention", "LI", "Partner type vendor (supplier)",
-          "SAP partner types in IDoc control record SNDPRT/RCVPRT"),
+          "standard SAP convention: LI read as partner type vendor in the IDoc control "
+          "record SNDPRT/RCVPRT; not directly verified against an SAP source"),
     Entry("EDIFACT.UNB.S004_FORMAT_SYNTAX3", "convention", "YYMMDD:HHMM",
           "Date and time of preparation format in syntax version 3: 0017 is n6 (YYMMDD), "
           "0019 is n4 (HHMM); CCYYMMDD in 0017 is a syntax version 4 format",
-          "UNECE syntax rules Annex B (d422_s.htm), composite S004", quoted=True),
-    Entry("EDIFACT.0007.MUTUALLY_DEFINED", "convention", "ZZ",
-          "Identification code qualifier for mutually defined IDs",
-          "NOT FOUND: JWG 1 code list 0007 has ZZZ Mutually defined and no ZZ"),
+          "UNECE syntax rules Annex B (d422_s.htm, syntax version 2 text); date/time "
+          "confirmed by Houman on 3 Nov 2026 against the syntax version 3 UNB definition",
+          quoted=True, verified=True),
+    Entry("EDIFACT.0007.MUTUALLY_DEFINED", "convention", "ZZZ",
+          "Mutually defined (identification code qualifier, mutually defined between "
+          "trading partners)",
+          "JWG 1-hosted service code list 0007 (D.22B archive, cl3.htm); ZZ is not in the "
+          "list. Changed from ZZ on Houman's ruling, 3 Nov 2026", quoted=True),
     Entry("EDIFACT.INVOIC.D96A.BODY", "convention", "illustrative",
           "INVOIC D.96A message body (not graded; the planted fault is never in the body)",
           "UNECE directory D.96A, message INVOIC"),

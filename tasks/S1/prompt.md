@@ -43,8 +43,8 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 
 3. EDIFACT
    Syntax identifier and version (UNB S001): UNOA, version 3.
-   Supplier interchange sender ID (UNB S002 0004 / 0007): LARKSPAN78 / ZZ
-   Customer interchange recipient ID (UNB S003 0010 / 0007): VELBROOK39 / ZZ
+   Supplier interchange sender ID (UNB S002 0004 / 0007): LARKSPAN78 / ZZZ
+   Customer interchange recipient ID (UNB S003 0010 / 0007): VELBROOK39 / ZZZ
    Messages: INVOIC D.96A, one message per interchange.
    Interchanges are sent without line feeds between segments.
    The Customer's translator returns a CONTRL message for every rejected
@@ -72,8 +72,8 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-26 08:31:58.460 S4956 .. queued INV55899.edi
 2026-10-26 08:31:58.509 S4956 >> [HLARKSPAN.INVOIC              202610260831280001        O0013VELBROOK8454        O0013LARKSPAN2139        U000000000000000001000000000000100000000000000000000000N000]
 2026-10-26 08:31:58.661 S4956 << [200000000000000000]
-2026-10-26 08:31:58.925 S4956 .. DATA: 1 exchange buffer(s), 455 octets
-2026-10-26 08:31:58.964 S4956 >> [T0000000000000000000000000000000455]
+2026-10-26 08:31:58.925 S4956 .. DATA: 1 exchange buffer(s), 457 octets
+2026-10-26 08:31:58.964 S4956 >> [T0000000000000000000000000000000457]
 2026-10-26 08:31:59.087 S4956 << [4N]
 2026-10-26 08:31:59.150 S4956 .. file transferred, awaiting EERP
 2026-10-26 08:31:59.187 S4956 >> [R]
@@ -98,8 +98,8 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-27 07:45:13.423 S4958 .. queued INV67066.edi
 2026-10-27 07:45:13.542 S4958 >> [HLARKSPAN.INVOIC              202610270743550001        O0013VELBROOK8454        O0013LARKSPAN2139        U000000000000000001000000000000100000000000000000000000N000]
 2026-10-27 07:45:13.635 S4958 << [200000000000000000]
-2026-10-27 07:45:13.909 S4958 .. DATA: 1 exchange buffer(s), 395 octets
-2026-10-27 07:45:13.919 S4958 >> [T0000000000000000000000000000000395]
+2026-10-27 07:45:13.909 S4958 .. DATA: 1 exchange buffer(s), 397 octets
+2026-10-27 07:45:13.919 S4958 >> [T0000000000000000000000000000000397]
 2026-10-27 07:45:14.004 S4958 << [4N]
 2026-10-27 07:45:14.130 S4958 .. file transferred, awaiting EERP
 2026-10-27 07:45:14.223 S4958 >> [R]
@@ -124,8 +124,8 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-28 08:55:14.495 S4960 .. queued INV18340.edi
 2026-10-28 08:55:14.654 S4960 >> [HLARKSPAN.INVOIC              202610280854160001        O0013VELBROOK8454        O0013LARKSPAN2139        U000000000000000001000000000000100000000000000000000000N000]
 2026-10-28 08:55:14.745 S4960 << [200000000000000000]
-2026-10-28 08:55:15.019 S4960 .. DATA: 1 exchange buffer(s), 452 octets
-2026-10-28 08:55:15.034 S4960 >> [T0000000000000000000000000000000452]
+2026-10-28 08:55:15.019 S4960 .. DATA: 1 exchange buffer(s), 454 octets
+2026-10-28 08:55:15.034 S4960 >> [T0000000000000000000000000000000454]
 2026-10-28 08:55:15.191 S4960 << [4N]
 2026-10-28 08:55:15.332 S4960 .. file transferred, awaiting EERP
 2026-10-28 08:55:15.418 S4960 >> [R]
@@ -150,8 +150,8 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 08:11:52.413 S4962 .. queued INV17192.edi
 2026-10-29 08:11:52.495 S4962 >> [HLARKSPAN.INVOIC              202610290810440001        O0013VELBROOK8454        O0013LARKSPAN2139        U000000000000000001000000000000100000000000000000000000N000]
 2026-10-29 08:11:52.578 S4962 << [200000000000000000]
-2026-10-29 08:11:52.738 S4962 .. DATA: 1 exchange buffer(s), 393 octets
-2026-10-29 08:11:52.864 S4962 >> [T0000000000000000000000000000000393]
+2026-10-29 08:11:52.738 S4962 .. DATA: 1 exchange buffer(s), 395 octets
+2026-10-29 08:11:52.864 S4962 >> [T0000000000000000000000000000000395]
 2026-10-29 08:11:52.971 S4962 << [4N]
 2026-10-29 08:11:53.029 S4962 .. file transferred, awaiting EERP
 2026-10-29 08:11:53.058 S4962 >> [R]
@@ -176,8 +176,8 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 07:26:09.232 S4964 .. queued INV37427.edi
 2026-10-30 07:26:09.320 S4964 >> [HLARKSPAN.INVOIC              202610300724510001        O0013VELBROOK8454        O0013LARKSPAN2139        U000000000000000001000000000000100000000000000000000000N000]
 2026-10-30 07:26:09.478 S4964 << [200000000000000000]
-2026-10-30 07:26:09.530 S4964 .. DATA: 1 exchange buffer(s), 333 octets
-2026-10-30 07:26:09.645 S4964 >> [T0000000000000000000000000000000333]
+2026-10-30 07:26:09.530 S4964 .. DATA: 1 exchange buffer(s), 335 octets
+2026-10-30 07:26:09.645 S4964 >> [T0000000000000000000000000000000335]
 2026-10-30 07:26:09.754 S4964 << [4N]
 2026-10-30 07:26:09.830 S4964 .. file transferred, awaiting EERP
 2026-10-30 07:26:09.917 S4964 >> [R]
@@ -199,7 +199,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 ## Document 3: EDIFACT interchange as transmitted (the most recent invoice) (interchange.edi)
 
 ```text
-UNB+UNOA:3+LARKSPAN78:ZZ+VELBROOK39:ZZ+261030:0724+980370'UNH+1+INVOIC:D:96A:UN'BGM+380+INV37427+9'DTM+137:20261030:102'NAD+SE+++LARKSPAN BODY PANELS'NAD+BY+++VELBROOK VEHICLE ASSEMBLY'CUX+2:EUR:4'LIN+1++P-60095:IN'QTY+47:81'MOA+203:3781.08'PRI+AAA:46.68'UNS+S'MOA+77:4537.29'TAX+7+VAT+++:::20+S'MOA+124:756.21'UNT+15+1'UNZ+1+980370'
+UNB+UNOA:3+LARKSPAN78:ZZZ+VELBROOK39:ZZZ+261030:0724+980370'UNH+1+INVOIC:D:96A:UN'BGM+380+INV37427+9'DTM+137:20261030:102'NAD+SE+++LARKSPAN BODY PANELS'NAD+BY+++VELBROOK VEHICLE ASSEMBLY'CUX+2:EUR:4'LIN+1++P-60095:IN'QTY+47:81'MOA+203:3781.08'PRI+AAA:46.68'UNS+S'MOA+77:4537.29'TAX+7+VAT+++:::20+S'MOA+124:756.21'UNT+15+1'UNZ+1+980370'
 ```
 
 ## Document 4: Partner response (partner_response.txt)
@@ -342,12 +342,22 @@ UN/EDIFACT syntax version 3: service segment and code list extracts.
 Prepared for this eval from the sources listed at the end. Segment layouts are
 restated in a compact form; code values and their names are quoted exactly.
 
-1. Interchange header UNB (syntax version 3)
+Provenance by part:
+  Parts 1 to 4 (syntax rules: UNB, UNZ, UNG, UNE, omission and truncation)
+    UNECE. The UNECE segment text used is the 1990 reprint of the syntax rules,
+    which is syntax version 2. The syntax version 3 (1992 rules) points are taken
+    from the UNECE implementation guidelines and are marked "(v3)" below.
+  Parts 5 to 7 (CONTRL: UCI, S011, code lists 0083 and 0085)
+    The CONTRL D.3 document hosted by ISO/TC 154/JWG 1.
+  Parts 8 and 9 (service code lists 0035 and 0007)
+    The service code lists hosted by ISO/TC 154/JWG 1.
+
+1. Interchange header UNB (UNECE; syntax version 2 text, version 3 noted)
 
    Data elements in order (status M = mandatory, C = conditional):
      1  S001 SYNTAX IDENTIFIER                      M
           0001 Syntax identifier          a4   M  (e.g. UNOA, UNOB, UNOC)
-          0002 Syntax version number      n1   M  (3 for syntax version 3)
+          0002 Syntax version number      n1   M  (v3: 3 for the 1992 rules)
      2  S002 INTERCHANGE SENDER                     M
           0004 Sender identification      an..35 M
           0007 Partner identification code qualifier  an..4 C
@@ -369,15 +379,15 @@ restated in a compact form; code values and their names are quoted exactly.
     10  0032 COMMUNICATIONS AGREEMENT ID    an..35 C
     11  0035 TEST INDICATOR                 n1     C  (1 = the interchange is a test)
 
-2. Interchange trailer UNZ
+2. Interchange trailer UNZ (UNECE; syntax version 2 text, version 3 noted)
 
      1  0036 INTERCHANGE CONTROL COUNT      n..6   M
-          The number of messages in the interchange or, if functional groups
-          are used, the number of functional groups.
+          (v3) The number of messages in the interchange or, if functional
+          groups are used, the number of functional groups.
      2  0020 INTERCHANGE CONTROL REFERENCE  an..14 M
           Shall be identical to 0020 in UNB.
 
-3. Functional group header UNG and trailer UNE
+3. Functional group header UNG and trailer UNE (UNECE; syntax version 2 text)
 
    UNG: 1 0038 Functional group identification; 2 S006 Application sender's
         identification (0040, 0007); 3 S007 Application recipient's
@@ -387,7 +397,7 @@ restated in a compact form; code values and their names are quoted exactly.
    UNE: 1 0060 Number of messages in the group; 2 0048 Functional group
         reference number, identical to 0048 in UNG.
 
-4. Omission and truncation of data elements
+4. Omission and truncation of data elements (UNECE; syntax version 2 text)
 
    If a conditional data element is omitted and is followed by another data
    element, its position is indicated by retaining its data element separator.
@@ -395,8 +405,8 @@ restated in a compact form; code values and their names are quoted exactly.
    omitted, the segment may be truncated by the segment terminator; trailing
    data element separators are then not transmitted.
 
-5. CONTRL message (UNH message identifier CONTRL:D:3:UN), segment UCI
-   INTERCHANGE RESPONSE
+5. CONTRL message version D release 3 (UNH message identifier
+   CONTRL:D:3:UN), segment UCI INTERCHANGE RESPONSE (JWG 1-hosted CONTRL D.3)
 
    Pos  Tag   Name                                         St  Format
    010  0020  INTERCHANGE CONTROL REFERENCE                M   an..14
@@ -417,14 +427,14 @@ restated in a compact form; code values and their names are quoted exactly.
 
    S011 identifies the position of an erroneous data element.
 
-6. Code list 0083 Action, coded
+6. Code list 0083 Action, coded (JWG 1-hosted CONTRL D.3)
 
    4   This level and all lower levels rejected
    7   This level acknowledged, next lower level acknowledged if not
        explicitly rejected
    8   Interchange received
 
-7. Code list 0085 Syntax error, coded
+7. Code list 0085 Syntax error, coded (JWG 1-hosted CONTRL D.3)
 
    2   Syntax version or level not supported
    7   Interchange recipient not actual recipient
@@ -461,22 +471,30 @@ restated in a compact form; code values and their names are quoted exactly.
    42  Temporary communication network error
    43  Unknown interchange recipient
 
-8. Code list 0035 Test indicator
+8. Code list 0035 Test indicator (JWG 1-hosted service code list)
 
    1   Interchange is a test
 
+9. Code list 0007 Identification code qualifier (JWG 1-hosted service code
+   list; the one value used here)
+
+   ZZZ Mutually defined
+
 Sources
-- UN/EDIFACT syntax rules and Annex B segment specifications (UNB, UNZ, UNG,
-  UNE; clauses 7.2 and 7.3 on omission and truncation), UNECE:
+- UNECE, UN/EDIFACT syntax rules, 1990 amended reprint (syntax version 2), with
+  Annex B segment specifications (UNB, UNZ, UNG, UNE; clauses 7.2 and 7.3 on
+  omission and truncation):
   https://unece.org/fileadmin/DAM/trade/edifact/untdid/d422_s.htm
-- UN/EDIFACT syntax implementation guidelines, UNECE (syntax version number 3
-  for the 1992 syntax rules; UNZ count of functional groups):
+- UNECE, UN/EDIFACT syntax implementation guidelines, issue 94.2 (syntax
+  version 3: version number 3 for the 1992 rules; UNZ count of functional
+  groups):
   https://unece.org/fileadmin/DAM/trade/untdid/texts/d423.htm
-- CONTRL, Syntax and service report message, version D release 3 (UCI, S011,
-  code lists 0083 and 0085), ISO/TC 154/JWG 1:
+- CONTRL, Syntax and service report message, version D release 3, revision 1,
+  97-03-17 (UCI, S011, code lists 0083 and 0085), hosted by ISO/TC 154/JWG 1:
   https://service.gefeg.com/jwg1/Files/v3-Contrl.pdf
-- Service code list 0035, ISO/TC 154/JWG 1:
+- Service code lists 0035 and 0007 (D.22B archive), hosted by ISO/TC 154/JWG 1:
   https://service.gefeg.com/jwg1/Archive-Sx/D22B/cl/cl7.htm
+  https://service.gefeg.com/jwg1/Archive-Sx/D22B/cl/cl3.htm
 ```
 
 ## What to return

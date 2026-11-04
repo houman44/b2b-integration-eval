@@ -428,7 +428,7 @@ def agreement(sender: Party, receiver: Party, *, effective: str, sdeb: int, cred
               dsn: str, sender_edi_id: str, hub: Party = None, max_messages: int = 1,
               contrl: bool = True, routing_by_unb: bool = False, groups: bool = False,
               extra_sections=()) -> str:
-    q = "ZZ"
+    q = ENTRIES["EDIFACT.0007.MUTUALLY_DEFINED"].value
     lines = [
         "PARTNER AGREEMENT: ELECTRONIC DATA INTERCHANGE",
         f"Between {sender.name} (the Supplier) and {receiver.name} (the Customer)",

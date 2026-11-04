@@ -43,8 +43,8 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 
 3. EDIFACT
    Syntax identifier and version (UNB S001): UNOA, version 3.
-   Supplier interchange sender ID (UNB S002 0004 / 0007): LARKSPAN73 / ZZ
-   Customer interchange recipient ID (UNB S003 0010 / 0007): CORRANDALE92 / ZZ
+   Supplier interchange sender ID (UNB S002 0004 / 0007): LARKSPAN73 / ZZZ
+   Customer interchange recipient ID (UNB S003 0010 / 0007): CORRANDALE92 / ZZZ
    Messages: INVOIC D.96A, up to 50 messages per interchange.
    Messages are sent in one functional group (UNG/UNE) per interchange.
    Interchanges are sent without line feeds between segments.
@@ -73,8 +73,8 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 07:26:03.325 S7351 .. queued INVOICES_20261030_BATCH1.edi
 2026-10-30 07:26:03.345 S7351 >> [HLARKSPAN.INVOIC              202610300725100001        O0013CORRANDALE6357      O0013LARKSPAN6472        U000000000000000003000000000000300000000000000000000000N000]
 2026-10-30 07:26:03.373 S7351 << [200000000000000000]
-2026-10-30 07:26:03.416 S7351 .. DATA: 1 exchange buffer(s), 2688 octets
-2026-10-30 07:26:03.512 S7351 >> [T0000000000000000000000000000002688]
+2026-10-30 07:26:03.416 S7351 .. DATA: 1 exchange buffer(s), 2692 octets
+2026-10-30 07:26:03.512 S7351 >> [T0000000000000000000000000000002692]
 2026-10-30 07:26:03.645 S7351 << [4N]
 2026-10-30 07:26:03.817 S7351 .. file transferred, awaiting EERP
 2026-10-30 07:26:03.919 S7351 >> [R]
@@ -89,8 +89,8 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 07:56:35.549 S7352 >> [P]
 2026-10-30 07:56:35.725 S7352 << [HCORRANDALE.CONTRL            202610300753470001        O0013LARKSPAN6472        O0013CORRANDALE6357      U000000000000000001000000000000100000000000000000000000N000]
 2026-10-30 07:56:35.792 S7352 >> [200000000000000000]
-2026-10-30 07:56:35.850 S7352 .. DATA: 1 exchange buffer(s), 184 octets
-2026-10-30 07:56:35.986 S7352 << [T0000000000000000000000000000000184]
+2026-10-30 07:56:35.850 S7352 .. DATA: 1 exchange buffer(s), 188 octets
+2026-10-30 07:56:35.986 S7352 << [T0000000000000000000000000000000188]
 2026-10-30 07:56:36.099 S7352 >> [4N]
 2026-10-30 07:56:36.155 S7352 .. stored as inbound/CORRANDALE.CONTRL_202610300753470001.edi
 2026-10-30 07:56:36.332 S7352 << [R]
@@ -104,7 +104,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 ## Document 3: EDIFACT interchange the ticket is about (as transmitted) (interchange.edi)
 
 ```text
-UNB+UNOA:3+LARKSPAN73:ZZ+CORRANDALE92:ZZ+261030:0725+00000122'UNG+INVOIC+LARKSPAN73:ZZ+CORRANDALE92:ZZ+261030:0725+8984+UN+D:96A'UNH+1+INVOIC:D:96A:UN'BGM+380+INV76944+9'DTM+137:20261030:102'NAD+SE+++LARKSPAN BODY PANELS'NAD+BY+++CORRANDALE TRUCK PLANT'CUX+2:EUR:4'LIN+1++P-17631:IN'QTY+47:268'MOA+203:8007.84'PRI+AAA:29.88'LIN+2++P-70828:IN'QTY+47:31'MOA+203:261.95'PRI+AAA:8.45'LIN+3++P-40416:IN'QTY+47:91'MOA+203:1668.03'PRI+AAA:18.33'UNS+S'MOA+77:11925.38'TAX+7+VAT+++:::20+S'MOA+124:1987.56'UNT+23+1'UNH+2+INVOIC:D:96A:UN'BGM+380+INV76945+9'DTM+137:20261030:102'NAD+SE+++LARKSPAN BODY PANELS'NAD+BY+++CORRANDALE TRUCK PLANT'CUX+2:EUR:4'LIN+1++P-94902:IN'QTY+47:345'MOA+203:11353.95'PRI+AAA:32.91'LIN+2++P-58891:IN'QTY+47:222'MOA+203:8027.52'PRI+AAA:36.16'LIN+3++P-81844:IN'QTY+47:202'MOA+203:4886.38'PRI+AAA:24.19'UNS+S'MOA+77:29121.42'TAX+7+VAT+++:::20+S'MOA+124:4853.57'UNT+23+2'UNH+3+INVOIC:D:96A:UN'BGM+380+INV76946+9'DTM+137:20261030:102'NAD+SE+++LARKSPAN BODY PANELS'NAD+BY+++CORRANDALE TRUCK PLANT'CUX+2:EUR:4'LIN+1++P-09289:IN'QTY+47:235'MOA+203:4949.10'PRI+AAA:21.06'LIN+2++P-48418:IN'QTY+47:43'MOA+203:1570.79'PRI+AAA:36.53'LIN+3++P-90697:IN'QTY+47:285'MOA+203:7581.00'PRI+AAA:26.60'UNS+S'MOA+77:16921.06'TAX+7+VAT+++:::20+S'MOA+124:2820.17'UNT+23+3'UNH+4+INVOIC:D:96A:UN'BGM+380+INV76947+9'DTM+137:20261030:102'NAD+SE+++LARKSPAN BODY PANELS'NAD+BY+++CORRANDALE TRUCK PLANT'CUX+2:EUR:4'LIN+1++P-78769:IN'QTY+47:42'MOA+203:1832.04'PRI+AAA:43.62'LIN+2++P-19554:IN'QTY+47:279'MOA+203:9078.66'PRI+AAA:32.54'UNS+S'MOA+77:13092.84'TAX+7+VAT+++:::20+S'MOA+124:2182.14'UNT+19+4'UNH+5+INVOIC:D:96A:UN'BGM+380+INV76948+9'DTM+137:20261030:102'NAD+SE+++LARKSPAN BODY PANELS'NAD+BY+++CORRANDALE TRUCK PLANT'CUX+2:EUR:4'LIN+1++P-85386:IN'QTY+47:214'MOA+203:8352.42'PRI+AAA:39.03'LIN+2++P-30351:IN'QTY+47:110'MOA+203:2932.60'PRI+AAA:26.66'LIN+3++P-09224:IN'QTY+47:341'MOA+203:7423.57'PRI+AAA:21.77'UNS+S'MOA+77:22450.30'TAX+7+VAT+++:::20+S'MOA+124:3741.71'UNT+23+5'UNH+6+INVOIC:D:96A:UN'BGM+380+INV76949+9'DTM+137:20261030:102'NAD+SE+++LARKSPAN BODY PANELS'NAD+BY+++CORRANDALE TRUCK PLANT'CUX+2:EUR:4'LIN+1++P-35732:IN'QTY+47:355'MOA+203:13095.95'PRI+AAA:36.89'LIN+2++P-22768:IN'QTY+47:54'MOA+203:901.80'PRI+AAA:16.70'LIN+3++P-87640:IN'QTY+47:338'MOA+203:15646.02'PRI+AAA:46.29'UNS+S'MOA+77:35572.52'TAX+7+VAT+++:::20+S'MOA+124:5928.75'UNT+23+6'UNH+7+INVOIC:D:96A:UN'BGM+380+INV76950+9'DTM+137:20261030:102'NAD+SE+++LARKSPAN BODY PANELS'NAD+BY+++CORRANDALE TRUCK PLANT'CUX+2:EUR:4'LIN+1++P-49380:IN'QTY+47:202'MOA+203:8029.50'PRI+AAA:39.75'LIN+2++P-83492:IN'QTY+47:378'MOA+203:17055.36'PRI+AAA:45.12'UNS+S'MOA+77:30101.83'TAX+7+VAT+++:::20+S'MOA+124:5016.97'UNT+19+7'UNE+7+8984'UNZ+1+122'
+UNB+UNOA:3+LARKSPAN73:ZZZ+CORRANDALE92:ZZZ+261030:0725+00000122'UNG+INVOIC+LARKSPAN73:ZZZ+CORRANDALE92:ZZZ+261030:0725+8984+UN+D:96A'UNH+1+INVOIC:D:96A:UN'BGM+380+INV76944+9'DTM+137:20261030:102'NAD+SE+++LARKSPAN BODY PANELS'NAD+BY+++CORRANDALE TRUCK PLANT'CUX+2:EUR:4'LIN+1++P-17631:IN'QTY+47:268'MOA+203:8007.84'PRI+AAA:29.88'LIN+2++P-70828:IN'QTY+47:31'MOA+203:261.95'PRI+AAA:8.45'LIN+3++P-40416:IN'QTY+47:91'MOA+203:1668.03'PRI+AAA:18.33'UNS+S'MOA+77:11925.38'TAX+7+VAT+++:::20+S'MOA+124:1987.56'UNT+23+1'UNH+2+INVOIC:D:96A:UN'BGM+380+INV76945+9'DTM+137:20261030:102'NAD+SE+++LARKSPAN BODY PANELS'NAD+BY+++CORRANDALE TRUCK PLANT'CUX+2:EUR:4'LIN+1++P-94902:IN'QTY+47:345'MOA+203:11353.95'PRI+AAA:32.91'LIN+2++P-58891:IN'QTY+47:222'MOA+203:8027.52'PRI+AAA:36.16'LIN+3++P-81844:IN'QTY+47:202'MOA+203:4886.38'PRI+AAA:24.19'UNS+S'MOA+77:29121.42'TAX+7+VAT+++:::20+S'MOA+124:4853.57'UNT+23+2'UNH+3+INVOIC:D:96A:UN'BGM+380+INV76946+9'DTM+137:20261030:102'NAD+SE+++LARKSPAN BODY PANELS'NAD+BY+++CORRANDALE TRUCK PLANT'CUX+2:EUR:4'LIN+1++P-09289:IN'QTY+47:235'MOA+203:4949.10'PRI+AAA:21.06'LIN+2++P-48418:IN'QTY+47:43'MOA+203:1570.79'PRI+AAA:36.53'LIN+3++P-90697:IN'QTY+47:285'MOA+203:7581.00'PRI+AAA:26.60'UNS+S'MOA+77:16921.06'TAX+7+VAT+++:::20+S'MOA+124:2820.17'UNT+23+3'UNH+4+INVOIC:D:96A:UN'BGM+380+INV76947+9'DTM+137:20261030:102'NAD+SE+++LARKSPAN BODY PANELS'NAD+BY+++CORRANDALE TRUCK PLANT'CUX+2:EUR:4'LIN+1++P-78769:IN'QTY+47:42'MOA+203:1832.04'PRI+AAA:43.62'LIN+2++P-19554:IN'QTY+47:279'MOA+203:9078.66'PRI+AAA:32.54'UNS+S'MOA+77:13092.84'TAX+7+VAT+++:::20+S'MOA+124:2182.14'UNT+19+4'UNH+5+INVOIC:D:96A:UN'BGM+380+INV76948+9'DTM+137:20261030:102'NAD+SE+++LARKSPAN BODY PANELS'NAD+BY+++CORRANDALE TRUCK PLANT'CUX+2:EUR:4'LIN+1++P-85386:IN'QTY+47:214'MOA+203:8352.42'PRI+AAA:39.03'LIN+2++P-30351:IN'QTY+47:110'MOA+203:2932.60'PRI+AAA:26.66'LIN+3++P-09224:IN'QTY+47:341'MOA+203:7423.57'PRI+AAA:21.77'UNS+S'MOA+77:22450.30'TAX+7+VAT+++:::20+S'MOA+124:3741.71'UNT+23+5'UNH+6+INVOIC:D:96A:UN'BGM+380+INV76949+9'DTM+137:20261030:102'NAD+SE+++LARKSPAN BODY PANELS'NAD+BY+++CORRANDALE TRUCK PLANT'CUX+2:EUR:4'LIN+1++P-35732:IN'QTY+47:355'MOA+203:13095.95'PRI+AAA:36.89'LIN+2++P-22768:IN'QTY+47:54'MOA+203:901.80'PRI+AAA:16.70'LIN+3++P-87640:IN'QTY+47:338'MOA+203:15646.02'PRI+AAA:46.29'UNS+S'MOA+77:35572.52'TAX+7+VAT+++:::20+S'MOA+124:5928.75'UNT+23+6'UNH+7+INVOIC:D:96A:UN'BGM+380+INV76950+9'DTM+137:20261030:102'NAD+SE+++LARKSPAN BODY PANELS'NAD+BY+++CORRANDALE TRUCK PLANT'CUX+2:EUR:4'LIN+1++P-49380:IN'QTY+47:202'MOA+203:8029.50'PRI+AAA:39.75'LIN+2++P-83492:IN'QTY+47:378'MOA+203:17055.36'PRI+AAA:45.12'UNS+S'MOA+77:30101.83'TAX+7+VAT+++:::20+S'MOA+124:5016.97'UNT+19+7'UNE+7+8984'UNZ+1+122'
 ```
 
 ## Document 4: Partner response (partner_response.txt)
@@ -122,7 +122,7 @@ Regards,
 Jordan Brandt
 
 --- CONTRL as received by Larkspan Body Panels (inbound/CORRANDALE.CONTRL_202610300753470001.edi) ---
-UNB+UNOA:3+CORRANDALE92:ZZ+LARKSPAN73:ZZ+261030:0753+C55401'UNH+1+CONTRL:D:3:UN'UCI+00000122+LARKSPAN73:ZZ+CORRANDALE92:ZZ+<<UNVERIFIED-PF>>+<<UNVERIFIED-PG>>+UNZ'UNT+3+1'UNZ+1+C55401'
+UNB+UNOA:3+CORRANDALE92:ZZZ+LARKSPAN73:ZZZ+261030:0753+C55401'UNH+1+CONTRL:D:3:UN'UCI+00000122+LARKSPAN73:ZZZ+CORRANDALE92:ZZZ+<<UNVERIFIED-PF>>+<<UNVERIFIED-PG>>+UNZ'UNT+3+1'UNZ+1+C55401'
 ```
 
 ## Document 5: Specification extracts (spec_extracts.txt)
@@ -221,12 +221,22 @@ UN/EDIFACT syntax version 3: service segment and code list extracts.
 Prepared for this eval from the sources listed at the end. Segment layouts are
 restated in a compact form; code values and their names are quoted exactly.
 
-1. Interchange header UNB (syntax version 3)
+Provenance by part:
+  Parts 1 to 4 (syntax rules: UNB, UNZ, UNG, UNE, omission and truncation)
+    UNECE. The UNECE segment text used is the 1990 reprint of the syntax rules,
+    which is syntax version 2. The syntax version 3 (1992 rules) points are taken
+    from the UNECE implementation guidelines and are marked "(v3)" below.
+  Parts 5 to 7 (CONTRL: UCI, S011, code lists 0083 and 0085)
+    The CONTRL D.3 document hosted by ISO/TC 154/JWG 1.
+  Parts 8 and 9 (service code lists 0035 and 0007)
+    The service code lists hosted by ISO/TC 154/JWG 1.
+
+1. Interchange header UNB (UNECE; syntax version 2 text, version 3 noted)
 
    Data elements in order (status M = mandatory, C = conditional):
      1  S001 SYNTAX IDENTIFIER                      M
           0001 Syntax identifier          a4   M  (e.g. UNOA, UNOB, UNOC)
-          0002 Syntax version number      n1   M  (3 for syntax version 3)
+          0002 Syntax version number      n1   M  (v3: 3 for the 1992 rules)
      2  S002 INTERCHANGE SENDER                     M
           0004 Sender identification      an..35 M
           0007 Partner identification code qualifier  an..4 C
@@ -248,15 +258,15 @@ restated in a compact form; code values and their names are quoted exactly.
     10  0032 COMMUNICATIONS AGREEMENT ID    an..35 C
     11  0035 TEST INDICATOR                 n1     C  (1 = the interchange is a test)
 
-2. Interchange trailer UNZ
+2. Interchange trailer UNZ (UNECE; syntax version 2 text, version 3 noted)
 
      1  0036 INTERCHANGE CONTROL COUNT      n..6   M
-          The number of messages in the interchange or, if functional groups
-          are used, the number of functional groups.
+          (v3) The number of messages in the interchange or, if functional
+          groups are used, the number of functional groups.
      2  0020 INTERCHANGE CONTROL REFERENCE  an..14 M
           Shall be identical to 0020 in UNB.
 
-3. Functional group header UNG and trailer UNE
+3. Functional group header UNG and trailer UNE (UNECE; syntax version 2 text)
 
    UNG: 1 0038 Functional group identification; 2 S006 Application sender's
         identification (0040, 0007); 3 S007 Application recipient's
@@ -266,7 +276,7 @@ restated in a compact form; code values and their names are quoted exactly.
    UNE: 1 0060 Number of messages in the group; 2 0048 Functional group
         reference number, identical to 0048 in UNG.
 
-4. Omission and truncation of data elements
+4. Omission and truncation of data elements (UNECE; syntax version 2 text)
 
    If a conditional data element is omitted and is followed by another data
    element, its position is indicated by retaining its data element separator.
@@ -274,8 +284,8 @@ restated in a compact form; code values and their names are quoted exactly.
    omitted, the segment may be truncated by the segment terminator; trailing
    data element separators are then not transmitted.
 
-5. CONTRL message (UNH message identifier CONTRL:D:3:UN), segment UCI
-   INTERCHANGE RESPONSE
+5. CONTRL message version D release 3 (UNH message identifier
+   CONTRL:D:3:UN), segment UCI INTERCHANGE RESPONSE (JWG 1-hosted CONTRL D.3)
 
    Pos  Tag   Name                                         St  Format
    010  0020  INTERCHANGE CONTROL REFERENCE                M   an..14
@@ -296,14 +306,14 @@ restated in a compact form; code values and their names are quoted exactly.
 
    S011 identifies the position of an erroneous data element.
 
-6. Code list 0083 Action, coded
+6. Code list 0083 Action, coded (JWG 1-hosted CONTRL D.3)
 
    4   This level and all lower levels rejected
    7   This level acknowledged, next lower level acknowledged if not
        explicitly rejected
    8   Interchange received
 
-7. Code list 0085 Syntax error, coded
+7. Code list 0085 Syntax error, coded (JWG 1-hosted CONTRL D.3)
 
    2   Syntax version or level not supported
    7   Interchange recipient not actual recipient
@@ -340,22 +350,30 @@ restated in a compact form; code values and their names are quoted exactly.
    42  Temporary communication network error
    43  Unknown interchange recipient
 
-8. Code list 0035 Test indicator
+8. Code list 0035 Test indicator (JWG 1-hosted service code list)
 
    1   Interchange is a test
 
+9. Code list 0007 Identification code qualifier (JWG 1-hosted service code
+   list; the one value used here)
+
+   ZZZ Mutually defined
+
 Sources
-- UN/EDIFACT syntax rules and Annex B segment specifications (UNB, UNZ, UNG,
-  UNE; clauses 7.2 and 7.3 on omission and truncation), UNECE:
+- UNECE, UN/EDIFACT syntax rules, 1990 amended reprint (syntax version 2), with
+  Annex B segment specifications (UNB, UNZ, UNG, UNE; clauses 7.2 and 7.3 on
+  omission and truncation):
   https://unece.org/fileadmin/DAM/trade/edifact/untdid/d422_s.htm
-- UN/EDIFACT syntax implementation guidelines, UNECE (syntax version number 3
-  for the 1992 syntax rules; UNZ count of functional groups):
+- UNECE, UN/EDIFACT syntax implementation guidelines, issue 94.2 (syntax
+  version 3: version number 3 for the 1992 rules; UNZ count of functional
+  groups):
   https://unece.org/fileadmin/DAM/trade/untdid/texts/d423.htm
-- CONTRL, Syntax and service report message, version D release 3 (UCI, S011,
-  code lists 0083 and 0085), ISO/TC 154/JWG 1:
+- CONTRL, Syntax and service report message, version D release 3, revision 1,
+  97-03-17 (UCI, S011, code lists 0083 and 0085), hosted by ISO/TC 154/JWG 1:
   https://service.gefeg.com/jwg1/Files/v3-Contrl.pdf
-- Service code list 0035, ISO/TC 154/JWG 1:
+- Service code lists 0035 and 0007 (D.22B archive), hosted by ISO/TC 154/JWG 1:
   https://service.gefeg.com/jwg1/Archive-Sx/D22B/cl/cl7.htm
+  https://service.gefeg.com/jwg1/Archive-Sx/D22B/cl/cl3.htm
 ```
 
 ## What to return

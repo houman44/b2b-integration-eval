@@ -1256,7 +1256,7 @@ def build_R2(ctx: Ctx) -> Bundle:
                 "owner": "receiver", "location": ["APP.CONVERTER_PARTNER_TABLE"],
                 "next_check": "none", "value": s.edi_id},
         rationale=(
-            f"The wire copy's UNB S002 is {s.edi_id}:ZZ, exactly the sender ID in the signed "
+            f"The wire copy's UNB S002 is {s.edi_id}:{ctx.conv('EDIFACT.0007.MUTUALLY_DEFINED')}, exactly the sender ID in the signed "
             f"agreement, and the CONTRL echoes that same ID in UCI S002 as unknown, so the "
             f"receiver received the agreed ID and rejected it. Every other envelope value "
             f"matches. The rejections start the day after the receiver migrated its partner "
@@ -1428,7 +1428,7 @@ def build_S2(ctx: Ctx) -> Bundle:
         last_ic = ic
     table = ["EDI converter partner table (excerpt), inbound INVOIC",
              f"{'UNB S002 0004':16} {'0007':5} {'SAP SNDPRT':10} {'SAP SNDPRN':12}",
-             f"{old_id:16} {'ZZ':5} {'LI':10} {vendor:12}",
+             f"{old_id:16} {ctx.conv('EDIFACT.0007.MUTUALLY_DEFINED'):5} {'LI':10} {vendor:12}",
              "(no other entry for this supplier)"]
     response = (
         f"From: {r.contact}, EDI operations, {r.name}\n"

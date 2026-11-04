@@ -40,7 +40,7 @@ Input: fixed-width records, positions counted in characters from 1.
 Output: one interchange, syntax UNOA version 3, default service characters
 (UNA not sent), release character ? before any of ? + : ' inside a value.
 Segments, in this order:
-  UNB+UNOA:3+{sender}:ZZ+{recipient}:ZZ+{prep_date}:{prep_time}+{ref}'
+  UNB+UNOA:3+{sender}:ZZZ+{recipient}:ZZZ+{prep_date}:{prep_time}+{ref}'
   UNH+1+INVOIC:D:96A:UN'
   BGM+380+<invoice number, trailing spaces removed>+9'
   DTM+137:<invoice date>:102'
@@ -110,7 +110,7 @@ def build_X2(seed=50248002) -> TTask:
     name = transliterate_unoa(buyer)
     name = "".join(c if c in ALLOWED else " " for c in name)
     name = " ".join(name.split())[:35].rstrip()
-    segs = [f"UNB+UNOA:3+{sender}:ZZ+{recipient}:ZZ+{prep_date}:{prep_time}+{ref}",
+    segs = [f"UNB+UNOA:3+{sender}:ZZZ+{recipient}:ZZZ+{prep_date}:{prep_time}+{ref}",
             "UNH+1+INVOIC:D:96A:UN", f"BGM+380+{esc(inv)}+9", f"DTM+137:{date}:102",
             f"NAD+BY+++{esc(name)}", "CUX+2:EUR:4"]
     total = Decimal(0)
@@ -185,7 +185,7 @@ def build_X1(seed=50248001) -> TTask:
     content[6] = content[6] + [("SEAL?RING-7", "PCE", 250)]
     labels = {c: f"LBL{rng.digits(8)}" for c in [2, 3, 4, 5, 6, 8, 9, 10]}
     parent = {3: 2, 4: 2, 6: 5, 8: 5, 10: 9, 2: 1, 5: 1, 9: 1}
-    segs = ["UNB+UNOA:3+QUILLMERE07:ZZ+MARROWGATE11:ZZ+261102:0715+004721",
+    segs = ["UNB+UNOA:3+QUILLMERE07:ZZZ+MARROWGATE11:ZZZ+261102:0715+004721",
             "UNH+1+DESADV:D:96A:UN", f"BGM+351+{dn}+9", "DTM+137:20261102:102",
             f"DTM+11:{ddate}:102", "NAD+SU+++QUILLMERE DRIVETRAIN LTD",
             "NAD+ST+++MARROWGATE MOTOR WORKS"]

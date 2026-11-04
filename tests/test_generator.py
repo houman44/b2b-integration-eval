@@ -213,9 +213,9 @@ class PlantedFault(unittest.TestCase):
     def test_R2_receiver_rejects_the_agreed_id(self):
         b = self.b["R2"]
         sid = b.facts["sender_id"]
-        self.assertIn(f"(UNB S002 0004 / 0007): {sid} / ZZ", b.documents["partner_agreement.txt"])
-        self.assertEqual(seg(b.documents["interchange.edi"], "UNB")[0].split("+")[2], f"{sid}:ZZ")
-        self.assertIn(f"+{sid}:ZZ+", seg(b.documents["partner_response.txt"], "UCI")[0] + "+")
+        self.assertIn(f"(UNB S002 0004 / 0007): {sid} / ZZZ", b.documents["partner_agreement.txt"])
+        self.assertEqual(seg(b.documents["interchange.edi"], "UNB")[0].split("+")[2], f"{sid}:ZZZ")
+        self.assertIn(f"+{sid}:ZZZ+", seg(b.documents["partner_response.txt"], "UCI")[0] + "+")
 
     def test_unit_counts_match_interchange_bytes(self):
         for tid, b in self.b.items():

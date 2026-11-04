@@ -48,8 +48,8 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 
 3. EDIFACT
    Syntax identifier and version (UNB S001): UNOA, version 3.
-   Supplier interchange sender ID (UNB S002 0004 / 0007): LARKSPAN10 / ZZ
-   Customer interchange recipient ID (UNB S003 0010 / 0007): CORRANDALE96 / ZZ
+   Supplier interchange sender ID (UNB S002 0004 / 0007): LARKSPAN10 / ZZZ
+   Customer interchange recipient ID (UNB S003 0010 / 0007): CORRANDALE96 / ZZZ
    Messages: INVOIC D.96A, one message per interchange.
    Interchanges are sent without line feeds between segments.
    The Customer's translator returns a CONTRL message for every rejected
@@ -263,8 +263,8 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 12:43:06.272 S2495 .. queued INV22951.edi
 2026-10-29 12:43:06.323 S2495 >> [HLARKSPAN.INVOIC              202610291242260001        O0013CORRANDALE5314      O0013LARKSPAN7489        U000000000000000001000000000000100000000000000000000000N000]
 2026-10-29 12:43:06.429 S2495 << [200000000000000000]
-2026-10-29 12:43:06.620 S2495 .. DATA: 1 exchange buffer(s), 390 octets
-2026-10-29 12:43:06.719 S2495 >> [T0000000000000000000000000000000390]
+2026-10-29 12:43:06.620 S2495 .. DATA: 1 exchange buffer(s), 392 octets
+2026-10-29 12:43:06.719 S2495 >> [T0000000000000000000000000000000392]
 2026-10-29 12:43:06.763 S2495 << [4N]
 2026-10-29 12:43:06.811 S2495 .. file transferred, awaiting EERP
 2026-10-29 12:43:06.873 S2495 >> [R]
@@ -341,8 +341,8 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 14:22:32.152 S2496 .. queued INV22952.edi
 2026-10-29 14:22:32.281 S2496 >> [HLARKSPAN.INVOIC              202610291421340001        O0013CORRANDALE5314      O0013LARKSPAN7489        U000000000000000001000000000000100000000000000000000000N000]
 2026-10-29 14:22:32.345 S2496 << [200000000000000000]
-2026-10-29 14:22:32.594 S2496 .. DATA: 1 exchange buffer(s), 333 octets
-2026-10-29 14:22:32.714 S2496 >> [T0000000000000000000000000000000333]
+2026-10-29 14:22:32.594 S2496 .. DATA: 1 exchange buffer(s), 335 octets
+2026-10-29 14:22:32.714 S2496 >> [T0000000000000000000000000000000335]
 2026-10-29 14:22:32.805 S2496 << [4N]
 2026-10-29 14:22:32.856 S2496 .. file transferred, awaiting EERP
 2026-10-29 14:22:32.985 S2496 >> [R]
@@ -389,8 +389,8 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 15:56:59.498 S2498 .. queued INV22953.edi
 2026-10-29 15:56:59.649 S2498 >> [HLARKSPAN.INVOIC              202610291556160001        O0013CORRANDALE5314      O0013LARKSPAN7489        U000000000000000001000000000000100000000000000000000000N000]
 2026-10-29 15:56:59.710 S2498 << [200000000000000000]
-2026-10-29 15:56:59.750 S2498 .. DATA: 1 exchange buffer(s), 454 octets
-2026-10-29 15:56:59.764 S2498 >> [T0000000000000000000000000000000454]
+2026-10-29 15:56:59.750 S2498 .. DATA: 1 exchange buffer(s), 456 octets
+2026-10-29 15:56:59.764 S2498 >> [T0000000000000000000000000000000456]
 2026-10-29 15:56:59.924 S2498 << [4N]
 2026-10-29 15:56:59.990 S2498 .. file transferred, awaiting EERP
 2026-10-29 15:57:00.062 S2498 >> [R]
@@ -636,8 +636,8 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 07:51:13.473 S2500 .. queued INV22954.edi
 2026-10-30 07:51:13.609 S2500 >> [HLARKSPAN.INVOIC              202610300750390001        O0013CORRANDALE5314      O0013LARKSPAN7489        U000000000000000001000000000000100000000000000000000000N000]
 2026-10-30 07:51:13.618 S2500 << [200000000000000000]
-2026-10-30 07:51:13.713 S2500 .. DATA: 1 exchange buffer(s), 391 octets
-2026-10-30 07:51:13.808 S2500 >> [T0000000000000000000000000000000391]
+2026-10-30 07:51:13.713 S2500 .. DATA: 1 exchange buffer(s), 393 octets
+2026-10-30 07:51:13.808 S2500 >> [T0000000000000000000000000000000393]
 2026-10-30 07:51:13.938 S2500 << [4N]
 2026-10-30 07:51:13.981 S2500 .. file transferred, awaiting EERP
 2026-10-30 07:51:14.112 S2500 >> [R]
@@ -703,8 +703,8 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 08:33:42.470 S2501 .. queued INV22952_corrected.edi
 2026-10-30 08:33:42.543 S2501 >> [HLARKSPAN.INVOIC              202610291421340001        O0013CORRANDALE5314      O0013LARKSPAN7489        U000000000000000001000000000000100000000000000000000000N000]
 2026-10-30 08:33:42.633 S2501 << [200000000000000000]
-2026-10-30 08:33:42.829 S2501 .. DATA: 1 exchange buffer(s), 333 octets
-2026-10-30 08:33:42.976 S2501 >> [T0000000000000000000000000000000333]
+2026-10-30 08:33:42.829 S2501 .. DATA: 1 exchange buffer(s), 335 octets
+2026-10-30 08:33:42.976 S2501 >> [T0000000000000000000000000000000335]
 2026-10-30 08:33:43.138 S2501 << [4N]
 2026-10-30 08:33:43.151 S2501 .. file transferred, awaiting EERP
 2026-10-30 08:33:43.204 S2501 >> [R]
@@ -744,8 +744,8 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 09:15:01.364 S2503 .. queued INV22952_corrected.edi
 2026-10-30 09:15:01.507 S2503 >> [HLARKSPAN.INVOIC              202610291421340001        O0013CORRANDALE5314      O0013LARKSPAN7489        U000000000000000001000000000000100000000000000000000000N000]
 2026-10-30 09:15:01.684 S2503 << [200000000000000000]
-2026-10-30 09:15:02.039 S2503 .. DATA: 1 exchange buffer(s), 333 octets
-2026-10-30 09:15:02.155 S2503 >> [T0000000000000000000000000000000333]
+2026-10-30 09:15:02.039 S2503 .. DATA: 1 exchange buffer(s), 335 octets
+2026-10-30 09:15:02.155 S2503 >> [T0000000000000000000000000000000335]
 2026-10-30 09:15:02.186 S2503 << [4N]
 2026-10-30 09:15:02.274 S2503 .. file transferred, awaiting EERP
 2026-10-30 09:15:02.384 S2503 >> [R]
@@ -822,11 +822,11 @@ Sent             Partner                        File                            
 2026-10-29 12:17 Wrenmoor Electronics           DESADV_WRENMOOR_121608.edi                    50992  delivered, EERP 29 Oct 12:45
 2026-10-29 12:40 Thornvale Logistics            INVOIC_THORNVALE_123925.edi                   54465  delivered, EERP 29 Oct 13:40
 2026-10-29 12:42 Harrowfield Glass              DESADV_HARROWFLD_123902.edi                   15939  delivered, EERP 29 Oct 13:07
-2026-10-29 12:43 Corrandale Truck Plant         INV22951.edi                                    390  delivered, EERP
+2026-10-29 12:43 Corrandale Truck Plant         INV22951.edi                                    392  delivered, EERP
 2026-10-29 12:43 Wrenmoor Electronics           DESADV_WRENMOOR_124231.edi                    29880  delivered, EERP 29 Oct 13:51
-2026-10-29 14:22 Corrandale Truck Plant         INV22952.edi                                    333  NOT DELIVERED (NERP)
+2026-10-29 14:22 Corrandale Truck Plant         INV22952.edi                                    335  NOT DELIVERED (NERP)
 2026-10-29 15:01 Harrowfield Glass              INVOIC_HARROWFLD_150049.edi                   59857  delivered, EERP 29 Oct 15:10
-2026-10-29 15:56 Corrandale Truck Plant         INV22953.edi                                    454  delivered, EERP
+2026-10-29 15:56 Corrandale Truck Plant         INV22953.edi                                    456  delivered, EERP
 2026-10-29 16:01 Thornvale Logistics            DESADV_THORNVALE_160037.edi                   36410  delivered, EERP 29 Oct 16:18
 2026-10-29 16:27 Wrenmoor Electronics           INVOIC_WRENMOOR_162641.edi                    41413  delivered, EERP 29 Oct 16:42
 2026-10-30 06:01 Harrowfield Glass              INVOIC_HARROWFLD_060052.edi                    3010  delivered, EERP 30 Oct 06:14
@@ -837,18 +837,18 @@ Sent             Partner                        File                            
 2026-10-30 07:26 Wrenmoor Electronics           INVOIC_WRENMOOR_072554.edi                    53222  delivered, EERP 30 Oct 07:51
 2026-10-30 07:32 Harrowfield Glass              INVOIC_HARROWFLD_073136.edi                   25294  delivered, EERP 30 Oct 08:30
 2026-10-30 07:50 Harrowfield Glass              INVOIC_HARROWFLD_074942.edi                   28839  delivered, EERP 30 Oct 08:07
-2026-10-30 07:51 Corrandale Truck Plant         INV22954.edi                                    391  delivered, EERP
+2026-10-30 07:51 Corrandale Truck Plant         INV22954.edi                                    393  delivered, EERP
 2026-10-30 07:53 Thornvale Logistics            INVOIC_THORNVALE_075158.edi                   33605  delivered, EERP 30 Oct 08:12
-2026-10-30 08:33 Corrandale Truck Plant         INV22952_corrected.edi                          333  awaiting EERP
+2026-10-30 08:33 Corrandale Truck Plant         INV22952_corrected.edi                          335  awaiting EERP
 2026-10-30 09:07 Wrenmoor Electronics           DESADV_WRENMOOR_090640.edi                    17736  delivered, EERP 30 Oct 09:37
-2026-10-30 09:15 Corrandale Truck Plant         INV22952_corrected.edi                          333  awaiting EERP
+2026-10-30 09:15 Corrandale Truck Plant         INV22952_corrected.edi                          335  awaiting EERP
 2026-10-30 09:43 Ostley Fasteners               DESADV_OSTLEY_094202.edi                      35736  delivered, EERP 30 Oct 09:58
 ```
 
 ## Document 4: EDIFACT interchange the ticket is about (as transmitted) (interchange.edi)
 
 ```text
-UNB+UNOA:3+LARKSPAN10:ZZ+CORRANDALE96:ZZ+261030:0833+690379'UNH+1+INVOIC:D:96A:UN'BGM+380+INV22952+9'DTM+137:20261029:102'NAD+SE+++LARKSPAN BODY PANELS'NAD+BY+++CORRANDALE TRUCK PLANT'CUX+2:EUR:4'LIN+1++P-43308:IN'QTY+47:272'MOA+203:3968.48'PRI+AAA:14.59'UNS+S'MOA+77:4762.17'TAX+7+VAT+++:::20+S'MOA+124:793.69'UNT+15+1'UNZ+1+690379'
+UNB+UNOA:3+LARKSPAN10:ZZZ+CORRANDALE96:ZZZ+261030:0833+690379'UNH+1+INVOIC:D:96A:UN'BGM+380+INV22952+9'DTM+137:20261029:102'NAD+SE+++LARKSPAN BODY PANELS'NAD+BY+++CORRANDALE TRUCK PLANT'CUX+2:EUR:4'LIN+1++P-43308:IN'QTY+47:272'MOA+203:3968.48'PRI+AAA:14.59'UNS+S'MOA+77:4762.17'TAX+7+VAT+++:::20+S'MOA+124:793.69'UNT+15+1'UNZ+1+690379'
 ```
 
 ## Document 5: Partner response (partner_response.txt)
