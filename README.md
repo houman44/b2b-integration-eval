@@ -74,11 +74,11 @@ All grading is code; there is no judge model.
   the right content, no files left in the error or pickup folders.
 
 The grader was validated before any model run and is covered by the test suite
-(`python -m unittest discover -s tests -t .`, 59 tests): every reference answer passes, also when
+(`python -m unittest discover -s tests -t .`, 61 tests): every reference answer passes, also when
 reformatted the way a model might write it; answers that list every option, hedge with "or", or are
 wrong in every field score zero; an answer wrong in one key scores five sixths and fails.
 
-Reading the transcripts found four problems on our side, all fixed and kept as regression tests or
+Reading the transcripts found five problems on our side, all fixed and kept as regression tests or
 noted in the log:
 
 1. Grader 1.0 mis-paired code fences when a reply contained other fenced blocks before the final
@@ -92,6 +92,10 @@ noted in the log:
 4. A location rule that only allowed sender-side locations marked a model wrong for naming the
    receiver's background job, which was the more natural answer. The rule now reads "on whichever
    side".
+5. In the release run, gpt-6-astra gave layer "envelope" for R2 on all three trials, with every
+   other key right. The layer definitions overlap for that ticket (the receiver's translator checks
+   the UNB sender against its converter partner table), so R2 now accepts "application" or
+   "envelope" (grader 3.1) and the stored trials were re-graded without new model calls.
 
 ## Setup and run
 
@@ -170,7 +174,7 @@ Per task, diagnosis failures (all from the run above):
   UNB sender against its converter partner table), so both `application` and `envelope` are
   accepted; the stored runs were re-graded without new calls.
 
-Transcript links: TODO(results).
+Transcripts of these and other trials: [`transcripts/`](transcripts/README.md).
 
 ## Failure analysis
 
@@ -217,14 +221,18 @@ placeholder README and a .gitignore.
 
 ## Representative transcripts
 
-TODO(results): `transcripts/` with at least one failure per task and one transcript per model.
+[`transcripts/`](transcripts/README.md) holds 19 transcripts rendered from the raw records by
+`python -m harness.transcripts`: at least one per model, a failure for every task that had one
+(T1, E3, X1, Z1 and Z2 had none, so a pass is shown), near misses (S1, U5, X2), the R2 trial that
+the layer ruling changed, a reply that never got past its reasoning, the provider's content filter
+on X2, and a full agentic episode.
 
 ## How AI tools were used
 
 TODO(Houman), to confirm and adjust: Claude (Anthropic) wrote the code, the ticket generator, the
 grader, the tests and this draft, working in sessions directed by Houman. Houman set the domain,
 scope and rules, ruled on every design question, reviewed every task, planted answer and fact
-against the specifications (review checklist in TODO), and wrote the failure analysis and hot take.
+against the specifications (verdicts recorded in `generator/codes.py` and `spec/SOURCES.md`), and wrote the failure analysis and hot take.
 
 ## Repository layout
 
@@ -240,5 +248,6 @@ harness/            OpenRouter client and statistics
 spec/               RFC 5024 extracts and sources
 tests/              grader validation and generator checks
 results/            raw outputs of every run (one JSON file per trial) and summaries
+transcripts/        readable transcripts of selected release trials
 run_*.py            harnesses for each mode
 ```
