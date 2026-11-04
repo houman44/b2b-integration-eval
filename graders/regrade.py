@@ -25,10 +25,10 @@ def main(run_dir):
         current[t] = cur == tm["prompt_sha256"]
     for f in sorted((run_dir / "raw").glob("*.json")):
         r = json.loads(f.read_text())
-        if "reference" in r:                       # stored at run time (harness >= 31 Oct)
+        if current.get(r["ticket"]):               # prompt unchanged: use the current planted
+            ref = json.loads((ROOT / "reference" / f"{r['ticket']}.json").read_text())  # answer
+        elif "reference" in r:                     # prompt changed: the answer stored at run time
             ref = {"id": r["ticket"], "answer": r["reference"]}
-        elif current.get(r["ticket"]):             # ticket unchanged since the run
-            ref = json.loads((ROOT / "reference" / f"{r['ticket']}.json").read_text())
         else:                                      # ticket changed: cannot regrade safely
             skipped.add(r["ticket"])
             continue

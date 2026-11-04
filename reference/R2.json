@@ -2,7 +2,10 @@
   "id": "R2",
   "answer": {
     "cause": "receiver_partner_setup_missing",
-    "layer": "application",
+    "layer": [
+      "application",
+      "envelope"
+    ],
     "owner": "receiver",
     "location": [
       "APP.CONVERTER_PARTNER_TABLE"
@@ -11,7 +14,7 @@
     "value": "OSTERBROOK82"
   },
   "value_kind": "string",
-  "rationale": "The wire copy's UNB S002 is OSTERBROOK82:ZZZ, exactly the sender ID in the signed agreement, and the CONTRL echoes that same ID in UCI S002 as unknown, so the receiver received the agreed ID and rejected it. Every other envelope value matches. The rejections start the day after the receiver migrated its partner table. Nothing the sender transmitted is wrong; the receiver must restore the sender's entry in its partner table.",
+  "rationale": "The wire copy's UNB S002 is OSTERBROOK82:ZZZ, exactly the sender ID in the signed agreement, and the CONTRL echoes that same ID in UCI S002 as unknown, so the receiver received the agreed ID and rejected it. Every other envelope value matches. The rejections start the day after the receiver migrated its partner table. Nothing the sender transmitted is wrong; the receiver must restore the sender's entry in its partner table. Layer: application (the converter's partner table is what must change) and envelope (the translator's UNB sender check is where it shows) are both accepted.",
   "status": "RELEASE",
   "depends_on_unverified": []
 }

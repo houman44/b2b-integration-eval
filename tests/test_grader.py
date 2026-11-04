@@ -22,10 +22,12 @@ def ref(tid):
 
 
 def single(answer):
-    """A reference answer as a model would give it (one next_check)."""
+    """A reference answer as a model would give it (one value for every enum key that
+    lists several accepted values, e.g. next_check, or R2's layer)."""
     a = dict(answer)
-    if isinstance(a.get("next_check"), list):
-        a["next_check"] = a["next_check"][0]
+    for k in ("cause", "layer", "owner", "next_check"):
+        if isinstance(a.get(k), list):
+            a[k] = a[k][0]
     return a
 
 
@@ -34,7 +36,8 @@ def reply(answer, prose="I compared the documents.\n\n"):
 
 
 def other(values, exclude):
-    return sorted(v for v in values if v != exclude)[0]
+    excluded = set(exclude) if isinstance(exclude, list) else {exclude}
+    return sorted(v for v in values if v not in excluded)[0]
 
 
 # Plausible wrong answers per ticket: the mistakes a model is likely to make.
@@ -178,7 +181,7 @@ class WrongAnswersFail(unittest.TestCase):
     def test_or_strings_score_zero(self):
         for tid in TICKETS:
             r = ref(tid)
-            a = r["answer"]
+            a = single(r["answer"])
             hedge = {"cause": a["cause"] + " or " + other(CAUSES, a["cause"]),
                      "layer": a["layer"] + "|" + other(LAYERS, a["layer"]),
                      "owner": a["owner"] + "/" + other(OWNERS, a["owner"]),
@@ -212,9 +215,9 @@ class WrongAnswersFail(unittest.TestCase):
     def test_one_field_wrong_scores_five_sixths(self):
         for tid in TICKETS:
             r = ref(tid)
-            a = single(r["answer"])
-            swaps = {"cause": other(CAUSES, a["cause"]), "layer": other(LAYERS, a["layer"]),
-                     "owner": other(OWNERS, a["owner"]),
+            a, full = single(r["answer"]), r["answer"]
+            swaps = {"cause": other(CAUSES, full["cause"]), "layer": other(LAYERS, full["layer"]),
+                     "owner": other(OWNERS, full["owner"]),
                      "location": ["NONE"] if a["location"] != ["NONE"] else ["UNB.0020"],
                      "next_check": "check_sender_clock", "value": "999"}
             for f, v in swaps.items():
@@ -324,6 +327,20 @@ class Normalisation(unittest.TestCase):
     def test_extract_prefers_last_fence(self):
         obj, err = extract_answer("```json\n{\"a\": 1}\n```\ntext\n```json\n{\"a\": 2}\n```")
         self.assertEqual(obj, {"a": 2})
+
+
+class AcceptedAlternatives(unittest.TestCase):
+    def test_r2_layer_accepts_application_and_envelope(self):
+        ref = json.loads((ROOT / "reference" / "R2.json").read_text())
+        for layer in ("application", "envelope"):
+            ans = {**ref["answer"], "layer": layer}
+            g = grade("```json\n" + json.dumps(ans) + "\n```", ref)
+            self.assertTrue(g["pass"], layer)
+        g = grade("```json\n" + json.dumps({**ref["answer"], "layer": "transport"}) + "\n```", ref)
+        self.assertFalse(g["pass"])
+        g = grade("```json\n" + json.dumps({**ref["answer"], "layer": ["application", "envelope"]})
+                  + "\n```", ref)
+        self.assertFalse(g["fields"]["layer"]["correct"])      # listing both is still hedging
 
 
 if __name__ == "__main__":

@@ -29,7 +29,7 @@ DIAGNOSIS = ("cause", "layer", "owner", "location", "next_check")
 ALLOWED = {"cause": set(CAUSES), "layer": set(LAYERS), "owner": set(OWNERS),
            "next_check": set(CHECKS)}
 
-GRADER_VERSION = "3.0"   # 3.0: next_check key, undetermined causes; 2.0: value; 1.1: fences
+GRADER_VERSION = "3.1"   # 3.1: any enum key may list accepted values; 3.0: next_check key, undetermined causes; 2.0: value; 1.1: fences
 
 FENCE_OPEN = re.compile(r"^\s*```[ \t]*([A-Za-z0-9_+-]*)[ \t]*$")
 FENCE_CLOSE = re.compile(r"^\s*```[ \t]*$")
@@ -201,7 +201,7 @@ def grade(response_text: str, reference: dict) -> dict:
             given, ferr = norm_value(obj[f], kind)
         else:
             given, ferr = norm_enum(obj[f], ALLOWED[f])
-        if f == "next_check" and isinstance(exp, list):     # several equally decisive checks
+        if f in ALLOWED and isinstance(exp, list):   # several accepted values (e.g. R2 layer)
             ok = ferr is None and given in exp
         else:
             ok = ferr is None and given == exp

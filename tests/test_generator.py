@@ -243,7 +243,8 @@ class AnswersAndPrompts(unittest.TestCase):
         for tid in TICKETS:
             a = json.loads((ROOT / "reference" / f"{tid}.json").read_text())["answer"]
             self.assertIn(a["cause"], CAUSES)
-            self.assertIn(a["layer"], LAYERS)
+            layers = a["layer"] if isinstance(a["layer"], list) else [a["layer"]]
+            self.assertTrue(set(layers) <= set(LAYERS), (tid, a["layer"]))
             self.assertIn(a["owner"], OWNERS)
             self.assertTrue(set(a["location"]) <= locs, (tid, a["location"]))
             self.assertIsInstance(a["value"], str)

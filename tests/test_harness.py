@@ -18,8 +18,7 @@ CATALOGUE = {"test/model": {"pricing": {"prompt": "0.000001", "completion": "0.0
 def fake_chat(key, model, prompt, *, temperature, max_tokens, seed=None, **kw):
     tid = prompt.split("\n", 1)[0].split()[-1]
     ref = json.loads((ROOT / "reference" / f"{tid}.json").read_text())["answer"]
-    if isinstance(ref.get("next_check"), list):
-        ref = {**ref, "next_check": ref["next_check"][0]}
+    ref = {k: (v[0] if isinstance(v, list) and k != "location" else v) for k, v in ref.items()}
     answer = ref if seed == 1 else {**ref, "owner": "receiver" if ref["owner"] != "receiver" else "sender"}
     text = f"Diagnosis (echoing {key}).\n```json\n{json.dumps(answer)}\n```"
     body = {"model": model, "messages": [{"role": "user", "content": prompt}]}

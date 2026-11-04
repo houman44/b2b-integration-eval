@@ -1252,7 +1252,10 @@ def build_R2(ctx: Ctx) -> Bundle:
     return Bundle(
         narrative=narrative, documents=docs,
         extracts=["rfc5024/s4.3.6_end_to_end_response.txt", SPEC_EDIFACT],
-        answer={"cause": "receiver_partner_setup_missing", "layer": "application",
+        answer={"cause": "receiver_partner_setup_missing",
+                # Both accepted (Houman, 4 Nov 2026): the rejection is an envelope check by
+                # the receiver's translator, and its cause is the converter's partner table.
+                "layer": ["application", "envelope"],
                 "owner": "receiver", "location": ["APP.CONVERTER_PARTNER_TABLE"],
                 "next_check": "none", "value": s.edi_id},
         rationale=(
@@ -1261,7 +1264,9 @@ def build_R2(ctx: Ctx) -> Bundle:
             f"receiver received the agreed ID and rejected it. Every other envelope value "
             f"matches. The rejections start the day after the receiver migrated its partner "
             f"table. Nothing the sender transmitted is wrong; the receiver must restore the "
-            f"sender's entry in its partner table."),
+            f"sender's entry in its partner table. Layer: application (the converter's "
+            f"partner table is what must change) and envelope (the translator's UNB sender "
+            f"check is where it shows) are both accepted."),
         facts={"interchange_octets": len(ic.encode("ascii")), "sender_id": s.edi_id},
         value_question="the interchange sender identification that the CONTRL reports (the UNB S002 0004 value, without its qualifier)",
         value_kind="string",
