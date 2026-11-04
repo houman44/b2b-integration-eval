@@ -101,9 +101,23 @@ noted in the log:
 
 Requires Python 3.10 or later. The generator, grader and tests use the standard library only.
 
+One command, after setup:
+
 ```
 pip install -r requirements.txt
 cp .env.example .env            # then put your OpenRouter key in .env
+python run_all.py               # free: rebuild and check every task, run the tests, estimate cost
+python run_all.py --confirm-spend   # the full release suite as reported below
+```
+
+`run_all.py` without `--confirm-spend` needs no key and spends nothing. With it, it runs
+diagnosis for seven models (10 tickets x 3 trials), translation and SFTP remediation for the same
+models (2 trials), and agentic diagnosis for gemini-4-argon (1 trial). The harness prints a
+conservative estimate (about 26 USD for diagnosis); the release run cost about 21 USD in all.
+
+Single steps:
+
+```
 python -m generator.build --check
 python -m translation.build --check
 python -m unittest discover -s tests -t .
@@ -249,5 +263,5 @@ spec/               RFC 5024 extracts and sources
 tests/              grader validation and generator checks
 results/            raw outputs of every run (one JSON file per trial) and summaries
 transcripts/        readable transcripts of selected release trials
-run_*.py            harnesses for each mode
+run_*.py            harnesses for each mode; run_all.py runs everything
 ```
