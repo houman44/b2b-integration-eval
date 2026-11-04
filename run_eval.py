@@ -113,6 +113,9 @@ def main(argv=None):
     ap.add_argument("--max-tokens", type=int, default=16000)
     ap.add_argument("--max-cost", type=float, default=2.0, help="USD cap for this run")
     ap.add_argument("--parallel", type=int, default=4)
+    ap.add_argument("--max-jobs", type=int, default=0,
+                    help="run at most this many new trials, then stop (continue with --resume); "
+                         "keeps each invocation inside a short shell time limit")
     ap.add_argument("--timeout", type=int, default=900, help="seconds per API call")
     ap.add_argument("--check-setup", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
@@ -253,6 +256,8 @@ def main(argv=None):
 
     jobs = [(m, t, k) for m in models for t in tickets for k in range(1, a.trials + 1)
             if not (run_dir / "raw" / f"{t}__{slug(m)}__t{k}.json").exists()]
+    if a.max_jobs:
+        jobs = jobs[:a.max_jobs]
     with ThreadPoolExecutor(max_workers=a.parallel) as ex:
         results = list(ex.map(lambda j: job(*j), jobs))
     meta["finished_utc"] = datetime.now(timezone.utc).isoformat(timespec="seconds")

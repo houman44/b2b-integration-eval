@@ -55,6 +55,20 @@ class HarnessWithFakeAPI(unittest.TestCase):
         self.assertEqual(s["field_accuracy"]["owner"], 0.5)
         self.assertAlmostEqual(s["cost_usd"], 0.002 * len(run_eval.ALL_TICKETS))
 
+    def test_max_jobs_then_resume(self):
+        with tempfile.TemporaryDirectory() as d, \
+                mock.patch.object(orc, "list_models", return_value=CATALOGUE), \
+                mock.patch.object(orc, "load_key", return_value=FAKE_KEY), \
+                mock.patch.object(orc, "chat", side_effect=fake_chat), \
+                redirect_stdout(io.StringIO()):
+            base = ["--models", "test/model", "--trials", "1", "--confirm-spend",
+                    "--allow-draft", "--parallel", "1", "--results-dir", d]
+            run_dir = run_eval.main(base + ["--max-jobs", "3"])
+            self.assertEqual(len(list((Path(run_dir) / "raw").glob("*.json"))), 3)
+            run_eval.main(base + ["--resume", str(run_dir)])
+            self.assertEqual(len(list((Path(run_dir) / "raw").glob("*.json"))),
+                             len(run_eval.ALL_TICKETS))
+
     def test_key_never_written(self):
         _, files = self.run_fake()
         for name, text in files.items():
