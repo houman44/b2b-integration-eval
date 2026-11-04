@@ -62,7 +62,10 @@ class HarnessWithFakeAPI(unittest.TestCase):
         self.assertTrue(any("[REDACTED]" in t for t in files.values()))
 
     def test_refuses_without_confirm_or_draft_flag(self):
+        # chat and load_key are always faked, so a broken gate can never reach the network
         with mock.patch.object(orc, "list_models", return_value=CATALOGUE), \
+                mock.patch.object(orc, "load_key", return_value=FAKE_KEY), \
+                mock.patch.object(orc, "chat", side_effect=AssertionError("network")), \
                 redirect_stdout(io.StringIO()):
             with self.assertRaises(SystemExit):
                 run_eval.main(["--models", "test/model", "--allow-draft"])
@@ -72,6 +75,8 @@ class HarnessWithFakeAPI(unittest.TestCase):
             prompt, meta = real(tid)
             return prompt, {**meta, "status": "DRAFT"}
         with mock.patch.object(orc, "list_models", return_value=CATALOGUE), \
+                mock.patch.object(orc, "load_key", return_value=FAKE_KEY), \
+                mock.patch.object(orc, "chat", side_effect=AssertionError("network")), \
                 mock.patch.object(run_eval, "load_ticket", side_effect=as_draft), \
                 redirect_stdout(io.StringIO()):
             with self.assertRaises(SystemExit):        # a DRAFT ticket needs --allow-draft
@@ -79,7 +84,10 @@ class HarnessWithFakeAPI(unittest.TestCase):
 
     def test_cost_cap(self):
         with mock.patch.object(orc, "list_models", return_value={"test/model": {"pricing": {
-                "prompt": "0.01", "completion": "0.01"}}}), redirect_stdout(io.StringIO()):
+                "prompt": "0.01", "completion": "0.01"}}}), \
+                mock.patch.object(orc, "load_key", return_value=FAKE_KEY), \
+                mock.patch.object(orc, "chat", side_effect=AssertionError("network")), \
+                redirect_stdout(io.StringIO()):
             with self.assertRaises(SystemExit):
                 run_eval.main(["--models", "test/model", "--confirm-spend", "--allow-draft",
                                "--max-cost", "0.5"])
