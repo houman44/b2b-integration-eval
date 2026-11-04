@@ -2,7 +2,7 @@
   "id": "S1",
   "seed": 50245001,
   "generator_version": "0.2.0",
-  "status": "DRAFT",
+  "status": "RELEASE",
   "uses": [
     "EDIFACT.0007.MUTUALLY_DEFINED",
     "EDIFACT.INVOIC.D96A.BODY",
@@ -15,22 +15,14 @@
     "SAP.PARTNER_TYPE.LI",
     "SAP.PROGRAM.RBDAPP01"
   ],
-  "unverified": [
-    "EDIFACT.0007.MUTUALLY_DEFINED",
-    "EDIFACT.INVOIC.D96A.BODY",
-    "OFTP2.ESIDREAS.NORMAL",
-    "SAP.IDOC.STATUS_53",
-    "SAP.IDOC.STATUS_64",
-    "SAP.PARTNER_TYPE.LI",
-    "SAP.PROGRAM.RBDAPP01"
-  ],
+  "unverified": [],
   "placeholders": [],
   "files": {
     "inputs/interchange.edi": "013da086f8d0ee0aca0b097479869d282109b6dbb216099141d245afbbdb76ae",
-    "inputs/oftp2_session.log": "3a8d4de6ab5cf278b6da6f427a5424ab5df56a794b6bfa1606860697cfd55875",
-    "inputs/partner_agreement.txt": "9c989055f27fb2232a2352140665b856959e856190f769a5e0c2200748951540",
-    "inputs/partner_response.txt": "31f1fbbc3b95e8d3178486a5936b732949c4b2a5bac42506f59b1aae21cc13c7",
+    "inputs/oftp2_session.log": "a1187b96844fee6d3522f6a44454bf96245462995003e961e98a4ccc2b176f7c",
+    "inputs/partner_agreement.txt": "5b6ba75821d58edad94515a649a776b8081753efcf1f279f200f0112eb96c256",
+    "inputs/partner_response.txt": "6bfdf5397eefd640ad6eb5e77a94af7e17ddf153d3fa72a83a14ad0a0668d297",
     "inputs/spec_extracts.txt": "ac3d794498934a8f10d93e9c9652d8128e007a1797d5acd7cfb672c5ee03ba54",
-    "prompt.md": "1e410ea1a13ce871048025d133d100b23e3ff17b55949f5e1c5e73eb9bd04f1f"
+    "prompt.md": "5c89320e59aab3be764abc5c8485f2f887c2e12f2ca59c4dcb675b57b590434b"
   }
 }

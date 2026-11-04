@@ -46,6 +46,8 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
    Syntax identifier and version (UNB S001): UNOA, version 3.
    Supplier interchange sender ID (UNB S002 0004 / 0007): LARKSPAN58 / ZZZ
    Customer interchange recipient ID (UNB S003 0010 / 0007): CORRANDALE61 / ZZZ
+   Both IDs are mutually defined between the parties by this agreement, so the
+   identification code qualifier (0007) is ZZZ (mutually defined).
    Messages: INVOIC D.96A, one message per interchange.
    Interchanges are sent without line feeds between segments.
    The Customer's translator returns a CONTRL message for every rejected
@@ -70,7 +72,6 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 # remote OFTP2 location. Each buffer is shown as transmitted, between [ and ]
 # (Stream Transmission Header omitted, non-printable octets as \xNN).
 # '..' = gateway event, '!!' = gateway warning. Passwords are masked.
-# DRAFT: '??' in a reason code field marks a code not yet verified for this evaluation.
 
 2026-10-30 09:32:30.000 S8172 .. session S8172: TCP connect to oftp.corrandale.example (203.0.113.76), TLS 1.3 established
 2026-10-30 09:32:30.072 S8172 << [IODETTE FTP READY \x0D]
@@ -84,7 +85,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 09:32:30.927 S8172 << [4N]
 2026-10-30 09:32:31.094 S8172 .. file transferred, awaiting EERP
 2026-10-30 09:32:31.231 S8172 >> [R]
-2026-10-30 09:32:31.266 S8172 << [F??000\x0D]
+2026-10-30 09:32:31.266 S8172 << [F00000\x0D]
 2026-10-30 09:32:31.434 S8172 .. session closed
 
 2026-10-30 09:50:03.000 S8173 .. session S8173: inbound TCP connection from 203.0.113.76, TLS 1.3 established
@@ -95,15 +96,15 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 09:50:03.483 S8173 >> [P]
 2026-10-30 09:50:03.492 S8173 << [HCORRANDALE.CONTRL            202610300944100001        O0013LARKSPAN8561        O0013CORRANDALE9109      U000000000000000001000000000000100000000000000000000000N000]
 2026-10-30 09:50:03.651 S8173 >> [200000000000000000]
-2026-10-30 09:50:03.694 S8173 .. DATA: 1 exchange buffer(s), 186 octets
-2026-10-30 09:50:03.839 S8173 << [T0000000000000000000000000000000186]
+2026-10-30 09:50:03.694 S8173 .. DATA: 1 exchange buffer(s), 154 octets
+2026-10-30 09:50:03.839 S8173 << [T0000000000000000000000000000000154]
 2026-10-30 09:50:03.936 S8173 >> [4N]
 2026-10-30 09:50:04.026 S8173 .. stored as inbound/CORRANDALE.CONTRL_202610300944100001.edi
 2026-10-30 09:50:04.175 S8173 << [R]
 2026-10-30 09:50:04.244 S8173 >> [ECORRANDALE.CONTRL            202610300944100001        O0013CORRANDALE9109      O0013LARKSPAN8561        \x00\x00\x00\x00]
 2026-10-30 09:50:04.271 S8173 << [P]
 2026-10-30 09:50:04.316 S8173 >> [R]
-2026-10-30 09:50:04.424 S8173 << [F??000\x0D]
+2026-10-30 09:50:04.424 S8173 << [F00000\x0D]
 2026-10-30 09:50:04.448 S8173 .. session closed
 ```
 
@@ -129,7 +130,7 @@ Regards,
 Dana Lindqvist
 
 --- CONTRL as received by Larkspan Body Panels (inbound/CORRANDALE.CONTRL_202610300944100001.edi) ---
-UNB+UNOA:3+CORRANDALE61:ZZZ+LARKSPAN58:ZZZ+261030:0944+C75644'UNH+1+CONTRL:D:3:UN'UCI+290212+LARKSPAN58:ZZZ+CORRANDALE61:ZZZ+<<UNVERIFIED-PF>>+<<UNVERIFIED-PI>>+UNB'UNT+3+1'UNZ+1+C75644'
+UNB+UNOA:3+CORRANDALE61:ZZZ+LARKSPAN58:ZZZ+261030:0944+C75644'UNH+1+CONTRL:D:3:UN'UCI+290212+LARKSPAN58:ZZZ+CORRANDALE61:ZZZ+4+2+UNB'UNT+3+1'UNZ+1+C75644'
 ```
 
 ## Document 5: Specification extracts (spec_extracts.txt)

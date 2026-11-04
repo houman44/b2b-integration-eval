@@ -15,14 +15,6 @@
   },
   "value_kind": "string",
   "rationale": "The CONTRL rejects interchange 185867 with an unspecified error. The attached interchange is a regenerated copy with control reference 185877, produced after the INVOIC map was changed and of a different size from the transmitted file (338 octets in the EFID), so its correctness says nothing about the original. Either the original, built with the old map, was faulty (sender) or the receiver's translator is at fault (receiver). The original as transmitted, or the receiver's translator log for the rejection, decides.",
-  "status": "DRAFT",
-  "depends_on_unverified": [
-    "EDIFACT.0007.MUTUALLY_DEFINED",
-    "EDIFACT.0083.REJECTED",
-    "EDIFACT.0085.UNSPECIFIED_ERROR",
-    "EDIFACT.CONTRL.MESSAGE_ID_SYNTAX3",
-    "EDIFACT.INVOIC.D96A.BODY",
-    "EDIFACT.LAYOUT.UCI",
-    "OFTP2.ESIDREAS.NORMAL"
-  ]
+  "status": "RELEASE",
+  "depends_on_unverified": []
 }

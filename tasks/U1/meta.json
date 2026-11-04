@@ -2,7 +2,7 @@
   "id": "U1",
   "seed": 50249001,
   "generator_version": "0.2.0",
-  "status": "DRAFT",
+  "status": "RELEASE",
   "uses": [
     "EDIFACT.0007.MUTUALLY_DEFINED",
     "EDIFACT.INVOIC.D96A.BODY",
@@ -12,19 +12,14 @@
     "OFTP2.ESIDREAS.NORMAL",
     "OFTP2.SFNAREAS.DUPLICATE_FILE"
   ],
-  "unverified": [
-    "EDIFACT.0007.MUTUALLY_DEFINED",
-    "EDIFACT.INVOIC.D96A.BODY",
-    "OFTP2.ESIDREAS.NORMAL",
-    "OFTP2.SFNAREAS.DUPLICATE_FILE"
-  ],
+  "unverified": [],
   "placeholders": [],
   "files": {
     "inputs/interchange.edi": "b95e81e9f7f5e285b3b281da815372543b169e3f2375c9807289ebe0f308c2dd",
-    "inputs/oftp2_session.log": "d0d432e6afdbedcf5b8db981c9b5e16f515a064774d5836b324aaa58ddaa921f",
-    "inputs/partner_agreement.txt": "66eb6e73d67b5c025f8a282a3c830984eef8d96fb54a939675bcfa3bed8bdd4e",
+    "inputs/oftp2_session.log": "be7e9233e3b4295f4c71ee5fdfa01295e801a48690831bbe85609a70d60fb05c",
+    "inputs/partner_agreement.txt": "f9468f3fb2fe52f0766eb7c05ad19d1b393570e62eafef9d556b65aaef85efe6",
     "inputs/partner_response.txt": "37f3ada2d0fab79007dfe895372f1c282b53caaadd914a3e75d6c7ea2b9907f3",
     "inputs/spec_extracts.txt": "78c1f5a284f319c7f61d32f99af88f93cf2d7a089206dda74b396ff17ede512b",
-    "prompt.md": "93f3427a427d06a7fab6faa31c2e4d0f87e1d91abe8c0baba261d7e4139598da"
+    "prompt.md": "ecb49f8fbc1ea20683c1531568edf5dfb34178f2dc0d2d1e89e59e5a71c45587"
   }
 }

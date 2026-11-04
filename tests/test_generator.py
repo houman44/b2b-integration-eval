@@ -1,8 +1,10 @@
 """Generator checks: byte-for-byte reproducibility, raw buffers match the RFC
 5024 layouts, the planted fault is really present (and the red herrings are
 ruled out by the documents), and nothing from reference/ leaks into a prompt."""
+import io
 import json
 import re
+from contextlib import redirect_stdout
 import unittest
 from pathlib import Path
 
@@ -267,12 +269,21 @@ class AnswersAndPrompts(unittest.TestCase):
                         self.assertIn(f"<<UNVERIFIED-{e.tag}>>", prompt)
                     else:
                         self.assertIn("DRAFT: '??' in a reason code field", prompt)
-            self.assertEqual(meta["status"], "DRAFT")
+            clean = not meta["unverified"] and not meta["placeholders"]
+            self.assertEqual(meta["status"], "RELEASE" if clean else "DRAFT", tid)
 
     def test_release_build_refuses_while_unverified(self):
-        from generator import build
-        with self.assertRaises(SystemExit):
-            build.main(["--release", "--check"])
+        from dataclasses import replace
+        from unittest import mock
+        from generator import build, codes
+        e = codes.ENTRIES["EDIFACT.0085.REFERENCES_DO_NOT_MATCH"]
+        with mock.patch.dict(codes.ENTRIES, {e.key: replace(e, verified=False)}), \
+                redirect_stdout(io.StringIO()):
+            out, metas = build.build_all()
+            self.assertEqual(metas["E1"]["status"], "DRAFT")
+            self.assertIn(f"<<UNVERIFIED-{e.tag}>>", out["tasks/E1/prompt.md"])
+            with self.assertRaises(SystemExit):
+                build.main(["--release", "--check"])
 
 
 if __name__ == "__main__":

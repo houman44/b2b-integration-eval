@@ -44,7 +44,8 @@ class HarnessWithFakeAPI(unittest.TestCase):
 
     def test_grades_logs_and_summarises(self):
         run_dir, files = self.run_fake()
-        self.assertTrue(run_dir.name.startswith("draft-"))
+        meta = json.loads(files["meta.json"])
+        self.assertEqual(run_dir.name.startswith("draft-"), meta["draft"])
         raws = [k for k in files if k.endswith(".json") and "__t" in k]
         self.assertEqual(len(raws), 2 * len(run_eval.ALL_TICKETS))   # tickets x 2 trials
         s = json.loads(files["summary.json"])["summary"]["test/model"]
@@ -65,7 +66,15 @@ class HarnessWithFakeAPI(unittest.TestCase):
                 redirect_stdout(io.StringIO()):
             with self.assertRaises(SystemExit):
                 run_eval.main(["--models", "test/model", "--allow-draft"])
-            with self.assertRaises(SystemExit):
+        real = run_eval.load_ticket
+
+        def as_draft(tid):
+            prompt, meta = real(tid)
+            return prompt, {**meta, "status": "DRAFT"}
+        with mock.patch.object(orc, "list_models", return_value=CATALOGUE), \
+                mock.patch.object(run_eval, "load_ticket", side_effect=as_draft), \
+                redirect_stdout(io.StringIO()):
+            with self.assertRaises(SystemExit):        # a DRAFT ticket needs --allow-draft
                 run_eval.main(["--models", "test/model", "--confirm-spend"])
 
     def test_cost_cap(self):

@@ -12,6 +12,8 @@ Chris Hale
 
 --- IDoc list ---
 IDoc list exported from SAP (inbound, message type INVOIC, basic type INVOIC02)
+SNDPRT and SNDPRN are the sender partner type and partner number from each
+IDoc's control record.
 
 IDoc number        Created           SNDPRT SNDPRN         Status
 1393136012481795   2026-10-26 08:49  LI     0000369806     53    

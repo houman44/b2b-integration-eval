@@ -471,6 +471,8 @@ def agreement(sender: Party, receiver: Party, *, effective: str, sdeb: int, cred
         "   Syntax identifier and version (UNB S001): UNOA, version 3.",
         f"   Supplier interchange sender ID (UNB S002 0004 / 0007): {sender_edi_id} / {q}",
         f"   Customer interchange recipient ID (UNB S003 0010 / 0007): {receiver.edi_id} / {q}",
+        "   Both IDs are mutually defined between the parties by this agreement, so the",
+        f"   identification code qualifier (0007) is {q} (mutually defined).",
         "   Messages: INVOIC D.96A, " + ("one message per interchange." if max_messages == 1
                                         else f"up to {max_messages} messages per interchange."),
         "   Interchanges are sent without line feeds between segments.",

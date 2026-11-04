@@ -78,8 +78,17 @@ lists 0083 and 0085, and the message identifier CONTRL:D:3:UN.
 
 ## Verification status
 
-Entries in `generator/codes.py` stay unverified until Houman checks them, and a release
-build refuses to run until then. Verified by Houman on 3 Nov 2026: EDIFACT.LAYOUT.UNB,
-EDIFACT.LAYOUT.UNB_TAIL, EDIFACT.UNB.S004_FORMAT_SYNTAX3, EDIFACT.LAYOUT.UNZ,
-EDIFACT.LAYOUT.UNG_UNE, EDIFACT.UNZ.0036_COUNTS_GROUPS, and the omission and truncation
-rules (clauses 7.2 and 7.3).
+Every entry in `generator/codes.py` is now verified by Houman (3 Nov 2026), and the
+release build runs. Each verdict keeps its scope (`verification` in `codes.py`):
+
+- OFTP2 reason codes; UCI layout; CONTRL message identifier; 0083 = 4; 0085 = 2, 18, 23
+  and 28 (explanation for 28 amended); S011 position counting; 0035 = 1: correct.
+- 0007 = ZZZ: correct as the standard code. The partner agreements now state that both
+  IDs are mutually defined between the parties, hence qualifier ZZZ.
+- SAP IDoc statuses 53, 56, 64 and report RBDAPP01: correct as general SAP conventions.
+- SAP partner type LI: correct as a convention. Its use in a ticket rests on the IDoc
+  control record field SNDPRT, which the S1 IDoc list now names as its source.
+- INVOIC D.96A body: partially verified. The fixture-specific content (segment choice,
+  qualifiers, amounts) was not independently checked. The body is never graded and the
+  planted fault is never in it.
+- The syntax rule items (UNB, UNZ, UNG, UNE, S004, clauses 7.2 and 7.3): see the table above.

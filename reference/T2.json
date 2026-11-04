@@ -12,11 +12,6 @@
   },
   "value_kind": "int",
   "rationale": "The file is format U, so SFIDREST is a file offset in 1K blocks (RFC 5024 1.5.4 and 5.3.3). After the drop the sender had sent 33554432 octets = 32768 blocks, but its restart SFID carries SFIDREST 33554432, an octet count, i.e. 33554432 blocks, far beyond the 49152-block file. The receiver correctly answers SFPAACNT 32768 (lower than or equal to the restart count, 5.3.4), meaning it holds 32768 blocks. The sender then reads that as octets and sends the remaining 50298880 octets from octet 32768, so the receiver ends with 83853312 octets against EFIDUCNT 50331648 and refuses with EFNA invalid byte count. Full resends work because no restart is involved. The sender's gateway must express SFIDREST (and read SFPAACNT) in 1K blocks. The restart to Ostley Fasteners worked because that file is format V, where the restart position is a record count, which the sender's gateway gets right.",
-  "status": "DRAFT",
-  "depends_on_unverified": [
-    "EDIFACT.0007.MUTUALLY_DEFINED",
-    "EDIFACT.INVOIC.D96A.BODY",
-    "OFTP2.EFNAREAS.INVALID_BYTE_COUNT",
-    "OFTP2.ESIDREAS.NORMAL"
-  ]
+  "status": "RELEASE",
+  "depends_on_unverified": []
 }

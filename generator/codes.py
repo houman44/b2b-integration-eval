@@ -15,7 +15,7 @@ any entry a ticket uses is unverified.
 quoted=True means the candidate value was copied from the specification
 text during the build session (see source). It still needs Houman's check.
 """
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 
 
 @dataclass(frozen=True)
@@ -28,6 +28,7 @@ class Entry:
     quoted: bool = False
     verified: bool = False
     tag: str = ""      # opaque letters-only id, so a placeholder never hints at the meaning or a value
+    verification: str = ""  # Houman's verdict and its scope, when verified
 
 
 _ENTRIES = [
@@ -51,7 +52,9 @@ _ENTRIES = [
           "This level and all lower levels rejected",
           "CONTRL D.3 (ISO/TC 154/JWG 1 v3-Contrl.pdf), code list 0083", quoted=True, tag="PF"),
     Entry("EDIFACT.0085.REFERENCES_DO_NOT_MATCH", "code", "28",
-          "References do not match (control reference in UNB/UNH differs from UNZ/UNT)",
+          "References do not match. In E1: the interchange control reference 0020 in UNZ is not "
+          "identical to 0020 in UNB. The same code covers a functional group reference "
+          "(UNG/UNE 0048) or message reference (UNH/UNT 0062) that does not match.",
           "CONTRL D.3 (ISO/TC 154/JWG 1 v3-Contrl.pdf), code list 0085", quoted=True, tag="PG"),
     Entry("EDIFACT.0085.SYNTAX_LEVEL_NOT_SUPPORTED", "code", "2",
           "Syntax version or level not supported",
@@ -146,6 +149,37 @@ _ENTRIES = [
           "INVOIC D.96A message body (not graded; the planted fault is never in the body)",
           "UNECE directory D.96A, message INVOIC"),
 ]
+
+# Houman's review, 3 Nov 2026 (review.html, Facts tab). Each verdict keeps its scope.
+_REVIEW_3NOV = {
+    "OFTP2.SFNAREAS.DUPLICATE_FILE": "correct",
+    "OFTP2.ESIDREAS.NORMAL": "correct",
+    "OFTP2.NERPREAS.FILE_PROCESSING_FAILED": "correct",
+    "OFTP2.EFNAREAS.UNSPECIFIED": "correct",
+    "OFTP2.EFNAREAS.INVALID_BYTE_COUNT": "correct",
+    "OFTP2.NERPREAS.SFNA13_DUPLICATE_FILE": "correct",
+    "EDIFACT.0083.REJECTED": "correct",
+    "EDIFACT.0085.REFERENCES_DO_NOT_MATCH": "correct; explanation amended",
+    "EDIFACT.0085.SYNTAX_LEVEL_NOT_SUPPORTED": "correct",
+    "EDIFACT.0085.UNSPECIFIED_ERROR": "correct",
+    "EDIFACT.0085.UNKNOWN_INTERCHANGE_SENDER": "correct",
+    "EDIFACT.LAYOUT.UCI": "correct",
+    "EDIFACT.S011.POSITION_COUNTING": "correct",
+    "EDIFACT.CONTRL.MESSAGE_ID_SYNTAX3": "correct",
+    "SAP.IDOC.STATUS_53": "correct as a general SAP convention",
+    "SAP.IDOC.STATUS_64": "correct as a general SAP convention",
+    "SAP.IDOC.STATUS_56": "correct as a general SAP convention",
+    "SAP.PROGRAM.RBDAPP01": "correct as a general SAP convention",
+    "SAP.PARTNER_TYPE.LI": ("correct as a convention; its use in a ticket rests on the IDoc "
+                            "control record field SNDPRT shown in that ticket"),
+    "EDIFACT.0007.MUTUALLY_DEFINED": ("correct as the standard code; partner agreements amended "
+                                      "to state the IDs are mutually defined"),
+    "EDIFACT.INVOIC.D96A.BODY": ("partially verified: the fixture-specific content (segment "
+                                 "choice, qualifiers, amounts) was not independently checked; "
+                                 "the body is never graded"),
+}
+_ENTRIES = [replace(e, verified=True, verification=_REVIEW_3NOV[e.key])
+            if e.key in _REVIEW_3NOV else e for e in _ENTRIES]
 
 ENTRIES = {e.key: e for e in _ENTRIES}
 

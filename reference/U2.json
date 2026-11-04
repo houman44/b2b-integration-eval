@@ -15,11 +15,6 @@
   },
   "value_kind": "int",
   "rationale": "The receiver's gateway, which routes by UNB, refuses each complete transfer at end of file with an unspecified reason. The interchange provided is the archived copy, and section 5 says the sender's transmission rules change files after archiving, so the archived UNB proves nothing about the transmitted one. Either a transmission rule damages the file (sender) or the receiver's gateway has a fault (receiver); the same octet count fits both. The transmitted copy, or the receiver's gateway log for the refusal, decides.",
-  "status": "DRAFT",
-  "depends_on_unverified": [
-    "EDIFACT.0007.MUTUALLY_DEFINED",
-    "EDIFACT.INVOIC.D96A.BODY",
-    "OFTP2.EFNAREAS.UNSPECIFIED",
-    "OFTP2.ESIDREAS.NORMAL"
-  ]
+  "status": "RELEASE",
+  "depends_on_unverified": []
 }

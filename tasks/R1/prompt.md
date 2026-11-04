@@ -45,6 +45,8 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
    Syntax identifier and version (UNB S001): UNOA, version 3.
    Supplier interchange sender ID (UNB S002 0004 / 0007): TIDEWELL16 / ZZZ
    Customer interchange recipient ID (UNB S003 0010 / 0007): CORRANDALE49 / ZZZ
+   Both IDs are mutually defined between the parties by this agreement, so the
+   identification code qualifier (0007) is ZZZ (mutually defined).
    Messages: INVOIC D.96A, one message per interchange.
    Interchanges are sent without line feeds between segments.
    The Customer's gateway routes each interchange on receipt to the receiving
@@ -70,7 +72,6 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 # remote OFTP2 location. Each buffer is shown as transmitted, between [ and ]
 # (Stream Transmission Header omitted, non-printable octets as \xNN).
 # '..' = gateway event, '!!' = gateway warning. Passwords are masked.
-# DRAFT: '??' in a reason code field marks a code not yet verified for this evaluation.
 
 2026-10-30 06:24:05.000 S5858 .. session S5858: TCP connect to oftp.corrandale.example (203.0.113.31), TLS 1.3 established
 2026-10-30 06:24:05.079 S5858 << [IODETTE FTP READY \x0D]
@@ -82,10 +83,10 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 06:24:05.776 S5858 << [200000000000000000]
 2026-10-30 06:24:05.866 S5858 .. DATA: 1 exchange buffer(s), 410 octets
 2026-10-30 06:24:05.912 S5858 >> [T0000000000000000000000000000000410]
-2026-10-30 06:24:06.041 S5858 << [5??038TRANSMISSION ERROR - PLEASE RETRANSMIT]
+2026-10-30 06:24:06.041 S5858 << [599038TRANSMISSION ERROR - PLEASE RETRANSMIT]
 2026-10-30 06:24:06.216 S5858 .. file refused by partner at end of file
 2026-10-30 06:24:06.241 S5858 >> [R]
-2026-10-30 06:24:06.307 S5858 << [F??000\x0D]
+2026-10-30 06:24:06.307 S5858 << [F00000\x0D]
 2026-10-30 06:24:06.382 S5858 .. session closed
 
 2026-10-30 06:53:43.000 ----- .. outbound TCP connect to oftp.corrandale.example (203.0.113.31) timed out after 30 s, retry in 120 s
@@ -100,10 +101,10 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 06:56:42.947 S5860 << [200000000000000000]
 2026-10-30 06:56:43.093 S5860 .. DATA: 1 exchange buffer(s), 410 octets
 2026-10-30 06:56:43.111 S5860 >> [T0000000000000000000000000000000410]
-2026-10-30 06:56:43.198 S5860 << [5??038TRANSMISSION ERROR - PLEASE RETRANSMIT]
+2026-10-30 06:56:43.198 S5860 << [599038TRANSMISSION ERROR - PLEASE RETRANSMIT]
 2026-10-30 06:56:43.210 S5860 .. file refused by partner at end of file
 2026-10-30 06:56:43.333 S5860 >> [R]
-2026-10-30 06:56:43.382 S5860 << [F??000\x0D]
+2026-10-30 06:56:43.382 S5860 << [F00000\x0D]
 2026-10-30 06:56:43.400 S5860 .. session closed
 
 2026-10-30 07:33:54.000 S5861 .. session S5861: TCP connect to oftp.corrandale.example (203.0.113.31), TLS 1.3 established
@@ -116,10 +117,10 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 07:33:54.481 S5861 << [200000000000000000]
 2026-10-30 07:33:54.574 S5861 .. DATA: 1 exchange buffer(s), 410 octets
 2026-10-30 07:33:54.676 S5861 >> [T0000000000000000000000000000000410]
-2026-10-30 07:33:54.852 S5861 << [5??038TRANSMISSION ERROR - PLEASE RETRANSMIT]
+2026-10-30 07:33:54.852 S5861 << [599038TRANSMISSION ERROR - PLEASE RETRANSMIT]
 2026-10-30 07:33:54.884 S5861 .. file refused by partner at end of file
 2026-10-30 07:33:54.921 S5861 >> [R]
-2026-10-30 07:33:55.097 S5861 << [F??000\x0D]
+2026-10-30 07:33:55.097 S5861 << [F00000\x0D]
 2026-10-30 07:33:55.263 S5861 .. session closed
 ```
 

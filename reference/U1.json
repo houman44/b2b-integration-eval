@@ -15,11 +15,6 @@
   },
   "value_kind": "string",
   "rationale": "The receiver refuses virtual file QUILLMERE.INVOIC 20261030 0925060001 as a duplicate (SFNA 13). gw1 never sent it before, but gw2 shares the ODETTE ID and the outbound queue and its trace is not provided: if gw2 transmitted the same virtual file first, the receiver is right and the sender's cluster sent it twice. If gw2 did not, the receiver's duplicate check is wrong (for example it matches dataset name and date only, and today's 07:22 invoice has the same dataset name and date). The documents fit both. gw2's trace, or the receiver's gateway log showing which earlier file it matched, decides.",
-  "status": "DRAFT",
-  "depends_on_unverified": [
-    "EDIFACT.0007.MUTUALLY_DEFINED",
-    "EDIFACT.INVOIC.D96A.BODY",
-    "OFTP2.ESIDREAS.NORMAL",
-    "OFTP2.SFNAREAS.DUPLICATE_FILE"
-  ]
+  "status": "RELEASE",
+  "depends_on_unverified": []
 }

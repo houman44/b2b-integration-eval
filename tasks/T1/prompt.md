@@ -50,6 +50,8 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
    Syntax identifier and version (UNB S001): UNOA, version 3.
    Supplier interchange sender ID (UNB S002 0004 / 0007): LARKSPAN10 / ZZZ
    Customer interchange recipient ID (UNB S003 0010 / 0007): CORRANDALE96 / ZZZ
+   Both IDs are mutually defined between the parties by this agreement, so the
+   identification code qualifier (0007) is ZZZ (mutually defined).
    Messages: INVOIC D.96A, one message per interchange.
    Interchanges are sent without line feeds between segments.
    The Customer's translator returns a CONTRL message for every rejected
@@ -68,7 +70,6 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 # remote OFTP2 location. Each buffer is shown as transmitted, between [ and ]
 # (Stream Transmission Header omitted, non-printable octets as \xNN).
 # '..' = gateway event, '!!' = gateway warning. Passwords are masked.
-# DRAFT: '??' in a reason code field marks a code not yet verified for this evaluation.
 2026-10-29 07:56:55.000 S2621 .. session S2621: TCP connect to oftp.ostley.example (203.0.113.232), TLS 1.3 established
 2026-10-29 07:56:55.070 S2621 << [IODETTE FTP READY \x0D]
 2026-10-29 07:56:55.215 S2621 >> [X5O0013LARKSPAN7489        ********04096BNYN064N            \x0D]
@@ -81,7 +82,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 07:56:56.024 S2621 << [4N]
 2026-10-29 07:56:56.120 S2621 .. file transferred, awaiting EERP
 2026-10-29 07:56:56.153 S2621 >> [R]
-2026-10-29 07:56:56.295 S2621 << [F??000\x0D]
+2026-10-29 07:56:56.295 S2621 << [F00000\x0D]
 2026-10-29 07:56:56.345 S2621 .. session closed
 2026-10-29 08:22:14.000 S2611 .. session S2611: TCP connect to oftp.pemberline.example (203.0.113.156), TLS 1.3 established
 2026-10-29 08:22:14.158 S2611 << [IODETTE FTP READY \x0D]
@@ -95,7 +96,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 08:22:15.319 S2611 << [4N]
 2026-10-29 08:22:15.372 S2611 .. file transferred, awaiting EERP
 2026-10-29 08:22:15.405 S2611 >> [R]
-2026-10-29 08:22:15.500 S2611 << [F??000\x0D]
+2026-10-29 08:22:15.500 S2611 << [F00000\x0D]
 2026-10-29 08:22:15.545 S2611 .. session closed
 2026-10-29 08:34:31.345 S2622 .. session S2622: inbound TCP connection from 203.0.113.232, TLS 1.3 established
 2026-10-29 08:34:31.370 S2622 >> [IODETTE FTP READY \x0D]
@@ -105,7 +106,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 08:34:31.637 S2622 >> [P]
 2026-10-29 08:34:31.802 S2622 .. EERP matched to INVOIC_OSTLEY_075546.edi (sent 29 Oct 07:56): delivered
 2026-10-29 08:34:31.818 S2622 << [R]
-2026-10-29 08:34:31.936 S2622 >> [F??000\x0D]
+2026-10-29 08:34:31.936 S2622 >> [F00000\x0D]
 2026-10-29 08:34:32.033 S2622 .. session closed
 2026-10-29 09:20:45.000 S2617 .. session S2617: TCP connect to oftp.harrowfld.example (203.0.113.76), TLS 1.3 established
 2026-10-29 09:20:45.058 S2617 << [IODETTE FTP READY \x0D]
@@ -119,7 +120,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 09:20:45.808 S2617 << [4N]
 2026-10-29 09:20:45.966 S2617 .. file transferred, awaiting EERP
 2026-10-29 09:20:46.004 S2617 >> [R]
-2026-10-29 09:20:46.080 S2617 << [F??000\x0D]
+2026-10-29 09:20:46.080 S2617 << [F00000\x0D]
 2026-10-29 09:20:46.237 S2617 .. session closed
 2026-10-29 09:25:07.545 S2612 .. session S2612: inbound TCP connection from 203.0.113.156, TLS 1.3 established
 2026-10-29 09:25:07.712 S2612 >> [IODETTE FTP READY \x0D]
@@ -129,7 +130,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 09:25:08.005 S2612 >> [P]
 2026-10-29 09:25:08.051 S2612 .. EERP matched to DESADV_PEMBERLINE_082108.edi (sent 29 Oct 08:22): delivered
 2026-10-29 09:25:08.227 S2612 << [R]
-2026-10-29 09:25:08.314 S2612 >> [F??000\x0D]
+2026-10-29 09:25:08.314 S2612 >> [F00000\x0D]
 2026-10-29 09:25:08.356 S2612 .. session closed
 2026-10-29 10:17:36.237 S2618 .. session S2618: inbound TCP connection from 203.0.113.76, TLS 1.3 established
 2026-10-29 10:17:36.251 S2618 >> [IODETTE FTP READY \x0D]
@@ -148,7 +149,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 10:17:37.839 S2618 >> [EHARROWFLD.DELFOR             202610291017360001        O0013HARROWFLD8107       O0013LARKSPAN7489        \x00\x00\x00\x00]
 2026-10-29 10:17:37.886 S2618 << [P]
 2026-10-29 10:17:37.926 S2618 >> [R]
-2026-10-29 10:17:38.020 S2618 << [F??000\x0D]
+2026-10-29 10:17:38.020 S2618 << [F00000\x0D]
 2026-10-29 10:17:38.179 S2618 .. session closed
 2026-10-29 10:52:26.000 S2607 .. session S2607: TCP connect to oftp.thornvale.example (203.0.113.128), TLS 1.3 established
 2026-10-29 10:52:26.029 S2607 << [IODETTE FTP READY \x0D]
@@ -162,7 +163,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 10:52:27.073 S2607 << [4N]
 2026-10-29 10:52:27.249 S2607 .. file transferred, awaiting EERP
 2026-10-29 10:52:27.418 S2607 >> [R]
-2026-10-29 10:52:27.521 S2607 << [F??000\x0D]
+2026-10-29 10:52:27.521 S2607 << [F00000\x0D]
 2026-10-29 10:52:27.542 S2607 .. session closed
 2026-10-29 11:26:49.000 S2619 .. session S2619: TCP connect to oftp.ostley.example (203.0.113.232), TLS 1.3 established
 2026-10-29 11:26:49.085 S2619 << [IODETTE FTP READY \x0D]
@@ -176,7 +177,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 11:26:49.539 S2619 << [4N]
 2026-10-29 11:26:49.583 S2619 .. file transferred, awaiting EERP
 2026-10-29 11:26:49.640 S2619 >> [R]
-2026-10-29 11:26:49.718 S2619 << [F??000\x0D]
+2026-10-29 11:26:49.718 S2619 << [F00000\x0D]
 2026-10-29 11:26:49.728 S2619 .. session closed
 2026-10-29 11:41:30.542 S2608 .. session S2608: inbound TCP connection from 203.0.113.128, TLS 1.3 established
 2026-10-29 11:41:30.555 S2608 >> [IODETTE FTP READY \x0D]
@@ -186,7 +187,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 11:41:31.026 S2608 >> [P]
 2026-10-29 11:41:31.180 S2608 .. EERP matched to INVOIC_THORNVALE_105117.edi (sent 29 Oct 10:52): delivered
 2026-10-29 11:41:31.307 S2608 << [R]
-2026-10-29 11:41:31.317 S2608 >> [F??000\x0D]
+2026-10-29 11:41:31.317 S2608 >> [F00000\x0D]
 2026-10-29 11:41:31.337 S2608 .. session closed
 2026-10-29 12:14:03.000 ----- .. outbound TCP connect to oftp.ostley.example (203.0.113.232) timed out after 30 s, retry in 120 s
 2026-10-29 12:16:36.000 S2623 .. session S2623: TCP connect to oftp.ostley.example (203.0.113.232), TLS 1.3 established
@@ -201,7 +202,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 12:16:36.847 S2623 << [4N]
 2026-10-29 12:16:37.008 S2623 .. file transferred, awaiting EERP
 2026-10-29 12:16:37.163 S2623 >> [R]
-2026-10-29 12:16:37.276 S2623 << [F??000\x0D]
+2026-10-29 12:16:37.276 S2623 << [F00000\x0D]
 2026-10-29 12:16:37.328 S2623 .. session closed
 2026-10-29 12:17:11.000 S2625 .. session S2625: TCP connect to oftp.wrenmoor.example (203.0.113.126), TLS 1.3 established
 2026-10-29 12:17:11.072 S2625 << [IODETTE FTP READY \x0D]
@@ -215,7 +216,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 12:17:12.084 S2625 << [4N]
 2026-10-29 12:17:12.256 S2625 .. file transferred, awaiting EERP
 2026-10-29 12:17:12.337 S2625 >> [R]
-2026-10-29 12:17:12.388 S2625 << [F??000\x0D]
+2026-10-29 12:17:12.388 S2625 << [F00000\x0D]
 2026-10-29 12:17:12.431 S2625 .. session closed
 2026-10-29 12:34:22.728 S2620 .. session S2620: inbound TCP connection from 203.0.113.232, TLS 1.3 established
 2026-10-29 12:34:22.889 S2620 >> [IODETTE FTP READY \x0D]
@@ -225,7 +226,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 12:34:23.225 S2620 >> [P]
 2026-10-29 12:34:23.404 S2620 .. EERP matched to INVOIC_OSTLEY_112622.edi (sent 29 Oct 11:26): delivered
 2026-10-29 12:34:23.519 S2620 << [R]
-2026-10-29 12:34:23.581 S2620 >> [F??000\x0D]
+2026-10-29 12:34:23.581 S2620 >> [F00000\x0D]
 2026-10-29 12:34:23.698 S2620 .. session closed
 2026-10-29 12:39:46.000 ----- .. outbound TCP connect to oftp.harrowfld.example (203.0.113.76) timed out after 30 s, retry in 120 s
 2026-10-29 12:40:29.000 S2609 .. session S2609: TCP connect to oftp.thornvale.example (203.0.113.128), TLS 1.3 established
@@ -240,7 +241,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 12:40:29.891 S2609 << [4N]
 2026-10-29 12:40:29.956 S2609 .. file transferred, awaiting EERP
 2026-10-29 12:40:30.018 S2609 >> [R]
-2026-10-29 12:40:30.115 S2609 << [F??000\x0D]
+2026-10-29 12:40:30.115 S2609 << [F00000\x0D]
 2026-10-29 12:40:30.274 S2609 .. session closed
 2026-10-29 12:42:44.000 S2613 .. session S2613: TCP connect to oftp.harrowfld.example (203.0.113.76), TLS 1.3 established
 2026-10-29 12:42:44.056 S2613 << [IODETTE FTP READY \x0D]
@@ -254,7 +255,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 12:42:44.981 S2613 << [4N]
 2026-10-29 12:42:45.011 S2613 .. file transferred, awaiting EERP
 2026-10-29 12:42:45.117 S2613 >> [R]
-2026-10-29 12:42:45.244 S2613 << [F??000\x0D]
+2026-10-29 12:42:45.244 S2613 << [F00000\x0D]
 2026-10-29 12:42:45.374 S2613 .. session closed
 2026-10-29 12:43:06.000 S2495 .. session S2495: TCP connect to oftp.quorlane.example (192.0.2.234), TLS 1.3 established
 2026-10-29 12:43:06.065 S2495 << [IODETTE FTP READY \x0D]
@@ -268,7 +269,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 12:43:06.763 S2495 << [4N]
 2026-10-29 12:43:06.811 S2495 .. file transferred, awaiting EERP
 2026-10-29 12:43:06.873 S2495 >> [R]
-2026-10-29 12:43:06.881 S2495 << [F??000\x0D]
+2026-10-29 12:43:06.881 S2495 << [F00000\x0D]
 2026-10-29 12:43:06.979 S2495 .. session closed
 2026-10-29 12:43:24.000 S2629 .. session S2629: TCP connect to oftp.wrenmoor.example (203.0.113.126), TLS 1.3 established
 2026-10-29 12:43:24.085 S2629 << [IODETTE FTP READY \x0D]
@@ -282,7 +283,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 12:43:24.820 S2629 << [4N]
 2026-10-29 12:43:24.939 S2629 .. file transferred, awaiting EERP
 2026-10-29 12:43:25.110 S2629 >> [R]
-2026-10-29 12:43:25.205 S2629 << [F??000\x0D]
+2026-10-29 12:43:25.205 S2629 << [F00000\x0D]
 2026-10-29 12:43:25.310 S2629 .. session closed
 2026-10-29 12:45:42.431 S2626 .. session S2626: inbound TCP connection from 203.0.113.126, TLS 1.3 established
 2026-10-29 12:45:42.610 S2626 >> [IODETTE FTP READY \x0D]
@@ -292,7 +293,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 12:45:43.079 S2626 >> [P]
 2026-10-29 12:45:43.245 S2626 .. EERP matched to DESADV_WRENMOOR_121608.edi (sent 29 Oct 12:17): delivered
 2026-10-29 12:45:43.311 S2626 << [R]
-2026-10-29 12:45:43.336 S2626 >> [F??000\x0D]
+2026-10-29 12:45:43.336 S2626 >> [F00000\x0D]
 2026-10-29 12:45:43.483 S2626 .. session closed
 2026-10-29 12:53:41.328 S2624 .. session S2624: inbound TCP connection from 203.0.113.232, TLS 1.3 established
 2026-10-29 12:53:41.412 S2624 >> [IODETTE FTP READY \x0D]
@@ -302,7 +303,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 12:53:41.620 S2624 >> [P]
 2026-10-29 12:53:41.687 S2624 .. EERP matched to INVOIC_OSTLEY_121337.edi (sent 29 Oct 12:16): delivered
 2026-10-29 12:53:41.758 S2624 << [R]
-2026-10-29 12:53:41.787 S2624 >> [F??000\x0D]
+2026-10-29 12:53:41.787 S2624 >> [F00000\x0D]
 2026-10-29 12:53:41.893 S2624 .. session closed
 2026-10-29 13:07:41.374 S2614 .. session S2614: inbound TCP connection from 203.0.113.76, TLS 1.3 established
 2026-10-29 13:07:41.416 S2614 >> [IODETTE FTP READY \x0D]
@@ -312,7 +313,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 13:07:41.988 S2614 >> [P]
 2026-10-29 13:07:42.031 S2614 .. EERP matched to DESADV_HARROWFLD_123902.edi (sent 29 Oct 12:42): delivered
 2026-10-29 13:07:42.042 S2614 << [R]
-2026-10-29 13:07:42.178 S2614 >> [F??000\x0D]
+2026-10-29 13:07:42.178 S2614 >> [F00000\x0D]
 2026-10-29 13:07:42.218 S2614 .. session closed
 2026-10-29 13:40:47.274 S2610 .. session S2610: inbound TCP connection from 203.0.113.128, TLS 1.3 established
 2026-10-29 13:40:47.288 S2610 >> [IODETTE FTP READY \x0D]
@@ -322,7 +323,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 13:40:47.669 S2610 >> [P]
 2026-10-29 13:40:47.685 S2610 .. EERP matched to INVOIC_THORNVALE_123925.edi (sent 29 Oct 12:40): delivered
 2026-10-29 13:40:47.751 S2610 << [R]
-2026-10-29 13:40:47.872 S2610 >> [F??000\x0D]
+2026-10-29 13:40:47.872 S2610 >> [F00000\x0D]
 2026-10-29 13:40:47.978 S2610 .. session closed
 2026-10-29 13:51:14.310 S2630 .. session S2630: inbound TCP connection from 203.0.113.126, TLS 1.3 established
 2026-10-29 13:51:14.439 S2630 >> [IODETTE FTP READY \x0D]
@@ -332,7 +333,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 13:51:14.792 S2630 >> [P]
 2026-10-29 13:51:14.927 S2630 .. EERP matched to DESADV_WRENMOOR_124231.edi (sent 29 Oct 12:43): delivered
 2026-10-29 13:51:15.083 S2630 << [R]
-2026-10-29 13:51:15.227 S2630 >> [F??000\x0D]
+2026-10-29 13:51:15.227 S2630 >> [F00000\x0D]
 2026-10-29 13:51:15.403 S2630 .. session closed
 2026-10-29 14:22:32.000 S2496 .. session S2496: TCP connect to oftp.quorlane.example (192.0.2.234), TLS 1.3 established
 2026-10-29 14:22:32.054 S2496 << [IODETTE FTP READY \x0D]
@@ -346,7 +347,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 14:22:32.805 S2496 << [4N]
 2026-10-29 14:22:32.856 S2496 .. file transferred, awaiting EERP
 2026-10-29 14:22:32.985 S2496 >> [R]
-2026-10-29 14:22:33.030 S2496 << [F??000\x0D]
+2026-10-29 14:22:33.030 S2496 << [F00000\x0D]
 2026-10-29 14:22:33.119 S2496 .. session closed
 2026-10-29 14:34:30.000 S2497 .. session S2497: inbound TCP connection from 192.0.2.234, TLS 1.3 established
 2026-10-29 14:34:30.051 S2497 >> [IODETTE FTP READY \x0D]
@@ -356,7 +357,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 14:34:30.420 S2497 >> [P]
 2026-10-29 14:34:30.519 S2497 .. EERP matched to INV22951.edi (sent 29 Oct 12:43): delivered
 2026-10-29 14:34:30.562 S2497 << [R]
-2026-10-29 14:34:30.698 S2497 >> [F??000\x0D]
+2026-10-29 14:34:30.698 S2497 >> [F00000\x0D]
 2026-10-29 14:34:30.799 S2497 .. session closed
 2026-10-29 15:01:51.000 S2615 .. session S2615: TCP connect to oftp.harrowfld.example (203.0.113.76), TLS 1.3 established
 2026-10-29 15:01:51.061 S2615 << [IODETTE FTP READY \x0D]
@@ -370,7 +371,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 15:01:52.152 S2615 << [4N]
 2026-10-29 15:01:52.229 S2615 .. file transferred, awaiting EERP
 2026-10-29 15:01:52.267 S2615 >> [R]
-2026-10-29 15:01:52.329 S2615 << [F??000\x0D]
+2026-10-29 15:01:52.329 S2615 << [F00000\x0D]
 2026-10-29 15:01:52.493 S2615 .. session closed
 2026-10-29 15:10:41.493 S2616 .. session S2616: inbound TCP connection from 203.0.113.76, TLS 1.3 established
 2026-10-29 15:10:41.547 S2616 >> [IODETTE FTP READY \x0D]
@@ -380,7 +381,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 15:10:41.969 S2616 >> [P]
 2026-10-29 15:10:42.013 S2616 .. EERP matched to INVOIC_HARROWFLD_150049.edi (sent 29 Oct 15:01): delivered
 2026-10-29 15:10:42.173 S2616 << [R]
-2026-10-29 15:10:42.205 S2616 >> [F??000\x0D]
+2026-10-29 15:10:42.205 S2616 >> [F00000\x0D]
 2026-10-29 15:10:42.356 S2616 .. session closed
 2026-10-29 15:56:59.000 S2498 .. session S2498: TCP connect to oftp.quorlane.example (192.0.2.234), TLS 1.3 established
 2026-10-29 15:56:59.125 S2498 << [IODETTE FTP READY \x0D]
@@ -394,7 +395,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 15:56:59.924 S2498 << [4N]
 2026-10-29 15:56:59.990 S2498 .. file transferred, awaiting EERP
 2026-10-29 15:57:00.062 S2498 >> [R]
-2026-10-29 15:57:00.240 S2498 << [F??000\x0D]
+2026-10-29 15:57:00.240 S2498 << [F00000\x0D]
 2026-10-29 15:57:00.372 S2498 .. session closed
 2026-10-29 16:01:46.000 S2605 .. session S2605: TCP connect to oftp.thornvale.example (203.0.113.128), TLS 1.3 established
 2026-10-29 16:01:46.103 S2605 << [IODETTE FTP READY \x0D]
@@ -408,7 +409,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 16:01:46.945 S2605 << [4N]
 2026-10-29 16:01:47.066 S2605 .. file transferred, awaiting EERP
 2026-10-29 16:01:47.154 S2605 >> [R]
-2026-10-29 16:01:47.246 S2605 << [F??000\x0D]
+2026-10-29 16:01:47.246 S2605 << [F00000\x0D]
 2026-10-29 16:01:47.420 S2605 .. session closed
 2026-10-29 16:18:15.420 S2606 .. session S2606: inbound TCP connection from 203.0.113.128, TLS 1.3 established
 2026-10-29 16:18:15.524 S2606 >> [IODETTE FTP READY \x0D]
@@ -418,7 +419,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 16:18:16.044 S2606 >> [P]
 2026-10-29 16:18:16.125 S2606 .. EERP matched to DESADV_THORNVALE_160037.edi (sent 29 Oct 16:01): delivered
 2026-10-29 16:18:16.218 S2606 << [R]
-2026-10-29 16:18:16.340 S2606 >> [F??000\x0D]
+2026-10-29 16:18:16.340 S2606 >> [F00000\x0D]
 2026-10-29 16:18:16.388 S2606 .. session closed
 2026-10-29 16:27:11.000 S2627 .. session S2627: TCP connect to oftp.wrenmoor.example (203.0.113.126), TLS 1.3 established
 2026-10-29 16:27:11.044 S2627 << [IODETTE FTP READY \x0D]
@@ -432,7 +433,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 16:27:11.918 S2627 << [4N]
 2026-10-29 16:27:11.991 S2627 .. file transferred, awaiting EERP
 2026-10-29 16:27:12.091 S2627 >> [R]
-2026-10-29 16:27:12.220 S2627 << [F??000\x0D]
+2026-10-29 16:27:12.220 S2627 << [F00000\x0D]
 2026-10-29 16:27:12.257 S2627 .. session closed
 2026-10-29 16:36:16.000 S2499 .. session S2499: inbound TCP connection from 192.0.2.234, TLS 1.3 established
 2026-10-29 16:36:16.168 S2499 >> [IODETTE FTP READY \x0D]
@@ -445,7 +446,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 16:36:16.808 S2499 >> [P]
 2026-10-29 16:36:16.837 S2499 .. EERP matched to INV22953.edi (sent 29 Oct 15:56): delivered
 2026-10-29 16:36:16.987 S2499 << [R]
-2026-10-29 16:36:17.091 S2499 >> [F??000\x0D]
+2026-10-29 16:36:17.091 S2499 >> [F00000\x0D]
 2026-10-29 16:36:17.201 S2499 .. session closed
 2026-10-29 16:42:52.257 S2628 .. session S2628: inbound TCP connection from 203.0.113.126, TLS 1.3 established
 2026-10-29 16:42:52.277 S2628 >> [IODETTE FTP READY \x0D]
@@ -455,7 +456,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-29 16:42:52.635 S2628 >> [P]
 2026-10-29 16:42:52.691 S2628 .. EERP matched to INVOIC_WRENMOOR_162641.edi (sent 29 Oct 16:27): delivered
 2026-10-29 16:42:52.867 S2628 << [R]
-2026-10-29 16:42:52.974 S2628 >> [F??000\x0D]
+2026-10-29 16:42:52.974 S2628 >> [F00000\x0D]
 2026-10-29 16:42:53.121 S2628 .. session closed
 2026-10-30 06:01:49.000 S2643 .. session S2643: TCP connect to oftp.harrowfld.example (203.0.113.76), TLS 1.3 established
 2026-10-30 06:01:49.068 S2643 << [IODETTE FTP READY \x0D]
@@ -469,7 +470,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 06:01:50.139 S2643 << [4N]
 2026-10-30 06:01:50.277 S2643 .. file transferred, awaiting EERP
 2026-10-30 06:01:50.381 S2643 >> [R]
-2026-10-30 06:01:50.447 S2643 << [F??000\x0D]
+2026-10-30 06:01:50.447 S2643 << [F00000\x0D]
 2026-10-30 06:01:50.567 S2643 .. session closed
 2026-10-30 06:02:17.000 S2637 .. session S2637: TCP connect to oftp.pemberline.example (203.0.113.156), TLS 1.3 established
 2026-10-30 06:02:17.115 S2637 << [IODETTE FTP READY \x0D]
@@ -483,7 +484,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 06:02:18.064 S2637 << [4N]
 2026-10-30 06:02:18.202 S2637 .. file transferred, awaiting EERP
 2026-10-30 06:02:18.270 S2637 >> [R]
-2026-10-30 06:02:18.289 S2637 << [F??000\x0D]
+2026-10-30 06:02:18.289 S2637 << [F00000\x0D]
 2026-10-30 06:02:18.344 S2637 .. session closed
 2026-10-30 06:03:46.000 S2633 .. session S2633: TCP connect to oftp.thornvale.example (203.0.113.128), TLS 1.3 established
 2026-10-30 06:03:46.135 S2633 << [IODETTE FTP READY \x0D]
@@ -497,7 +498,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 06:03:46.769 S2633 << [4N]
 2026-10-30 06:03:46.922 S2633 .. file transferred, awaiting EERP
 2026-10-30 06:03:47.034 S2633 >> [R]
-2026-10-30 06:03:47.156 S2633 << [F??000\x0D]
+2026-10-30 06:03:47.156 S2633 << [F00000\x0D]
 2026-10-30 06:03:47.301 S2633 .. session closed
 2026-10-30 06:11:37.000 S2631 .. session S2631: TCP connect to oftp.thornvale.example (203.0.113.128), TLS 1.3 established
 2026-10-30 06:11:37.152 S2631 << [IODETTE FTP READY \x0D]
@@ -511,7 +512,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 06:11:38.121 S2631 << [4N]
 2026-10-30 06:11:38.276 S2631 .. file transferred, awaiting EERP
 2026-10-30 06:11:38.425 S2631 >> [R]
-2026-10-30 06:11:38.555 S2631 << [F??000\x0D]
+2026-10-30 06:11:38.555 S2631 << [F00000\x0D]
 2026-10-30 06:11:38.571 S2631 .. session closed
 2026-10-30 06:14:25.301 S2634 .. session S2634: inbound TCP connection from 203.0.113.128, TLS 1.3 established
 2026-10-30 06:14:25.466 S2634 >> [IODETTE FTP READY \x0D]
@@ -521,7 +522,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 06:14:25.813 S2634 >> [P]
 2026-10-30 06:14:25.870 S2634 .. EERP matched to INVOIC_THORNVALE_060303.edi (sent 30 Oct 06:03): delivered
 2026-10-30 06:14:25.916 S2634 << [R]
-2026-10-30 06:14:25.940 S2634 >> [F??000\x0D]
+2026-10-30 06:14:25.940 S2634 >> [F00000\x0D]
 2026-10-30 06:14:26.108 S2634 .. session closed
 2026-10-30 06:14:42.567 S2644 .. session S2644: inbound TCP connection from 203.0.113.76, TLS 1.3 established
 2026-10-30 06:14:42.739 S2644 >> [IODETTE FTP READY \x0D]
@@ -531,7 +532,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 06:14:43.078 S2644 >> [P]
 2026-10-30 06:14:43.210 S2644 .. EERP matched to INVOIC_HARROWFLD_060052.edi (sent 30 Oct 06:01): delivered
 2026-10-30 06:14:43.320 S2644 << [R]
-2026-10-30 06:14:43.436 S2644 >> [F??000\x0D]
+2026-10-30 06:14:43.436 S2644 >> [F00000\x0D]
 2026-10-30 06:14:43.609 S2644 .. session closed
 2026-10-30 06:27:47.000 S2651 .. session S2651: TCP connect to oftp.wrenmoor.example (203.0.113.126), TLS 1.3 established
 2026-10-30 06:27:47.016 S2651 << [IODETTE FTP READY \x0D]
@@ -545,7 +546,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 06:27:47.993 S2651 << [4N]
 2026-10-30 06:27:48.055 S2651 .. file transferred, awaiting EERP
 2026-10-30 06:27:48.151 S2651 >> [R]
-2026-10-30 06:27:48.225 S2651 << [F??000\x0D]
+2026-10-30 06:27:48.225 S2651 << [F00000\x0D]
 2026-10-30 06:27:48.373 S2651 .. session closed
 2026-10-30 06:35:24.571 S2632 .. session S2632: inbound TCP connection from 203.0.113.128, TLS 1.3 established
 2026-10-30 06:35:24.583 S2632 >> [IODETTE FTP READY \x0D]
@@ -555,7 +556,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 06:35:24.885 S2632 >> [P]
 2026-10-30 06:35:25.063 S2632 .. EERP matched to INVOIC_THORNVALE_061108.edi (sent 30 Oct 06:11): delivered
 2026-10-30 06:35:25.082 S2632 << [R]
-2026-10-30 06:35:25.237 S2632 >> [F??000\x0D]
+2026-10-30 06:35:25.237 S2632 >> [F00000\x0D]
 2026-10-30 06:35:25.342 S2632 .. session closed
 2026-10-30 06:37:36.344 S2638 .. session S2638: inbound TCP connection from 203.0.113.156, TLS 1.3 established
 2026-10-30 06:37:36.401 S2638 >> [IODETTE FTP READY \x0D]
@@ -565,7 +566,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 06:37:36.787 S2638 >> [P]
 2026-10-30 06:37:36.855 S2638 .. EERP matched to DESADV_PEMBERLINE_060120.edi (sent 30 Oct 06:02): delivered
 2026-10-30 06:37:37.024 S2638 << [R]
-2026-10-30 06:37:37.052 S2638 >> [F??000\x0D]
+2026-10-30 06:37:37.052 S2638 >> [F00000\x0D]
 2026-10-30 06:37:37.211 S2638 .. session closed
 2026-10-30 07:12:11.373 S2652 .. session S2652: inbound TCP connection from 203.0.113.126, TLS 1.3 established
 2026-10-30 07:12:11.508 S2652 >> [IODETTE FTP READY \x0D]
@@ -575,7 +576,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 07:12:11.851 S2652 >> [P]
 2026-10-30 07:12:11.933 S2652 .. EERP matched to DESADV_WRENMOOR_062626.edi (sent 30 Oct 06:27): delivered
 2026-10-30 07:12:12.108 S2652 << [R]
-2026-10-30 07:12:12.275 S2652 >> [F??000\x0D]
+2026-10-30 07:12:12.275 S2652 >> [F00000\x0D]
 2026-10-30 07:12:12.427 S2652 .. session closed
 2026-10-30 07:26:30.000 S2649 .. session S2649: TCP connect to oftp.wrenmoor.example (203.0.113.126), TLS 1.3 established
 2026-10-30 07:26:30.008 S2649 << [IODETTE FTP READY \x0D]
@@ -589,7 +590,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 07:26:30.520 S2649 << [4N]
 2026-10-30 07:26:30.616 S2649 .. file transferred, awaiting EERP
 2026-10-30 07:26:30.674 S2649 >> [R]
-2026-10-30 07:26:30.816 S2649 << [F??000\x0D]
+2026-10-30 07:26:30.816 S2649 << [F00000\x0D]
 2026-10-30 07:26:30.955 S2649 .. session closed
 2026-10-30 07:32:52.000 S2641 .. session S2641: TCP connect to oftp.harrowfld.example (203.0.113.76), TLS 1.3 established
 2026-10-30 07:32:52.071 S2641 << [IODETTE FTP READY \x0D]
@@ -603,7 +604,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 07:32:52.918 S2641 << [4N]
 2026-10-30 07:32:53.084 S2641 .. file transferred, awaiting EERP
 2026-10-30 07:32:53.180 S2641 >> [R]
-2026-10-30 07:32:53.352 S2641 << [F??000\x0D]
+2026-10-30 07:32:53.352 S2641 << [F00000\x0D]
 2026-10-30 07:32:53.504 S2641 .. session closed
 2026-10-30 07:50:53.000 S2639 .. session S2639: TCP connect to oftp.harrowfld.example (203.0.113.76), TLS 1.3 established
 2026-10-30 07:50:53.156 S2639 << [IODETTE FTP READY \x0D]
@@ -617,7 +618,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 07:50:54.050 S2639 << [4N]
 2026-10-30 07:50:54.141 S2639 .. file transferred, awaiting EERP
 2026-10-30 07:50:54.307 S2639 >> [R]
-2026-10-30 07:50:54.321 S2639 << [F??000\x0D]
+2026-10-30 07:50:54.321 S2639 << [F00000\x0D]
 2026-10-30 07:50:54.401 S2639 .. session closed
 2026-10-30 07:51:05.955 S2650 .. session S2650: inbound TCP connection from 203.0.113.126, TLS 1.3 established
 2026-10-30 07:51:06.105 S2650 >> [IODETTE FTP READY \x0D]
@@ -627,7 +628,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 07:51:06.386 S2650 >> [P]
 2026-10-30 07:51:06.476 S2650 .. EERP matched to INVOIC_WRENMOOR_072554.edi (sent 30 Oct 07:26): delivered
 2026-10-30 07:51:06.648 S2650 << [R]
-2026-10-30 07:51:06.827 S2650 >> [F??000\x0D]
+2026-10-30 07:51:06.827 S2650 >> [F00000\x0D]
 2026-10-30 07:51:06.945 S2650 .. session closed
 2026-10-30 07:51:13.000 S2500 .. session S2500: TCP connect to oftp.quorlane.example (192.0.2.234), TLS 1.3 established
 2026-10-30 07:51:13.151 S2500 << [IODETTE FTP READY \x0D]
@@ -641,7 +642,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 07:51:13.938 S2500 << [4N]
 2026-10-30 07:51:13.981 S2500 .. file transferred, awaiting EERP
 2026-10-30 07:51:14.112 S2500 >> [R]
-2026-10-30 07:51:14.248 S2500 << [F??000\x0D]
+2026-10-30 07:51:14.248 S2500 << [F00000\x0D]
 2026-10-30 07:51:14.412 S2500 .. session closed
 2026-10-30 07:53:08.000 S2635 .. session S2635: TCP connect to oftp.thornvale.example (203.0.113.128), TLS 1.3 established
 2026-10-30 07:53:08.063 S2635 << [IODETTE FTP READY \x0D]
@@ -655,7 +656,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 07:53:09.318 S2635 << [4N]
 2026-10-30 07:53:09.399 S2635 .. file transferred, awaiting EERP
 2026-10-30 07:53:09.560 S2635 >> [R]
-2026-10-30 07:53:09.632 S2635 << [F??000\x0D]
+2026-10-30 07:53:09.632 S2635 << [F00000\x0D]
 2026-10-30 07:53:09.646 S2635 .. session closed
 2026-10-30 08:07:11.401 S2640 .. session S2640: inbound TCP connection from 203.0.113.76, TLS 1.3 established
 2026-10-30 08:07:11.541 S2640 >> [IODETTE FTP READY \x0D]
@@ -674,7 +675,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 08:07:12.906 S2640 >> [EHARROWFLD.DELFOR             202610300807120001        O0013HARROWFLD8107       O0013LARKSPAN7489        \x00\x00\x00\x00]
 2026-10-30 08:07:13.012 S2640 << [P]
 2026-10-30 08:07:13.114 S2640 >> [R]
-2026-10-30 08:07:13.166 S2640 << [F??000\x0D]
+2026-10-30 08:07:13.166 S2640 << [F00000\x0D]
 2026-10-30 08:07:13.329 S2640 .. session closed
 2026-10-30 08:12:38.646 S2636 .. session S2636: inbound TCP connection from 203.0.113.128, TLS 1.3 established
 2026-10-30 08:12:38.787 S2636 >> [IODETTE FTP READY \x0D]
@@ -684,7 +685,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 08:12:39.129 S2636 >> [P]
 2026-10-30 08:12:39.222 S2636 .. EERP matched to INVOIC_THORNVALE_075158.edi (sent 30 Oct 07:53): delivered
 2026-10-30 08:12:39.256 S2636 << [R]
-2026-10-30 08:12:39.313 S2636 >> [F??000\x0D]
+2026-10-30 08:12:39.313 S2636 >> [F00000\x0D]
 2026-10-30 08:12:39.380 S2636 .. session closed
 2026-10-30 08:30:45.504 S2642 .. session S2642: inbound TCP connection from 203.0.113.76, TLS 1.3 established
 2026-10-30 08:30:45.604 S2642 >> [IODETTE FTP READY \x0D]
@@ -694,7 +695,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 08:30:45.920 S2642 >> [P]
 2026-10-30 08:30:45.952 S2642 .. EERP matched to INVOIC_HARROWFLD_073136.edi (sent 30 Oct 07:32): delivered
 2026-10-30 08:30:46.063 S2642 << [R]
-2026-10-30 08:30:46.092 S2642 >> [F??000\x0D]
+2026-10-30 08:30:46.092 S2642 >> [F00000\x0D]
 2026-10-30 08:30:46.209 S2642 .. session closed
 2026-10-30 08:33:42.000 S2501 .. session S2501: TCP connect to oftp.quorlane.example (192.0.2.234), TLS 1.3 established
 2026-10-30 08:33:42.033 S2501 << [IODETTE FTP READY \x0D]
@@ -708,7 +709,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 08:33:43.138 S2501 << [4N]
 2026-10-30 08:33:43.151 S2501 .. file transferred, awaiting EERP
 2026-10-30 08:33:43.204 S2501 >> [R]
-2026-10-30 08:33:43.370 S2501 << [F??000\x0D]
+2026-10-30 08:33:43.370 S2501 << [F00000\x0D]
 2026-10-30 08:33:43.467 S2501 .. session closed
 2026-10-30 08:54:06.000 S2502 .. session S2502: inbound TCP connection from 192.0.2.234, TLS 1.3 established
 2026-10-30 08:54:06.011 S2502 >> [IODETTE FTP READY \x0D]
@@ -717,11 +718,11 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 08:54:06.283 S2502 << [ELARKSPAN.INVOIC              202610300750390001        O0013LARKSPAN7489        O0013CORRANDALE5314      \x00\x00\x00\x00]
 2026-10-30 08:54:06.350 S2502 >> [P]
 2026-10-30 08:54:06.373 S2502 .. EERP matched to INV22954.edi (sent 30 Oct 07:51): delivered
-2026-10-30 08:54:06.437 S2502 << [NLARKSPAN.INVOIC                 202610291421340001O0013LARKSPAN7489        O0013CORRANDALE5314      O0013QUORLANE8604        ??038NOT DELIVERED - REFUSED BY DESTINATION\x00\x00\x00\x00]
+2026-10-30 08:54:06.437 S2502 << [NLARKSPAN.INVOIC                 202610291421340001O0013LARKSPAN7489        O0013CORRANDALE5314      O0013QUORLANE8604        23038NOT DELIVERED - REFUSED BY DESTINATION\x00\x00\x00\x00]
 2026-10-30 08:54:06.520 S2502 >> [P]
 2026-10-30 08:54:06.571 S2502 .. NERP matched to INV22952.edi (sent 29 Oct 14:22): NOT DELIVERED, alert raised
 2026-10-30 08:54:06.653 S2502 << [R]
-2026-10-30 08:54:06.675 S2502 >> [F??000\x0D]
+2026-10-30 08:54:06.675 S2502 >> [F00000\x0D]
 2026-10-30 08:54:06.764 S2502 .. session closed
 2026-10-30 09:07:17.000 S2647 .. session S2647: TCP connect to oftp.wrenmoor.example (203.0.113.126), TLS 1.3 established
 2026-10-30 09:07:17.039 S2647 << [IODETTE FTP READY \x0D]
@@ -735,7 +736,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 09:07:18.021 S2647 << [4N]
 2026-10-30 09:07:18.087 S2647 .. file transferred, awaiting EERP
 2026-10-30 09:07:18.205 S2647 >> [R]
-2026-10-30 09:07:18.348 S2647 << [F??000\x0D]
+2026-10-30 09:07:18.348 S2647 << [F00000\x0D]
 2026-10-30 09:07:18.523 S2647 .. session closed
 2026-10-30 09:15:01.000 S2503 .. session S2503: TCP connect to oftp.quorlane.example (192.0.2.234), TLS 1.3 established
 2026-10-30 09:15:01.086 S2503 << [IODETTE FTP READY \x0D]
@@ -749,7 +750,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 09:15:02.186 S2503 << [4N]
 2026-10-30 09:15:02.274 S2503 .. file transferred, awaiting EERP
 2026-10-30 09:15:02.384 S2503 >> [R]
-2026-10-30 09:15:02.399 S2503 << [F??000\x0D]
+2026-10-30 09:15:02.399 S2503 << [F00000\x0D]
 2026-10-30 09:15:02.435 S2503 .. session closed
 2026-10-30 09:37:28.523 S2648 .. session S2648: inbound TCP connection from 203.0.113.126, TLS 1.3 established
 2026-10-30 09:37:28.596 S2648 >> [IODETTE FTP READY \x0D]
@@ -768,17 +769,17 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 09:37:29.766 S2648 >> [EWRENMOOR.DELJIT              202610300937280001        O0013WRENMOOR6719        O0013LARKSPAN7489        \x00\x00\x00\x00]
 2026-10-30 09:37:29.916 S2648 << [P]
 2026-10-30 09:37:29.924 S2648 >> [R]
-2026-10-30 09:37:29.943 S2648 << [F??000\x0D]
+2026-10-30 09:37:29.943 S2648 << [F00000\x0D]
 2026-10-30 09:37:30.081 S2648 .. session closed
 2026-10-30 09:40:48.000 S2504 .. session S2504: inbound TCP connection from 192.0.2.234, TLS 1.3 established
 2026-10-30 09:40:48.080 S2504 >> [IODETTE FTP READY \x0D]
 2026-10-30 09:40:48.167 S2504 << [X5O0013QUORLANE8604        ********04096BNYN064N            \x0D]
 2026-10-30 09:40:48.319 S2504 >> [X5O0013LARKSPAN7489        ********04096BNYN064N            \x0D]
-2026-10-30 09:40:48.474 S2504 << [NLARKSPAN.INVOIC                 202610291421340001O0013LARKSPAN7489        O0013CORRANDALE5314      O0013QUORLANE8604        ??038NOT DELIVERED - REFUSED BY DESTINATION\x00\x00\x00\x00]
+2026-10-30 09:40:48.474 S2504 << [NLARKSPAN.INVOIC                 202610291421340001O0013LARKSPAN7489        O0013CORRANDALE5314      O0013QUORLANE8604        23038NOT DELIVERED - REFUSED BY DESTINATION\x00\x00\x00\x00]
 2026-10-30 09:40:48.635 S2504 >> [P]
 2026-10-30 09:40:48.689 S2504 .. NERP matched to INV22952.edi (sent 29 Oct 14:22): NOT DELIVERED, alert raised
 2026-10-30 09:40:48.748 S2504 << [R]
-2026-10-30 09:40:48.875 S2504 >> [F??000\x0D]
+2026-10-30 09:40:48.875 S2504 >> [F00000\x0D]
 2026-10-30 09:40:49.030 S2504 .. session closed
 2026-10-30 09:43:20.000 S2645 .. session S2645: TCP connect to oftp.ostley.example (203.0.113.232), TLS 1.3 established
 2026-10-30 09:43:20.156 S2645 << [IODETTE FTP READY \x0D]
@@ -792,7 +793,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 09:43:21.162 S2645 << [4N]
 2026-10-30 09:43:21.286 S2645 .. file transferred, awaiting EERP
 2026-10-30 09:43:21.328 S2645 >> [R]
-2026-10-30 09:43:21.381 S2645 << [F??000\x0D]
+2026-10-30 09:43:21.381 S2645 << [F00000\x0D]
 2026-10-30 09:43:21.467 S2645 .. session closed
 2026-10-30 09:58:48.467 S2646 .. session S2646: inbound TCP connection from 203.0.113.232, TLS 1.3 established
 2026-10-30 09:58:48.593 S2646 >> [IODETTE FTP READY \x0D]
@@ -802,7 +803,7 @@ Effective 1 March 2026. Synthetic document written for this evaluation.
 2026-10-30 09:58:49.034 S2646 >> [P]
 2026-10-30 09:58:49.067 S2646 .. EERP matched to DESADV_OSTLEY_094202.edi (sent 30 Oct 09:43): delivered
 2026-10-30 09:58:49.180 S2646 << [R]
-2026-10-30 09:58:49.191 S2646 >> [F??000\x0D]
+2026-10-30 09:58:49.191 S2646 >> [F00000\x0D]
 2026-10-30 09:58:49.257 S2646 .. session closed
 ```
 

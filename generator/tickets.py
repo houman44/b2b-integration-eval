@@ -1278,6 +1278,8 @@ def build_R2(ctx: Ctx) -> Bundle:
 
 def _idoc_list(rows):
     out = ["IDoc list exported from SAP (inbound, message type INVOIC, basic type INVOIC02)",
+           "SNDPRT and SNDPRN are the sender partner type and partner number from each",
+           "IDoc's control record.",
            "", f"{'IDoc number':18} {'Created':17} {'SNDPRT':6} {'SNDPRN':14} {'Status':6}"]
     for num, created, prt, prn, st in rows:
         out.append(f"{num:18} {created:17} {prt:6} {prn:14} {st:6}")
