@@ -1,0 +1,42 @@
+{
+  "model": "openai/gpt-6-astra",
+  "task": "X1",
+  "trial": 2,
+  "http_status": 200,
+  "usage": {
+    "prompt_tokens": 1041,
+    "completion_tokens": 796,
+    "total_tokens": 1837,
+    "cost": 0.052805,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 1038,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.052805,
+      "upstream_inference_prompt_cost": 0.013005,
+      "upstream_inference_completions_cost": 0.0398
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 92,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "cost_usd": 0.052805,
+  "finish_reason": "stop",
+  "prompt": "# Translation task X1\n\nTranslate the despatch advice below into the Customer's in-house JSON that the mapping specification defines. Reply with your working if you like, but end your reply with the complete JSON object in one fenced ```json block. Only the last ```json block is graded, against the exact expected object.\n\n## EDIFACT DESADV as received (no line breaks)\n\n```text\nUNB+UNOA:3+QUILLMERE07:ZZZ+MARROWGATE11:ZZZ+261102:0715+004721'UNH+1+DESADV:D:96A:UN'BGM+351+DN492757+9'DTM+137:20261102:102'DTM+11:20261026:102'NAD+SU+++QUILLMERE DRIVETRAIN LTD'NAD+ST+++MARROWGATE MOTOR WORKS'CPS+1'CPS+2+1'PAC+1++PX'PCI+17'GIN+ML+LBL38414879'CPS+3+2'PAC+1++CTN'PCI+17'GIN+ML+LBL02844027'LIN+1++AX-4471/B:IN'QTY+12:66:KGM'CPS+5+1'PAC+1++PX'PCI+17'GIN+ML+LBL75286258'LIN+2++HUB-9031:IN'QTY+12:40:PCE'CPS+6+5'PAC+1++CTN'PCI+17'GIN+ML+LBL36192323'LIN+3++BRKT 45?:A:IN'QTY+12:26:KGM'LIN+4++SEAL??RING-7:IN'QTY+12:250:PCE'CPS+4+2'PAC+1++CTN'PCI+17'GIN+ML+LBL93468265'LIN+5++BRKT 45?:A:IN'QTY+12:65:PCE'CPS+9+1'PAC+1++PX'PCI+17'GIN+ML+LBL60362102'LIN+6++BRKT 45?:A:IN'QTY+12:12:PCE'CPS+8+5'PAC+1++CTN'PCI+17'GIN+ML+LBL70483176'LIN+7++BRKT 45?:A:IN'QTY+12:19:KGM'CPS+10+9'PAC+1++CTN'PCI+17'GIN+ML+LBL51214392'LIN+8++BRKT 45?:A:IN'QTY+12:33:PCE'LIN+9++KL?+20/4:IN'QTY+12:50:KGM'UNT+58+1'UNZ+1+004721'\n```\n\n## Mapping specification\n\n```text\nMAPPING SPECIFICATION: EDIFACT DESADV D.96A to the Customer's in-house JSON\n(written for this evaluation; it is the only authority for this task)\n\nInput structure used by the Supplier:\n  CPS+<id>' with no parent is the shipment. CPS+<id>+<parent id>' is a package\n  whose parent is the CPS with that id; the PAC, PCI, GIN and LIN/QTY segments\n  that follow a CPS, up to the next CPS, belong to it. PAC 7065 PX = pallet,\n  CTN = carton. GIN+ML+<label>' is the package label. LIN+<n>++<part>:IN' with\n  QTY+12:<quantity>:<unit>' is an item in that package. Packages may appear in\n  any order; the parent id, not the position, decides where a package belongs.\n  Values may contain release characters (?) that must be removed.\n\nOutput: one JSON object:\n  {\"despatch_note\": <BGM 1004>,\n   \"despatch_date\": <DTM 11 date as YYYY-MM-DD>,\n   \"pallets\": [ one object per pallet, ordered by CPS id ascending:\n       {\"label\": <GIN label>,\n        \"loose_items\": [items directly in the pallet, in input order],\n        \"cartons\": [ one object per carton in this pallet, ordered by CPS id\n                     ascending: {\"label\": <GIN label>, \"items\": [items, in input order]} ]} ],\n   \"totals\": [ {\"part\": <part>, \"unit\": <unit>, \"quantity\": <sum over all items\n                with that part and unit>} sorted by part, then unit, ascending\n               (plain character order) ]}\n  An item is {\"part\": <part number>, \"unit\": <unit>, \"quantity\": <number>}.\n  Quantities are JSON numbers. Keys and nesting exactly as above.\n```\n",
+  "response_text": "```json\n{\n  \"despatch_note\": \"DN492757\",\n  \"despatch_date\": \"2026-10-26\",\n  \"pallets\": [\n    {\n      \"label\": \"LBL38414879\",\n      \"loose_items\": [],\n      \"cartons\": [\n        {\n          \"label\": \"LBL02844027\",\n          \"items\": [\n            {\n              \"part\": \"AX-4471/B\",\n              \"unit\": \"KGM\",\n              \"quantity\": 66\n            }\n          ]\n        },\n        {\n          \"label\": \"LBL93468265\",\n          \"items\": [\n            {\n              \"part\": \"BRKT 45:A\",\n              \"unit\": \"PCE\",\n              \"quantity\": 65\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"LBL75286258\",\n      \"loose_items\": [\n        {\n          \"part\": \"HUB-9031\",\n          \"unit\": \"PCE\",\n          \"quantity\": 40\n        }\n      ],\n      \"cartons\": [\n        {\n          \"label\": \"LBL36192323\",\n          \"items\": [\n            {\n              \"part\": \"BRKT 45:A\",\n              \"unit\": \"KGM\",\n              \"quantity\": 26\n            },\n            {\n              \"part\": \"SEAL?RING-7\",\n              \"unit\": \"PCE\",\n              \"quantity\": 250\n            }\n          ]\n        },\n        {\n          \"label\": \"LBL70483176\",\n          \"items\": [\n            {\n              \"part\": \"BRKT 45:A\",\n              \"unit\": \"KGM\",\n              \"quantity\": 19\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"label\": \"LBL60362102\",\n      \"loose_items\": [\n        {\n          \"part\": \"BRKT 45:A\",\n          \"unit\": \"PCE\",\n          \"quantity\": 12\n        }\n      ],\n      \"cartons\": [\n        {\n          \"label\": \"LBL51214392\",\n          \"items\": [\n            {\n              \"part\": \"BRKT 45:A\",\n              \"unit\": \"PCE\",\n              \"quantity\": 33\n            },\n            {\n              \"part\": \"KL+20/4\",\n              \"unit\": \"KGM\",\n              \"quantity\": 50\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"totals\": [\n    {\n      \"part\": \"AX-4471/B\",\n      \"unit\": \"KGM\",\n      \"quantity\": 66\n    },\n    {\n      \"part\": \"BRKT 45:A\",\n      \"unit\": \"KGM\",\n      \"quantity\": 45\n    },\n    {\n      \"part\": \"BRKT 45:A\",\n      \"unit\": \"PCE\",\n      \"quantity\": 110\n    },\n    {\n      \"part\": \"HUB-9031\",\n      \"unit\": \"PCE\",\n      \"quantity\": 40\n    },\n    {\n      \"part\": \"KL+20/4\",\n      \"unit\": \"KGM\",\n      \"quantity\": 50\n    },\n    {\n      \"part\": \"SEAL?RING-7\",\n      \"unit\": \"PCE\",\n      \"quantity\": 250\n    }\n  ]\n}\n```",
+  "grade": {
+    "ticket": "X1",
+    "grader_version": "t1.0",
+    "parse_error": null,
+    "score": 1.0,
+    "wrong": [],
+    "missing": [],
+    "pass": true
+  }
+}

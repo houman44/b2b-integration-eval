@@ -1,0 +1,201 @@
+{
+  "meta": {
+    "run_id": "20261104T054441Z-83fb9d",
+    "started_utc": "2026-11-04T05:44:41+00:00",
+    "mode": "agentic",
+    "models": [
+      "google/gemini-4-argon"
+    ],
+    "tickets": [
+      "E1",
+      "E3",
+      "R1",
+      "R2",
+      "S1",
+      "T1",
+      "T2",
+      "U1",
+      "U2",
+      "U5"
+    ],
+    "trials": 1,
+    "temperature": 0.0,
+    "max_tokens": 8000,
+    "max_turns": 25,
+    "max_cost": 3.0,
+    "draft": false
+  },
+  "summary": {
+    "google/gemini-4-argon": {
+      "trials": 10,
+      "api_errors": 0,
+      "trials_per_task": 1,
+      "pass_rate": 1.0,
+      "mean_score": 1.0,
+      "pass_at_k": 1.0,
+      "pass_hat_k": 1.0,
+      "diagnosis_pass_rate": 1.0,
+      "field_accuracy": {
+        "cause": 1.0,
+        "layer": 1.0,
+        "owner": 1.0,
+        "location": 1.0,
+        "next_check": 1.0,
+        "value": 1.0
+      },
+      "cost_usd": 1.04164,
+      "per_ticket": {
+        "E1": {
+          "trials": 1,
+          "passes": 1,
+          "mean_score": 1.0,
+          "diagnosis_passes": 1,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 1,
+            "next_check": 1,
+            "value": 1
+          },
+          "parse_errors": 0
+        },
+        "E3": {
+          "trials": 1,
+          "passes": 1,
+          "mean_score": 1.0,
+          "diagnosis_passes": 1,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 1,
+            "next_check": 1,
+            "value": 1
+          },
+          "parse_errors": 0
+        },
+        "R1": {
+          "trials": 1,
+          "passes": 1,
+          "mean_score": 1.0,
+          "diagnosis_passes": 1,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 1,
+            "next_check": 1,
+            "value": 1
+          },
+          "parse_errors": 0
+        },
+        "R2": {
+          "trials": 1,
+          "passes": 1,
+          "mean_score": 1.0,
+          "diagnosis_passes": 1,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 1,
+            "next_check": 1,
+            "value": 1
+          },
+          "parse_errors": 0
+        },
+        "S1": {
+          "trials": 1,
+          "passes": 1,
+          "mean_score": 1.0,
+          "diagnosis_passes": 1,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 1,
+            "next_check": 1,
+            "value": 1
+          },
+          "parse_errors": 0
+        },
+        "T1": {
+          "trials": 1,
+          "passes": 1,
+          "mean_score": 1.0,
+          "diagnosis_passes": 1,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 1,
+            "next_check": 1,
+            "value": 1
+          },
+          "parse_errors": 0
+        },
+        "T2": {
+          "trials": 1,
+          "passes": 1,
+          "mean_score": 1.0,
+          "diagnosis_passes": 1,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 1,
+            "next_check": 1,
+            "value": 1
+          },
+          "parse_errors": 0
+        },
+        "U1": {
+          "trials": 1,
+          "passes": 1,
+          "mean_score": 1.0,
+          "diagnosis_passes": 1,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 1,
+            "next_check": 1,
+            "value": 1
+          },
+          "parse_errors": 0
+        },
+        "U2": {
+          "trials": 1,
+          "passes": 1,
+          "mean_score": 1.0,
+          "diagnosis_passes": 1,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 1,
+            "next_check": 1,
+            "value": 1
+          },
+          "parse_errors": 0
+        },
+        "U5": {
+          "trials": 1,
+          "passes": 1,
+          "mean_score": 1.0,
+          "diagnosis_passes": 1,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 1,
+            "next_check": 1,
+            "value": 1
+          },
+          "parse_errors": 0
+        }
+      }
+    }
+  }
+}

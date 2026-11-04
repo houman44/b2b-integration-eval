@@ -1,0 +1,467 @@
+{
+  "model": "anthropic/claude-haiku-5.5",
+  "task": "Z1",
+  "trial": 2,
+  "tool_calls": 18,
+  "cost_usd": 0.0052144999999999995,
+  "checks": {
+    "fixed_posted_once": true,
+    "error_dir_empty": true,
+    "inbound_empty": true
+  },
+  "pass": true,
+  "final_text": "INV02717 is now posted exactly once in Corrandale's SAP, and their SFTP server is in the state the partner guide requires.\n\n- **Upload:** I sent `INV02717_fixed.edi` to `/inbound` as a `.part` file, then renamed it to `INV02717.edi`.\n- **Processing:** The poller picked it up and archived it to `/archive/INV02717.edi`. The status page shows \"posted 1 time(s)\".\n- **Cleanup:** I deleted the failed `INV02717.edi` and its `INV02717.edi.err` note from `/error`, so the hourly alert should stop. `/error` is now empty.\n\nI did not check the UNT count in the corrected file myself. My local read was cut off at 4000 characters. The check was the poller's acceptance and the single posting.",
+  "server_events": [
+    "t=60: INV02717.edi posted"
+  ],
+  "actions": [
+    {
+      "t": 0,
+      "tool": "portal_status",
+      "args": {
+        "invoice": "INV02717"
+      },
+      "result": "invoice INV02717: not posted"
+    },
+    {
+      "t": 0,
+      "tool": "sftp_list",
+      "args": {
+        "path": "/error"
+      },
+      "result": "INV02717.edi  (53673 octets)\nINV02717.edi.err  (33 octets)"
+    },
+    {
+      "t": 0,
+      "tool": "sftp_list",
+      "args": {
+        "path": "/inbound"
+      },
+      "result": "(empty)"
+    },
+    {
+      "t": 0,
+      "tool": "sftp_list",
+      "args": {
+        "path": "/archive"
+      },
+      "result": "INV29597.edi  (457 octets)"
+    },
+    {
+      "t": 0,
+      "tool": "local_list",
+      "args": {},
+      "result": "INV02717.edi  (53673 octets)\nINV02717_fixed.edi  (53673 octets)"
+    },
+    {
+      "t": 0,
+      "tool": "sftp_read",
+      "args": {
+        "path": "/error/INV02717.edi.err"
+      },
+      "result": "UNT segment count does not match\n"
+    },
+    {
+      "t": 0,
+      "tool": "local_read",
+      "args": {
+        "name": "INV02717_fixed.edi"
+      },
+      "result": "UNB+UNOA:3+OSTERBROOK82:ZZZ+VELBROOK60:ZZZ+261102:0830+158694'UNH+1+INVOIC:D:96A:UN'BGM+380+INV02717+9'DTM+137:20261102:102'NAD+SE+++OSTERBROOK AXLE SYSTEMS'NAD+BY+++VELBROOK VEHICLE ASSEMBLY'CUX+2:EUR:4'LIN+1++P-27612:IN'QTY+47:37'MOA+203:1685.35'PRI+AAA:45.55'LIN+2++P-07849:IN'QTY+47:65'MOA+203:13"
+    },
+    {
+      "t": 54,
+      "tool": "sftp_upload",
+      "args": {
+        "local_name": "INV02717_fixed.edi",
+        "remote_path": "/inbound/INV02717_fixed.edi.part"
+      },
+      "result": "uploaded INV02717_fixed.edi to /inbound/INV02717_fixed.edi.part in 54 s (clock now 54 s)"
+    },
+    {
+      "t": 55,
+      "tool": "sftp_rename",
+      "args": {
+        "old": "/inbound/INV02717_fixed.edi.part",
+        "new": "/inbound/INV02717.edi"
+      },
+      "result": "renamed /inbound/INV02717_fixed.edi.part to /inbound/INV02717.edi (clock now 55 s)"
+    },
+    {
+      "t": 115,
+      "tool": "wait",
+      "args": {
+        "seconds": 60
+      },
+      "result": "waited 60 s (clock now 115 s)"
+    },
+    {
+      "t": 115,
+      "tool": "portal_status",
+      "args": {
+        "invoice": "INV02717"
+      },
+      "result": "invoice INV02717: posted 1 time(s)"
+    },
+    {
+      "t": 115,
+      "tool": "sftp_list",
+      "args": {
+        "path": "/inbound"
+      },
+      "result": "(empty)"
+    },
+    {
+      "t": 115,
+      "tool": "sftp_list",
+      "args": {
+        "path": "/archive"
+      },
+      "result": "INV02717.edi  (53673 octets)\nINV29597.edi  (457 octets)"
+    },
+    {
+      "t": 115,
+      "tool": "sftp_list",
+      "args": {
+        "path": "/error"
+      },
+      "result": "INV02717.edi  (53673 octets)\nINV02717.edi.err  (33 octets)"
+    },
+    {
+      "t": 116,
+      "tool": "sftp_delete",
+      "args": {
+        "path": "/error/INV02717.edi"
+      },
+      "result": "deleted /error/INV02717.edi"
+    },
+    {
+      "t": 117,
+      "tool": "sftp_delete",
+      "args": {
+        "path": "/error/INV02717.edi.err"
+      },
+      "result": "deleted /error/INV02717.edi.err"
+    },
+    {
+      "t": 117,
+      "tool": "portal_status",
+      "args": {
+        "invoice": "INV02717"
+      },
+      "result": "invoice INV02717: posted 1 time(s)"
+    },
+    {
+      "t": 117,
+      "tool": "sftp_list",
+      "args": {
+        "path": "/error"
+      },
+      "result": "(empty)"
+    }
+  ],
+  "messages": [
+    {
+      "role": "user",
+      "content": "# SFTP task Z1\n\nYou work on the EDI support desk of Quillmere-type supplier (synthetic). You have tools to act on the customer's SFTP server, check its invoice status page and read your local outbox. Your actions take effect: the server's poller runs on its own schedule. You may make at most 20 tool calls.\n\n## Task\n\nInvoice INV02717 to Corrandale Truck Plant failed on their SFTP server: our translator wrote a wrong UNT segment count. IT has fixed the map and produced the corrected interchange INV02717_fixed.edi in our outbox. Get the corrected invoice posted in Corrandale's SAP system exactly once, and leave their SFTP server in the state their partner guide requires. When you are done, reply with a short summary.\n\n## Customer's partner guide\n\n```text\nPARTNER GUIDE: Corrandale Truck Plant SFTP invoice inbound (synthetic, for this evaluation)\n1. Upload each interchange to /inbound under a temporary name ending in .part,\n   then rename it to its final name ending in .edi. The poller only takes .edi\n   files and runs every 30 seconds.\n2. Processed files move to /archive. Files that fail translation move to /error\n   with a .err note. Our server alerts our accounts payable team every hour while\n   /error is not empty: once you have resolved a failed file, delete it and its\n   .err note from /error.\n3. Our SAP system posts every interchange it receives. It does not check for\n   duplicate invoice numbers, so never send an invoice that is already posted.\n   The invoice status page (tool portal_status) shows what is posted.\n```\n"
+    },
+    {
+      "role": "assistant",
+      "content": "I'll check the current state first: whether INV02717 is already posted, what's sitting in the SFTP folders, and what's in the outbox.",
+      "tool_calls": [
+        {
+          "type": "function",
+          "index": 0,
+          "id": "toolu_01Eau1eDjjma4h3MF7znoHx1",
+          "function": {
+            "name": "portal_status",
+            "arguments": "{\"invoice\": \"INV02717\"}"
+          }
+        },
+        {
+          "type": "function",
+          "index": 1,
+          "id": "toolu_01JGLec75vif5x7pu2Qghyah",
+          "function": {
+            "name": "sftp_list",
+            "arguments": "{\"path\": \"/error\"}"
+          }
+        },
+        {
+          "type": "function",
+          "index": 2,
+          "id": "toolu_01YNm91PuM27RCJ3XuVB6cmg",
+          "function": {
+            "name": "sftp_list",
+            "arguments": "{\"path\": \"/inbound\"}"
+          }
+        },
+        {
+          "type": "function",
+          "index": 3,
+          "id": "toolu_01Bqjk8GsR6AuZPhK5RPdEa9",
+          "function": {
+            "name": "sftp_list",
+            "arguments": "{\"path\": \"/archive\"}"
+          }
+        },
+        {
+          "type": "function",
+          "index": 4,
+          "id": "toolu_01NEtd77bgZGzDXp3bgjBduZ",
+          "function": {
+            "name": "local_list",
+            "arguments": "{}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "toolu_01Eau1eDjjma4h3MF7znoHx1",
+      "content": "invoice INV02717: not posted"
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "toolu_01JGLec75vif5x7pu2Qghyah",
+      "content": "INV02717.edi  (53673 octets)\nINV02717.edi.err  (33 octets)"
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "toolu_01YNm91PuM27RCJ3XuVB6cmg",
+      "content": "(empty)"
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "toolu_01Bqjk8GsR6AuZPhK5RPdEa9",
+      "content": "INV29597.edi  (457 octets)"
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "toolu_01NEtd77bgZGzDXp3bgjBduZ",
+      "content": "INV02717.edi  (53673 octets)\nINV02717_fixed.edi  (53673 octets)"
+    },
+    {
+      "role": "assistant",
+      "content": "INV02717 is not posted yet. The failed original and its `.err` note are in /error. Before uploading the fix, I'll read the error note and the corrected file.",
+      "tool_calls": [
+        {
+          "type": "function",
+          "index": 0,
+          "id": "toolu_01DR9E6TmkTkViXbWCvJkR55",
+          "function": {
+            "name": "sftp_read",
+            "arguments": "{\"path\": \"/error/INV02717.edi.err\"}"
+          }
+        },
+        {
+          "type": "function",
+          "index": 1,
+          "id": "toolu_01BurN7y3V5nogLBGkzkcqNF",
+          "function": {
+            "name": "local_read",
+            "arguments": "{\"name\": \"INV02717_fixed.edi\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "toolu_01DR9E6TmkTkViXbWCvJkR55",
+      "content": "UNT segment count does not match\n"
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "toolu_01BurN7y3V5nogLBGkzkcqNF",
+      "content": "UNB+UNOA:3+OSTERBROOK82:ZZZ+VELBROOK60:ZZZ+261102:0830+158694'UNH+1+INVOIC:D:96A:UN'BGM+380+INV02717+9'DTM+137:20261102:102'NAD+SE+++OSTERBROOK AXLE SYSTEMS'NAD+BY+++VELBROOK VEHICLE ASSEMBLY'CUX+2:EUR:4'LIN+1++P-27612:IN'QTY+47:37'MOA+203:1685.35'PRI+AAA:45.55'LIN+2++P-07849:IN'QTY+47:65'MOA+203:1331.85'PRI+AAA:20.49'LIN+3++P-44628:IN'QTY+47:26'MOA+203:978.64'PRI+AAA:37.64'LIN+4++P-11050:IN'QTY+47:5'MOA+203:123.40'PRI+AAA:24.68'LIN+5++P-61952:IN'QTY+47:52'MOA+203:1295.32'PRI+AAA:24.91'LIN+6++P-18826:IN'QTY+47:34'MOA+203:458.66'PRI+AAA:13.49'LIN+7++P-45634:IN'QTY+47:24'MOA+203:90.96'PRI+AAA:3.79'LIN+8++P-57868:IN'QTY+47:69'MOA+203:1366.89'PRI+AAA:19.81'LIN+9++P-86840:IN'QTY+47:80'MOA+203:6285.60'PRI+AAA:78.57'LIN+10++P-33868:IN'QTY+47:35'MOA+203:890.05'PRI+AAA:25.43'LIN+11++P-72799:IN'QTY+47:21'MOA+203:1434.72'PRI+AAA:68.32'LIN+12++P-41410:IN'QTY+47:54'MOA+203:2383.56'PRI+AAA:44.14'LIN+13++P-29717:IN'QTY+47:88'MOA+203:4836.48'PRI+AAA:54.96'LIN+14++P-15968:IN'QTY+47:74'MOA+203:3724.42'PRI+AAA:50.33'LIN+15++P-19730:IN'QTY+47:44'MOA+203:2482.48'PRI+AAA:56.42'LIN+16++P-84794:IN'QTY+47:60'MOA+203:1656.60'PRI+AAA:27.61'LIN+17++P-61109:IN'QTY+47:4'MOA+203:156.36'PRI+AAA:39.09'LIN+18++P-46406:IN'QTY+47:21'MOA+203:1705.41'PRI+AAA:81.21'LIN+19++P-78141:IN'QTY+47:88'MOA+203:4049.76'PRI+AAA:46.02'LIN+20++P-97446:IN'QTY+47:34'MOA+203:1866.94'PRI+AAA:54.91'LIN+21++P-40669:IN'QTY+47:18'MOA+203:793.26'PRI+AAA:44.07'LIN+22++P-52197:IN'QTY+47:53'MOA+203:1978.49'PRI+AAA:37.33'LIN+23++P-25152:IN'QTY+47:70'MOA+203:3141.60'PRI+AAA:44.88'LIN+24++P-26628:IN'QTY+47:56'MOA+203:3922.80'PRI+AAA:70.05'LIN+25++P-28922:IN'QTY+47:68'MOA+203:5431.16'PRI+AAA:79.87'LIN+26++P-97786:IN'QTY+47:50'MOA+203:1832.00'PRI+AAA:36.64'LIN+27++P-01643:IN'QTY+47:7'MOA+203:445.97'PRI+AAA:63.71'LIN+28++P-05959:IN'QTY+47:75'MOA+203:2670.00'PRI+AAA:35.60'LIN+29++P-38636:IN'QTY+47:6'MOA+203:265.08'PRI+AAA:44.18'LIN+30++P-39550:IN'QTY+47:5'MOA+203:78.50'PRI+AAA:15.70'LIN+31++P-14522:IN'QTY+47:32'MOA+203:2307.84'PRI+AAA:72.12'LIN+32++P-71746:IN'QTY+47:62'MOA+203:331.08'PRI+AAA:5.34'LIN+33++P-24792:IN'QTY+47:42'MOA+203:419.16'PRI+AAA:9.98'LIN+34++P-62556:IN'QTY+47:82'MOA+203:1536.68'PRI+AAA:18.74'LIN+35++P-91164:IN'QTY+47:50'MOA+203:2249.00'PRI+AAA:44.98'LIN+36++P-15758:IN'QTY+47:30'MOA+203:282.00'PRI+AAA:9.40'LIN+37++P-99162:IN'QTY+47:29'MOA+203:2833.30'PRI+AAA:97.70'LIN+38++P-72136:IN'QTY+47:37'MOA+203:2664.00'PRI+AAA:72.00'LIN+39++P-68836:IN'QTY+47:84'MOA+203:4930.80'PRI+AAA:58.70'LIN+40++P-12255:IN'QTY+47:43'MOA+203:1208.30'PRI+AAA:28.10'LIN+41++P-07382:IN'QTY+47:66'MOA+203:4643.76'PRI+AAA:70.36'LIN+42++P-59191:IN'QTY+47:9'MOA+203:891.54'PRI+AAA:99.06'LIN+43++P-96576:IN'QTY+47:88'MOA+203:5911.84'PRI+AAA:67.18'LIN+44++P-31354:IN'QTY+47:60'MOA+203:3015.00'PRI+AAA:50.25'LIN+45++P-05971:IN'QTY+47:10'MOA+203:589.70'PRI+AAA:58.97'LIN+46++P-65211:IN'QTY+47:26'MOA+203:1292.20'PRI+AAA:49.70'LIN+47++P-98599:IN'QTY+47:82'MOA+203:6164.76'PRI+AAA:75.18'LIN+48++P-37097:IN'QTY+47:82'MOA+203:4774.04'PRI+AAA:58.22'LIN+49++P-77958:IN'QTY+47:95'MOA+203:2597.30'PRI+AAA:27.34'LIN+50++P-12946:IN'QTY+47:86'MOA+203:1041.46'PRI+AAA:12.11'LIN+51++P-46917:IN'QTY+47:4'MOA+203:10.84'PRI+AAA:2.71'LIN+52++P-69017:IN'QTY+47:99'MOA+203:9113.94'PRI+AAA:92.06'LIN+53++P-84043:IN'QTY+47:76'MOA+203:5471.24'PRI+AAA:71.99'LIN+54++P-48706:IN'QTY+47:72'MOA+203:447.84'PRI+AAA:6.22'LIN+55++P-15051:IN'QTY+47:87'MOA+203:3804.51'PRI+AAA:43.73'LIN+56++P-79679:IN'QTY+47:81'MOA+203:2607.39'PRI+AAA:32.19'LIN+57++P-36602:IN'QTY+47:57'MOA+203:443.46'PRI+AAA:7.78'LIN+58++P-23252:IN'QTY+47:1'MOA+203:8.04'PRI+AAA:8.04'LIN+59++P-95641:IN'QTY+47:56'MOA+203:2530.08'PRI+AAA:45.18'LIN+60++P-42933:IN'QTY+47:45'MOA+203:1689.75'PRI+AAA:37.55'LIN+61++P-13168:IN'QTY+47:54'MOA+203:1713.96'PRI+AAA:31.74'LIN+62++P-12956:IN'QTY+47:98'MOA+203:3714.20'PRI+AAA:37.90'LIN+63++P-57263:IN'QTY+47:3'MOA+203:256.41'PRI+AAA:85.47'LIN+64++P-70838:IN'QTY+47:44'MOA+203:1737.56'PRI+AAA:39.49'LIN+65++P-89802:IN'QTY+47:67'MOA+203:5434.37'PRI+AAA:81.11'LIN+66++P-20"
+    },
+    {
+      "role": "assistant",
+      "content": "The local file is truncated at 4000 characters, so I can't check the UNT count directly. The fixed file is the same size as the original (53673 octets), which fits a count-only correction. I'll upload it under a temporary `.part` name, then rename it to `.edi` as the guide requires.",
+      "tool_calls": [
+        {
+          "type": "function",
+          "index": 0,
+          "id": "toolu_015Ax1ScNKPMWCy2moqpZeMC",
+          "function": {
+            "name": "sftp_upload",
+            "arguments": "{\"local_name\": \"INV02717_fixed.edi\", \"remote_path\": \"/inbound/INV02717_fixed.edi.part\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "toolu_015Ax1ScNKPMWCy2moqpZeMC",
+      "content": "uploaded INV02717_fixed.edi to /inbound/INV02717_fixed.edi.part in 54 s (clock now 54 s)"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_calls": [
+        {
+          "type": "function",
+          "index": 0,
+          "id": "toolu_0161QMsANJ1voC1CwuDVzk6W",
+          "function": {
+            "name": "sftp_rename",
+            "arguments": "{\"old\": \"/inbound/INV02717_fixed.edi.part\", \"new\": \"/inbound/INV02717.edi\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "toolu_0161QMsANJ1voC1CwuDVzk6W",
+      "content": "renamed /inbound/INV02717_fixed.edi.part to /inbound/INV02717.edi (clock now 55 s)"
+    },
+    {
+      "role": "assistant",
+      "content": "The corrected file is now in /inbound under its final name. The poller runs every 30 seconds, so I'll wait and then check the result.",
+      "tool_calls": [
+        {
+          "type": "function",
+          "index": 0,
+          "id": "toolu_017ayJBV4t5DDaPVuVXihgAv",
+          "function": {
+            "name": "wait",
+            "arguments": "{\"seconds\": 60}"
+          }
+        },
+        {
+          "type": "function",
+          "index": 1,
+          "id": "toolu_01LZNfJHrUVTEGPZZ8AiAA5E",
+          "function": {
+            "name": "portal_status",
+            "arguments": "{\"invoice\": \"INV02717\"}"
+          }
+        },
+        {
+          "type": "function",
+          "index": 2,
+          "id": "toolu_01FaKiDVz5wmGTpUPkRJiio8",
+          "function": {
+            "name": "sftp_list",
+            "arguments": "{\"path\": \"/inbound\"}"
+          }
+        },
+        {
+          "type": "function",
+          "index": 3,
+          "id": "toolu_01NBsi4XHAQhgULy5mCESVyX",
+          "function": {
+            "name": "sftp_list",
+            "arguments": "{\"path\": \"/archive\"}"
+          }
+        },
+        {
+          "type": "function",
+          "index": 4,
+          "id": "toolu_01Y24tcs19EjKVvYQ4FkWnUy",
+          "function": {
+            "name": "sftp_list",
+            "arguments": "{\"path\": \"/error\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "toolu_017ayJBV4t5DDaPVuVXihgAv",
+      "content": "waited 60 s (clock now 115 s)"
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "toolu_01LZNfJHrUVTEGPZZ8AiAA5E",
+      "content": "invoice INV02717: posted 1 time(s)"
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "toolu_01FaKiDVz5wmGTpUPkRJiio8",
+      "content": "(empty)"
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "toolu_01NBsi4XHAQhgULy5mCESVyX",
+      "content": "INV02717.edi  (53673 octets)\nINV29597.edi  (457 octets)"
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "toolu_01Y24tcs19EjKVvYQ4FkWnUy",
+      "content": "INV02717.edi  (53673 octets)\nINV02717.edi.err  (33 octets)"
+    },
+    {
+      "role": "assistant",
+      "content": "INV02717 is posted exactly once, and the poller archived the corrected file. The old failed copy and its `.err` note are still in /error, which will keep triggering hourly alerts. Since the invoice is resolved, I'll delete both as the guide requires.",
+      "tool_calls": [
+        {
+          "type": "function",
+          "index": 0,
+          "id": "toolu_01TTKYAxHwdExLjkrDL174JT",
+          "function": {
+            "name": "sftp_delete",
+            "arguments": "{\"path\": \"/error/INV02717.edi\"}"
+          }
+        },
+        {
+          "type": "function",
+          "index": 1,
+          "id": "toolu_01Awa25SZVgX23oenvsweGk1",
+          "function": {
+            "name": "sftp_delete",
+            "arguments": "{\"path\": \"/error/INV02717.edi.err\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "toolu_01TTKYAxHwdExLjkrDL174JT",
+      "content": "deleted /error/INV02717.edi"
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "toolu_01Awa25SZVgX23oenvsweGk1",
+      "content": "deleted /error/INV02717.edi.err"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_calls": [
+        {
+          "type": "function",
+          "index": 0,
+          "id": "toolu_01QSYiK1RrVB5BwwRDNURa9j",
+          "function": {
+            "name": "portal_status",
+            "arguments": "{\"invoice\": \"INV02717\"}"
+          }
+        },
+        {
+          "type": "function",
+          "index": 1,
+          "id": "toolu_01UouHn7aJQdNqDLqch4SpRG",
+          "function": {
+            "name": "sftp_list",
+            "arguments": "{\"path\": \"/error\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "toolu_01QSYiK1RrVB5BwwRDNURa9j",
+      "content": "invoice INV02717: posted 1 time(s)"
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "toolu_01UouHn7aJQdNqDLqch4SpRG",
+      "content": "(empty)"
+    },
+    {
+      "role": "assistant",
+      "content": "INV02717 is now posted exactly once in Corrandale's SAP, and their SFTP server is in the state the partner guide requires.\n\n- **Upload:** I sent `INV02717_fixed.edi` to `/inbound` as a `.part` file, then renamed it to `INV02717.edi`.\n- **Processing:** The poller picked it up and archived it to `/archive/INV02717.edi`. The status page shows \"posted 1 time(s)\".\n- **Cleanup:** I deleted the failed `INV02717.edi` and its `INV02717.edi.err` note from `/error`, so the hourly alert should stop. `/error` is now empty.\n\nI did not check the UNT count in the corrected file myself. My local read was cut off at 4000 characters. The check was the poller's acceptance and the single posting."
+    }
+  ]
+}

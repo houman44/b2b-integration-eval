@@ -11,7 +11,9 @@ OFTP2 (RFC 5024) transfer and UN/EDIFACT envelope problems, recognising when the
 yet enough to decide, following a fault into the receiver's SAP inbound processing, translating
 between EDIFACT and in-house formats exactly, and repairing a failed delivery on a custom SFTP
 server without side effects. Every task is generated from a seed and graded by code against a
-planted answer. TODO(results): one sentence with the headline finding.
+planted answer. In the release runs, four frontier and upper mid-tier models solved every
+diagnosis task on every trial; smaller models fell to between 57% and 97%, failing mostly on
+exact output syntax, missing evidence and replies that ran past the token limit.
 
 **Video walkthrough:** TODO (link, 5 minutes or less, opens without login).
 
@@ -112,14 +114,63 @@ Environment variable: `OPENROUTER_API_KEY` (read from `.env` with python-dotenv,
 written to results). Every command that spends money needs `--confirm-spend` and stops at
 `--max-cost`. Long runs can be continued with `--resume <run directory>`.
 
-TODO(results): runtime and cost per full run, per model.
+A full diagnosis run (10 tickets, 3 trials) takes about 20 minutes with 10 parallel requests.
+Cost per full diagnosis run, by model: claude-fable-5.1 9.33 USD, gpt-6-astra 2.73,
+claude-sonnet-5.5 1.86, gemini-4-argon 1.63, gemini-3.8-flash 0.98, deepseek-v4.1-flash 0.24,
+claude-haiku-5.5 0.13. Translation and remediation runs cost under 1.30 USD per model.
 
 ## Models tested and results
 
-TODO(results): table with exact model IDs, run dates, temperature 0, trials per task, pass rate,
-diagnosis pass rate, pass@k, pass^k and cost per full run, for each mode. Below it, one note per
-task: which models failed it, how, and a link to a representative transcript, including at least one
-near miss.
+All release runs: 4 November 2026 (UTC), temperature 0, OpenRouter with data collection denied,
+grader 3.1. Raw files hold the full prompt, reply, usage, cost and grade of every trial.
+
+**Diagnosis**, 10 tickets x 3 trials, run `results/runs/20261104T051655Z-23835a` (grades in
+`regrade_v3.1.json`, after the R2 layer ruling below):
+
+| Model | Pass rate | pass@3 | pass^3 | Cost (USD) |
+|---|---|---|---|---|
+| anthropic/claude-fable-5.1 | 30/30 | 1.0 | 1.0 | 9.33 |
+| openai/gpt-6-astra | 30/30 | 1.0 | 1.0 | 2.73 |
+| google/gemini-4-argon | 30/30 | 1.0 | 1.0 | 1.63 |
+| anthropic/claude-sonnet-5.5 | 30/30 | 1.0 | 1.0 | 1.86 |
+| google/gemini-3.8-flash | 29/30 | 1.0 | 0.9 | 0.98 |
+| anthropic/claude-haiku-5.5 | 20/30 | 0.8 | 0.5 | 0.13 |
+| deepseek/deepseek-v4.1-flash-1017 | 17/30 | 0.6 | 0.5 | 0.24 |
+
+pass@3: share of tickets solved in at least one of three trials; pass^3: in all three.
+
+**Translation**, X1 and X2 x 2 trials, runs `results/translation/20261104T053945Z-6676f6` and
+`results/translation/20261104T054031Z-b2d9bd`: gemini-4-argon, gpt-6-astra, claude-sonnet-5.5
+and deepseek-v4.1-flash 4/4; claude-haiku-5.5 3/4 and gemini-3.8-flash 3/4 (one X2 output each
+at 0.97 and 0.88 of the expected segments); claude-fable-5.1 2/4 (both X2 attempts ended with
+finish_reason content_filter and no text).
+
+**SFTP remediation**, Z1 and Z2 x 2 trials, run `results/sftp/20261104T054236Z-3888ad`: all
+seven models 4/4.
+
+**Agentic diagnosis** (the model searches a workspace with tools instead of reading one prompt),
+10 tickets x 1 trial, run `results/agentic/20261104T054441Z-83fb9d`: gemini-4-argon 10/10.
+
+Per task, diagnosis failures (all from the run above):
+
+- T2, U1, U5: deepseek-v4.1-flash 0/3 each, every failure a reply that ran to the 16000-token
+  limit before the JSON.
+- U2: deepseek-v4.1-flash 0/3 (token limit), gemini-3.8-flash 2/3 (token limit once),
+  claude-haiku-5.5 0/3: once the token limit, once a definite cause (recipient ID mismatch) where
+  the evidence does not decide, once a near miss with location as a bare string.
+- U5: claude-haiku-5.5 0/3, near misses: right cause, layer, owner, check and value, but location
+  written as the string "UNDETERMINED" instead of a one-element array.
+- S1: claude-haiku-5.5 1/3, near misses: location `BACKGROUND_JOB` without the `APP.` prefix.
+- E1: claude-haiku-5.5 2/3, one trial found no sender-side fault and put it on the receiver.
+- U1: claude-haiku-5.5 2/3, one trial named a duplicate file instead of asking for the second
+  gateway node's trace.
+- R1: deepseek-v4.1-flash 2/3 (token limit once).
+- R2: before the ruling, gpt-6-astra gave layer `envelope` on all three trials with everything
+  else right. The layer definitions overlap for this ticket (the receiver's translator checks the
+  UNB sender against its converter partner table), so both `application` and `envelope` are
+  accepted; the stored runs were re-graded without new calls.
+
+Transcript links: TODO(results).
 
 ## Failure analysis
 
