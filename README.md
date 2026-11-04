@@ -147,13 +147,15 @@ placeholder README and a .gitignore.
 - RFC 5024, ODETTE File Transfer Protocol 2 (IETF). Verbatim section extracts in `spec/rfc5024/`,
   cut by `spec/extract_rfc5024.py` from the rfc-editor.org text (SHA-256 recorded in
   `spec/SOURCES.md`). Reproduced under the IETF Trust Legal Provisions.
-- UN/EDIFACT syntax version 3 service segments and the CONTRL message: UNECE syntax rules
-  and implementation guidelines, and the CONTRL D.3 message and service code lists published
-  by ISO/TC 154/JWG 1, the joint ISO and UNECE syntax group. Prepared extract in
-  `spec/unedifact/` (layouts restated, code values and names quoted); sources in
-  `spec/SOURCES.md`.
+- UN/EDIFACT syntax version 3: UNECE for the syntax rules (UNB, UNZ, UNG, UNE, truncation),
+  and the CONTRL D.3 document hosted by ISO/TC 154/JWG 1, the joint ISO and UNECE syntax
+  group, for the CONTRL-specific layouts and code lists (UCI, S011, 0083, 0085). Service code
+  lists 0007 and 0035 are also from JWG 1. Prepared extract in `spec/unedifact/` (layouts
+  restated, code values and names quoted); `spec/SOURCES.md` records the source of each part
+  and which points rest on syntax version 2 text and which on a syntax version 3 source.
 - SAP: facts only (IDoc status values, report RBDAPP01, partner type LI), no SAP documentation
-  text. SAP is a trademark of SAP SE.
+  text. They are public SAP behaviour from my general experience and are recorded as standard
+  SAP conventions, not as facts verified against an SAP source. SAP is a trademark of SAP SE.
 - Task format ideas from Terminal-Bench / Harbor (task, environment, checks, reference solution)
   and τ-bench (end-state grading), as described in the hackathon participant guide. No tasks or
   code were taken from them.
