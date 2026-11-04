@@ -1,0 +1,1457 @@
+{
+  "meta": {
+    "run_id": "20261104T051655Z-23835a",
+    "started_utc": "2026-11-04T05:16:55+00:00",
+    "models": [
+      "google/gemini-4-argon",
+      "anthropic/claude-fable-5.1",
+      "openai/gpt-6-astra",
+      "anthropic/claude-sonnet-5.5",
+      "google/gemini-3.8-flash",
+      "anthropic/claude-haiku-5.5",
+      "deepseek/deepseek-v4.1-flash-1017"
+    ],
+    "tickets": [
+      "E1",
+      "E3",
+      "R1",
+      "R2",
+      "S1",
+      "T1",
+      "T2",
+      "U1",
+      "U2",
+      "U5"
+    ],
+    "trials": 3,
+    "temperature": 0.0,
+    "max_tokens": 16000,
+    "max_cost": 30.0,
+    "timeout_s": 150,
+    "draft": false,
+    "ticket_meta": {
+      "E1": {
+        "seed": 50242001,
+        "status": "RELEASE",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "67ccf71b8eb712ac71b758fa801c565cdfdcedfb4f6a3486b04fdc8bd7b15dc3"
+      },
+      "E3": {
+        "seed": 50242003,
+        "status": "RELEASE",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "e8ec9bb9c28bd6e680fcd0193c6ff299c51f7d2eb7e6da49be031eba62f637f4"
+      },
+      "R1": {
+        "seed": 50243001,
+        "status": "RELEASE",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "7275a13f537d3c5780d82b8a1fd1359fe3c634f4e43358008f17bfa3d12f95f8"
+      },
+      "R2": {
+        "seed": 50243002,
+        "status": "RELEASE",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "5f31c7d41a41fdb0f430c21f644c82020c33e5b3fa245727561f848be1d56996"
+      },
+      "S1": {
+        "seed": 50245001,
+        "status": "RELEASE",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "5c89320e59aab3be764abc5c8485f2f887c2e12f2ca59c4dcb675b57b590434b"
+      },
+      "T1": {
+        "seed": 50241001,
+        "status": "RELEASE",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "4e93c5f0c7af8db0c0ea247f8194fc6233d2c33639e67f5de8f7bea2d333883d"
+      },
+      "T2": {
+        "seed": 50241002,
+        "status": "RELEASE",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "b6558eda3132829f60107820223d8354ebfce9fc02e8ad15fff6f47627da5e92"
+      },
+      "U1": {
+        "seed": 50249001,
+        "status": "RELEASE",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "ecb49f8fbc1ea20683c1531568edf5dfb34178f2dc0d2d1e89e59e5a71c45587"
+      },
+      "U2": {
+        "seed": 50249002,
+        "status": "RELEASE",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "00e4de9eac7eaa790816f9a3bafd2279df31a5c0626232a8b19fac58eb3b5df6"
+      },
+      "U5": {
+        "seed": 50249005,
+        "status": "RELEASE",
+        "generator_version": "0.2.0",
+        "prompt_sha256": "214c064e57f2a3066d07e4f234d06e13e0c84082f4774d8550c73e385bfa7289"
+      }
+    },
+    "catalogue_pricing": {
+      "google/gemini-4-argon": {
+        "prompt": "0.000002",
+        "completion": "0.00001",
+        "image": "0.000002",
+        "audio": "0.000002",
+        "input_audio_cache": "0.0000001",
+        "web_search": "0.014",
+        "internal_reasoning": "0.00001",
+        "input_cache_read": "0.0000001",
+        "input_cache_write": "0.0000001875"
+      },
+      "anthropic/claude-fable-5.1": {
+        "prompt": "0.00001",
+        "completion": "0.00005",
+        "web_search": "0.01",
+        "input_cache_read": "0.00000025",
+        "input_cache_write": "0.0000125",
+        "input_cache_write_1h": "0.00002"
+      },
+      "openai/gpt-6-astra": {
+        "prompt": "0.00001",
+        "completion": "0.00005",
+        "web_search": "0.01",
+        "input_cache_read": "0.000001",
+        "input_cache_write": "0.0000125",
+        "overrides": [
+          {
+            "min_prompt_tokens": 272000,
+            "prompt": "0.00002",
+            "completion": "0.000075",
+            "input_cache_read": "0.000002",
+            "input_cache_write": "0.000025"
+          }
+        ]
+      },
+      "anthropic/claude-sonnet-5.5": {
+        "prompt": "0.000002",
+        "completion": "0.00001",
+        "web_search": "0.01",
+        "input_cache_read": "0.0000001",
+        "input_cache_write": "0.0000025",
+        "input_cache_write_1h": "0.000004"
+      },
+      "google/gemini-3.8-flash": {
+        "prompt": "0.000000825",
+        "completion": "0.000004125",
+        "image": "0.000000825",
+        "audio": "0.000000825",
+        "input_audio_cache": "0.0000000825",
+        "web_search": "0.014",
+        "internal_reasoning": "0.000004125",
+        "input_cache_read": "0.0000000825",
+        "input_cache_write": "0.0000000416666666666667"
+      },
+      "anthropic/claude-haiku-5.5": {
+        "prompt": "0.0000001",
+        "completion": "0.0000005",
+        "web_search": "0.01",
+        "input_cache_read": "0.00000001",
+        "input_cache_write": "0.000000125",
+        "input_cache_write_1h": "0.0000002",
+        "overrides": [
+          {
+            "min_prompt_tokens": 100000,
+            "prompt": "0.0000005",
+            "completion": "0.0000025",
+            "input_cache_read": "0.00000005",
+            "input_cache_write": "0.000000625",
+            "input_cache_write_1h": "0.000001"
+          }
+        ]
+      },
+      "deepseek/deepseek-v4.1-flash-1017": {
+        "prompt": "0.00000015",
+        "completion": "0.0000006",
+        "input_cache_read": "0.000000003",
+        "overrides": [
+          {
+            "utc_days": [
+              "saturday",
+              "sunday"
+            ],
+            "prompt": "0.00000015",
+            "completion": "0.0000006",
+            "input_cache_read": "0.000000003"
+          },
+          {
+            "utc_days": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday"
+            ],
+            "utc_start": 0,
+            "utc_end": 100,
+            "prompt": "0.00000015",
+            "completion": "0.0000006",
+            "input_cache_read": "0.000000003"
+          },
+          {
+            "utc_days": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday"
+            ],
+            "utc_start": 100,
+            "utc_end": 400,
+            "prompt": "0.0000003",
+            "completion": "0.0000012",
+            "input_cache_read": "0.000000006"
+          },
+          {
+            "utc_days": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday"
+            ],
+            "utc_start": 400,
+            "utc_end": 600,
+            "prompt": "0.00000015",
+            "completion": "0.0000006",
+            "input_cache_read": "0.000000003"
+          },
+          {
+            "utc_days": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday"
+            ],
+            "utc_start": 600,
+            "utc_end": 1000,
+            "prompt": "0.0000003",
+            "completion": "0.0000012",
+            "input_cache_read": "0.000000006"
+          },
+          {
+            "utc_days": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday"
+            ],
+            "utc_start": 1000,
+            "utc_end": 0,
+            "prompt": "0.00000015",
+            "completion": "0.0000006",
+            "input_cache_read": "0.000000003"
+          }
+        ]
+      }
+    },
+    "resumed_utc": "2026-11-04T05:34:07+00:00",
+    "finished_utc": "2026-11-04T05:35:26+00:00",
+    "skipped": 0
+  },
+  "summary": {
+    "anthropic/claude-fable-5.1": {
+      "trials": 30,
+      "api_errors": 0,
+      "trials_per_task": 3,
+      "pass_rate": 1.0,
+      "mean_score": 1.0,
+      "pass_at_k": 1.0,
+      "pass_hat_k": 1.0,
+      "diagnosis_pass_rate": 1.0,
+      "field_accuracy": {
+        "cause": 1.0,
+        "layer": 1.0,
+        "owner": 1.0,
+        "location": 1.0,
+        "next_check": 1.0,
+        "value": 1.0
+      },
+      "cost_usd": 9.33225,
+      "per_ticket": {
+        "E1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "E3": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "R1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "R2": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "S1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "T1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "T2": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "U1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "U2": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "U5": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        }
+      }
+    },
+    "anthropic/claude-haiku-5.5": {
+      "trials": 30,
+      "api_errors": 0,
+      "trials_per_task": 3,
+      "pass_rate": 0.6667,
+      "mean_score": 0.8667,
+      "pass_at_k": 0.8,
+      "pass_hat_k": 0.5,
+      "diagnosis_pass_rate": 0.6667,
+      "field_accuracy": {
+        "cause": 0.8667,
+        "layer": 0.8667,
+        "owner": 0.8667,
+        "location": 0.6667,
+        "next_check": 0.9667,
+        "value": 0.9667
+      },
+      "cost_usd": 0.12522,
+      "per_ticket": {
+        "E1": {
+          "trials": 3,
+          "passes": 2,
+          "mean_score": 0.7778,
+          "diagnosis_passes": 2,
+          "fields": {
+            "cause": 2,
+            "layer": 2,
+            "owner": 2,
+            "location": 2,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "E3": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "R1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "R2": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "S1": {
+          "trials": 3,
+          "passes": 1,
+          "mean_score": 0.8889,
+          "diagnosis_passes": 1,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 1,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "T1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "T2": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "U1": {
+          "trials": 3,
+          "passes": 2,
+          "mean_score": 0.7778,
+          "diagnosis_passes": 2,
+          "fields": {
+            "cause": 2,
+            "layer": 2,
+            "owner": 2,
+            "location": 2,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "U2": {
+          "trials": 3,
+          "passes": 0,
+          "mean_score": 0.3889,
+          "diagnosis_passes": 0,
+          "fields": {
+            "cause": 1,
+            "layer": 1,
+            "owner": 1,
+            "location": 0,
+            "next_check": 2,
+            "value": 2
+          },
+          "parse_errors": 1
+        },
+        "U5": {
+          "trials": 3,
+          "passes": 0,
+          "mean_score": 0.8333,
+          "diagnosis_passes": 0,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 0,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        }
+      }
+    },
+    "anthropic/claude-sonnet-5.5": {
+      "trials": 30,
+      "api_errors": 0,
+      "trials_per_task": 3,
+      "pass_rate": 1.0,
+      "mean_score": 1.0,
+      "pass_at_k": 1.0,
+      "pass_hat_k": 1.0,
+      "diagnosis_pass_rate": 1.0,
+      "field_accuracy": {
+        "cause": 1.0,
+        "layer": 1.0,
+        "owner": 1.0,
+        "location": 1.0,
+        "next_check": 1.0,
+        "value": 1.0
+      },
+      "cost_usd": 1.86197,
+      "per_ticket": {
+        "E1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "E3": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "R1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "R2": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "S1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "T1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "T2": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "U1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "U2": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "U5": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        }
+      }
+    },
+    "deepseek/deepseek-v4.1-flash-1017": {
+      "trials": 30,
+      "api_errors": 0,
+      "trials_per_task": 3,
+      "pass_rate": 0.5333,
+      "mean_score": 0.5611,
+      "pass_at_k": 0.6,
+      "pass_hat_k": 0.4,
+      "diagnosis_pass_rate": 0.5333,
+      "field_accuracy": {
+        "cause": 0.5667,
+        "layer": 0.5333,
+        "owner": 0.5667,
+        "location": 0.5667,
+        "next_check": 0.5667,
+        "value": 0.5667
+      },
+      "cost_usd": 0.241865,
+      "per_ticket": {
+        "E1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "E3": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "R1": {
+          "trials": 3,
+          "passes": 2,
+          "mean_score": 0.6667,
+          "diagnosis_passes": 2,
+          "fields": {
+            "cause": 2,
+            "layer": 2,
+            "owner": 2,
+            "location": 2,
+            "next_check": 2,
+            "value": 2
+          },
+          "parse_errors": 1
+        },
+        "R2": {
+          "trials": 3,
+          "passes": 2,
+          "mean_score": 0.9444,
+          "diagnosis_passes": 2,
+          "fields": {
+            "cause": 3,
+            "layer": 2,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "S1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "T1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "T2": {
+          "trials": 3,
+          "passes": 0,
+          "mean_score": 0.0,
+          "diagnosis_passes": 0,
+          "fields": {
+            "cause": 0,
+            "layer": 0,
+            "owner": 0,
+            "location": 0,
+            "next_check": 0,
+            "value": 0
+          },
+          "parse_errors": 3
+        },
+        "U1": {
+          "trials": 3,
+          "passes": 0,
+          "mean_score": 0.0,
+          "diagnosis_passes": 0,
+          "fields": {
+            "cause": 0,
+            "layer": 0,
+            "owner": 0,
+            "location": 0,
+            "next_check": 0,
+            "value": 0
+          },
+          "parse_errors": 3
+        },
+        "U2": {
+          "trials": 3,
+          "passes": 0,
+          "mean_score": 0.0,
+          "diagnosis_passes": 0,
+          "fields": {
+            "cause": 0,
+            "layer": 0,
+            "owner": 0,
+            "location": 0,
+            "next_check": 0,
+            "value": 0
+          },
+          "parse_errors": 3
+        },
+        "U5": {
+          "trials": 3,
+          "passes": 0,
+          "mean_score": 0.0,
+          "diagnosis_passes": 0,
+          "fields": {
+            "cause": 0,
+            "layer": 0,
+            "owner": 0,
+            "location": 0,
+            "next_check": 0,
+            "value": 0
+          },
+          "parse_errors": 3
+        }
+      }
+    },
+    "google/gemini-3.8-flash": {
+      "trials": 30,
+      "api_errors": 0,
+      "trials_per_task": 3,
+      "pass_rate": 0.9667,
+      "mean_score": 0.9667,
+      "pass_at_k": 1.0,
+      "pass_hat_k": 0.9,
+      "diagnosis_pass_rate": 0.9667,
+      "field_accuracy": {
+        "cause": 0.9667,
+        "layer": 0.9667,
+        "owner": 0.9667,
+        "location": 0.9667,
+        "next_check": 0.9667,
+        "value": 0.9667
+      },
+      "cost_usd": 0.981142,
+      "per_ticket": {
+        "E1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "E3": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "R1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "R2": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "S1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "T1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "T2": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "U1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "U2": {
+          "trials": 3,
+          "passes": 2,
+          "mean_score": 0.6667,
+          "diagnosis_passes": 2,
+          "fields": {
+            "cause": 2,
+            "layer": 2,
+            "owner": 2,
+            "location": 2,
+            "next_check": 2,
+            "value": 2
+          },
+          "parse_errors": 1
+        },
+        "U5": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        }
+      }
+    },
+    "google/gemini-4-argon": {
+      "trials": 30,
+      "api_errors": 0,
+      "trials_per_task": 3,
+      "pass_rate": 1.0,
+      "mean_score": 1.0,
+      "pass_at_k": 1.0,
+      "pass_hat_k": 1.0,
+      "diagnosis_pass_rate": 1.0,
+      "field_accuracy": {
+        "cause": 1.0,
+        "layer": 1.0,
+        "owner": 1.0,
+        "location": 1.0,
+        "next_check": 1.0,
+        "value": 1.0
+      },
+      "cost_usd": 1.62586,
+      "per_ticket": {
+        "E1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "E3": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "R1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "R2": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "S1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "T1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "T2": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "U1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "U2": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "U5": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        }
+      }
+    },
+    "openai/gpt-6-astra": {
+      "trials": 30,
+      "api_errors": 0,
+      "trials_per_task": 3,
+      "pass_rate": 0.9,
+      "mean_score": 0.9833,
+      "pass_at_k": 0.9,
+      "pass_hat_k": 0.9,
+      "diagnosis_pass_rate": 0.9,
+      "field_accuracy": {
+        "cause": 1.0,
+        "layer": 0.9,
+        "owner": 1.0,
+        "location": 1.0,
+        "next_check": 1.0,
+        "value": 1.0
+      },
+      "cost_usd": 2.728193,
+      "per_ticket": {
+        "E1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "E3": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "R1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "R2": {
+          "trials": 3,
+          "passes": 0,
+          "mean_score": 0.8333,
+          "diagnosis_passes": 0,
+          "fields": {
+            "cause": 3,
+            "layer": 0,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "S1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "T1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "T2": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "U1": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "U2": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        },
+        "U5": {
+          "trials": 3,
+          "passes": 3,
+          "mean_score": 1.0,
+          "diagnosis_passes": 3,
+          "fields": {
+            "cause": 3,
+            "layer": 3,
+            "owner": 3,
+            "location": 3,
+            "next_check": 3,
+            "value": 3
+          },
+          "parse_errors": 0
+        }
+      }
+    }
+  }
+}
