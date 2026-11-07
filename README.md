@@ -2,62 +2,75 @@
 
 Entry for the micro1 Eval Hackathon (October to November 2026), by Houman Azimi-Nejadi.
 
-> DRAFT, 2 Nov 2026. Sections marked **TODO(Houman)** are for Houman to write in his own words.
-> Sections marked **TODO(results)** are filled from the release runs. Everything else was drafted
-> by Claude for Houman's review.
-
 **Short description.** Fourteen synthetic but realistic B2B integration support tasks: diagnosing
-OFTP2 (RFC 5024) transfer and UN/EDIFACT envelope problems, recognising when the evidence is not
-yet enough to decide, following a fault into the receiver's SAP inbound processing, translating
-between EDIFACT and in-house formats exactly, and repairing a failed delivery on a custom SFTP
-server without side effects. Every task is generated from a seed and graded by code against a
-planted answer. In the release runs, four frontier and upper mid-tier models solved every
-diagnosis task on every trial; smaller models fell to between 57% and 97%, failing mostly on
-exact output syntax, missing evidence and replies that ran past the token limit.
+OFTP2 (RFC 5024) transfer and UN/EDIFACT envelope problems, recognising when the evidence is not yet enough to decide, following a fault into the receiver's SAP inbound processing, translating between EDIFACT and in-house formats exactly, and repairing a failed delivery on a custom SFTP server without side effects. Every task is generated from a seed and graded by code against a planted answer. In the release runs, four frontier and upper mid-tier models solved every diagnosis task on every trial; smaller models fell to between 57% and 97%, failing mostly on exact output syntax, missing evidence and replies that ran past the token limit.
 
 **Video walkthrough:** TODO (link, 5 minutes or less, opens without login).
 
 ## Domain and expertise
 
-TODO(Houman): who you are in this domain, how long you have done this work, and who relies on it
-(supplier and OEM EDI desks, integration teams, VAN and clearing-centre operators). Keep this to
-your own general experience; the rules of this entry exclude anything from former employers.
+I have been a software engineer for 30 years, in contract and staff roles in the UK, Germany and Ireland. From 2000 to 2024 I designed and built business-to-business trading networks at GE, GXS and OpenText: the systems that move orders, invoices and despatch advices between manufacturers, suppliers and their partners. That work gave me deep, hands-on expertise in EDI (EDIFACT and related standards) and in the transport protocols that carry it, including OFTP2, SFTP and AS2, along with the routing and partner configuration around them.
+
+The people who rely on getting this right are supplier and OEM EDI desks, the integration teams that onboard trading partners, and the VAN and clearing-centre operators in between. When a file goes wrong, they are the ones who have to find out why and who fixes it.
+
+This evaluation draws only on public specifications and on my general experience: RFC 5024 for OFTP2 (ODETTE File Transfer Protocol 2), the UN/EDIFACT syntax rules (UNECE), the CONTRL message and service code lists (ISO/TC 154/JWG 1), and public SAP behaviour. It contains nothing from any former employer or from my own company: no implementation details, documents, customer traces or partner names.
 
 ## What it tests and why it matters
 
-When a file between two trading partners goes wrong, the first question is always the same: what
-broke, at which layer, and whose side has to fix it. Getting that wrong is expensive. Invoices are
-not paid, despatch advices are missing at the dock, both sides retransmit or reconfigure the wrong
-thing, and the support case bounces between companies for days.
+When a file between two trading partners goes wrong, the first question is always the same: what broke, at which layer, and whose side has to fix it. Getting that wrong is expensive. Invoices are not paid, despatch advices are missing at the dock, both sides retransmit or 
+reconfigure the wrong thing, and the support case bounces between companies for days.
 
-The eval asks a model to do that support engineer's job. Each diagnosis ticket gives the customer's
-complaint, the partner agreement, the sender's OFTP2 gateway trace, the EDIFACT interchange in
-question, the partner's reply and the relevant specification extracts. The model returns six
-graded keys: cause (fixed list), layer, owner, location (exact field or element), the next check
-if the evidence does not yet decide, and one exact value that can only be read off the documents.
+The eval asks a model to do that support engineer's job. Each diagnosis ticket gives the customer's complaint, the partner agreement, the sender's OFTP2 gateway trace, the EDIFACT interchange in question, the partner's reply and the relevant specification extracts. The model returns six graded keys: cause (fixed list), layer, owner, location (exact field or element), the next check if the evidence does not yet decide, and one exact value that can only be read off the documents.
+
 Two further task families test producing an exact document (translation) and acting safely on a
 live system (SFTP remediation, graded on the end state).
 
 ## Task overview
 
-| ID | Family | What happens | Why it is hard |
-|---|---|---|---|
-| T1 | diagnosis | A corrected invoice is resubmitted through a clearing centre and comes back as a NERP | The resubmission reuses the original virtual file's date and time; the gateway's status report blames the wrong file; the clearing centre looks guilty |
-| T2 | diagnosis | Restarted 48 MB transfers always end in a byte count error | The restart position is sent in octets where RFC 5024 expects 1K blocks; another partner's restart (record-based) works |
-| E1 | diagnosis | The partner's translator rejects every interchange since its upgrade | UNB and UNZ control references differ only in leading zeros; the partner wrongly blames the control count, which is correct for a functional group |
-| E3 | diagnosis | Rejections since the sender moved to UNOC | The amendment that allows UNOC takes effect on 1 November, after the ticket date |
-| R1 | diagnosis | "TRANSMISSION ERROR" on every file, plus a timeout and a certificate warning | The real cause is the UNB test indicator (the 11th element after five empty ones) set by an upgrade |
-| R2 | diagnosis | "Unknown sender" from the partner | The sender's ID matches the signed agreement and the CONTRL echoes it; the partner's migrated partner table lost the entry |
-| U1 | diagnosis | A brand-new file refused as a duplicate | The sender runs two gateway nodes and only one trace is attached: not yet determinable |
-| U2 | diagnosis | Files refused at end of file; the archived interchange is perfect | The agreement says transmission rules change files after archiving: not yet determinable |
-| U5 | diagnosis | A CONTRL rejects yesterday's interchange | The interchange attached was regenerated after a map change: not yet determinable |
-| S1 | diagnosis, SAP | The partner says none of the invoices since its SAP upgrade are posted | The IDocs are in status 64 (waiting, not failed) and the processing job stopped at the upgrade |
-| X1 | translation | EDIFACT DESADV with a packing hierarchy to the receiver's in-house JSON | Packages are declared out of order; the parent reference decides the structure |
-| X2 | translation | Fixed-width flat file to EDIFACT INVOIC | Escaping, transliteration, a 35-character limit, half-up rounding of exact half cents, segment counts |
-| Z1 | remediation | Get a corrected invoice posted exactly once on a custom SFTP server | Uploading straight into the pickup folder lets the poller take a half-written file |
-| Z2 | remediation | The customer asks for a resend | The invoice is already posted and their SAP system accepts duplicates |
+| ID  | Family         | What happens                                                                          | Why it is hard                                                                                                                                         |
+| --- | -------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| T1  | diagnosis      | A corrected invoice is resubmitted through a clearing centre and comes back as a NERP | The resubmission reuses the original virtual file's date and time; the gateway's status report blames the wrong file; the clearing centre looks guilty |
+| T2  | diagnosis      | Restarted 48 MB transfers always end in a byte count error                            | The restart position is sent in octets where RFC 5024 expects 1K blocks; another partner's restart (record-based) works                                |
+| E1  | diagnosis      | The partner's translator rejects every interchange since its upgrade                  | UNB and UNZ control references differ only in leading zeros; the partner wrongly blames the control count, which is correct for a functional group     |
+| E3  | diagnosis      | Rejections since the sender moved to UNOC                                             | The amendment that allows UNOC takes effect on 1 November, after the ticket date                                                                       |
+| R1  | diagnosis      | "TRANSMISSION ERROR" on every file, plus a timeout and a certificate warning          | The real cause is the UNB test indicator (the 11th element after five empty ones) set by an upgrade                                                    |
+| R2  | diagnosis      | "Unknown sender" from the partner                                                     | The sender's ID matches the signed agreement and the CONTRL echoes it; the partner's migrated partner table lost the entry                             |
+| U1  | diagnosis      | A brand-new file refused as a duplicate                                               | The sender runs two gateway nodes and only one trace is attached: not yet determinable                                                                 |
+| U2  | diagnosis      | Files refused at end of file; the archived interchange is perfect                     | The agreement says transmission rules change files after archiving: not yet determinable                                                               |
+| U5  | diagnosis      | A CONTRL rejects yesterday's interchange                                              | The interchange attached was regenerated after a map change: not yet determinable                                                                      |
+| S1  | diagnosis, SAP | The partner says none of the invoices since its SAP upgrade are posted                | The IDocs are in status 64 (waiting, not failed) and the processing job stopped at the upgrade                                                         |
+| X1  | translation    | EDIFACT DESADV with a packing hierarchy to the receiver's in-house JSON               | Packages are declared out of order; the parent reference decides the structure                                                                         |
+| X2  | translation    | Fixed-width flat file to EDIFACT INVOIC                                               | Escaping, transliteration, a 35-character limit, half-up rounding of exact half cents, segment counts                                                  |
+| Z1  | remediation    | Get a corrected invoice posted exactly once on a custom SFTP server                   | Uploading straight into the pickup folder lets the poller take a half-written file                                                                     |
+| Z2  | remediation    | The customer asks for a resend                                                        | The invoice is already posted and their SAP system accepts duplicates                                                                                  |
 
-TODO(Houman): a sentence per task on why an experienced engineer would recognise it.
+**T1.** An experienced engineer would be able to recognise the virtual file timestamp reuse issue and the resulting misattribution, it is a well known and observed pattern. The real fault is the sender's Resubmit function, which reuses the original file's SFIDDATE and SFIDTIME, so the destination rightly refuses the corrected file as a duplicate.
+
+**T2.** The sender's gateway sends the restart position in octets where RFC 5024 expects 1K blocks; it only shows on large restarted files, and a record-based restart to another partner still works.
+
+**E1.** Leading-zero differences between UNB and UNZ control references after a translator upgrade are textbook. The first check is whether UNZ 0020 is character for character identical to UNB 0020; leading zeros make them different, so the partner rightly rejects, even though it blames the control count.
+
+**E3.** Obviously the rejection after a switch to UNOC should be checked against the November 1st date when the UNOC amendment starts taking effect.
+
+**R1.** This is another instance of an upgrade changing UNB, specifically the test indicator element.
+
+**R2.** Unknown sender error when the ID matches the agreement and is also echoed in the CONTRL is a clear indicator of a partner-table migration dropping the entry.
+
+**U1.** The sender is running two nodes and evidence is only attached for one of them. This is the incomplete multi-node evidence case that should be marked as not yet able to call it.
+
+**U2.** This is another case where the engineer should not claim a root cause for this EOF rejection despite a perfect archived interchange case. The agreement already states that files may change after archiving.
+
+**U5.** The interchange attached was regenerated after a map change, so it is not the one the CONTRL rejected; the transmitted copy is needed before a cause can be determined.
+
+**S1.** An engineer should be able to spot a waiting, not failed pattern, indicating a post-upgrade job gap.
+
+**X1.** An experienced engineer should know that the hierarchy is defined by that reference, not by declaration order.
+
+**X2.** Every EDI engineer would have implemented this standard fixed-width-to-INVOIC mapping checklist many times. This is evident from the combination of escaping, transliteration, 35-character truncation, half-up rounding of exact half-cents and exact segment counts.
+
+**Z1.** Never write straight into the pickup folder or the poller will consume a partial file.
+
+**Z2.** A customer request to resend an invoice that is already posted, on an SAP system known to accept duplicates is recognisable as operational decision rather than technical failure.
 
 ## Grading and grader validation
 
@@ -74,9 +87,7 @@ All grading is code; there is no judge model.
   the right content, no files left in the error or pickup folders.
 
 The grader was validated before any model run and is covered by the test suite
-(`python -m unittest discover -s tests -t .`, 61 tests): every reference answer passes, also when
-reformatted the way a model might write it; answers that list every option, hedge with "or", or are
-wrong in every field score zero; an answer wrong in one key scores five sixths and fails.
+(`python -m unittest discover -s tests -t .`, 61 tests): every reference answer passes, also when reformatted the way a model might write it; answers that list every option, hedge with "or", or are wrong in every field score zero; an answer wrong in one key scores five sixths and fails.
 
 Reading the transcripts found five problems on our side, all fixed and kept as regression tests or
 noted in the log:
@@ -192,17 +203,29 @@ Transcripts of these and other trials: [`transcripts/`](transcripts/README.md).
 
 ## Failure analysis
 
-TODO(Houman), written from the transcripts.
+The strongest models in this work (claude-fable-5.1, gpt-6-astra, gemini-4-argon and claude-sonnet-5.5) passed every correctly worded task in every mode I tried:
 
-Observations from the pilot runs (raw files under `results/`) that you may want to draw on:
+- decoded traces
+- raw exchange buffers
+- busy-day noise
+- missing evidence
+- SAP
+- exact translation and remediation
+- agentic search (gemini-4-argon only; the other models were not run agentically)
 
-- The three frontier models passed every correctly worded task in every mode tried: decoded
-  traces, raw exchange buffers, busy-day noise, missing evidence, agentic search, SAP, exact
-  translation and remediation.
-- The smaller models failed in explainable ways: exact output syntax (trailing separators, a test
-  indicator "0"), following a partner's wrong claim, inventing element names, and output that ran
-  to the token limit.
-- One provider refused the benign X2 translation prompt with a content filter on all attempts.
+The one exception is translation task X2, where the provider's content filter blocked claude-fable-5.1 on both release attempts, so it produced no output.
+
+This was better performance from the latest frontier models than I had expected and in my opinion it shows how good the models are getting.
+
+The failures came from the smaller models: 24 failed diagnosis trials out of 90 for claude-haiku-5.5, deepseek-v4.1-flash and gemini-3.8-flash together. Every failing transcript falls into one of three groups.
+
+1. **Running out of budget (15 trials).** All 13 deepseek-v4.1-flash failures, one claude-haiku-5.5 trial and one gemini-3.8-flash trial reached the 16,000-token limit before giving an answer. DeepSeek spent the whole budget on reasoning and returned no reply text at all. Its failures sit on T2 and on the three tickets where the right answer is that the evidence does not yet decide (U1, U2, U5), plus one R1 trial. It solved E1, E3, R2, S1 and T1 on every trial.
+2. **Right diagnosis, wrong form (6 trials, all claude-haiku-5.5).** On U5 (three times) and U2 (once) it gave the right cause, layer, owner, check and value, but wrote the location as the string "UNDETERMINED" instead of a one-element list. On S1 (twice) it named the background job without the `APP.` prefix. The grader counts these as failures, by design: an integration answer has to fit the format the next system expects, and partial credit (5 of 6 keys) shows how close they were.
+3. **Wrong diagnosis (3 trials, all claude-haiku-5.5).** On E1 it found no fault on the sender's side and put the problem on the receiver. On U1 and U2 it named a definite cause (a duplicate file, a recipient ID mismatch) where the evidence does not yet decide. This is the mistake that costs most in real support: a confident answer sends both companies to fix the wrong thing.
+
+Translation shows the same pattern at smaller scale. claude-haiku-5.5 cut a party name at 34 characters instead of the 35 allowed, and gemini-3.8-flash misread the implied decimals in the flat file, so one line amount and its price came out ten times too small, and the totals with them. Remediation on the simulated SFTP server was passed by every model.
+
+The transcripts also found problems on my side: five task or grader flaws, listed under grader validation above, each fixed and logged, with the stored runs re-graded without new model calls.
 
 ## Main failure mode and hot take
 
@@ -243,10 +266,9 @@ on X2, and a full agentic episode.
 
 ## How AI tools were used
 
-TODO(Houman), to confirm and adjust: Claude (Anthropic) wrote the code, the ticket generator, the
-grader, the tests and this draft, working in sessions directed by Houman. Houman set the domain,
-scope and rules, ruled on every design question, reviewed every task, planted answer and fact
-against the specifications (verdicts recorded in `generator/codes.py` and `spec/SOURCES.md`), and wrote the failure analysis and hot take.
+I have devised my own agentic estate which is LLM agnostic. Most of the work is done by agents running headless Claude Code sessions. For the micro1 assignment Claude wrote the code, the ticket generator, the grader, the tests and this draft, working in sessions directed by me. 
+
+I set the domain, scope and rules, ruled on every design question, reviewed every task, planted answer and fact against the specifications (verdicts recorded in `generator/codes.py` and `spec/SOURCES.md`), and wrote the failure analysis and hot take.
 
 ## Repository layout
 
