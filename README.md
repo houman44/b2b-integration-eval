@@ -5,7 +5,7 @@ Entry for the micro1 Eval Hackathon (October to November 2026), by Houman Azimi-
 **Short description.** Fourteen synthetic but realistic B2B integration support tasks: diagnosing
 OFTP2 (RFC 5024) transfer and UN/EDIFACT envelope problems, recognising when the evidence is not yet enough to decide, following a fault into the receiver's SAP inbound processing, translating between EDIFACT and in-house formats exactly, and repairing a failed delivery on a custom SFTP server without side effects. Every task is generated from a seed and graded by code against a planted answer. In the release runs, four frontier and upper mid-tier models solved every diagnosis task on every trial; smaller models fell to between 57% and 97%, failing mostly on exact output syntax, missing evidence and replies that ran past the token limit.
 
-**Video walkthrough:** TODO (link, 5 minutes or less, opens without login).
+**Video walkthrough:** https://youtu.be/dokfzJaXyls (4 minutes 38).
 
 ## Domain and expertise
 
