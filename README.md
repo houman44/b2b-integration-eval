@@ -229,7 +229,23 @@ The transcripts also found problems on my side: five task or grader flaws, liste
 
 ## Main failure mode and hot take
 
-TODO(Houman).
+**Main failure mode**
+
+The models that failed did not lack protocol knowledge. They failed at the end of the job: reaching a conclusion and stating it exactly. In the release run the four strongest models solved every diagnosis ticket on every trial. The three smaller models failed 24 of their 90 trials, and almost all of those failures were about concluding, not understanding.
+
+- **Never concluding (15 trials).** The model reasoned until it hit the 16,000-token limit and gave no answer. All 13 DeepSeek failures were like this, mostly on the tickets where the right answer is that the evidence doesn't yet decide.
+- **Concluding in the wrong form (6 trials).** The diagnosis was right, but the answer wouldn't pass a system that expects exact input: a location as a string instead of a list, or an object name without its prefix.
+- **Concluding too soon (3 trials).** The model named a definite cause where the evidence was incomplete, or put the fault on the wrong company. In real support this is the most expensive mistake, because both sides go off and fix the wrong thing.
+
+**Hot take**
+
+I set out to find model failures, but what I found was that at least in B2B integration support, the model is no longer the weak link.
+
+Supplied with the right documents, all of the frontier models in this study could find the root cause every time, including the harder cases like OFTP2 restart arithmetic and SAP IDoc states. Every frontier failure I saw traced back to my side, my evidence or my grader, not the model. The worst was a mislabelled document the models trusted. This was one document heading calling an archived file "as transmitted", and two of the three frontier models believed the label and diagnosed the wrong file with confidence. The failures disappeared after I fixed the label.
+
+What this means is that any new gains in this area will not come from better models but from how support desks handle evidence. Support desks do pass exactly this kind of input to the models, for example an archive copy instead of the wire copy or one gateway node's trace being available out of two.
+
+Two things are needed: a) knowing what version or copy of the evidence you are looking at and b) models that keep asking for the missing evidence, as the frontier models here did, instead of trying to answer anyway.
 
 ## Prior work and sources
 
@@ -266,9 +282,9 @@ on X2, and a full agentic episode.
 
 ## How AI tools were used
 
-I have devised my own agentic estate which is LLM agnostic. Most of the work is done by agents running headless Claude Code sessions. For the micro1 assignment Claude wrote the code, the ticket generator, the grader, the tests and this draft, working in sessions directed by me. 
+I have my own agentic estate which is LLM agnostic. Most of the work is done by agents running headless coding agent sessions. For the micro1 assignment Claude wrote the code, the ticket generator, the grader, the tests and this draft, working in sessions directed by me. 
 
-I set the domain, scope and rules, ruled on every design question, reviewed every task, planted answer and fact against the specifications (verdicts recorded in `generator/codes.py` and `spec/SOURCES.md`), and wrote the failure analysis and hot take.
+I set the domain, scope and rules, ruled on every design question, reviewed every task, planted answer and fact against the specifications (verdicts recorded in `generator/codes.py` and `spec/SOURCES.md`). Claude drafted the failure analysis, main failure mode and hot take from the transcripts and run records; I edited them and confirmed every claim against my own experience.
 
 ## Repository layout
 
